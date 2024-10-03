@@ -1,0 +1,93 @@
+/* Source */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Electrolize');
+
+:root {
+  --font-clr: #c5e9f7;
+
+  --font-grad-clr: radial-gradient(
+    circle at bottom,
+    #92fdf4 30%,
+    #a6e3fb 50%,
+    #a6e3fb 100%
+  );
+  
+  --txt-shdw:
+    -0.4px -0.4px 0.5px red,
+    0.4px 0.4px 0.5px blue;
+
+  --font-shd: 0 0 4px black,
+    0 0 4px black,
+    -3.5px 0 1px #89caf09b,
+    3.5px 0 1px #89caf09b,
+    0 0 50px #89caf0,
+    0 0 50px #89caf0,
+    0 0 50px #89caf0;
+    
+  --font-clr-red: #fea078;
+    
+  --font-shd-red: 0 0 4px black,
+    0 0 4px black,
+    -3.5px 0 1px #f06060c5,
+    3.5px 0 1px #f06060c5,
+    0 0 50px #f06060,
+    0 0 50px #f06060,
+    0 0 50px #f06060;
+    
+  --font-fltr: contrast(120%);
+}
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+  color: var(--font-clr);
+  text-shadow: var(--txt-shdw);
+}
+
+#preloader > .status {
+  font-family: "Michroma", sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 46px;
+}
+
+h2 {
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  margin: auto;
+}
+
+p {
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 300;
+  line-height: 22px;
+  
+  /* text-shadow: var(--font-shd); */
+  filter: var(--font-fltr);
+  image-rendering: optimizeSpeed;
+  
+}
+
+ul {
+  /* text-shadow: var(--font-shd); */
+  filter: var(--font-fltr);
+  image-rendering: optimizeSpeed;
+}
+
+.info li:first-child {
+  color: var(--font-clr-red);
+  /* text-shadow: var(--font-shd-red); */
+}
+
+.description p {
+  font-size: 20px;
+  line-height: initial;
+}
+
+.button span {
+  width: max-content;
+  font-size: 18px;
+
+  /* text-shadow: var(--font-shd); */
+  filter: var(--font-fltr);
+}
