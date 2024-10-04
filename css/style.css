@@ -28,14 +28,15 @@ body::after {
 
 .navigation {
   position: relative;
-  height: 6rem;
+  height: 9.1vh;
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 5vh;
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: auto;
+  grid-template: auto/repeat(2, auto);
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  border-bottom: 1px solid #d1ffff;
 }
 .navigation .btn {
   position: relative;
@@ -87,4 +88,208 @@ body::after {
 }
 .navigation .btn:hover::before {
   background: rgba(129, 228, 245, 0.5);
+}
+
+.content {
+  height: 80vh;
+  overflow: hidden;
+  display: grid;
+  grid-template: auto/repeat(2, auto);
+  grid-column-gap: 10vw;
+  padding: 0 5vw;
+}
+.content .container {
+  position: relative;
+  width: 90vw;
+}
+.content .container.about {
+  display: grid;
+  grid-template: auto/40% 60%;
+}
+.content .container .blockL {
+  height: 100%;
+}
+.content .container .blockL .title {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10%;
+  border: 1px solid #0cfbe9;
+  background: rgba(129, 228, 245, 0.5);
+}
+.content .container .blockL .description {
+  border: 1px dashed #0cfbe9;
+  border-top: none;
+}
+.content .container .blockL .description p {
+  padding: 1rem;
+  text-align: justify;
+}
+.content .container .blockR {
+  position: relative;
+  height: 100%;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+.content .container .blockR > * {
+  position: absolute;
+  image-rendering: high-quality;
+  width: 0%;
+  right: 0;
+  top: 50%;
+  opacity: 0;
+  -webkit-transform: rotateY(-10deg) translateY(-50%);
+          transform: rotateY(-10deg) translateY(-50%);
+  border: 1px dashed #0cfbe9;
+  -webkit-animation: scrollFrame 9s infinite;
+          animation: scrollFrame 9s infinite;
+}
+.content .container .blockR > * img {
+  display: block;
+  width: 100%;
+}
+.content .container .blockR > *::after {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  background: rgba(129, 228, 245, 0.5);
+  border: 1px solid #0cfbe9;
+  padding: 1px 3px;
+}
+.content .container .blockR .frame1::after {
+  content: "Concepts & Design";
+}
+.content .container .blockR .frame2 {
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+.content .container .blockR .frame2::after {
+  content: "Sculpting";
+}
+.content .container .blockR .frame3 {
+  -webkit-animation-delay: 5.6s;
+          animation-delay: 5.6s;
+}
+.content .container .blockR .frame3::after {
+  content: "Retopology";
+}
+.content .container .blockR .frame4 {
+  -webkit-animation-delay: 8.4s;
+          animation-delay: 8.4s;
+}
+.content .container .blockR .frame4::after {
+  content: "Retopology";
+}
+.content .container .blockR .frame5 {
+  -webkit-animation-delay: 11.2s;
+          animation-delay: 11.2s;
+}
+.content .container .blockR .frame5 ::after {
+  content: "Unwrap";
+}
+.content .container .blockR .frame6 {
+  -webkit-animation-delay: 14s;
+          animation-delay: 14s;
+}
+.content .container .blockR .frame6::after {
+  content: "Texturing Maps";
+}
+.content .container .blockR .frame7 {
+  -webkit-animation-delay: 16.8s;
+          animation-delay: 16.8s;
+}
+.content .container .blockR .frame7::after {
+  content: "Texturing Maps";
+}
+.content .container .blockR .frame8 {
+  -webkit-animation-delay: 19.6s;
+          animation-delay: 19.6s;
+}
+.content .container .blockR .frame8::after {
+  content: "Texturing";
+}
+.content .container .blockR .frame9 {
+  -webkit-animation-delay: 22.4s;
+          animation-delay: 22.4s;
+}
+.content .container .blockR .frame9::after {
+  content: "Rigging & Skinning";
+}
+
+@-webkit-keyframes scrollFrame {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  7.7% {
+    width: 20%;
+    opacity: 1;
+  }
+  30.8% {
+    width: 20%;
+    opacity: 1;
+  }
+  38.5% {
+    width: 55%;
+    opacity: 1;
+  }
+  61.6% {
+    width: 55%;
+    opacity: 1;
+  }
+  69.3% {
+    width: 95%;
+    opacity: 1;
+  }
+  92.4% {
+    width: 95%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes scrollFrame {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  7.7% {
+    width: 20%;
+    opacity: 1;
+  }
+  30.8% {
+    width: 20%;
+    opacity: 1;
+  }
+  38.5% {
+    width: 55%;
+    opacity: 1;
+  }
+  61.6% {
+    width: 55%;
+    opacity: 1;
+  }
+  69.3% {
+    width: 95%;
+    opacity: 1;
+  }
+  92.4% {
+    width: 95%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
 }

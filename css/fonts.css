@@ -17,3 +17,17 @@ body {
           filter: contrast(120%);
   font-weight: 400;
 }
+
+h2 {
+  font-weight: 800;
+  font-size: 3.2rem;
+}
+
+p {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.blockR > * {
+  font-size: 1.8rem;
+}

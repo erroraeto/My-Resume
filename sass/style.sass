@@ -24,13 +24,14 @@ body
 
 .navigation
     position: relative
-    height: 6rem
+    height: 9.1vh
     width: 100%
-    padding: 1rem
+    padding: 1.5rem
+    margin-bottom: 5vh
     display: grid
-    grid-template-columns: repeat(2, auto)
-    grid-template-rows: auto
+    grid-template: auto / repeat(2, auto)
     justify-content: space-around
+    border-bottom: 1px solid #d1ffff
     .btn
         position: relative
         cursor: pointer
@@ -66,5 +67,121 @@ body
             width: 84%
             transition: all .25s
         &:hover::before
-            background: rgba(129, 228, 245, 0.5)
-            
+            background: rgba(129, 228, 245, .5)
+
+.content
+    height: 80vh
+    overflow: hidden
+    display: grid
+    grid-template: auto / repeat(2, auto)
+    grid-column-gap: 10vw
+    // justify-content: space-around
+    padding: 0 5vw
+    .container
+        position: relative
+        width: 90vw
+        &.about
+            display: grid
+            grid-template: auto / 40% 60%
+        .blockL
+            height: 100%
+            .title
+                justify-content: center
+                align-items: center
+                display: flex
+                height: 10%
+                border: 1px solid #0cfbe9
+                background: rgba(129, 228, 245, .5)
+            .description
+                border: 1px dashed #0cfbe9
+                border-top: none
+                p
+                    padding: 1rem
+                    text-align: justify
+        .blockR
+            position: relative
+            height: 100%
+            perspective: 1000px
+            & > *
+                position: absolute
+                image-rendering: high-quality
+                // width: 95%
+                width: 0%
+                right: 0
+                top: 50%
+                opacity: 0
+                transform: rotateY(-10deg) translateY(-50%)
+                border: 1px dashed #0cfbe9
+                animation: scrollFrame 9s infinite
+                img
+                    display: block
+                    width: 100%
+                &::after
+                    position: absolute
+                    left: -1px
+                    top: 0
+                    transform: translateY(-100%)
+                    background: rgba(129, 228, 245, .5)
+                    border: 1px solid #0cfbe9
+                    padding: 1px 3px
+            .frame1
+                &::after
+                    content: 'Concepts & Design'
+            .frame2
+                animation-delay: 2.8s
+                &::after
+                    content: 'Sculpting'
+            .frame3
+                animation-delay: 5.6s
+                &::after
+                    content: 'Retopology'
+            .frame4
+                animation-delay: 8.4s
+                &::after
+                    content: 'Retopology'
+            .frame5
+                animation-delay: 11.2s
+                ::after
+                    content: 'Unwrap'
+            .frame6
+                animation-delay: 14s
+                &::after
+                    content: 'Texturing Maps'
+            .frame7
+                animation-delay: 16.8s
+                &::after
+                    content: 'Texturing Maps'
+            .frame8
+                animation-delay: 19.6s
+                &::after
+                    content: 'Texturing'
+            .frame9
+                animation-delay: 22.4s
+                &::after
+                    content: 'Rigging & Skinning'
+
+@keyframes scrollFrame
+    0%
+        width: 0%
+        opacity: 0
+    7.7%
+        width: 20%
+        opacity: 1
+    30.8%
+        width: 20%
+        opacity: 1
+    38.5%
+        width: 55%
+        opacity: 1
+    61.6%
+        width: 55%
+        opacity: 1
+    69.3%
+        width: 95%
+        opacity: 1
+    92.4%
+        width: 95%
+        opacity: 1
+    100%
+        width: 100%
+        opacity: 0
