@@ -104,18 +104,20 @@ body
             perspective: 1000px
             & > *
                 position: absolute
-                image-rendering: high-quality
-                // width: 95%
-                width: 0%
+                image-rendering: optimizeQuality
                 right: 0
                 top: 50%
                 opacity: 0
                 transform: rotateY(-10deg) translateY(-50%)
+                transform-origin: right top
+                backdrop-filter: blur(2px)
                 border: 1px dashed #0cfbe9
-                animation: scrollFrame 9s infinite
+                animation: scrollFrame 27s infinite ease    
                 img
                     display: block
                     width: 100%
+                    filter: drop-shadow(0 0 10px black)
+                    z-index: 0
                 &::after
                     position: absolute
                     left: -1px
@@ -128,60 +130,70 @@ body
                 &::after
                     content: 'Concepts & Design'
             .frame2
-                animation-delay: 2.8s
+                animation-delay: 3s
                 &::after
                     content: 'Sculpting'
             .frame3
-                animation-delay: 5.6s
+                animation-delay: 6s
                 &::after
                     content: 'Retopology'
             .frame4
-                animation-delay: 8.4s
+                animation-delay: 9s
                 &::after
                     content: 'Retopology'
             .frame5
-                animation-delay: 11.2s
-                ::after
+                animation-delay: 12s
+                &::after
                     content: 'Unwrap'
             .frame6
-                animation-delay: 14s
+                animation-delay: 15s
                 &::after
                     content: 'Texturing Maps'
             .frame7
-                animation-delay: 16.8s
+                animation-delay: 18s
                 &::after
                     content: 'Texturing Maps'
             .frame8
-                animation-delay: 19.6s
+                animation-delay: 21s
                 &::after
                     content: 'Texturing'
             .frame9
-                animation-delay: 22.4s
+                animation-delay: 24s
                 &::after
                     content: 'Rigging & Skinning'
 
+
+
 @keyframes scrollFrame
     0%
-        width: 0%
         opacity: 0
-    7.7%
-        width: 20%
+        z-index: -1
+        scale: 0%
+    2.75%
         opacity: 1
-    30.8%
-        width: 20%
+        z-index: 0
+        scale: 20%
+    11%
         opacity: 1
-    38.5%
-        width: 55%
+        z-index: 0
+        scale: 20%
+    13.75%
         opacity: 1
-    61.6%
-        width: 55%
+        z-index: 1
+        scale: 55%
+    22%
         opacity: 1
-    69.3%
-        width: 95%
+        z-index: 1
+        scale: 55%
+    24.75%
         opacity: 1
-    92.4%
-        width: 95%
+        z-index: 2
+        scale: 95%
+    33%
         opacity: 1
-    100%
-        width: 100%
+        z-index: 2
+        scale: 95%
+    35.75%
         opacity: 0
+        z-index: 3
+        scale: 100%
