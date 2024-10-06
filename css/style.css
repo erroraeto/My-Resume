@@ -12,6 +12,7 @@ html {
 
 body {
   background: black;
+  overflow: hidden;
 }
 body::after {
   content: "";
@@ -92,11 +93,24 @@ body::after {
 
 .content {
   height: 80vh;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   overflow: hidden;
   display: grid;
   grid-template: auto/repeat(2, auto);
   grid-column-gap: 10vw;
   padding: 0 5vw;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  -webkit-animation-fill-mode: hidden;
+          animation-fill-mode: hidden;
+}
+.content > * {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  -webkit-animation-fill-mode: hidden;
+          animation-fill-mode: hidden;
 }
 .content .container {
   position: relative;
@@ -228,6 +242,36 @@ body::after {
 }
 .content .container .blockR .frame9::after {
   content: "Rigging & Skinning";
+}
+.content .container.skills {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.content .container.skills .figure {
+  position: absolute;
+}
+.content .container.skills .figure .pentagon {
+  fill: none;
+  stroke: #c5e9f7;
+  stroke-width: 1px;
+}
+.content .container.skills .figure .parametrs {
+  fill: #c5e9f7;
+  opacity: 50%;
+  stroke: #c5e9f7;
+  stroke-width: 1px;
+  -webkit-clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+          clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+}
+.content .container.skills .figure .state > * {
+  display: block;
 }
 
 @-webkit-keyframes scrollFrame {

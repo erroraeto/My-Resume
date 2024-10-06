@@ -9,6 +9,7 @@ html
 
 body
     background: black
+    overflow: hidden
     &::after
         content: ''
         position: absolute
@@ -71,12 +72,17 @@ body
 
 .content
     height: 80vh
+    width: max-content
     overflow: hidden
     display: grid
     grid-template: auto / repeat(2, auto)
     grid-column-gap: 10vw
-    // justify-content: space-around
     padding: 0 5vw
+    transition: all .7s ease
+    animation-fill-mode: hidden
+    & > *
+        transition: all .7s ease
+        animation-fill-mode: hidden
     .container
         position: relative
         width: 90vw
@@ -161,7 +167,28 @@ body
                 animation-delay: 24s
                 &::after
                     content: 'Rigging & Skinning'
-
+        &.skills
+            display: flex
+            justify-content: center
+            align-items: center
+            .figure
+                position: absolute
+                // fill: none
+                // stroke: #c5e9f7
+                // stroke-width: 1px
+                .pentagon
+                    fill: none
+                    stroke: #c5e9f7
+                    stroke-width: 1px
+                .parametrs
+                    fill: #c5e9f7
+                    opacity: 50%
+                    stroke: #c5e9f7
+                    stroke-width: 1px
+                    clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)
+                .state
+                    & > *
+                        display: block
 
 
 @keyframes scrollFrame
