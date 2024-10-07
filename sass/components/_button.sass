@@ -1,0 +1,36 @@
+.btn
+    position: relative
+    cursor: pointer
+    display: flex
+    align-items: center
+    padding: 0 1rem
+    &::after
+        content: ''
+        position: absolute
+        box-sizing: border-box
+        translate: -50% -50%
+        left: 50%
+        top: 50%
+        height: 100%
+        width: 100%
+        border: $border-light-blue
+        clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
+        transition: all .25s
+    &:hover::after
+        height: 70%
+        width: 84%
+        clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
+        border: $border-light-green
+    &::before
+        content: ''
+        position: absolute
+        box-sizing: border-box
+        z-index: -1
+        translate: -50% -50%
+        left: 50%
+        top: 50%
+        height: 70%
+        width: 84%
+        transition: all .25s
+    &:hover::before
+        background: $background-color-blue

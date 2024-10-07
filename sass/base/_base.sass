@@ -1,0 +1,22 @@
+*, ::after, ::before
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    color-scheme: dark
+    font-size: 62.5%
+
+body
+    background: black
+    overflow: hidden
+    &::after
+        content: ''
+        position: absolute
+        height: 100%
+        width: 100%
+        left: 0
+        top: 0
+        z-index: -1
+        mask-image: radial-gradient(rgb(0 0 0), rgb(0 0 0), rgb(0 0 0 / .2), transparent)
+        background: radial-gradient(#c5e9f739 1px, transparent 0) -1.9rem -1.9rem / 1rem 1rem

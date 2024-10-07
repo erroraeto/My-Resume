@@ -1,279 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-html {
-  color-scheme: dark;
-  font-size: 10px;
-}
-
-body {
-  background: black;
-  overflow: hidden;
-}
-body::after {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  -webkit-mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
-          mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
-  background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 1px, transparent 0) -1.9rem -1.9rem/1rem 1rem;
-}
-
-.navigation {
-  position: relative;
-  height: 9.1vh;
-  width: 100%;
-  padding: 1.5rem;
-  margin-bottom: 5vh;
-  display: grid;
-  grid-template: auto/repeat(2, auto);
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  border-bottom: 1px solid #d1ffff;
-}
-.navigation .btn {
-  position: relative;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0 1rem;
-}
-.navigation .btn::after {
-  content: "";
-  position: absolute;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  translate: -50% -50%;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: 100%;
-  border: 1px solid #d1ffff;
-  -webkit-clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
-          clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
-}
-.navigation .btn:hover::after {
-  height: 70%;
-  width: 84%;
-  -webkit-clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
-          clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
-  border: 1px solid #0cfbe9;
-}
-.navigation .btn::before {
-  content: "";
-  position: absolute;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  z-index: -1;
-  translate: -50% -50%;
-  left: 50%;
-  top: 50%;
-  height: 70%;
-  width: 84%;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
-}
-.navigation .btn:hover::before {
-  background: rgba(129, 228, 245, 0.5);
-}
-
-.content {
-  height: 80vh;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  overflow: hidden;
-  display: grid;
-  grid-template: auto/repeat(2, auto);
-  grid-column-gap: 10vw;
-  padding: 0 5vw;
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
-  -webkit-animation-fill-mode: hidden;
-          animation-fill-mode: hidden;
-}
-.content > * {
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
-  -webkit-animation-fill-mode: hidden;
-          animation-fill-mode: hidden;
-}
-.content .container {
-  position: relative;
-  width: 90vw;
-}
-.content .container.about {
-  display: grid;
-  grid-template: auto/40% 60%;
-}
-.content .container .blockL {
-  height: 100%;
-}
-.content .container .blockL .title {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 10%;
-  border: 1px solid #0cfbe9;
-  background: rgba(129, 228, 245, 0.5);
-}
-.content .container .blockL .description {
-  border: 1px dashed #0cfbe9;
-  border-top: none;
-}
-.content .container .blockL .description p {
-  padding: 1rem;
-  text-align: justify;
-}
-.content .container .blockR {
-  position: relative;
-  height: 100%;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-}
-.content .container .blockR > * {
-  position: absolute;
-  image-rendering: optimizeQuality;
-  right: 0;
-  top: 50%;
-  opacity: 0;
-  -webkit-transform: rotateY(-10deg) translateY(-50%);
-          transform: rotateY(-10deg) translateY(-50%);
-  -webkit-transform-origin: right top;
-          transform-origin: right top;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  border: 1px dashed #0cfbe9;
-  -webkit-animation: scrollFrame 27s infinite ease;
-          animation: scrollFrame 27s infinite ease;
-}
-.content .container .blockR > * img {
-  display: block;
-  width: 100%;
-  -webkit-filter: drop-shadow(0 0 10px black);
-          filter: drop-shadow(0 0 10px black);
-  z-index: 0;
-}
-.content .container .blockR > *::after {
-  position: absolute;
-  left: -1px;
-  top: 0;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  background: rgba(129, 228, 245, 0.5);
-  border: 1px solid #0cfbe9;
-  padding: 1px 3px;
-}
-.content .container .blockR .frame1::after {
-  content: "Concepts & Design";
-}
-.content .container .blockR .frame2 {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-.content .container .blockR .frame2::after {
-  content: "Sculpting";
-}
-.content .container .blockR .frame3 {
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-.content .container .blockR .frame3::after {
-  content: "Retopology";
-}
-.content .container .blockR .frame4 {
-  -webkit-animation-delay: 9s;
-          animation-delay: 9s;
-}
-.content .container .blockR .frame4::after {
-  content: "Retopology";
-}
-.content .container .blockR .frame5 {
-  -webkit-animation-delay: 12s;
-          animation-delay: 12s;
-}
-.content .container .blockR .frame5::after {
-  content: "Unwrap";
-}
-.content .container .blockR .frame6 {
-  -webkit-animation-delay: 15s;
-          animation-delay: 15s;
-}
-.content .container .blockR .frame6::after {
-  content: "Texturing Maps";
-}
-.content .container .blockR .frame7 {
-  -webkit-animation-delay: 18s;
-          animation-delay: 18s;
-}
-.content .container .blockR .frame7::after {
-  content: "Texturing Maps";
-}
-.content .container .blockR .frame8 {
-  -webkit-animation-delay: 21s;
-          animation-delay: 21s;
-}
-.content .container .blockR .frame8::after {
-  content: "Texturing";
-}
-.content .container .blockR .frame9 {
-  -webkit-animation-delay: 24s;
-          animation-delay: 24s;
-}
-.content .container .blockR .frame9::after {
-  content: "Rigging & Skinning";
-}
-.content .container.skills {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.content .container.skills .figure {
-  position: absolute;
-}
-.content .container.skills .figure .pentagon {
-  fill: none;
-  stroke: #c5e9f7;
-  stroke-width: 1px;
-}
-.content .container.skills .figure .parametrs {
-  fill: #c5e9f7;
-  opacity: 50%;
-  stroke: #c5e9f7;
-  stroke-width: 1px;
-  -webkit-clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-          clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-}
-.content .container.skills .figure .state > * {
-  display: block;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 @-webkit-keyframes scrollFrame {
   0% {
     opacity: 0;
@@ -316,7 +41,6 @@ body::after {
     scale: 100%;
   }
 }
-
 @keyframes scrollFrame {
   0% {
     opacity: 0;
@@ -357,5 +81,325 @@ body::after {
     opacity: 0;
     z-index: 3;
     scale: 100%;
+  }
+}
+body {
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 100;
+  font-size: 2.2rem;
+  color: #d1ffff;
+  text-shadow: -0.04rem -0.04rem 0.05rem red, 0.04rem 0.04rem 0.05rem blue;
+}
+
+.btn {
+  font-size: 1.8rem;
+  -webkit-filter: contrast(120%);
+          filter: contrast(120%);
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 3.2rem;
+}
+
+p {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.blockR > * {
+  font-size: 1.8rem;
+}
+
+.title {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10%;
+  border: 1px solid #0cfbe9;
+  background: rgba(129, 228, 245, 0.5);
+}
+
+.description {
+  border: 1px dashed #0cfbe9;
+  border-top: none;
+}
+.description p {
+  padding: 1rem;
+  text-align: justify;
+}
+
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  font-size: 62.5%;
+}
+
+body {
+  background: black;
+  overflow: hidden;
+}
+body::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
+          mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
+  background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 1px, transparent 0) -1.9rem -1.9rem/1rem 1rem;
+}
+
+.btn {
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1rem;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  translate: -50% -50%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #d1ffff;
+  -webkit-clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
+          clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.btn:hover::after {
+  height: 70%;
+  width: 84%;
+  -webkit-clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
+          clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
+  border: 1px solid #0cfbe9;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: -1;
+  translate: -50% -50%;
+  left: 50%;
+  top: 50%;
+  height: 70%;
+  width: 84%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.btn:hover::before {
+  background: rgba(129, 228, 245, 0.5);
+}
+
+.navigation {
+  position: relative;
+  height: 9.1vh;
+  width: 100%;
+  padding: 1.5rem;
+  margin-bottom: 5vh;
+  display: grid;
+  grid-template: auto/repeat(2, auto);
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-bottom: 1px solid #d1ffff;
+}
+
+.main {
+  height: 80vh;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  overflow: hidden;
+  display: grid;
+  grid-template: auto/repeat(2, auto);
+  grid-column-gap: 10vw;
+  padding: 0 5vw;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.main > * {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.container {
+  position: relative;
+  width: 90vw;
+}
+.container.about {
+  display: grid;
+  grid-template: auto/40% 60%;
+}
+.container .blockL {
+  height: 100%;
+}
+.container .blockR {
+  position: relative;
+  height: 100%;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+}
+.container .blockR > * {
+  position: absolute;
+  image-rendering: optimizeQuality;
+  right: 0;
+  top: 50%;
+  opacity: 0;
+  -webkit-transform: rotateY(-10deg) translateY(-50%);
+          transform: rotateY(-10deg) translateY(-50%);
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+  -webkit-backdrop-filter: blur(0.2rem);
+          backdrop-filter: blur(0.2rem);
+  border: 1px dashed #0cfbe9;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-animation: scrollFrame 27s infinite ease;
+          animation: scrollFrame 27s infinite ease;
+}
+.container .blockR > * > * {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.container .blockR > * img {
+  display: block;
+  width: 100%;
+  -webkit-filter: drop-shadow(0 0 1rem black);
+          filter: drop-shadow(0 0 1rem black);
+  z-index: 0;
+}
+.container .blockR > *::after {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  background: rgba(129, 228, 245, 0.5);
+  border: 1px solid #0cfbe9;
+  padding: 0.1rem 0.3rem;
+}
+.container .blockR .frame1::after {
+  content: "Concepts & Design";
+}
+.container .blockR .frame2 {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.container .blockR .frame2::after {
+  content: "Sculpting";
+}
+.container .blockR .frame3 {
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+.container .blockR .frame3::after {
+  content: "Retopology";
+}
+.container .blockR .frame4 {
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
+}
+.container .blockR .frame4::after {
+  content: "Retopology";
+}
+.container .blockR .frame5 {
+  -webkit-animation-delay: 12s;
+          animation-delay: 12s;
+}
+.container .blockR .frame5::after {
+  content: "Unwrap";
+}
+.container .blockR .frame6 {
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+}
+.container .blockR .frame6::after {
+  content: "Texturing Maps";
+}
+.container .blockR .frame7 {
+  -webkit-animation-delay: 18s;
+          animation-delay: 18s;
+}
+.container .blockR .frame7::after {
+  content: "Texturing Maps";
+}
+.container .blockR .frame8 {
+  -webkit-animation-delay: 21s;
+          animation-delay: 21s;
+}
+.container .blockR .frame8::after {
+  content: "Texturing";
+}
+.container .blockR .frame9 {
+  -webkit-animation-delay: 24s;
+          animation-delay: 24s;
+}
+.container .blockR .frame9::after {
+  content: "Rigging & Skinning";
+}
+.container.skills {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.container.skills .figure {
+  position: absolute;
+}
+.container.skills .figure .pentagon {
+  fill: none;
+  stroke: #d1ffff;
+  stroke-width: 1px;
+}
+.container.skills .figure .parametrs {
+  fill: #d1ffff;
+  opacity: 50%;
+  stroke: #d1ffff;
+  stroke-width: 1px;
+  -webkit-clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+          clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+}
+.container.skills .figure .state > * {
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .container.about {
+    grid-template: 40% 60%/auto !important;
   }
 }

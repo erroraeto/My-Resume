@@ -1,4 +1,4 @@
-let content = document.querySelector('.content');
+let content = document.querySelector('.main');
 let pos = 0;
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
