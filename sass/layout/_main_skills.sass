@@ -1,0 +1,25 @@
+.container_skills
+        display: flex
+        justify-content: center
+        align-items: center
+        .figure
+            position: absolute
+            .pentagon
+                fill: none
+                stroke: $color-blue
+                stroke-width: 1px
+            .parametrs
+                fill: $color-blue
+                opacity: 50%
+                stroke: $color-blue
+                stroke-width: 1px
+                clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)
+            .state
+                & > *
+                    display: block
+
+.frame:hover
+    animation-play-state: paused
+    transform: rotateY(0deg) translateY(-50%)
+.frames:hover .frame:not(:hover)
+    animation-play-state: paused

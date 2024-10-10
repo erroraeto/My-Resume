@@ -3,7 +3,7 @@
     cursor: pointer
     display: flex
     align-items: center
-    padding: 0 1rem
+    padding: 0 1.2rem
     &::after
         content: ''
         position: absolute
@@ -15,22 +15,33 @@
         width: 100%
         border: $border-light-blue
         clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
-        transition: all .25s
+        // transition: background .1s ease
+        transition: all .25s ease
     &:hover::after
-        height: 70%
+        height: 68%
         width: 84%
         clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
-        border: $border-light-green
+        border: $border-light-blue
     &::before
         content: ''
         position: absolute
         box-sizing: border-box
+        background: $background-color-blue
         z-index: -1
         translate: -50% -50%
         left: 50%
         top: 50%
-        height: 70%
-        width: 84%
-        transition: all .25s
+        height: 100%
+        width: 100%
+        opacity: 0
+        transition: all .3s ease
     &:hover::before
-        background: $background-color-blue
+        opacity: 1
+        height: 68%
+        width: 84%
+    &:active::before
+        background: $background-color-orange
+    &:active::after
+        border: $border-light-orange
+    &:active 
+        color: $color-orange
