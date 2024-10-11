@@ -9,29 +9,28 @@
     stroke: $color-blue
     stroke-width: 1px
     backface-visibility: hidden
+    image-rendering: optimizeQuality
     &_title
         fill: $background-color-blue
-    &_description
-        position: absolute
-        height: 98%
-        width: 98%
+        height: 102%
+        width: 102%
         left: 50%
         top: 50%
-        transform-origin: center
         transform: translate(-50%, -50%)
+        transform-origin: center
+    &_description
         stroke-dasharray: 2
         fill: $background-color-blue-darken
     &_img
-        position: absolute
-        left: 50%
-        top: 45%
-        transform: translate(-50%, -50%)
-        height: 120%
-        width: 105%
-        & :last-child
+        perspective: 100rem
+        z-index: 0
+        & > *
+            backface-visibility: hidden
+        & :first-child
             fill: $background-color-blue
+        & :last-child
+            transform: translateZ(-1rem)
+
 
 .frame_descr
-    position: absolute
     font-size: 2.4rem
-    top: -4.7rem

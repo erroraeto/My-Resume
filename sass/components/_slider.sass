@@ -1,0 +1,52 @@
+.slider
+    position: relative
+    perspective: 100rem
+    & > *
+        position: absolute
+        image-rendering: optimizeSpeed
+        will-change: transform, scale
+        right: 0
+        top: 50%
+        aspect-ratio: 16 / 9
+        width: 83rem
+        filter: opacity(0)
+        transform: rotateY(-10deg) translateY(-50%)
+        transform-origin: right top
+        backface-visibility: hidden
+        animation: scrollFrame 27s infinite ease
+        transition: all .2s ease
+        & > *
+            filter: drop-shadow(0 0 1rem black)
+            backface-visibility: hidden
+        img
+            position: absolute
+            left: 50.5%
+            top: 53.5%
+            width: 90%
+            transform: translate(-50%, -50%)
+            display: inline-block
+            aspect-ratio: 16 / 9
+            z-index: 0
+    .frame_1
+    .frame_2
+        animation-delay: 3s
+    .frame_3
+        animation-delay: 6s
+    .frame_4
+        animation-delay: 9s
+    .frame_5
+        animation-delay: 12s
+    .frame_6
+        animation-delay: 15s
+    .frame_7
+        animation-delay: 18s
+    .frame_8
+        animation-delay: 21s
+    .frame_9
+        animation-delay: 24s
+
+.slider_frame:hover
+    animation-play-state: paused
+    transform: rotateY(0deg) translateY(-50%)
+.slider:hover .slider_frame:not(:hover)
+    animation-play-state: paused

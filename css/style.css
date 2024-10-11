@@ -36,58 +36,52 @@ p {
 
 @-webkit-keyframes scrollFrame {
   0% {
-    opacity: 0;
     z-index: -1;
     scale: 0%;
-    -webkit-filter: blur(1rem);
-            filter: blur(1rem);
+    -webkit-filter: blur(1rem) opacity(0);
+            filter: blur(1rem) opacity(0);
   }
   2.75% {
-    opacity: 1;
     z-index: 0;
     scale: 20%;
-    -webkit-filter: blur(0.8rem);
-            filter: blur(0.8rem);
+    -webkit-filter: blur(0.8rem) opacity(1);
+            filter: blur(0.8rem) opacity(1);
   }
   11% {
-    opacity: 1;
     z-index: 0;
     scale: 20%;
-    -webkit-filter: blur(0.8rem);
-            filter: blur(0.8rem);
+    -webkit-filter: blur(0.8rem) opacity(1);
+            filter: blur(0.8rem) opacity(1);
   }
   13.75% {
-    opacity: 1;
     z-index: 1;
     scale: 55%;
-    -webkit-filter: blur(0.4rem);
-            filter: blur(0.4rem);
+    -webkit-filter: blur(0.4rem) opacity(1);
+            filter: blur(0.4rem) opacity(1);
   }
   22% {
-    opacity: 1;
     z-index: 1;
     scale: 55%;
-    -webkit-filter: blur(0.4rem);
-            filter: blur(0.4rem);
+    -webkit-filter: blur(0.4rem) opacity(1);
+            filter: blur(0.4rem) opacity(1);
   }
   24.75% {
-    opacity: 1;
     z-index: 2;
     scale: 95%;
-    -webkit-filter: blur();
-            filter: blur();
+    -webkit-filter: blur() opacity(1);
+            filter: blur() opacity(1);
   }
   33% {
-    opacity: 1;
     z-index: 2;
     scale: 95%;
-    -webkit-filter: blur();
-            filter: blur();
+    -webkit-filter: blur() opacity(1);
+            filter: blur() opacity(1);
   }
   35.75% {
-    opacity: 0;
     z-index: 3;
     scale: 100%;
+    -webkit-filter: blur() opacity(0);
+            filter: blur() opacity(0);
   }
   35.8% {
     z-index: 0;
@@ -96,58 +90,52 @@ p {
 
 @keyframes scrollFrame {
   0% {
-    opacity: 0;
     z-index: -1;
     scale: 0%;
-    -webkit-filter: blur(1rem);
-            filter: blur(1rem);
+    -webkit-filter: blur(1rem) opacity(0);
+            filter: blur(1rem) opacity(0);
   }
   2.75% {
-    opacity: 1;
     z-index: 0;
     scale: 20%;
-    -webkit-filter: blur(0.8rem);
-            filter: blur(0.8rem);
+    -webkit-filter: blur(0.8rem) opacity(1);
+            filter: blur(0.8rem) opacity(1);
   }
   11% {
-    opacity: 1;
     z-index: 0;
     scale: 20%;
-    -webkit-filter: blur(0.8rem);
-            filter: blur(0.8rem);
+    -webkit-filter: blur(0.8rem) opacity(1);
+            filter: blur(0.8rem) opacity(1);
   }
   13.75% {
-    opacity: 1;
     z-index: 1;
     scale: 55%;
-    -webkit-filter: blur(0.4rem);
-            filter: blur(0.4rem);
+    -webkit-filter: blur(0.4rem) opacity(1);
+            filter: blur(0.4rem) opacity(1);
   }
   22% {
-    opacity: 1;
     z-index: 1;
     scale: 55%;
-    -webkit-filter: blur(0.4rem);
-            filter: blur(0.4rem);
+    -webkit-filter: blur(0.4rem) opacity(1);
+            filter: blur(0.4rem) opacity(1);
   }
   24.75% {
-    opacity: 1;
     z-index: 2;
     scale: 95%;
-    -webkit-filter: blur();
-            filter: blur();
+    -webkit-filter: blur() opacity(1);
+            filter: blur() opacity(1);
   }
   33% {
-    opacity: 1;
     z-index: 2;
     scale: 95%;
-    -webkit-filter: blur();
-            filter: blur();
+    -webkit-filter: blur() opacity(1);
+            filter: blur() opacity(1);
   }
   35.75% {
-    opacity: 0;
     z-index: 3;
     scale: 100%;
+    -webkit-filter: blur() opacity(0);
+            filter: blur() opacity(0);
   }
   35.8% {
     z-index: 0;
@@ -275,22 +263,111 @@ body::after {
   height: 100%;
   position: relative;
 }
-.article .title {
+.article_title {
   position: relative;
   text-align: center;
-  height: 11%;
+  height: 6.4rem;
   -webkit-text-stroke: 1px #d1ffff;
 }
-.article .description {
+.article_description {
   position: relative;
-  top: -1rem;
+  top: -0.5rem;
+  height: 48.8rem;
 }
-.article .description p {
+.article_description p {
   padding: 2rem;
   text-align: justify;
 }
-.article .description p br {
+.article_description p br {
   margin-bottom: 1rem;
+}
+
+.slider {
+  position: relative;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+}
+.slider > * {
+  position: absolute;
+  image-rendering: optimizeSpeed;
+  will-change: transform, scale;
+  right: 0;
+  top: 50%;
+  aspect-ratio: 16/9;
+  width: 83rem;
+  -webkit-filter: opacity(0);
+          filter: opacity(0);
+  -webkit-transform: rotateY(-10deg) translateY(-50%);
+          transform: rotateY(-10deg) translateY(-50%);
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-animation: scrollFrame 27s infinite ease;
+          animation: scrollFrame 27s infinite ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.slider > * > * {
+  -webkit-filter: drop-shadow(0 0 1rem black);
+          filter: drop-shadow(0 0 1rem black);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.slider > * img {
+  position: absolute;
+  left: 50.5%;
+  top: 53.5%;
+  width: 90%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: inline-block;
+  aspect-ratio: 16/9;
+  z-index: 0;
+}
+.slider .frame_2 {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.slider .frame_3 {
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+.slider .frame_4 {
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
+}
+.slider .frame_5 {
+  -webkit-animation-delay: 12s;
+          animation-delay: 12s;
+}
+.slider .frame_6 {
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+}
+.slider .frame_7 {
+  -webkit-animation-delay: 18s;
+          animation-delay: 18s;
+}
+.slider .frame_8 {
+  -webkit-animation-delay: 21s;
+          animation-delay: 21s;
+}
+.slider .frame_9 {
+  -webkit-animation-delay: 24s;
+          animation-delay: 24s;
+}
+
+.slider_frame:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-transform: rotateY(0deg) translateY(-50%);
+          transform: rotateY(0deg) translateY(-50%);
+}
+
+.slider:hover .slider_frame:not(:hover) {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
 }
 
 .border {
@@ -305,40 +382,42 @@ body::after {
   stroke-width: 1px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  image-rendering: optimizeQuality;
 }
 .border_title {
   fill: rgba(70, 151, 180, 0.6);
-}
-.border_description {
-  position: absolute;
-  height: 98%;
-  width: 98%;
+  height: 102%;
+  width: 102%;
   left: 50%;
   top: 50%;
-  -webkit-transform-origin: center;
-          transform-origin: center;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.border_description {
   stroke-dasharray: 2;
   fill: rgba(28, 60, 72, 0.8);
 }
 .border_img {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  height: 120%;
-  width: 105%;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+  z-index: 0;
+}
+.border_img > * {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.border_img :first-child {
+  fill: rgba(70, 151, 180, 0.6);
 }
 .border_img :last-child {
-  fill: rgba(70, 151, 180, 0.6);
+  -webkit-transform: translateZ(-1rem);
+          transform: translateZ(-1rem);
 }
 
 .frame_descr {
-  position: absolute;
   font-size: 2.4rem;
-  top: -4.7rem;
 }
 
 .navigation {
@@ -384,84 +463,9 @@ body::after {
   width: 90vw;
 }
 
-@media (max-width: 1000px) {
-  .container.about {
-    grid-template: 40% 60%/auto !important;
-  }
-}
 .container_about {
   display: grid;
   grid-template: auto/40% 60%;
-}
-.container_about .frames {
-  position: relative;
-  height: 100%;
-  -webkit-perspective: 100rem;
-          perspective: 100rem;
-}
-.container_about .frames > * {
-  position: absolute;
-  image-rendering: optimizeQuality;
-  right: 0;
-  top: 50%;
-  opacity: 0;
-  -webkit-transform: rotateY(-10deg) translateY(-50%);
-          transform: rotateY(-10deg) translateY(-50%);
-  -webkit-transform-origin: right top;
-          transform-origin: right top;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-animation: scrollFrame 27s infinite ease;
-          animation: scrollFrame 27s infinite ease;
-  -webkit-perspective: 100rem;
-          perspective: 100rem;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-}
-.container_about .frames > * > * {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-.container_about .frames > * img {
-  display: block;
-  width: 100%;
-  -webkit-filter: drop-shadow(0 0 1rem black);
-          filter: drop-shadow(0 0 1rem black);
-  z-index: 0;
-}
-.container_about .frames .frame_2 {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
-}
-.container_about .frames .frame_3 {
-  -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-}
-.container_about .frames .frame_4 {
-  -webkit-animation-delay: 9s;
-          animation-delay: 9s;
-}
-.container_about .frames .frame_5 {
-  -webkit-animation-delay: 12s;
-          animation-delay: 12s;
-}
-.container_about .frames .frame_6 {
-  -webkit-animation-delay: 15s;
-          animation-delay: 15s;
-}
-.container_about .frames .frame_7 {
-  -webkit-animation-delay: 18s;
-          animation-delay: 18s;
-}
-.container_about .frames .frame_8 {
-  -webkit-animation-delay: 21s;
-          animation-delay: 21s;
-}
-.container_about .frames .frame_9 {
-  -webkit-animation-delay: 24s;
-          animation-delay: 24s;
 }
 
 .container_skills {
@@ -493,16 +497,4 @@ body::after {
 }
 .container_skills .figure .state > * {
   display: block;
-}
-
-.frame:hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-transform: rotateY(0deg) translateY(-50%);
-          transform: rotateY(0deg) translateY(-50%);
-}
-
-.frames:hover .frame:not(:hover) {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
 }
