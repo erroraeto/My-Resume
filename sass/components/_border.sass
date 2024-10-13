@@ -1,36 +1,53 @@
 .border
+    image-rendering: optimizeQuality
+    backface-visibility: hidden
     position: absolute
+    display: block
+    z-index: -1
     height: 100%
     width: 100%
     left: 0
     top: 0
-    z-index: -1
     fill: none
     stroke: $color-blue
     stroke-width: 1px
-    backface-visibility: hidden
-    image-rendering: optimizeQuality
     &_title
-        fill: $background-color-blue
         height: 102%
         width: 102%
         left: 50%
         top: 50%
         transform: translate(-50%, -50%)
         transform-origin: center
+        &.bg
+            fill: $background-color-blue
+            height: 102%
+            width: 102%
+
     &_description
         stroke-dasharray: 2
-        fill: $background-color-blue-darken
+        &.bg
+            fill: $background-color-blue_darken
+
     &_img
-        perspective: 100rem
         z-index: 0
-        & > *
-            backface-visibility: hidden
-        & :first-child
+        perspective: 100rem
+        transform-style: preserve-3d
+        will-change: transform
+        backface-visibility: hidden
+        &.bg
             fill: $background-color-blue
-        & :last-child
-            transform: translateZ(-1rem)
+            transform: translate(-50%, -50%) translateZ(-2rem)
+            & :last-child
+                stroke: none
+                fill: $background-color-blue-darken
 
 
-.frame_descr
-    font-size: 2.4rem
+
+.bg
+    position: absolute
+    left: 50%
+    top: 50%
+    transition: all 1s
+    transform-origin: center
+    transform: translate(-50%, -50%) translateZ(-1rem)
+    filter: blur(.12rem)
