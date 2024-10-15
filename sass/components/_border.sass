@@ -1,9 +1,7 @@
 .border
-    image-rendering: optimizeQuality
-    backface-visibility: hidden
+    z-index: -1
     position: absolute
     display: block
-    z-index: -1
     height: 100%
     width: 100%
     left: 0
@@ -29,11 +27,8 @@
             fill: $background-color-blue_darken
 
     &_img
-        z-index: 0
         perspective: 100rem
         transform-style: preserve-3d
-        will-change: transform
-        backface-visibility: hidden
         &.bg
             fill: $background-color-blue
             transform: translate(-50%, -50%) translateZ(-2rem)
@@ -47,6 +42,7 @@
     position: absolute
     left: 50%
     top: 50%
+    z-index: -1
     transition: all 1s
     transform-origin: center
     transform: translate(-50%, -50%) translateZ(-1rem)

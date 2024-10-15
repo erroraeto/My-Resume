@@ -42,6 +42,7 @@ p {
   2.75% {
     z-index: 0;
     scale: 20%;
+    visibility: visible;
   }
   11% {
     z-index: 0;
@@ -62,16 +63,15 @@ p {
   33% {
     z-index: 4;
     scale: 95%;
-    translate: 0 0;
   }
   35.75% {
     z-index: 5;
     scale: 100%;
-    translate: 150% 0;
+    visibility: visible;
   }
-  35.8% {
-    scale: 0%;
+  35.76% {
     z-index: 0;
+    visibility: hidden;
   }
 }
 
@@ -83,6 +83,7 @@ p {
   2.75% {
     z-index: 0;
     scale: 20%;
+    visibility: visible;
   }
   11% {
     z-index: 0;
@@ -103,16 +104,113 @@ p {
   33% {
     z-index: 4;
     scale: 95%;
-    translate: 0 0;
   }
   35.75% {
     z-index: 5;
     scale: 100%;
-    translate: 150% 0;
+    visibility: visible;
   }
-  35.8% {
-    scale: 0%;
+  35.76% {
     z-index: 0;
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes openState {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes openState {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes openFigure {
+  0% {
+    -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+            clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+  }
+  20% {
+    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+  }
+  40% {
+    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+  }
+  60% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+  }
+  80% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+  }
+  100% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+  }
+}
+@keyframes openFigure {
+  0% {
+    -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+            clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+  }
+  20% {
+    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+  }
+  40% {
+    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+  }
+  60% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+  }
+  80% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+  }
+  100% {
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
   }
 }
 .margin-bottom-5vh {
@@ -277,10 +375,11 @@ body::after {
   position: relative;
   -webkit-perspective: 100rem;
           perspective: 100rem;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .slider > * {
   will-change: transform, scale, display;
-  image-rendering: optimizeSpeed;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
@@ -290,12 +389,11 @@ body::after {
   -webkit-perspective: 100rem;
           perspective: 100rem;
   position: absolute;
-  display: block;
-  right: 0;
-  top: 50%;
   aspect-ratio: 16/9;
   width: 83rem;
-  scale: 0%;
+  visibility: hidden;
+  right: 0;
+  top: 50%;
   -webkit-transform: rotateY(-10deg) translateY(-50%);
           transform: rotateY(-10deg) translateY(-50%);
   -webkit-transform-origin: right top;
@@ -308,8 +406,6 @@ body::after {
 .slider > * > * {
   -webkit-filter: drop-shadow(0 0 1rem black);
           filter: drop-shadow(0 0 1rem black);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 .slider > * img {
   position: absolute;
@@ -318,9 +414,7 @@ body::after {
   width: 90%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  display: block;
   aspect-ratio: 16/9;
-  z-index: 0;
 }
 .slider .frame_1 {
   -webkit-animation-delay: -6s;
@@ -370,12 +464,9 @@ body::after {
 }
 
 .border {
-  image-rendering: optimizeQuality;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  z-index: -1;
   position: absolute;
   display: block;
-  z-index: -1;
   height: 100%;
   width: 100%;
   left: 0;
@@ -406,14 +497,10 @@ body::after {
   fill: rgba(28, 60, 72, 0.6);
 }
 .border_img {
-  z-index: 0;
   -webkit-perspective: 100rem;
           perspective: 100rem;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 .border_img.bg {
   fill: rgba(70, 151, 180, 0.55);
@@ -429,6 +516,7 @@ body::after {
   position: absolute;
   left: 50%;
   top: 50%;
+  z-index: -1;
   -webkit-transition: all 1s;
   transition: all 1s;
   -webkit-transform-origin: center;
@@ -455,6 +543,13 @@ body::after {
 }
 
 .main {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   height: 80vh;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -467,14 +562,10 @@ body::after {
   padding: 15vh 5vw 5vh;
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 .main > * {
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .container {
@@ -485,8 +576,6 @@ body::after {
 .container_about {
   display: grid;
   grid-template: auto/40% 60%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .container_skills {
@@ -500,22 +589,38 @@ body::after {
       -ms-flex-align: center;
           align-items: center;
 }
-.container_skills .figure {
+.container_skills_status {
   position: absolute;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
 }
-.container_skills .figure .pentagon {
+.container_skills_status .pentagon {
   fill: none;
   stroke: #d1ffff;
   stroke-width: 1px;
 }
-.container_skills .figure .parametrs {
+.container_skills_status .parametrs {
   fill: #d1ffff;
   opacity: 50%;
   stroke: #d1ffff;
   stroke-width: 1px;
-  -webkit-clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-          clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
 }
-.container_skills .figure .state > * {
-  display: block;
+.container_skills_status .state.two {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.container_skills_status .state.three {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.container_skills_status .state.four {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.container_skills_status .state.five {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.container_skills_status .state:hover .parametrs {
+  fill: red;
 }

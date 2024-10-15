@@ -1,4 +1,8 @@
 .main
+    backface-visibility: hidden
+    transform-style: preserve-3d
+    will-change: transform
+    transform: translateZ(0)
     height: 80vh
     width: max-content
     display: grid
@@ -7,10 +11,8 @@
     box-sizing: content-box
     padding: 15vh 5vw 5vh
     transition: all .7s ease
-    backface-visibility: hidden
     & > *
         transition: all .7s ease
-        backface-visibility: hidden
 
 .container
     position: relative

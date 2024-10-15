@@ -2,8 +2,9 @@
         display: flex
         justify-content: center
         align-items: center
-        .figure
+        &_status
             position: absolute
+            perspective: 100rem
             .pentagon
                 fill: none
                 stroke: $color-blue
@@ -13,7 +14,17 @@
                 opacity: 50%
                 stroke: $color-blue
                 stroke-width: 1px
-                clip-path: polygon(49.66% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)
+                // animation: openFigure 1s ease both
             .state
-                & > *
-                    display: block
+                // animation: openState .3s ease both
+                &.one
+                &.two
+                    animation-delay: .3s
+                &.three
+                    animation-delay: .6s
+                &.four
+                    animation-delay: .8s
+                &.five
+                    animation-delay: 1s
+                &:hover .parametrs
+                    fill: red

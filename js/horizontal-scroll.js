@@ -23,5 +23,10 @@ document.addEventListener('click', async function (e) {
         await sleep(700);
         main.style.transform = '';
         pos -= 1;
+        openSkills();
     }
 });
+
+async function openSkills() {
+    
+}
