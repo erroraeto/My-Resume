@@ -621,6 +621,7 @@ body::after {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-.container_skills_status .state:hover .parametrs {
+
+.state:hover .parametrs {
   fill: red;
 }
