@@ -316,7 +316,7 @@ body::after {
   position: absolute;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: rgba(70, 151, 180, 0.55);
+  background: rgba(70, 151, 180, 0.5490196078);
   z-index: -1;
   translate: -50% -50%;
   left: 50%;
@@ -486,7 +486,7 @@ body::after {
           transform-origin: center;
 }
 .border_title.bg {
-  fill: rgba(70, 151, 180, 0.55);
+  fill: rgba(70, 151, 180, 0.5490196078);
   height: 102%;
   width: 102%;
 }
@@ -503,7 +503,7 @@ body::after {
           transform-style: preserve-3d;
 }
 .border_img.bg {
-  fill: rgba(70, 151, 180, 0.55);
+  fill: rgba(70, 151, 180, 0.5490196078);
   -webkit-transform: translate(-50%, -50%) translateZ(-2rem);
           transform: translate(-50%, -50%) translateZ(-2rem);
 }
@@ -579,15 +579,8 @@ body::after {
 }
 
 .container_skills {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: grid;
+  grid-template: 72% 28%/50% 50%;
 }
 .container_skills_status {
   position: absolute;
@@ -600,28 +593,78 @@ body::after {
   stroke-width: 1px;
 }
 .container_skills_status .parametrs {
-  fill: #d1ffff;
-  opacity: 50%;
-  stroke: #d1ffff;
-  stroke-width: 1px;
-}
-.container_skills_status .state.two {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-}
-.container_skills_status .state.three {
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
-}
-.container_skills_status .state.four {
-  -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
-}
-.container_skills_status .state.five {
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  fill: rgba(209, 255, 255, 0.6);
+  -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+          clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
 }
 
-.state:hover .parametrs {
-  fill: red;
+.state {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.state_description {
+  position: relative;
+  display: inline-block;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  left: 0;
+  top: 30%;
+  -webkit-animation: openState 0.3s ease both;
+          animation: openState 0.3s ease both;
+}
+.state_description span {
+  font-size: 2.8rem;
+}
+
+.left {
+  grid-column: 1;
+  grid-row: 1;
+}
+.left > * {
+  text-align: right;
+}
+.left > *:before {
+  content: "";
+  height: 17.3rem;
+  width: 50%;
+  float: right;
+  shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%);
+  shape-margin: 1rem;
+}
+.left :last-child::before {
+  shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%);
+}
+
+.right {
+  grid-column: 2;
+  grid-row: 1;
+}
+.right > * {
+  text-align: left;
+}
+.right > *:before {
+  content: "";
+  height: 17.3rem;
+  width: 50%;
+  float: left;
+  shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%);
+  shape-margin: 1rem;
+}
+.right :last-child::before {
+  shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%);
+}
+
+.bottom {
+  grid-column: 1/span two;
+  grid-row: 2/2;
+  justify-self: center;
+  width: 50%;
+}
+.bottom > * {
+  top: 0;
+  text-align: center;
 }

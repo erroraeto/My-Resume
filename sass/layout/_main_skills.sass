@@ -1,31 +1,145 @@
-.container_skills
-        display: flex
-        justify-content: center
-        align-items: center
-        &_status
-            position: absolute
-            perspective: 100rem
-            .pentagon
-                fill: none
-                stroke: $color-blue
-                stroke-width: 1px
-            .parametrs
-                fill: $color-blue
-                opacity: 50%
-                stroke: $color-blue
-                stroke-width: 1px
-                // animation: openFigure 1s ease both
-            .state
-                // animation: openState .3s ease both
-                &.one
-                &.two
-                    animation-delay: .3s
-                &.three
-                    animation-delay: .6s
-                &.four
-                    animation-delay: .8s
-                &.five
-                    animation-delay: 1s
+// .container_skills
+//         display: flex
+//         justify-content: center
+//         align-items: center
+//         &_status
+//             position: absolute
+//             perspective: 100rem
+//             .pentagon
+//                 fill: none
+//                 stroke: $color-blue
+//                 stroke-width: 1px
+//             .parametrs
+//                 fill: $color-blue-opacity6
+//                 transition: all .4s ease
+//                 animation: openFigure 1s ease .2s
+//                 clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)
+//             .state
+//                 display: block
+//                 animation: openState .3s ease both
+//                 cursor: pointer
+//                 &.one
+//                     animation-delay: .2s
+//                 &.two
+//                     animation-delay: .5s
+//                 &.three
+//                     animation-delay: .8s
+//                 &.four
+//                     animation-delay: 1s
+//                 &.five
+//                     animation-delay: 1.2s
 
-.state:hover .parametrs
-    fill: red
+// #pentagon
+//     float: left
+//     shape-outside: url(#pentagon)
+
+// .state_description
+//     display: inline-block
+//     height: 4rem
+//     width: 4rem
+//     left: 25%
+//     top: -12%
+//     text-align: left
+//     &::before
+//         content: ''
+//         width: 50%
+//         height: 100%
+//         float: right
+//         shape-outside: polygon( 2% 0%, 100% 0%, 100% 100%, 2% 100%, 50% 94%, 76.6% 82.7%, 94% 65.6%, 100% 50%, 94% 32.6%, 76.6% 17.3%, )
+//         shape-margin: 7%
+    // shape-outside: url("#pentagon")
+    // shape-outside: polygon(50% 100%, 100% 62%, 82% 0%, 18% 0%, 0% 62%)
+    // shape-outside: polygon(50% 100%, 100% 62%, 82% 0%, 18% 0%, 0% 62%)
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container_skills
+    display: grid
+    grid-template: 72% 28% / 50% 50%
+    &_status
+        position: absolute
+        perspective: 100rem
+        .pentagon
+            fill: none
+            stroke: $color-blue
+            stroke-width: 1px
+        .parametrs
+            transition: all .4s ease
+            fill: $color-blue-opacity6
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)
+
+
+.state
+    position: relative
+    height: 100%
+    width: 100%
+    &_description
+        position: relative
+        display: inline-block
+        height: max-content
+        // width: 50%
+        left: 0
+        top: 30%
+        animation: openState .3s ease both
+        // cursor: pointer
+        // text-align: right
+        span
+            font-size: 2.8rem
+        // &:before
+        //     content: ''
+        //     height: 17.3rem
+        //     width: 50%
+        //     float: right
+        //     shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%)
+        //     shape-margin: 1rem
+
+.left
+    grid-column: 1
+    grid-row: 1
+    & > *
+        text-align: right
+        &:before
+            content: ''
+            height: 17.3rem
+            width: 50%
+            float: right
+            shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%)
+            shape-margin: 1rem
+    & :last-child::before
+        shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%)
+
+
+.right
+    grid-column: 2
+    grid-row: 1
+    & > *
+        text-align: left
+        &:before
+            content: ''
+            height: 17.3rem
+            width: 50%
+            float: left
+            shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%)
+            shape-margin: 1rem
+    & :last-child::before
+        shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%)
+
+
+.bottom
+    grid-column: 1 / span two
+    grid-row: 2 / 2
+    justify-self: center
+    width: 50%
+    & > *
+        top: 0
+        text-align: center
