@@ -1,4 +1,5 @@
 let main = document.querySelector('.main');
+let skills = document.querySelector('.container_skills');
 let pos = 0;
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -16,6 +17,7 @@ document.addEventListener('click', async function (e) {
         await sleep(700);
         main.style.transform = '';
         pos += 1;
+        skills.style.display = "block";
     } else if (childPos != pos && childPos < pos) {
         main.style.transform = 'translateZ(-20rem)';
         await sleep(500);
@@ -23,10 +25,6 @@ document.addEventListener('click', async function (e) {
         await sleep(700);
         main.style.transform = '';
         pos -= 1;
-        openSkills();
+        skills.style.display = "none";
     }
 });
-
-async function openSkills() {
-    
-}

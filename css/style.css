@@ -34,6 +34,11 @@ p {
   font-size: 1.8rem;
 }
 
+.statuses_state-title {
+  font-weight: 400;
+  font-size: 2.8rem;
+}
+
 @-webkit-keyframes scrollFrame {
   0% {
     z-index: -1;
@@ -163,54 +168,158 @@ p {
 }
 @-webkit-keyframes openFigure {
   0% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
             clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
   }
+  10% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   20% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
   }
+  30% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   40% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
   }
+  50% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   60% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
   }
+  70% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   80% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
   }
+  90% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
+  95% {
+    fill: rgba(209, 255, 255, 0.8);
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+  }
   100% {
+    fill: rgba(209, 255, 255, 0.6);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
   }
 }
 @keyframes openFigure {
   0% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
             clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
   }
+  10% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   20% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
   }
+  30% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   40% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
   }
+  50% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   60% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
   }
+  70% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
   80% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
   }
-  100% {
+  90% {
+    fill: rgba(209, 255, 255, 0.6);
+  }
+  95% {
+    fill: rgba(209, 255, 255, 0.8);
     -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
             clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+  }
+  100% {
+    fill: rgba(209, 255, 255, 0.6);
+    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+  }
+}
+@-webkit-keyframes openPenta {}
+@keyframes openPenta {}
+@-webkit-keyframes descrHidd {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes descrHidd {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
 .margin-bottom-5vh {
@@ -287,6 +396,8 @@ body::after {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 1.2rem;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .btn::after {
   content: "";
@@ -301,12 +412,14 @@ body::after {
   border: 1px solid #d1ffff;
   -webkit-clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
           clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+  -webkit-transition: -webkit-clip-path 0.25s ease, -webkit-transform 0.25s ease;
+  transition: -webkit-clip-path 0.25s ease, -webkit-transform 0.25s ease;
+  transition: clip-path 0.25s ease, transform 0.25s ease;
+  transition: clip-path 0.25s ease, transform 0.25s ease, -webkit-clip-path 0.25s ease, -webkit-transform 0.25s ease;
 }
 .btn:hover::after {
-  height: 68%;
-  width: 84%;
+  -webkit-transform: scale(0.85, 0.68);
+          transform: scale(0.85, 0.68);
   -webkit-clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
           clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0);
   border: 1px solid #d1ffff;
@@ -324,13 +437,15 @@ body::after {
   height: 100%;
   width: 100%;
   opacity: 0;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 .btn:hover::before {
   opacity: 1;
-  height: 68%;
-  width: 84%;
+  -webkit-transform: scale(0.85, 0.68);
+          transform: scale(0.85, 0.68);
 }
 .btn:active::before {
   background: rgba(255, 169, 20, 0.6);
@@ -343,23 +458,22 @@ body::after {
 }
 
 .article {
-  height: 100%;
-  position: relative;
-  -webkit-perspective: 100rem;
-          perspective: 100rem;
-  -webkit-transform: rotateY(10deg);
-          transform: rotateY(10deg);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+  height: 100%;
+  -webkit-transform: rotateY(10deg);
+          transform: rotateY(10deg);
 }
 .article_title {
-  position: relative;
-  text-align: center;
   height: 6.4rem;
+  text-align: center;
   -webkit-text-stroke: 1px #d1ffff;
 }
 .article_description {
-  position: relative;
   top: -0.5rem;
   height: 48.8rem;
 }
@@ -375,8 +489,6 @@ body::after {
   position: relative;
   -webkit-perspective: 100rem;
           perspective: 100rem;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 .slider > * {
   will-change: transform, scale, display;
@@ -384,20 +496,22 @@ body::after {
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  -webkit-transition: scale 0.2s ease, -webkit-transform 0.2s ease;
+  transition: scale 0.2s ease, -webkit-transform 0.2s ease;
+  transition: scale 0.2s ease, transform 0.2s ease;
+  transition: scale 0.2s ease, transform 0.2s ease, -webkit-transform 0.2s ease;
   -webkit-perspective: 100rem;
           perspective: 100rem;
+  visibility: hidden;
   position: absolute;
   aspect-ratio: 16/9;
   width: 83rem;
-  visibility: hidden;
   right: 0;
   top: 50%;
-  -webkit-transform: rotateY(-10deg) translateY(-50%);
-          transform: rotateY(-10deg) translateY(-50%);
   -webkit-transform-origin: right top;
           transform-origin: right top;
+  -webkit-transform: rotateY(-10deg) translateY(-50%);
+          transform: rotateY(-10deg) translateY(-50%);
   -webkit-animation: scrollFrame 27s infinite ease;
           animation: scrollFrame 27s infinite ease;
   cursor: -webkit-grab;
@@ -499,8 +613,6 @@ body::after {
 .border_img {
   -webkit-perspective: 100rem;
           perspective: 100rem;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
 }
 .border_img.bg {
   fill: rgba(70, 151, 180, 0.5490196078);
@@ -517,8 +629,6 @@ body::after {
   left: 50%;
   top: 50%;
   z-index: -1;
-  -webkit-transition: all 1s;
-  transition: all 1s;
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transform: translate(-50%, -50%) translateZ(-1rem);
@@ -560,12 +670,16 @@ body::after {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   padding: 15vh 5vw 5vh;
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
+  -webkit-transition: translate 0.7s ease, -webkit-transform 0.7s ease;
+  transition: translate 0.7s ease, -webkit-transform 0.7s ease;
+  transition: transform 0.7s ease, translate 0.7s ease;
+  transition: transform 0.7s ease, translate 0.7s ease, -webkit-transform 0.7s ease;
 }
 .main > * {
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
+  -webkit-transition: -webkit-transform 0.7s ease;
+  transition: -webkit-transform 0.7s ease;
+  transition: transform 0.7s ease;
+  transition: transform 0.7s ease, -webkit-transform 0.7s ease;
 }
 
 .container {
@@ -579,13 +693,16 @@ body::after {
 }
 
 .container_skills {
-  display: grid;
-  grid-template: 72% 28%/50% 50%;
+  display: none;
 }
 .container_skills_status {
+  display: block;
   position: absolute;
-  -webkit-perspective: 100rem;
-          perspective: 100rem;
+  -webkit-animation: openState 0.8s ease;
+          animation: openState 0.8s ease;
+}
+.container_skills_status > * {
+  vector-effect: non-scaling-stroke;
 }
 .container_skills_status .pentagon {
   fill: none;
@@ -593,78 +710,132 @@ body::after {
   stroke-width: 1px;
 }
 .container_skills_status .parametrs {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
   fill: rgba(209, 255, 255, 0.6);
-  -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-          clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+  shape-rendering: crispEdges;
+  -webkit-transition: -webkit-clip-path 0.4s ease;
+  transition: -webkit-clip-path 0.4s ease;
+  transition: clip-path 0.4s ease;
+  transition: clip-path 0.4s ease, -webkit-clip-path 0.4s ease;
+  -webkit-animation: openFigure 1s ease 1.6s backwards;
+          animation: openFigure 1s ease 1.6s backwards;
+}
+.container_skills_status :nth-child(2) {
+  -webkit-transition: -webkit-transform 0.6s linear 1s;
+  transition: -webkit-transform 0.6s linear 1s;
+  transition: transform 0.6s linear 1s;
+  transition: transform 0.6s linear 1s, -webkit-transform 0.6s linear 1s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.container_skills_status :nth-child(3) {
+  -webkit-transition: -webkit-transform 0.4s linear 1s;
+  transition: -webkit-transform 0.4s linear 1s;
+  transition: transform 0.4s linear 1s;
+  transition: transform 0.4s linear 1s, -webkit-transform 0.4s linear 1s;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+.container_skills_status :nth-child(4) {
+  -webkit-transition: -webkit-transform 0.2s linear 1s;
+  transition: -webkit-transform 0.2s linear 1s;
+  transition: transform 0.2s linear 1s;
+  transition: transform 0.2s linear 1s, -webkit-transform 0.2s linear 1s;
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
 }
 
-.state {
-  position: relative;
+.statuses {
+  position: absolute;
+  display: grid;
+  grid-template: 22% 28% 22% 28%/50% 50%;
   height: 100%;
   width: 100%;
 }
-.state_description {
+.statuses .LT:before, .statuses .LB:before, .statuses .RT:before, .statuses .RB:before, .statuses .CB:before {
+  content: "";
+  height: 17.3rem;
+  width: 50%;
+  shape-margin: 1rem;
+}
+.statuses .LT, .statuses .LB {
+  text-align: right;
+}
+.statuses .LT:before, .statuses .LB:before {
+  float: right;
+}
+.statuses .RT, .statuses .RB {
+  text-align: left;
+}
+.statuses .RT:before, .statuses .RB:before {
+  float: left;
+}
+.statuses .LT {
+  grid-area: 2/1;
+}
+.statuses .LT:before {
+  shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%);
+}
+.statuses .LB {
+  grid-area: 3/1;
+}
+.statuses .LB:before {
+  shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%);
+}
+.statuses .RT {
+  grid-area: 2/2;
+}
+.statuses .RT:before {
+  shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%);
+}
+.statuses .RB {
+  grid-area: 3/2;
+}
+.statuses .RB:before {
+  shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%);
+}
+.statuses .CB {
+  grid-area: 4/1/4/span two;
+  text-align: center;
+  justify-self: center;
+  width: 50%;
+}
+.statuses_state {
   position: relative;
   display: inline-block;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  left: 0;
-  top: 30%;
-  -webkit-animation: openState 0.3s ease both;
-          animation: openState 0.3s ease both;
+  width: 100%;
 }
-.state_description span {
-  font-size: 2.8rem;
+.statuses_state #title {
+  display: none;
 }
-
-.left {
-  grid-column: 1;
-  grid-row: 1;
+.statuses_state-title {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-animation: openState 0.3s ease both 2.6s;
+          animation: openState 0.3s ease both 2.6s;
 }
-.left > * {
-  text-align: right;
+.statuses_state-title.one {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
 }
-.left > *:before {
-  content: "";
-  height: 17.3rem;
-  width: 50%;
-  float: right;
-  shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%);
-  shape-margin: 1rem;
+.statuses_state-title.two {
+  -webkit-animation-delay: 1.9s;
+          animation-delay: 1.9s;
 }
-.left :last-child::before {
-  shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%);
+.statuses_state-title.three {
+  -webkit-animation-delay: 2.1s;
+          animation-delay: 2.1s;
 }
-
-.right {
-  grid-column: 2;
-  grid-row: 1;
+.statuses_state-title.four {
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
 }
-.right > * {
-  text-align: left;
+.statuses_state-title.five {
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
 }
-.right > *:before {
-  content: "";
-  height: 17.3rem;
-  width: 50%;
-  float: left;
-  shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%);
-  shape-margin: 1rem;
-}
-.right :last-child::before {
-  shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%);
-}
-
-.bottom {
-  grid-column: 1/span two;
-  grid-row: 2/2;
-  justify-self: center;
-  width: 50%;
-}
-.bottom > * {
-  top: 0;
-  text-align: center;
+.statuses_state-description {
+  display: none;
 }

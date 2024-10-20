@@ -20,15 +20,12 @@
             fill: $background-color-blue
             height: 102%
             width: 102%
-
     &_description
         stroke-dasharray: 2
         &.bg
             fill: $background-color-blue_darken
-
     &_img
         perspective: 100rem
-        transform-style: preserve-3d
         &.bg
             fill: $background-color-blue
             transform: translate(-50%, -50%) translateZ(-2rem)
@@ -43,7 +40,6 @@
     left: 50%
     top: 50%
     z-index: -1
-    transition: all 1s
     transform-origin: center
     transform: translate(-50%, -50%) translateZ(-1rem)
     filter: blur(.12rem)

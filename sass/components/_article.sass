@@ -1,17 +1,14 @@
 .article
-    height: 100%
-    position: relative
-    perspective: 100rem
-    transform: rotateY(10deg)
     transform-style: preserve-3d
+    backface-visibility: hidden
+    perspective: 100rem
+    height: 100%
+    transform: rotateY(10deg)
     &_title
-        position: relative
-        text-align: center
         height: 6.4rem
+        text-align: center
         -webkit-text-stroke: 1px $color-blue
-        &_text
     &_description
-        position: relative
         top: -.5rem
         height: 48.8rem
         p
