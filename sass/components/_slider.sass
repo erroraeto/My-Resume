@@ -2,47 +2,57 @@
     position: relative
     perspective: 100rem
     & > *
+        position: absolute
+        visibility: hidden
         will-change: transform, scale, display
         transform-style: preserve-3d
         backface-visibility: hidden
-        transition: scale .2s ease, transform .2s ease
-        perspective: 100rem
-        visibility: hidden
-        position: absolute
         aspect-ratio: 16 / 9
         width: 83rem
         right: 0
         top: 50%
+        cursor: grab
+        transition: scale .2s ease, transform .2s ease
         transform-origin: right top
         transform: rotateY(-10deg) translateY(-50%)
         animation: scrollFrame 27s infinite ease
-        cursor: grab
         & > *
             filter: drop-shadow(0 0 1rem black)
-        img
-            position: absolute
-            left: 50.5%
-            top: 53.5%
-            width: 90%
-            transform: translate(-50%, -50%)
-            aspect-ratio: 16 / 9
+            opacity: 0
+            animation: opacityFrame 27s infinite ease
     .frame_1
         animation-delay: -6s
+        & > *
+            animation-delay: -6s
     .frame_2
         animation-delay: -3s
+        & > *
+            animation-delay: -3s
     .frame_3
     .frame_4
         animation-delay: 3s
+        & > *
+            animation-delay: 3s
     .frame_5
         animation-delay: 6s
+        & > *
+            animation-delay: 6s
     .frame_6
         animation-delay: 9s
+        & > *
+            animation-delay: 9s
     .frame_7
         animation-delay: 12s
+        & > *
+            animation-delay: 12s
     .frame_8
         animation-delay: 15s
+        & > *
+            animation-delay: 15s
     .frame_9
         animation-delay: 18s
+        & > *
+            animation-delay: 18s
 
 .slider_frame:active
     animation-play-state: paused
@@ -50,4 +60,7 @@
     cursor: grabbing
 
 .slider:active .slider_frame:not(:active)
+    animation-play-state: paused
+
+.slider:active .slider_frame > *
     animation-play-state: paused

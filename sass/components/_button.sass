@@ -1,19 +1,23 @@
 .btn
     position: relative
+    height: 3.6rem
+    width: max-content
     cursor: pointer
     display: flex
     align-items: center
     padding: 0 1.2rem
     backface-visibility: hidden
-    &::after
+    &::after,
+    &::before
         content: ''
         position: absolute
         box-sizing: border-box
         translate: -50% -50%
-        left: 50%
-        top: 50%
         height: 100%
         width: 100%
+        left: 50%
+        top: 50%
+    &::after
         border: $border-light-blue
         clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
         transition: clip-path .25s ease, transform .25s ease
@@ -22,16 +26,8 @@
         clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
         border: $border-light-blue
     &::before
-        content: ''
-        position: absolute
-        box-sizing: border-box
         background: $background-color-blue
         z-index: -1
-        translate: -50% -50%
-        left: 50%
-        top: 50%
-        height: 100%
-        width: 100%
         opacity: 0
         transition: opacity .3s ease, transform .3s ease
     &:hover::before
