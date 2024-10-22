@@ -23,6 +23,7 @@
     &_description
         stroke-dasharray: 2
         &.bg
+            stroke: none
             fill: $background-color-blue_darken
     &_img
         &.bg
@@ -31,6 +32,11 @@
             & :last-child
                 stroke: none
                 fill: $background-color-blue-darken
+    &_footer
+        fill: $color-orange-opacity2
+        stroke: $color-orange
+        & :first-child
+            fill: $color-orange-opacity6
 
 .bg
     position: absolute

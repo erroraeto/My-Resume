@@ -1,0 +1,72 @@
+.footer
+    position: sticky
+    width: 100vw
+    height: 20vh
+    bottom: 0
+    z-index: 20
+    &_bar
+        position: absolute
+        bottom: 0
+        right: 0
+        height: 100%
+        width: 30vw
+        h3
+            position: absolute
+            right: 0
+            padding: 0 1rem
+            display: inline-block
+            color: $color-orange
+            margin-bottom: 1rem
+        .contacts
+            position: absolute
+            height: 87%
+            width: 100%
+            bottom: 0
+            display: grid
+            grid-template: auto / 33% 33% 33%
+            place-items: center
+            .icon
+                position: relative
+                height: 100%
+                width: 100%
+                // display: grid
+                // grid-template: 60% 40% / auto
+                // place-items: center
+                & > *
+                    position: absolute
+                    left: 50%
+                    top: 50%
+                    transform: translate(-50%, -50%)
+                    transform-origin: center
+                &_link
+                    display: inline-block
+                    height: 50%
+                    width: 50%
+                    top: 34%
+                    &_bg
+                        height: 70%
+                        width: 70%
+                        top: 37%
+                        fill: $color-orange-opacity2
+                        stroke: $color-orange
+                &_descr
+                    top: 80%
+                    &_bg
+                        height: 70%
+                        width: 70%
+                        top: 100%
+                        fill: $color-orange-opacity3
+                        stroke: $color-orange
+
+
+
+
+                a
+                    cursor: pointer
+                    font-size: 2rem
+                    text-align: center
+                    &:link, &:visited
+                        text-decoration: none
+                        color: $color-blue
+                    .icon_figure
+                        fill: $color-blue
