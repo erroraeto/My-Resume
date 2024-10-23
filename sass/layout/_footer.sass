@@ -4,34 +4,46 @@
     height: 20vh
     bottom: 0
     z-index: 20
+    transition: transform .5s ease
     &_bar
         position: absolute
         bottom: 0
         right: 0
         height: 100%
-        width: 30vw
-        h3
+        width: 24vw
+        .contact_target
             position: absolute
+            cursor: pointer
             right: 0
             padding: 0 1rem
             display: inline-block
             color: $color-orange
             margin-bottom: 1rem
+            .icon_eye
+                position: absolute
+                left: -1.5rem
+                top: -1rem
+                transition: transform 2s ease
+                fill: $color-orange-opacity2
+                stroke: $color-orange
+                & :last-child
+                    fill: $color-orange
         .contacts
+            display: none
             position: absolute
             height: 87%
             width: 100%
             bottom: 0
-            display: grid
-            grid-template: auto / 33% 33% 33%
+            padding-top: 1rem
             place-items: center
+            grid-template: auto / repeat(3, auto)
+            perspective: 70rem
             .icon
                 position: relative
                 height: 100%
                 width: 100%
-                // display: grid
-                // grid-template: 60% 40% / auto
-                // place-items: center
+                transition: transform .3s ease, filter .3s ease
+                animation: inclusion 1s ease backwards, movingZ .7s ease 1s backwards
                 & > *
                     position: absolute
                     left: 50%
@@ -40,9 +52,9 @@
                     transform-origin: center
                 &_link
                     display: inline-block
-                    height: 50%
-                    width: 50%
-                    top: 34%
+                    height: 55%
+                    width: 55%
+                    top: 35%
                     &_bg
                         height: 70%
                         width: 70%
@@ -50,23 +62,19 @@
                         fill: $color-orange-opacity2
                         stroke: $color-orange
                 &_descr
-                    top: 80%
+                    top: 81%
                     &_bg
                         height: 70%
                         width: 70%
                         top: 100%
                         fill: $color-orange-opacity3
                         stroke: $color-orange
-
-
-
-
                 a
                     cursor: pointer
-                    font-size: 2rem
+                    font-size: 1.8rem
                     text-align: center
                     &:link, &:visited
                         text-decoration: none
-                        color: $color-blue
+                        color: $color-orange
                     .icon_figure
-                        fill: $color-blue
+                        fill: $color-orange

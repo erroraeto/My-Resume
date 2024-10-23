@@ -4,7 +4,7 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.2;
-  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 255, 0.8), -0.5px -0.5px 0px rgba(255, 0, 0, 0.8);
+  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 255, 0.8), -0.5px -0.5px 0px rgba(255, 0, 0, 0.8), 0px 0px 0.5rem rgb(0, 0, 0);
   color: #d1ffff;
 }
 
@@ -422,6 +422,34 @@ p {
             transform: translate(-50%, -50%) translateZ(-1rem);
   }
 }
+@-webkit-keyframes movingZ {
+  0% {
+    -webkit-transform: translateZ(-10rem);
+            transform: translateZ(-10rem);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+  100% {
+    -webkit-transform: translateZ(0rem);
+            transform: translateZ(0rem);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+  }
+}
+@keyframes movingZ {
+  0% {
+    -webkit-transform: translateZ(-10rem);
+            transform: translateZ(-10rem);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+  100% {
+    -webkit-transform: translateZ(0rem);
+            transform: translateZ(0rem);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+  }
+}
 .margin-bottom-5vh {
   margin-bottom: 5vh;
 }
@@ -565,15 +593,15 @@ body::after {
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-perspective: 100rem;
-          perspective: 100rem;
 }
 .article_title {
+  position: relative;
   height: 6.4rem;
   text-align: center;
   -webkit-text-stroke: 1px #d1ffff;
 }
 .article_description {
+  position: relative;
   top: -0.5rem;
   height: 48.8rem;
 }
@@ -727,6 +755,13 @@ body::after {
           transform: translate(-50%, -50%);
   -webkit-transform-origin: center;
           transform-origin: center;
+  -webkit-filter: drop-shadow(0 0 4px #d1ffff);
+          filter: drop-shadow(0 0 4px #d1ffff);
+}
+.border_title :last-child {
+  fill: rgba(70, 151, 180, 0.5490196078);
+  height: 102%;
+  width: 102%;
 }
 .border_title.bg {
   fill: rgba(70, 151, 180, 0.5490196078);
@@ -770,6 +805,27 @@ body::after {
           filter: blur(0.12rem);
 }
 
+.logo {
+  position: relative;
+  height: 3.6rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  cursor: pointer;
+}
+.logo_img {
+  height: 100%;
+  width: 100%;
+}
+.logo_img:first-child {
+  font-size: 10rem;
+  stroke: white;
+  stroke-width: 1.5px;
+  fill: #d1ffff;
+  dominant-baseline: hanging;
+  text-anchor: middle;
+}
+
 #canvas {
   position: absolute;
   height: 100%;
@@ -796,13 +852,6 @@ body::after {
 
 .main {
   position: relative;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  will-change: transform;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
   height: 80vh;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -979,35 +1028,63 @@ body::after {
   height: 20vh;
   bottom: 0;
   z-index: 20;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 .footer_bar {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 100%;
-  width: 30vw;
+  width: 24vw;
 }
-.footer_bar h3 {
+.footer_bar .contact_target {
   position: absolute;
+  cursor: pointer;
   right: 0;
   padding: 0 1rem;
   display: inline-block;
   color: #e8be45;
   margin-bottom: 1rem;
 }
+.footer_bar .contact_target .icon_eye {
+  position: absolute;
+  left: -1.5rem;
+  top: -1rem;
+  -webkit-transition: -webkit-transform 2s ease;
+  transition: -webkit-transform 2s ease;
+  transition: transform 2s ease;
+  transition: transform 2s ease, -webkit-transform 2s ease;
+  fill: rgba(255, 169, 20, 0.2);
+  stroke: #e8be45;
+}
+.footer_bar .contact_target .icon_eye :last-child {
+  fill: #e8be45;
+}
 .footer_bar .contacts {
+  display: none;
   position: absolute;
   height: 87%;
   width: 100%;
   bottom: 0;
-  display: grid;
-  grid-template: auto/33% 33% 33%;
+  padding-top: 1rem;
   place-items: center;
+  grid-template: auto/repeat(3, auto);
+  -webkit-perspective: 70rem;
+          perspective: 70rem;
 }
 .footer_bar .contacts .icon {
   position: relative;
   height: 100%;
   width: 100%;
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+  transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease, -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+  -webkit-animation: inclusion 1s ease backwards, movingZ 0.7s ease 1s backwards;
+          animation: inclusion 1s ease backwards, movingZ 0.7s ease 1s backwards;
 }
 .footer_bar .contacts .icon > * {
   position: absolute;
@@ -1020,9 +1097,9 @@ body::after {
 }
 .footer_bar .contacts .icon_link {
   display: inline-block;
-  height: 50%;
-  width: 50%;
-  top: 34%;
+  height: 55%;
+  width: 55%;
+  top: 35%;
 }
 .footer_bar .contacts .icon_link_bg {
   height: 70%;
@@ -1032,7 +1109,7 @@ body::after {
   stroke: #e8be45;
 }
 .footer_bar .contacts .icon_descr {
-  top: 80%;
+  top: 81%;
 }
 .footer_bar .contacts .icon_descr_bg {
   height: 70%;
@@ -1043,13 +1120,13 @@ body::after {
 }
 .footer_bar .contacts .icon a {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: center;
 }
 .footer_bar .contacts .icon a:link, .footer_bar .contacts .icon a:visited {
   text-decoration: none;
-  color: #d1ffff;
+  color: #e8be45;
 }
 .footer_bar .contacts .icon a .icon_figure {
-  fill: #d1ffff;
+  fill: #e8be45;
 }
