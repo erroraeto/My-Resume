@@ -45,6 +45,11 @@ span {
           filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.7));
 }
 
+.resume > span {
+  color: #d1ffff;
+  font-size: 2rem;
+}
+
 @-webkit-keyframes scrollFrame {
   0% {
     z-index: -1;
@@ -504,6 +509,10 @@ body::after {
   background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 1px, transparent 0) -1.9rem -1.9rem/1rem 1rem;
 }
 
+a:link, a:visited {
+  text-decoration: none;
+}
+
 @font-face {
   font-family: "Cutive Mono";
   font-style: normal;
@@ -603,21 +612,68 @@ body::after {
 .article_title {
   position: relative;
   height: 6.4rem;
+  top: 0.5rem;
   text-align: center;
   -webkit-text-stroke: 1px #d1ffff;
 }
 .article_description {
   position: relative;
-  top: -0.5rem;
-  height: 48.8rem;
+  height: 42.2rem;
 }
 .article_description p {
+  position: relative;
   font-size: 1.9rem;
   padding: 2rem;
   text-align: justify;
 }
 .article_description p br {
   margin-bottom: 1rem;
+}
+.article_resume {
+  position: relative;
+  display: grid;
+  place-items: center;
+  grid-template: auto/repeat(2, auto);
+  height: 6rem;
+  width: 100%;
+  left: 0;
+  top: -0.5rem;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+}
+.article_resume:link, .article_resume:visited {
+  color: #d1ffff;
+}
+.article_resume > * {
+  position: relative;
+  display: inline-block;
+  height: 6rem;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-filter 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-filter 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease, -webkit-transform 0.2s ease, -webkit-filter 0.2s ease;
+  will-change: transform, filter;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+.article_resume > *:hover {
+  -webkit-transform: translateZ(5rem);
+          transform: translateZ(5rem);
+  -webkit-filter: drop-shadow(0 0 4px #d1ffff);
+          filter: drop-shadow(0 0 4px #d1ffff);
+}
+.article_resume span {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 
 .slider {
@@ -767,6 +823,25 @@ body::after {
 .border_description {
   stroke-dasharray: 2;
   fill: rgba(28, 60, 72, 0.6);
+}
+.border_resume {
+  height: 102%;
+  width: 112%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  fill: rgba(70, 151, 180, 0.5490196078);
+}
+.border_resume_L {
+  -webkit-transform: translate(-46%, -50%);
+          transform: translate(-46%, -50%);
+}
+.border_resume_R {
+  -webkit-transform: translate(-54%, -50%);
+          transform: translate(-54%, -50%);
 }
 .border_img.bg {
   fill: rgba(70, 151, 180, 0.5490196078);
@@ -1019,6 +1094,8 @@ body::after {
   transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-clip-path: polygon(75% -10%, 100% -10%, 100% 100%, 75% 100%);
+          clip-path: polygon(75% -10%, 100% -10%, 100% 100%, 75% 100%);
 }
 .footer_bar {
   position: absolute;
@@ -1070,8 +1147,8 @@ body::after {
   transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
   transition: transform 0.3s ease, filter 0.3s ease;
   transition: transform 0.3s ease, filter 0.3s ease, -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
-  -webkit-animation: inclusion 1s ease backwards, movingZ 0.7s ease 1s backwards;
-          animation: inclusion 1s ease backwards, movingZ 0.7s ease 1s backwards;
+  -webkit-animation: inclusion 0.8s ease backwards, movingZ 0.5s ease 0.8s backwards;
+          animation: inclusion 0.8s ease backwards, movingZ 0.5s ease 0.8s backwards;
 }
 .footer_bar .contacts .icon > * {
   position: absolute;
@@ -1088,7 +1165,6 @@ body::after {
   text-align: center;
 }
 .footer_bar .contacts .icon a:link, .footer_bar .contacts .icon a:visited {
-  text-decoration: none;
   color: #e8be45;
 }
 .footer_bar .contacts .icon a .icon_figure {

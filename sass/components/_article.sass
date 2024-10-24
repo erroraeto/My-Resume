@@ -5,15 +5,48 @@
     &_title
         position: relative
         height: 6.4rem
+        top: .5rem
         text-align: center
         -webkit-text-stroke: 1px $color-blue
     &_description
         position: relative
-        top: -.5rem
-        height: 48.8rem
+        height: 42.2rem
         p
+            position: relative
             font-size: 1.9rem
             padding: 2rem
             text-align: justify
             br
                 margin-bottom: 1rem
+    &_resume
+        position: relative
+        display: grid
+        place-items: center
+        grid-template: auto / repeat(2, auto)
+        height: 6rem
+        width: 100%
+        left: 0
+        top: -.5rem
+        perspective: 100rem
+        &:link, &:visited
+            color: $color-blue
+        & > *
+            position: relative
+            display: inline-block
+            height: 6rem
+            width: 100%
+            transition: transform .2s ease, filter .2s ease
+            will-change: transform, filter
+            transform: translateZ(0)
+            &:hover
+                transform: translateZ(5rem)
+                filter: drop-shadow(0 0 4px $color-blue)
+        span
+            position: absolute
+            display: inline-block
+            text-align: center
+            width: 100%
+            left: 50%
+            top: 60%
+            transform: translate(-50%, -50%)
+            transform-origin: center
