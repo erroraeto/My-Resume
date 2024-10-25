@@ -1,87 +1,54 @@
 .container_skills
     display: none
+    // display: block
+    position: absolute
+    height: max-content
+    width: max-content
+    z-index: 1
+    .parametr
+        position: absolute
+        height: 26.67rem
+        width: 28.05rem
+        top: 48.8%
+        left: 50%
+        transform-origin: center
+        transform: translate(-50%, -50%)
+        transition: clip-path .4s ease
+        animation: openFigure 1s ease .5s backwards
+        background: radial-gradient(at 50% 45.8%, transparent 0%, #0f744068 30%, #0f7440 50%), conic-gradient(from .5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg)
     &_status
         display: block
-        position: absolute
-        & > *
+        position: relative
+        shape-rendering: geometricprecision
+        & :first-child
             vector-effect: non-scaling-stroke
-        .pentagon
-            fill: none
             stroke: $color-blue
             stroke-width: 1px
-        .parametrs
-            fill: $color-blue-opacity6
-            shape-rendering: crispEdges
-            transition: clip-path .4s ease
-            animation: openFigure 1s ease 1.6s backwards
+            fill: none
+            opacity: 0.3
+            transform-origin: 50% 47%
+            transform: scale(0.9)
+            animation: openBorder .5s ease .5s backwards
+        & > *:nth-child(n+2):nth-child(-n+10)
+            position: relative
+            vector-effect: non-scaling-stroke
+            border: $border-light-blue
+            visibility: hidden
+            fill: $color-blue
+            cursor: pointer
+            animation: inclusion 1s ease .3s both
         & :nth-child(2)
-            animation: scale_1 .6s linear 1s both
+            animation-delay: .4s !important
         & :nth-child(3)
-            animation: scale_07 .4s linear 1s both
-        & :nth-child(4)
-            animation: scale_04 .2s linear 1s both
+            animation-delay: .6s !important
+        & :nth-child(5)
+            animation-delay: .5s !important
+        & :nth-child(6)
+            animation-delay: .8s !important
 
-
-.statuses
+.container_software
+    display: block
     position: absolute
-    display: grid
-    grid-template: 22% 28% 22% 28% / 50% 50%
     height: 100%
     width: 100%
-    & .LT,.LB,.RT,.RB,.CB
-        &:before
-            content: ''
-            height: 17.3rem
-            width: 50%
-            shape-margin: 1rem
-    & .LT,.LB
-        text-align: right
-        &:before
-            float: right
-    & .RT,.RB
-        text-align: left
-        &:before
-            float: left
-    & .LT
-        grid-area: 2 / 1
-        &:before
-            shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%)
-    & .LB
-        grid-area: 3 / 1
-        &:before
-            shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%)
-    & .RT
-        grid-area: 2 / 2
-        &:before
-            shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%)
-    & .RB
-        grid-area: 3 / 2
-        &:before
-            shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%)
-    & .CB
-        grid-area: 4 / 1 / 4 / span two
-        text-align: center
-        justify-self: center
-        width: 50%
-    &_state
-        position: relative
-        display: inline-block
-        height: max-content
-        width: 100%
-        #title
-            display: none
-        &-title
-            display: inline-block
-            cursor: pointer
-            &.one
-                animation-delay: 1.6s
-            &.two
-                animation-delay: 1.9s
-            &.three
-                animation-delay: 2.1s
-            &.four
-                animation-delay: 2.2s
-            &.five
-                animation-delay: 2.4s
-        &-description
-            display: none
+    z-index: 0

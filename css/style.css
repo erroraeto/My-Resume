@@ -155,12 +155,14 @@ span {
 }
 @-webkit-keyframes inclusion {
   0% {
+    visibility: hidden;
     opacity: 0;
   }
   49% {
     opacity: 0;
   }
   50% {
+    visibility: visible;
     opacity: 1;
   }
   60% {
@@ -173,17 +175,20 @@ span {
     opacity: 0;
   }
   100% {
+    visibility: visible;
     opacity: 1;
   }
 }
 @keyframes inclusion {
   0% {
+    visibility: hidden;
     opacity: 0;
   }
   49% {
     opacity: 0;
   }
   50% {
+    visibility: visible;
     opacity: 1;
   }
   60% {
@@ -196,171 +201,156 @@ span {
     opacity: 0;
   }
   100% {
+    visibility: visible;
     opacity: 1;
   }
 }
 @-webkit-keyframes openFigure {
   0% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
-            clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 52%, 52.95% 49%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 47% 49.8%);
+            clip-path: polygon(49.8% 52%, 52.95% 49%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 47% 49.8%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   10% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   20% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   30% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #0f7440 108deg, #34b573 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   40% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   50% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #0f7440 252deg, #34b573 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   60% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   70% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #0f7440 36deg, #34b573 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   80% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   90% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #0f7440 180deg, #34b573 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   95% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   100% {
     fill: rgba(209, 255, 255, 0.6);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
 }
 @keyframes openFigure {
   0% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
-            clip-path: polygon(50% 51.5%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 52%, 52.95% 49%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 47% 49.8%);
+            clip-path: polygon(49.8% 52%, 52.95% 49%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 47% 49.8%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   10% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   20% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 47% 41.5%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 48.9% 41.5%, 47% 41.5%, 46% 44.55%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   30% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #0f7440 108deg, #34b573 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   40% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 55% 47.5%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.5%, 53.7% 51.25%, 55% 48%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   50% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #0f7440 252deg, #34b573 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   60% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 45% 47.5%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 28% 12.95%, 44% 44%, 45% 48%, 46.1% 51%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   70% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #0f7440 36deg, #34b573 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   80% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 53% 41.5%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 54% 45%, 53% 41.5%, 49.8% 40%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   90% {
     fill: rgba(209, 255, 255, 0.6);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #0f7440 180deg, #34b573 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   95% {
     fill: rgba(209, 255, 255, 0.8);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, #108c4c 30%, #34b573 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
   100% {
     fill: rgba(209, 255, 255, 0.6);
-    -webkit-clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
-            clip-path: polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%);
+    -webkit-clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+            clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%);
+    background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
   }
 }
-@-webkit-keyframes scale_1 {
+@-webkit-keyframes openBorder {
   0% {
-    -webkit-transform: scale();
-            transform: scale();
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
 }
-@keyframes scale_1 {
+@keyframes openBorder {
   0% {
-    -webkit-transform: scale();
-            transform: scale();
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-@-webkit-keyframes scale_07 {
-  0% {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
-  }
-}
-@keyframes scale_07 {
-  0% {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
-  }
-}
-@-webkit-keyframes scale_04 {
-  0% {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-  100% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
-  }
-}
-@keyframes scale_04 {
-  0% {
-    -webkit-transform: scale();
-            transform: scale();
-  }
-  100% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
 }
 @-webkit-keyframes descrHidd {
@@ -954,155 +944,105 @@ a:link, a:visited {
 
 .container_skills {
   display: none;
-}
-.container_skills_status {
-  display: block;
   position: absolute;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 1;
 }
-.container_skills_status > * {
-  vector-effect: non-scaling-stroke;
-}
-.container_skills_status .pentagon {
-  fill: none;
-  stroke: #d1ffff;
-  stroke-width: 1px;
-}
-.container_skills_status .parametrs {
-  fill: rgba(209, 255, 255, 0.6);
-  shape-rendering: crispEdges;
+.container_skills .parametr {
+  position: absolute;
+  height: 26.67rem;
+  width: 28.05rem;
+  top: 48.8%;
+  left: 50%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transition: -webkit-clip-path 0.4s ease;
   transition: -webkit-clip-path 0.4s ease;
   transition: clip-path 0.4s ease;
   transition: clip-path 0.4s ease, -webkit-clip-path 0.4s ease;
-  -webkit-animation: openFigure 1s ease 1.6s backwards;
-          animation: openFigure 1s ease 1.6s backwards;
+  -webkit-animation: openFigure 1s ease 0.5s backwards;
+          animation: openFigure 1s ease 0.5s backwards;
+  background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
+}
+.container_skills_status {
+  display: block;
+  position: relative;
+  shape-rendering: geometricprecision;
+}
+.container_skills_status :first-child {
+  vector-effect: non-scaling-stroke;
+  stroke: #d1ffff;
+  stroke-width: 1px;
+  fill: none;
+  opacity: 0.3;
+  -webkit-transform-origin: 50% 47%;
+          transform-origin: 50% 47%;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-animation: openBorder 0.5s ease 0.5s backwards;
+          animation: openBorder 0.5s ease 0.5s backwards;
+}
+.container_skills_status > *:nth-child(n+2):nth-child(-n+10) {
+  position: relative;
+  vector-effect: non-scaling-stroke;
+  border: 1px solid #d1ffff;
+  visibility: hidden;
+  fill: #d1ffff;
+  cursor: pointer;
+  -webkit-animation: inclusion 1s ease 0.3s both;
+          animation: inclusion 1s ease 0.3s both;
 }
 .container_skills_status :nth-child(2) {
-  -webkit-animation: scale_1 0.6s linear 1s both;
-          animation: scale_1 0.6s linear 1s both;
+  -webkit-animation-delay: 0.4s !important;
+          animation-delay: 0.4s !important;
 }
 .container_skills_status :nth-child(3) {
-  -webkit-animation: scale_07 0.4s linear 1s both;
-          animation: scale_07 0.4s linear 1s both;
+  -webkit-animation-delay: 0.6s !important;
+          animation-delay: 0.6s !important;
 }
-.container_skills_status :nth-child(4) {
-  -webkit-animation: scale_04 0.2s linear 1s both;
-          animation: scale_04 0.2s linear 1s both;
+.container_skills_status :nth-child(5) {
+  -webkit-animation-delay: 0.5s !important;
+          animation-delay: 0.5s !important;
+}
+.container_skills_status :nth-child(6) {
+  -webkit-animation-delay: 0.8s !important;
+          animation-delay: 0.8s !important;
 }
 
-.statuses {
+.container_software {
+  display: block;
   position: absolute;
-  display: grid;
-  grid-template: 22% 28% 22% 28%/50% 50%;
   height: 100%;
   width: 100%;
-}
-.statuses .LT:before, .statuses .LB:before, .statuses .RT:before, .statuses .RB:before, .statuses .CB:before {
-  content: "";
-  height: 17.3rem;
-  width: 50%;
-  shape-margin: 1rem;
-}
-.statuses .LT, .statuses .LB {
-  text-align: right;
-}
-.statuses .LT:before, .statuses .LB:before {
-  float: right;
-}
-.statuses .RT, .statuses .RB {
-  text-align: left;
-}
-.statuses .RT:before, .statuses .RB:before {
-  float: left;
-}
-.statuses .LT {
-  grid-area: 2/1;
-}
-.statuses .LT:before {
-  shape-outside: polygon(100% 100%, 100% 0%, 75% 0%, 75% 15%, 61% 100%);
-}
-.statuses .LB {
-  grid-area: 3/1;
-}
-.statuses .LB:before {
-  shape-outside: polygon(100% 0%, 61% 0%, 59% 12%, 100% 71%);
-}
-.statuses .RT {
-  grid-area: 2/2;
-}
-.statuses .RT:before {
-  shape-outside: polygon(0% 100%, 0% 0%, 25% 0%, 25% 15%, 39% 100%);
-}
-.statuses .RB {
-  grid-area: 3/2;
-}
-.statuses .RB:before {
-  shape-outside: polygon(0% 0%, 39% 0%, 41% 12%, 0% 71%);
-}
-.statuses .CB {
-  grid-area: 4/1/4/span two;
-  text-align: center;
-  justify-self: center;
-  width: 50%;
-}
-.statuses_state {
-  position: relative;
-  display: inline-block;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  width: 100%;
-}
-.statuses_state #title {
-  display: none;
-}
-.statuses_state-title {
-  display: inline-block;
-  cursor: pointer;
-}
-.statuses_state-title.one {
-  -webkit-animation-delay: 1.6s;
-          animation-delay: 1.6s;
-}
-.statuses_state-title.two {
-  -webkit-animation-delay: 1.9s;
-          animation-delay: 1.9s;
-}
-.statuses_state-title.three {
-  -webkit-animation-delay: 2.1s;
-          animation-delay: 2.1s;
-}
-.statuses_state-title.four {
-  -webkit-animation-delay: 2.2s;
-          animation-delay: 2.2s;
-}
-.statuses_state-title.five {
-  -webkit-animation-delay: 2.4s;
-          animation-delay: 2.4s;
-}
-.statuses_state-description {
-  display: none;
+  z-index: 0;
 }
 
 .footer {
   position: sticky;
   width: 100vw;
-  height: 20vh;
+  height: 14.8rem;
   bottom: 0;
   z-index: 20;
   -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
-  -webkit-clip-path: polygon(75% -10%, 100% -10%, 100% 100%, 75% 100%);
-          clip-path: polygon(75% -10%, 100% -10%, 100% 100%, 75% 100%);
+  -webkit-clip-path: polygon(60% -10%, 100% -10%, 100% 100%, 60% 100%);
+          clip-path: polygon(60% -10%, 100% -10%, 100% 100%, 60% 100%);
 }
 .footer_bar {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 100%;
-  width: 24vw;
+  width: 36.8rem;
 }
 .footer_bar .contact_target {
   position: absolute;

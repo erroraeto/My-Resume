@@ -53,6 +53,32 @@ document.addEventListener('click', async function (e) {
     }
 });
 
+//Выбор скилла
+let parametr = document.querySelector(".parametr")
+let states = document.querySelectorAll(".state")
+let descrCont;
+
+document.addEventListener('mouseover', function(e) {
+    if (e.target.className.baseVal != "state") return;
+
+    if (e.target == states[0]) {
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.9% 17.12%, 22.2% 4.5%, 20% 36.2%, 10.73% 58.3%, 35.59% 66.24%)"
+    } else if (e.target == states[1]) {
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 22% 36.8%, 4.8% 60.3%, 34.8% 67%)"
+    } else if (e.target == states[2]) {
+        parametr.style.clipPath = "polygon(49.9% 94.7%, 68.3% 72%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 31.5% 72%)"
+    } else if (e.target == states[3]) {
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 65% 67.25%, 95% 60.3%, 75.94% 37.5%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+    } else if (e.target == states[4]) {
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 78% 36.8%, 77.68% 4.5%, 49.9% 14.50%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+    }
+});
+
+document.addEventListener('mouseout', function(e) {
+    if (e.target.classList[0] != "state") return;
+    parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+});
+
 //Анимация глаза
 let x = +bounds.getAttribute('cx');
 let y = +bounds.getAttribute('cy');
@@ -86,6 +112,7 @@ document.addEventListener('click', async function (e) {
 
     if (opened) {
         footer.style.transform = 'translate3d(0, 12.8rem, 0)';
+        await sleep(500);
         contacts.style.display = 'none';
         opened = false;
     } else {
@@ -116,46 +143,4 @@ document.addEventListener('mouseover', function(e) {
             icon.style.filter = "";
         }
     })
-});
-
-
-//Выбор скилла
-let parametrs = document.querySelector(".parametrs")
-let descrCont;
-
-document.addEventListener('mouseover', function(e) {
-    if (e.target.classList[0] != "statuses_state-title") return;
-
-    if (e.target.classList[1] == "one") {
-        parametrs.style.clipPath = "polygon(50% 99.5%, 83.99% 56.87%, 66.4% 23.2%, 31.15% 16.32%, 16.43% 56.91%)"
-    } else if (e.target.classList[1] == "two") {
-        parametrs.style.clipPath = "polygon(50% 70%, 83.99% 56.87%, 66.4% 23.2%, 19.45% .5%, 16.43% 56.91%)"
-    } else if (e.target.classList[1] == "three") {
-        parametrs.style.clipPath = "polygon(50% 70%, 99.5% 61.8%, 66.4% 23.2%, 31.15% 16.32%, 16.43% 56.91%)"
-    } else if (e.target.classList[1] == "four") {
-        parametrs.style.clipPath = "polygon(50% 70%, 83.99% 56.87%, 66.4% 23.2%, 31.15% 16.32%, .5% 61.8%)"
-    } else if (e.target.classList[1] == "five") {
-        parametrs.style.clipPath = "polygon(50% 70%, 83.99% 56.87%, 80.55% .5%, 31.15% 16.32%, 16.43% 56.91%)"
-    }
-});
-
-document.addEventListener('mouseout', function(e) {
-    if (e.target.classList[0] != "statuses_state-title") return;
-    parametrs.style.clipPath = "polygon(50% 75.51%, 92.19% 58.74%, 67.11% 20.58%, 28.3% 12.95%, 10.73% 58.41%)"
-});
-
-document.addEventListener('click', function(e) {
-    let descrPast = e.target.nextElementSibling;
-    if (JSON.parse(e.target.id)) {
-        descrPast.style.animation = "descrHidd .4s ease both";
-        e.target.id = false;
-        return;
-    }
-    if (e.target.classList[0] != "statuses_state-title") return;
-    descrCont = descrPast.innerHTML;
-    descrPast.style.animation = '';
-    descrPast.innerHTML = '';
-    descrPast.style.display = "block";
-    e.target.id = true;
-    play(descrPast, 10);
 });
