@@ -54,8 +54,8 @@ document.addEventListener('click', async function (e) {
 });
 
 //Выбор скилла
-let parametr = document.querySelector(".parametr")
-let states = document.querySelectorAll(".state")
+let parametr = document.querySelector(".parametr");
+let states = document.querySelectorAll(".state");
 let descrCont;
 
 document.addEventListener('mouseover', function(e) {
@@ -78,6 +78,55 @@ document.addEventListener('mouseout', function(e) {
     if (e.target.classList[0] != "state") return;
     parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
 });
+
+//Выбор ПО
+let software = document.querySelectorAll(".software");
+let circle = document.querySelector(".container_software_circle");
+let num = {
+    i: 0,
+    j: 0
+};
+
+document.addEventListener('mouseover', function(e) {
+    // if (e.target.className.baseVal != "software") return;
+    if (!e.target.closest('.software')) return;
+
+
+    if (e.target == software[0]) {
+        software[0].style.transform = "translateZ(2rem)";
+        circle.children[3].style.opacity = "1";
+        num.i = 3;
+        num.j = 0;
+    } else if (e.target == software[1]) {
+        software[1].style.transform = "translateZ(2rem)";
+        circle.children[4].style.opacity = "1";
+        num.i = 4;
+        num.j = 1;
+    } else if (e.target == software[2]) {
+        software[2].style.transform = "translateZ(2rem)";
+        circle.children[5].style.opacity = "1";
+        num.i = 5;
+        num.j = 2;
+    } else if (e.target == software[3]) {
+        software[3].style.transform = "translateZ(2rem)";
+        circle.children[1].style.opacity = "1";
+        num.i = 1;
+        num.j = 3;
+    } else if (e.target == software[4]) {
+        software[4].style.transform = "translateZ(2rem)";
+        circle.children[2].style.opacity = "1";
+        num.i = 2;
+        num.j = 4;
+    }
+});
+
+document.addEventListener('mouseout', function(e) {
+    if (e.target.className.baseVal != "software") return;
+    
+    software[num.j].style.transform = "translateZ()";
+    circle.children[num.i].style.opacity = "0.6";
+});
+
 
 //Анимация глаза
 let x = +bounds.getAttribute('cx');

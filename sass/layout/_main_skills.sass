@@ -1,6 +1,6 @@
 .container_skills
-    display: none
-    // display: block
+    // display: none
+    display: block
     position: absolute
     height: max-content
     width: max-content
@@ -49,6 +49,25 @@
 .container_software
     display: block
     position: absolute
-    height: 100%
-    width: 100%
-    z-index: 0
+    height: max-content
+    width: max-content
+    z-index: 2
+    perspective: 100rem
+    & > svg
+        position: absolute
+        stroke: $color-juice-blue
+        fill: $color-juice-blue
+        opacity: 0.6
+    &_circle
+        vector-effect: non-scaling-stroke
+        stroke-width: 1px
+        fill: none
+        & :first-child
+            filter: blur(2rem)
+            stroke: none
+            opacity: 0.2
+        & > *:nth-child(n+2):nth-child(-n+6)
+            stroke-width: 2px
+            filter: blur(1px)
+            fill: none
+            opacity: 0.6

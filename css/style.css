@@ -823,6 +823,8 @@ a:link, a:visited {
           transform: translate(-50%, -50%);
   -webkit-transform-origin: center;
           transform-origin: center;
+  -webkit-filter: drop-shadow(0 0 4px #d1ffff);
+          filter: drop-shadow(0 0 4px #d1ffff);
   fill: rgba(70, 151, 180, 0.5490196078);
 }
 .border_resume_L {
@@ -943,7 +945,7 @@ a:link, a:visited {
 }
 
 .container_skills {
-  display: none;
+  display: block;
   position: absolute;
   height: -webkit-max-content;
   height: -moz-max-content;
@@ -1019,9 +1021,39 @@ a:link, a:visited {
 .container_software {
   display: block;
   position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 2;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+}
+.container_software > svg {
+  position: absolute;
+  stroke: #64ffff;
+  fill: #64ffff;
+  opacity: 0.6;
+}
+.container_software_circle {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1px;
+  fill: none;
+}
+.container_software_circle :first-child {
+  -webkit-filter: blur(2rem);
+          filter: blur(2rem);
+  stroke: none;
+  opacity: 0.2;
+}
+.container_software_circle > *:nth-child(n+2):nth-child(-n+6) {
+  stroke-width: 2px;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  fill: none;
+  opacity: 0.6;
 }
 
 .footer {
