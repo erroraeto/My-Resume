@@ -931,6 +931,8 @@ a:link, a:visited {
 .container {
   position: relative;
   width: 90vw;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
 }
 
 .container_about {
@@ -945,7 +947,7 @@ a:link, a:visited {
 }
 
 .container_skills {
-  display: block;
+  display: none;
   position: absolute;
   height: -webkit-max-content;
   height: -moz-max-content;
@@ -953,6 +955,14 @@ a:link, a:visited {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
+  transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
+  transition: transform 1s ease, filter 0.5s ease;
+  transition: transform 1s ease, filter 0.5s ease, -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   z-index: 1;
 }
 .container_skills .parametr {
@@ -1027,7 +1037,15 @@ a:link, a:visited {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  left: 50%;
+  top: 50%;
   z-index: 2;
+  -webkit-transform: translate3d(-10%, -50%, -2rem) scale(0.5);
+          transform: translate3d(-10%, -50%, -2rem) scale(0.5);
+  -webkit-transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
+  transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
+  transition: transform 1s ease, filter 0.5s ease;
+  transition: transform 1s ease, filter 0.5s ease, -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   -webkit-perspective: 100rem;
           perspective: 100rem;
 }
@@ -1042,10 +1060,10 @@ a:link, a:visited {
           transform: translate(-50%, -50%);
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
-  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
 }
 .container_software_circle {
   position: relative;
@@ -1089,10 +1107,37 @@ a:link, a:visited {
 .container_software .description {
   position: absolute;
   left: 50%;
-  top: 60%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 42%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   text-align: center;
+}
+
+.arrow {
+  position: absolute;
+  height: 100%;
+  width: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  transition: filter 0.3s ease, opacity 0.3s ease, -webkit-filter 0.3s ease;
+}
+.arrow > svg {
+  stroke: #64ffff;
+  stroke-width: 0.2px;
+  fill: none;
+}
+
+.left {
+  left: 20%;
+}
+
+.right {
+  left: 80%;
 }
 
 .footer {

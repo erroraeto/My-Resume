@@ -78,6 +78,44 @@ document.addEventListener('mouseout', function(e) {
     parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
 });
 
+//Выбор категории
+let contSkills = document.querySelector(".container_skills");
+let contCircle = document.querySelector(".container_software");
+let arrow = document.querySelectorAll(".container_abilities > .arrow");
+
+document.addEventListener('mouseover', function(e) {
+    if (!e.target.closest('.container')) return;
+
+    if (e.target.closest('.container_skills')) {
+        contSkills.style.filter = "";
+        contSkills.style.zIndex = "1";
+        contSkills.style.opacity = "1";
+        contSkills.style.transform = "translate3d(-50%, -50%, 0)";
+        contCircle.style.transform = "translate3d(-10%, -50%, -2rem) scale(0.5)";
+        contCircle.style.filter = "blur(2px)";
+        contCircle.style.opacity = "0.5";
+        contCircle.style.zIndex = "-1";
+        arrow[0].style.filter = "blur(2px)";
+        arrow[0].style.opacity = "0.5";
+        arrow[1].style.filter = "blur()";
+        arrow[1].style.opacity = "";
+    } else if (e.target.closest('.container_software')) {
+        contCircle.style.filter = "";
+        contCircle.style.zIndex = "1";
+        contCircle.style.opacity = "1";
+        contCircle.style.transform = "translate3d(-50%, -50%, 0)";
+        contSkills.style.transform = "translate3d(-90%, -50%, -2rem) scale(0.5)";
+        contSkills.style.filter = "blur(2px)";
+        contSkills.style.opacity = "0.5";
+        contSkills.style.zIndex = "1";
+        arrow[1].style.filter = "blur(2px)";
+        arrow[1].style.opacity = "0.5";
+        arrow[0].style.filter = "blur()";
+        arrow[0].style.opacity = "";
+    }
+})
+
+
 //Выбор ПО
 let circle = document.querySelector(".container_software_circle");
 let description = document.querySelector(".description");
@@ -87,9 +125,9 @@ let content;
 let icon;
 let num = {
     i: 0,
-    j: 0
+    j: 0,
+    prev: 0
 };
-
 
 document.addEventListener('mouseover', function(e) {
     if (!e.target.closest('.software')) return;
@@ -102,7 +140,8 @@ document.addEventListener('mouseover', function(e) {
         icon = "#HTML-CSS";
         num.i = 3;
         num.j = 0;
-        content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam tenetur molestias dolores facilis eveniet, consectetur vel, repudiandae, dicta voluptates commodi recusandae."
+        num.prev = 0;
+        content = "Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma."
     } else if (e.target.closest('.software') == software[1]) {
         software[1].style.transform = "translateZ(4rem) translate(-50%,-50%)";
         software[1].style.opacity = "1";
@@ -111,6 +150,8 @@ document.addEventListener('mouseover', function(e) {
         icon = "#JS";
         num.i = 4;
         num.j = 1;
+        num.prev = 1;
+        // content = "Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma."
     } else if (e.target.closest('.software') == software[2]) {
         software[2].style.transform = "translateZ(4rem) translate(-50%,-50%)";
         software[2].style.opacity = "1";
@@ -119,6 +160,7 @@ document.addEventListener('mouseover', function(e) {
         icon = "#SASS";
         num.i = 5;
         num.j = 2;
+        num.prev = 2;
     } else if (e.target.closest('.software') == software[3]) {
         software[3].style.transform = "translateZ(4rem) translate(-50%,-50%)";
         software[3].style.opacity = "1";
@@ -127,6 +169,7 @@ document.addEventListener('mouseover', function(e) {
         icon = "#GIT";
         num.i = 1;
         num.j = 3;
+        num.prev = 3;
     } else if (e.target.closest('.software') == software[4]) {
         software[4].style.transform = "translateZ(4rem) translate(-50%,-50%)";
         software[4].style.opacity = "1";
@@ -135,10 +178,11 @@ document.addEventListener('mouseover', function(e) {
         icon = "#REACT";
         num.i = 2;
         num.j = 4;
+        num.prev = 4;
     }
 
     for (use of softwareSlct.children) use.href.baseVal = icon;
-    play(description, content, 10);
+    play(description, content, 25);
 });
 
 document.addEventListener('mouseout', function(e) {
