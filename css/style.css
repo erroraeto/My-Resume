@@ -1031,29 +1031,68 @@ a:link, a:visited {
   -webkit-perspective: 100rem;
           perspective: 100rem;
 }
-.container_software > svg {
+.container_software > .software {
   position: absolute;
   stroke: #64ffff;
   fill: #64ffff;
   opacity: 0.6;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
 }
 .container_software_circle {
+  position: relative;
   vector-effect: non-scaling-stroke;
+  stroke: #64ffff;
   stroke-width: 1px;
   fill: none;
 }
 .container_software_circle :first-child {
+  fill: #64ffff;
   -webkit-filter: blur(2rem);
           filter: blur(2rem);
   stroke: none;
   opacity: 0.2;
 }
-.container_software_circle > *:nth-child(n+2):nth-child(-n+6) {
+.container_software_circle > *:not(:first-child) {
   stroke-width: 2px;
   -webkit-filter: blur(1px);
           filter: blur(1px);
   fill: none;
   opacity: 0.6;
+  -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  transition: filter 0.3s ease, opacity 0.3s ease, -webkit-filter 0.3s ease;
+}
+.container_software .software_main {
+  position: absolute;
+  stroke: #64ffff;
+  fill: #64ffff;
+  opacity: 0.6;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
+}
+.container_software .description {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .footer {

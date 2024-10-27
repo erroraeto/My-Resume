@@ -1,6 +1,6 @@
 //Анимация появления текста(печать)
-function play(past, ms) {
-    let logoTitle = descrCont;
+function play(past, content, ms) {
+    let logoTitle = content;
     let logoRandom = '';
     let possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
     let printLength = 1;
@@ -56,7 +56,6 @@ document.addEventListener('click', async function (e) {
 //Выбор скилла
 let parametr = document.querySelector(".parametr");
 let states = document.querySelectorAll(".state");
-let descrCont;
 
 document.addEventListener('mouseover', function(e) {
     if (e.target.className.baseVal != "state") return;
@@ -80,51 +79,75 @@ document.addEventListener('mouseout', function(e) {
 });
 
 //Выбор ПО
-let software = document.querySelectorAll(".software");
 let circle = document.querySelector(".container_software_circle");
+let description = document.querySelector(".description");
+let software = document.querySelectorAll(".software");
+let softwareSlct = document.querySelector("#selected");
+let content;
+let icon;
 let num = {
     i: 0,
     j: 0
 };
 
+
 document.addEventListener('mouseover', function(e) {
-    // if (e.target.className.baseVal != "software") return;
     if (!e.target.closest('.software')) return;
 
-
-    if (e.target == software[0]) {
-        software[0].style.transform = "translateZ(2rem)";
+    if (e.target.closest('.software') == software[0]) {
+        software[0].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[0].style.opacity = "1";
+        circle.children[3].style.filter = "blur()";
         circle.children[3].style.opacity = "1";
+        icon = "#HTML-CSS";
         num.i = 3;
         num.j = 0;
-    } else if (e.target == software[1]) {
-        software[1].style.transform = "translateZ(2rem)";
+        content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam tenetur molestias dolores facilis eveniet, consectetur vel, repudiandae, dicta voluptates commodi recusandae."
+    } else if (e.target.closest('.software') == software[1]) {
+        software[1].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[1].style.opacity = "1";
+        circle.children[4].style.filter = "blur()";
         circle.children[4].style.opacity = "1";
+        icon = "#JS";
         num.i = 4;
         num.j = 1;
-    } else if (e.target == software[2]) {
-        software[2].style.transform = "translateZ(2rem)";
+    } else if (e.target.closest('.software') == software[2]) {
+        software[2].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[2].style.opacity = "1";
+        circle.children[5].style.filter = "blur()";
         circle.children[5].style.opacity = "1";
+        icon = "#SASS";
         num.i = 5;
         num.j = 2;
-    } else if (e.target == software[3]) {
-        software[3].style.transform = "translateZ(2rem)";
+    } else if (e.target.closest('.software') == software[3]) {
+        software[3].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[3].style.opacity = "1";
+        circle.children[1].style.filter = "blur()";
         circle.children[1].style.opacity = "1";
+        icon = "#GIT";
         num.i = 1;
         num.j = 3;
-    } else if (e.target == software[4]) {
-        software[4].style.transform = "translateZ(2rem)";
+    } else if (e.target.closest('.software') == software[4]) {
+        software[4].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[4].style.opacity = "1";
+        circle.children[2].style.filter = "blur()";
         circle.children[2].style.opacity = "1";
+        icon = "#REACT";
         num.i = 2;
         num.j = 4;
     }
+
+    for (use of softwareSlct.children) use.href.baseVal = icon;
+    play(description, content, 10);
 });
 
 document.addEventListener('mouseout', function(e) {
-    if (e.target.className.baseVal != "software") return;
+    if (!e.target.closest('.software')) return;
     
-    software[num.j].style.transform = "translateZ()";
+    software[num.j].style.transform = "";
+    software[num.j].style.opacity = "0.6";
     circle.children[num.i].style.opacity = "0.6";
+    circle.children[num.i].style.filter = "blur(1px)";
 });
 
 

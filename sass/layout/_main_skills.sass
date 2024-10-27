@@ -53,21 +53,47 @@
     width: max-content
     z-index: 2
     perspective: 100rem
-    & > svg
+    // transform-style: preserve-3d
+    & > .software
         position: absolute
         stroke: $color-juice-blue
         fill: $color-juice-blue
         opacity: 0.6
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
+        transform-origin: center
+        transition: transform .5s ease, opacity .5s ease
     &_circle
+        position: relative
         vector-effect: non-scaling-stroke
+        stroke: $color-juice-blue
         stroke-width: 1px
         fill: none
         & :first-child
+            fill: $color-juice-blue
             filter: blur(2rem)
             stroke: none
             opacity: 0.2
-        & > *:nth-child(n+2):nth-child(-n+6)
+        // & > *:nth-child(n+2):nth-child(-n+6)
+        & > *:not(:first-child)
             stroke-width: 2px
             filter: blur(1px)
             fill: none
             opacity: 0.6
+            transition: filter .3s ease, opacity .3s ease
+    .software_main
+        position: absolute
+        stroke: $color-juice-blue
+        fill: $color-juice-blue
+        opacity: 0.6
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
+        transition: transform .5s ease, opacity .5s ease
+    .description
+        position: absolute
+        left: 50%
+        top: 60%
+        transform: translate(-50%,-50%)
+        text-align: center
