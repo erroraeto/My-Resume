@@ -20,14 +20,14 @@ function play(past, content, ms) {
         logoRandom = '';
     }
 };
-
+//Функция задержки
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 //Горизонтальный скролл
 let main = document.querySelector('.main');
 let skills = document.querySelector('.container_skills');
 let pos = 0;
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 document.addEventListener('click', async function (e) {
     if (!e.target.closest('.btn')) return;
@@ -76,6 +76,23 @@ document.addEventListener('mouseover', function(e) {
 document.addEventListener('mouseout', function(e) {
     if (e.target.classList[0] != "state") return;
     parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+});
+//Анимация скиллов
+document.addEventListener('DOMContentLoaded', async function(e) {
+    while(parametr) {
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 68.4% 72.11%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        await sleep(100);
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 82% 35.6%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        await sleep(100);
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 10.75%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        await sleep(100);
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 17.56% 35.4%, 10.73% 58.3%, 35.59% 66.24%)"
+        await sleep(100);
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 31.4% 72.23%)"
+        await sleep(100);
+        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        await sleep(3000);
+    }
 });
 
 //Выбор категории
@@ -227,7 +244,7 @@ document.addEventListener('click', async function (e) {
     if (!e.target.closest('.contact_target')) return;
 
     if (opened) {
-        footer.style.transform = 'translate3d(0, 12.8rem, 0)';
+        footer.style.transform = 'translate3d(0, 13rem, 0)';
         await sleep(500);
         contacts.style.display = 'none';
         opened = false;
