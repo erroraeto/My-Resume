@@ -949,6 +949,32 @@ a:link, a:visited {
           align-items: center;
 }
 
+.container_home {
+  position: relative;
+  height: 80vh;
+}
+.container_home .planet {
+  position: absolute;
+  stroke: none;
+  height: 150vh;
+  width: 150vw;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes shift {
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes shift {
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
 .container_skills {
   display: none;
   position: absolute;
@@ -1042,9 +1068,6 @@ a:link, a:visited {
   width: max-content;
   left: 50%;
   top: 50%;
-  z-index: 2;
-  -webkit-transform: translate3d(-10%, -50%, -2rem) scale(0.5);
-          transform: translate3d(-10%, -50%, -2rem) scale(0.5);
   -webkit-transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease;
@@ -1052,7 +1075,7 @@ a:link, a:visited {
 }
 .container_software > .software {
   position: absolute;
-  stroke: #64ffff;
+  stroke: none;
   fill: #64ffff;
   cursor: pointer;
   opacity: 0.6;
@@ -1094,8 +1117,8 @@ a:link, a:visited {
 }
 .container_software .software_main {
   position: absolute;
-  stroke: #64ffff;
   fill: #64ffff;
+  stroke: none;
   opacity: 0.6;
   left: 50%;
   top: 50%;
@@ -1117,12 +1140,16 @@ a:link, a:visited {
 
 .arrow {
   position: absolute;
-  height: 100%;
-  width: 5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
   transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
   transition: filter 0.3s ease, opacity 0.3s ease;
@@ -1139,7 +1166,7 @@ a:link, a:visited {
 }
 
 .right {
-  left: 80%;
+  left: 75.4%;
 }
 
 .footer {
@@ -1164,6 +1191,7 @@ a:link, a:visited {
 }
 .footer_bar .contact_target {
   position: absolute;
+  z-index: 1;
   cursor: pointer;
   right: 0;
   top: 1rem;

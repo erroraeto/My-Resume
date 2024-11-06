@@ -1,2 +1,20 @@
 .container_home
     position: relative
+    height: 80vh
+    // path
+    //     stroke-dasharray: 5 5
+    //     fill: none
+    //     stroke: $color-juice-blue
+    //     animation: shift 3s infinite linear
+    .planet
+        position: absolute
+        stroke: none
+        height: 150vh
+        width: 150vw
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+
+@keyframes shift
+    100%
+        stroke-dashoffset: -20

@@ -1,4 +1,4 @@
-//Анимация появления текста(печать)
+//Анимация появления текста(перебор)
 function play(past, content, ms) {
     let logoTitle = content;
     let logoRandom = '';
@@ -10,7 +10,7 @@ function play(past, content, ms) {
         past.textContent = logoRandom;
         }, i*ms );
     }
-    for( let i=0; i < logoTitle.length+1; i++ ) {
+    for (let i=0; i < logoTitle.length+1; i++) {
         logoRandom = logoTitle.substr(0, i);
         if (printLength < logoTitle.length) printLength += 1;
         for( let j=i; j < printLength; j++ ) { 
@@ -20,6 +20,20 @@ function play(past, content, ms) {
         logoRandom = '';
     }
 };
+//Анимация появления текста(печать)
+async function textTyping(doc, txt, speed) {
+    let i = 0;
+    let logoRandom = '';
+    function typeWriter() {
+        if (i < txt.length && state) {
+            logoRandom += txt.charAt(i);
+            doc.innerHTML = logoRandom;
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    typeWriter()
+};
 //Функция задержки
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -27,29 +41,37 @@ function sleep(ms) {
 //Горизонтальный скролл
 let main = document.querySelector('.main');
 let skills = document.querySelector('.container_skills');
-let pos = 0;
+let pos = 1;
 
 document.addEventListener('click', async function (e) {
     if (!e.target.closest('.btn')) return;
-    const node = e.target.parentNode;
-    let childPos = [...node.children].indexOf(e.target);
+    let but = e.target.closest('.btn');
+    let childPos = e.target.parentNode.children;
 
-    if (childPos != pos && childPos > pos) {
-        main.style.transform = 'translateZ(-20rem)';
-        await sleep(500);
-        main.style.translate = -100 + 'vw';
-        await sleep(700);
-        main.style.transform = '';
-        pos += 1;
-        skills.style.display = "block";
-    } else if (childPos != pos && childPos < pos) {
+    if (childPos[0] == but && 0 != pos) {
         main.style.transform = 'translateZ(-20rem)';
         await sleep(500);
         main.style.translate = '';
         await sleep(700);
         main.style.transform = '';
-        pos -= 1;
+        pos = 0;
         skills.style.display = "none";
+    } else if (childPos[1] == but && 1 != pos) {
+        main.style.transform = 'translateZ(-20rem)';
+        await sleep(500);
+        main.style.translate = -100 + 'vw';
+        await sleep(700);
+        main.style.transform = '';
+        pos = 1;
+        skills.style.display = "none";
+    } else if (childPos[2] == but && 2 != pos) {
+        main.style.transform = 'translateZ(-20rem)';
+        await sleep(500);
+        main.style.translate = -200 + 'vw';
+        await sleep(700);
+        main.style.transform = '';
+        pos = 2;
+        skills.style.display = "block";
     }
 });
 
@@ -61,7 +83,9 @@ document.addEventListener('mouseover', function(e) {
     if (e.target.className.baseVal != "state") return;
 
     if (e.target == states[0]) {
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.9% 17.12%, 22.2% 4.5%, 20% 36.2%, 10.73% 58.3%, 35.59% 66.24%)"
+        // parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.9% 17.12%, 22.2% 4.5%, 20% 36.2%, 10.73% 58.3%, 35.59% 66.24%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%/g, '49.9% 17.12%, 22.2% 4.5%, 20% 36.2%');
+        // parametr.style.clipPath.replace(/49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%/g, '49.9% 17.12%, 22.2% 4.5%, 20% 36.2%')
     } else if (e.target == states[1]) {
         parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 22% 36.8%, 4.8% 60.3%, 34.8% 67%)"
     } else if (e.target == states[2]) {
@@ -79,18 +103,42 @@ document.addEventListener('mouseout', function(e) {
 });
 //Анимация скиллов
 document.addEventListener('DOMContentLoaded', async function(e) {
+    R = {
+        '66% 68%':'65% 67.25%',
+        '67% 70.62%':'64% 65%',
+        '65% 67.25%':'66% 68%',
+        '64% 65%':'67% 70.62%',
+        
+
+
+        // '73.8% 38%':'82% 35.6%',
+        // '75.94% 37.5%':'',
+        // '82% 35.6%':'73.8% 38%',
+        // '':'75.94% 37.5%',
+
+
+        // '':'',
+        // '':'',
+    };
+    // for( from in R) key = key.replace( from, R[ from]);
     while(parametr) {
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 68.4% 72.11%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        // parametr.style.clipPath = parametr.style.clipPath.replace(/64% 65%/g, '67% 70.62%');
+        for(from in R) parametr.style.clipPath = parametr.style.clipPath.replace( from, R[from]);
+        // parametr.style.clipPath = parametr.style.clipPath.replace(/5/g, '65% 67.25%');
         await sleep(100);
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 82% 35.6%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/67% 70.62%/g, '64% 65%');
+        parametr.style.clipPath = parametr.style.clipPath.replace(/73.8% 38%/g, '82% 35.6%');
         await sleep(100);
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 10.75%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/82% 35.6%/g, '73.8% 38%');
+        parametr.style.clipPath = parametr.style.clipPath.replace(/49.8% 21.25%/g, '49.8% 10.75%');
         await sleep(100);
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 17.56% 35.4%, 10.73% 58.3%, 35.59% 66.24%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/49.8% 10.75%/g, '49.8% 21.25%');
+        parametr.style.clipPath = parametr.style.clipPath.replace(/24.69% 37.8%/g, '17.56% 35.4%');
         await sleep(100);
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 31.4% 72.23%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/17.56% 35.4%/g, '24.69% 37.8%');
+        parametr.style.clipPath = parametr.style.clipPath.replace(/35.59% 66.24%/g, '31.4% 72.23%');
         await sleep(100);
-        parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"
+        parametr.style.clipPath = parametr.style.clipPath.replace(/31.4% 72.23%/g, '35.59% 66.24%');
         await sleep(3000);
     }
 });
@@ -103,32 +151,16 @@ let arrow = document.querySelectorAll(".container_abilities > .arrow");
 document.addEventListener('mouseover', function(e) {
     if (!e.target.closest('.container')) return;
 
-    if (e.target.closest('.container_skills')) {
-        contSkills.style.filter = "";
-        contSkills.style.zIndex = "1";
-        contSkills.style.opacity = "1";
-        contSkills.style.transform = "translate3d(-50%, -50%, 0)";
-        contCircle.style.transform = "translate3d(-10%, -50%, -2rem) scale(0.5)";
-        contCircle.style.filter = "blur(2px)";
-        contCircle.style.opacity = "0.5";
-        contCircle.style.zIndex = "-1";
-        arrow[0].style.filter = "blur(2px)";
-        arrow[0].style.opacity = "0.5";
-        arrow[1].style.filter = "blur()";
-        arrow[1].style.opacity = "";
-    } else if (e.target.closest('.container_software')) {
-        contCircle.style.filter = "";
-        contCircle.style.zIndex = "1";
-        contCircle.style.opacity = "1";
-        contCircle.style.transform = "translate3d(-50%, -50%, 0)";
-        contSkills.style.transform = "translate3d(-90%, -50%, -2rem) scale(0.5)";
-        contSkills.style.filter = "blur(2px)";
-        contSkills.style.opacity = "0.5";
-        contSkills.style.zIndex = "1";
-        arrow[1].style.filter = "blur(2px)";
-        arrow[1].style.opacity = "0.5";
-        arrow[0].style.filter = "blur()";
-        arrow[0].style.opacity = "";
+    if (e.target.closest('.left')) {
+        contCircle.style = "display: block; z-index: -1; opacity: 0.5; transform: translate3d(-10%, -50%, -2rem) scale(0.5); filter: blur(2px)";
+        contSkills.style = "display: block; z-index: 1; opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); filter: blur(0px)";
+        arrow[0].style = "opacity: 0.6; filter: blur(2px)";
+        arrow[1].style = "opacity: 1; filter: blur(0px)";
+    } else if (e.target.closest('.right')) {
+        contSkills.style = "display: block; z-index: -1; opacity: 0.5; transform: translate3d(-90%, -50%, -2rem) scale(0.5); filter: blur(2px);";
+        contCircle.style = "display: block; z-index: 1; opacity: 1; transform: translate3d(-50%, -50%, 0); filter: blur(0px)";
+        arrow[1].style = "opacity: 0.6; filter: blur(2px)";
+        arrow[0].style = "opacity: 1; filter: blur(0px)";
     }
 })
 
@@ -143,63 +175,70 @@ let icon;
 let num = {
     i: 0,
     j: 0,
-    prev: 0
+    prev: -1,
 };
+let state = true;
 
 document.addEventListener('mouseover', function(e) {
     if (!e.target.closest('.software')) return;
-
     if (e.target.closest('.software') == software[0]) {
-        software[0].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[0].style.transform = "translateZ(2rem) translate(-50%,-50%)";
         software[0].style.opacity = "1";
         circle.children[3].style.filter = "blur()";
         circle.children[3].style.opacity = "1";
         icon = "#HTML-CSS";
         num.i = 3;
         num.j = 0;
-        num.prev = 0;
         content = "Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma."
     } else if (e.target.closest('.software') == software[1]) {
-        software[1].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[1].style.transform = "translateZ(2rem) translate(-50%,-50%)";
         software[1].style.opacity = "1";
         circle.children[4].style.filter = "blur()";
         circle.children[4].style.opacity = "1";
         icon = "#JS";
         num.i = 4;
         num.j = 1;
-        num.prev = 1;
-        // content = "Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma."
+        content = "Events, object, array"
     } else if (e.target.closest('.software') == software[2]) {
-        software[2].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[2].style.transform = "translateZ(2rem) translate(-50%,-50%)";
         software[2].style.opacity = "1";
         circle.children[5].style.filter = "blur()";
         circle.children[5].style.opacity = "1";
         icon = "#SASS";
         num.i = 5;
         num.j = 2;
-        num.prev = 2;
+        content = "Creation and formation of style files, their convenient and expedient arrangement."
     } else if (e.target.closest('.software') == software[3]) {
-        software[3].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[3].style.transform = "translateZ(2rem) translate(-50%,-50%)";
         software[3].style.opacity = "1";
         circle.children[1].style.filter = "blur()";
         circle.children[1].style.opacity = "1";
         icon = "#GIT";
         num.i = 1;
         num.j = 3;
-        num.prev = 3;
+        content = "Working in a team, creating commits."
     } else if (e.target.closest('.software') == software[4]) {
-        software[4].style.transform = "translateZ(4rem) translate(-50%,-50%)";
+        software[4].style.transform = "translateZ(2rem) translate(-50%,-50%)";
         software[4].style.opacity = "1";
         circle.children[2].style.filter = "blur()";
         circle.children[2].style.opacity = "1";
         icon = "#REACT";
         num.i = 2;
         num.j = 4;
-        num.prev = 4;
+        content = "I don`t fucking know."
     }
-
     for (use of softwareSlct.children) use.href.baseVal = icon;
-    play(description, content, 25);
+
+
+    if (e.target.closest('.software') != num.prev) {
+        // play(description, content, 25)
+        state = state ? false : true;
+        textTyping(description, content, 25);
+    };
+
+    for (soft of software) {
+        if (e.target.closest('.software') == soft) num.prev = soft;
+    }
 });
 
 document.addEventListener('mouseout', function(e) {

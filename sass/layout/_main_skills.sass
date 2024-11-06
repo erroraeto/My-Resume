@@ -56,13 +56,11 @@
     width: max-content
     left: 50%
     top: 50%
-    z-index: 2
-    transform: translate3d(-10%, -50%, -2rem) scale(0.5)
     transition: transform 1s ease, filter .5s ease
     // perspective: 100rem
     & > .software
         position: absolute
-        stroke: $color-juice-blue
+        stroke: none
         fill: $color-juice-blue
         cursor: pointer
         opacity: 0.6
@@ -90,8 +88,8 @@
             transition: filter .3s ease, opacity .3s ease
     .software_main
         position: absolute
-        stroke: $color-juice-blue
         fill: $color-juice-blue
+        stroke: none
         opacity: 0.6
         left: 50%
         top: 50%
@@ -106,10 +104,11 @@
 
 .arrow
     position: absolute
-    height: 100%
-    width: 5%
-    display: flex
-    place-items: center
+    height: max-content
+    width: max-content
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
     transition: filter .3s ease, opacity .3s ease
     & > svg
         stroke: $color-juice-blue
@@ -118,4 +117,4 @@
 .left
     left: 20%
 .right
-    left: 80%
+    left: 75.4%
