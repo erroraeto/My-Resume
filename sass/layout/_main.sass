@@ -1,17 +1,18 @@
 .main
     position: relative
-    height: 80vh
+    box-sizing: content-box
     width: max-content
+    height: 80vh
+    padding: 5vh 5vw
     display: grid
     grid-template: auto / repeat(3, auto)
     grid-column-gap: 10vw
-    box-sizing: content-box
-    padding: 5vh 5vw
+    transform-origin: center
     transition: transform .7s ease ,translate .7s ease
-    & > *
-        transition: transform .7s ease
 
 .container
     position: relative
     width: 90vw
     perspective: 100rem
+    scroll-margin: 15vh 5vw 0 5vw
+    transition: transform .7s ease

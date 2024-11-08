@@ -205,6 +205,34 @@ span {
     opacity: 1;
   }
 }
+@-webkit-keyframes visiible {
+  0% {
+    -webkit-transform: translateZ(-4rem);
+            transform: translateZ(-4rem);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+  }
+}
+@keyframes visiible {
+  0% {
+    -webkit-transform: translateZ(-4rem);
+            transform: translateZ(-4rem);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+  }
+}
 @-webkit-keyframes openFigure {
   0% {
     fill: rgba(209, 255, 255, 0.8);
@@ -478,13 +506,18 @@ span {
 html {
   color-scheme: dark;
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   background: black;
   overflow: hidden;
+  scroll-behavior: smooth;
   -webkit-perspective: 100rem;
           perspective: 100rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 body::after {
   content: "";
@@ -522,7 +555,7 @@ a:link, a:visited {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../../../assets/fonts/Square/Square721BT-BoldExtended.woff) format("woff");
+  src: url("/square_721_bold_extended_bt.woff") format("woff");
 }
 .btn {
   position: relative;
@@ -540,6 +573,9 @@ a:link, a:visited {
   padding: 0 1.2rem;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+}
+.btn:link, .btn:visited {
+  color: #d1ffff;
 }
 .btn::after, .btn::before {
   content: "";
@@ -670,6 +706,8 @@ a:link, a:visited {
   position: relative;
   -webkit-perspective: 100rem;
           perspective: 100rem;
+  -webkit-animation: inclusion 1s ease 0.3s both;
+          animation: inclusion 1s ease 0.3s both;
 }
 .slider > * {
   position: absolute;
@@ -891,9 +929,10 @@ a:link, a:visited {
 
 .navigation {
   position: sticky;
+  left: 0;
   top: 0;
   height: 9vh;
-  width: 100%;
+  width: 100vw;
   padding: 1.5rem;
   z-index: 20;
   -webkit-backdrop-filter: blur(6px);
@@ -909,26 +948,22 @@ a:link, a:visited {
 
 .main {
   position: relative;
-  height: 80vh;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  height: 80vh;
+  padding: 5vh 5vw;
   display: grid;
   grid-template: auto/repeat(3, auto);
   grid-column-gap: 10vw;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  padding: 5vh 5vw;
+  -webkit-transform-origin: center;
+          transform-origin: center;
   -webkit-transition: translate 0.7s ease, -webkit-transform 0.7s ease;
   transition: translate 0.7s ease, -webkit-transform 0.7s ease;
   transition: transform 0.7s ease, translate 0.7s ease;
   transition: transform 0.7s ease, translate 0.7s ease, -webkit-transform 0.7s ease;
-}
-.main > * {
-  -webkit-transition: -webkit-transform 0.7s ease;
-  transition: -webkit-transform 0.7s ease;
-  transition: transform 0.7s ease;
-  transition: transform 0.7s ease, -webkit-transform 0.7s ease;
 }
 
 .container {
@@ -936,6 +971,11 @@ a:link, a:visited {
   width: 90vw;
   -webkit-perspective: 100rem;
           perspective: 100rem;
+  scroll-margin: 15vh 5vw 0 5vw;
+  -webkit-transition: -webkit-transform 0.7s ease;
+  transition: -webkit-transform 0.7s ease;
+  transition: transform 0.7s ease;
+  transition: transform 0.7s ease, -webkit-transform 0.7s ease;
 }
 
 .container_about {
@@ -947,11 +987,15 @@ a:link, a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
 }
 
 .container_home {
   position: relative;
   height: 80vh;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 .container_home .planet {
   position: absolute;
@@ -962,6 +1006,13 @@ a:link, a:visited {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+.container_home .planet text {
+  font-family: "Square";
+  font-size: 1rem;
+  text-align: center;
+  text-anchor: middle;
+  text-shadow: none;
 }
 
 @-webkit-keyframes shift {
@@ -976,8 +1027,7 @@ a:link, a:visited {
   }
 }
 .container_skills {
-  display: none;
-  position: absolute;
+  position: relative;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -1171,25 +1221,18 @@ a:link, a:visited {
 
 .footer {
   position: sticky;
-  width: 100vw;
   height: 16rem;
+  width: 36.8rem;
+  margin-left: auto;
   bottom: 0;
+  right: 0;
   z-index: 20;
   -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
-  -webkit-clip-path: polygon(60% -10%, 100% -10%, 100% 100%, 60% 100%);
-          clip-path: polygon(60% -10%, 100% -10%, 100% 100%, 60% 100%);
 }
-.footer_bar {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 36.8rem;
-}
-.footer_bar .contact_target {
+.footer .contact_target {
   position: absolute;
   z-index: 1;
   cursor: pointer;
@@ -1200,7 +1243,7 @@ a:link, a:visited {
   color: #e8be45;
   margin-bottom: 1rem;
 }
-.footer_bar .contacts {
+.footer .contacts {
   display: none;
   position: absolute;
   height: 87%;
@@ -1212,7 +1255,7 @@ a:link, a:visited {
   -webkit-perspective: 70rem;
           perspective: 70rem;
 }
-.footer_bar .contacts .icon {
+.footer .contacts .icon {
   position: relative;
   height: 100%;
   width: 100%;
@@ -1223,7 +1266,7 @@ a:link, a:visited {
   -webkit-animation: inclusion 0.8s ease backwards, movingZ 0.5s ease 0.8s backwards;
           animation: inclusion 0.8s ease backwards, movingZ 0.5s ease 0.8s backwards;
 }
-.footer_bar .contacts .icon > * {
+.footer .contacts .icon > * {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1232,29 +1275,29 @@ a:link, a:visited {
   -webkit-transform-origin: center;
           transform-origin: center;
 }
-.footer_bar .contacts .icon a {
+.footer .contacts .icon a {
   cursor: pointer;
   font-size: 1.8rem;
   text-align: center;
 }
-.footer_bar .contacts .icon a:link, .footer_bar .contacts .icon a:visited {
+.footer .contacts .icon a:link, .footer .contacts .icon a:visited {
   color: #e8be45;
 }
-.footer_bar .contacts .icon a .icon_figure {
+.footer .contacts .icon a .icon_figure {
   fill: #e8be45;
 }
-.footer_bar .contacts .icon_link {
+.footer .contacts .icon_link {
   display: inline-block;
   height: 55%;
   width: 55%;
 }
-.footer_bar .contacts .icon_link_bg {
+.footer .contacts .icon_link_bg {
   height: 70%;
   width: 70%;
   fill: rgba(255, 169, 20, 0.2);
   stroke: #e8be45;
 }
-.footer_bar .contacts .icon_link span {
+.footer .contacts .icon_link span {
   position: absolute;
   left: 0;
   top: -3px;

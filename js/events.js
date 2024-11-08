@@ -38,41 +38,12 @@ async function textTyping(doc, txt, speed) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
-//Горизонтальный скролл
+//Скролл по id
 let main = document.querySelector('.main');
-let skills = document.querySelector('.container_skills');
-let pos = 1;
-
 document.addEventListener('click', async function (e) {
-    if (!e.target.closest('.btn')) return;
-    let but = e.target.closest('.btn');
-    let childPos = e.target.parentNode.children;
-
-    if (childPos[0] == but && 0 != pos) {
-        main.style.transform = 'translateZ(-20rem)';
-        await sleep(500);
-        main.style.translate = '';
-        await sleep(700);
-        main.style.transform = '';
-        pos = 0;
-        skills.style.display = "none";
-    } else if (childPos[1] == but && 1 != pos) {
-        main.style.transform = 'translateZ(-20rem)';
-        await sleep(500);
-        main.style.translate = -100 + 'vw';
-        await sleep(700);
-        main.style.transform = '';
-        pos = 1;
-        skills.style.display = "none";
-    } else if (childPos[2] == but && 2 != pos) {
-        main.style.transform = 'translateZ(-20rem)';
-        await sleep(500);
-        main.style.translate = -200 + 'vw';
-        await sleep(700);
-        main.style.transform = '';
-        pos = 2;
-        skills.style.display = "block";
-    }
+    if (!e.target.id == "btn") return;
+    let section = document.querySelector(e.target.closest('#btn').hash);
+    section.scrollIntoView();
 });
 
 //Выбор скилла
