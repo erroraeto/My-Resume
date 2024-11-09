@@ -512,7 +512,6 @@ html {
 body {
   background: black;
   overflow: hidden;
-  scroll-behavior: smooth;
   -webkit-perspective: 100rem;
           perspective: 100rem;
   width: -webkit-max-content;
@@ -909,9 +908,7 @@ a:link, a:visited {
 .logo {
   position: relative;
   height: 3.6rem;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: 3.6rem;
   cursor: pointer;
 }
 .logo_img {
@@ -925,6 +922,21 @@ a:link, a:visited {
   fill: #d1ffff;
   dominant-baseline: hanging;
   text-anchor: middle;
+}
+
+.emblem {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  fill: none;
+  stroke: #d1ffff;
+  stroke-width: 35px;
 }
 
 .navigation {

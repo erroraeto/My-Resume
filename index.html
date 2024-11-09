@@ -12,8 +12,12 @@
     <nav class="navigation">
         <a id="btn" class="btn" href="#about">About Me</a>
         <a id="btn" class="logo" href="#home">
-            <svg class="logo_img" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <text x="49" y="19">電</text>
+            <svg class="emblem" viewbox="0 0 500 500">
+                <use href="#emblem" transform="translate(5, 5)" stroke="blue"/>
+                <use href="#emblem" transform="translate(-5, -5)" stroke="red"/>
+                <path id="emblem" stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
+                    <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
+                </path>
             </svg>
         </a>
         <a id="btn" class="btn" href="#skill">Skill</a>
@@ -213,6 +217,11 @@
                     </mask>
                 </defs>
             </svg>
+            <!-- <svg class="emblem" viewbox="0 0 500 500">
+                <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 1 235, 230 M235, 18 40, 18z M235, 18 430, 18z M235, 90 17, 90 17, 180 M235, 90 453, 90 453, 180 M190, 140 65, 140 M280, 140 405, 140 M190, 200 65, 200 M280, 200 405, 200 M235, 260 405, 260 405, 415 M235, 260 65, 260 65, 455 M235, 328.5 405, 328.5 M235, 328.5 65, 328.5 M235, 397 405, 397 M235, 397 65, 397 M235, 260 235 450 C 235 471, 245 481, 265 481 L 431 481 C 461 481, 481 461, 481 431">
+                    <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
+                </path>
+            </svg> -->
         </section>
 
         <section id="skill" class="container container_abilities">

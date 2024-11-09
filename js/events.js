@@ -38,12 +38,18 @@ async function textTyping(doc, txt, speed) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
+//Прокрутка к основному фрейму
+window.onload = function() {
+    document.all[0].style.scrollBehavior = "auto";
+    home.scrollIntoView({behavior: "auto"});
+    document.all[0].style.scrollBehavior = "";
+}
+
 //Скролл по id
-let main = document.querySelector('.main');
 document.addEventListener('click', async function (e) {
-    if (!e.target.id == "btn") return;
-    let section = document.querySelector(e.target.closest('#btn').hash);
-    section.scrollIntoView();
+    if (e.target.id != "btn") return;
+    let containerChoosed = document.getElementById(e.target.closest('#btn').hash.replace(/#/g, ''));
+    containerChoosed.scrollIntoView({ behavior: 'smooth' });
 });
 
 //Выбор скилла
