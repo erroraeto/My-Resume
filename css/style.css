@@ -507,11 +507,11 @@ html {
   color-scheme: dark;
   font-size: 62.5%;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 body {
   background: black;
-  overflow: hidden;
   -webkit-perspective: 100rem;
           perspective: 100rem;
   width: -webkit-max-content;
