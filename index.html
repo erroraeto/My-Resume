@@ -217,11 +217,47 @@
                     </mask>
                 </defs>
             </svg>
-            <!-- <svg class="emblem" viewbox="0 0 500 500">
-                <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 1 235, 230 M235, 18 40, 18z M235, 18 430, 18z M235, 90 17, 90 17, 180 M235, 90 453, 90 453, 180 M190, 140 65, 140 M280, 140 405, 140 M190, 200 65, 200 M280, 200 405, 200 M235, 260 405, 260 405, 415 M235, 260 65, 260 65, 455 M235, 328.5 405, 328.5 M235, 328.5 65, 328.5 M235, 397 405, 397 M235, 397 65, 397 M235, 260 235 450 C 235 471, 245 481, 265 481 L 431 481 C 461 481, 481 461, 481 431">
-                    <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
-                </path>
-            </svg> -->
+            <svg class="emblem_test" viewbox="0 0 320 320">
+                <defs>
+                    <clipPath id="circle-icon-clip">
+                        <path fill="black" d="M5 5, 315 5, 315 165, 160 165, 160 155, 160 155, 160 165, 5 165z">
+                            <!-- <animate attributeName="d" begin="Butt.mouseover" dur="0.3s"
+                                fill="freeze" restart="whenNotActive"
+                                from="M5 5, 315 5, 315 165, 160 165, 160 155, 160 155, 160 165, 5 165z"
+                                to="M5 5, 315 5, 315 165, 220 165, 220 155, 100 155, 100 165, 5 165z"/>
+                            <animate attributeName="d" begin="Butt.mouseout" dur="0.3s"
+                                fill="freeze" restart="whenNotActive"
+                                from="M5 5, 315 5, 315 165, 220 165, 220 155, 100 155, 100 165, 5 165z"
+                                to="M5 5, 315 5, 315 165, 160 165, 160 155, 160 155, 160 165, 5 165z"/> -->
+                        <!-- <path fill="black" d="M5 5, 315 5, 315 165, 220 165, 220 155, 100 155, 100 165, 5 165z"> -->
+                            <animate attributeName="d" values="M5 5, 315 5, 315 165, 160 165, 160 155, 160 155, 160 165, 5 165z;M5 5, 315 5, 315 165, 220 165, 220 155, 100 155, 100 165, 5 165z;" 
+                            begin="Butt.mouseover" keySplines="0 .5 .4 1" dur="1s" fill="freeze" restart="whenNotActive" calcMode="spline"/>
+                            <animate attributeName="d" values="M5 5, 315 5, 315 165, 220 165, 220 155, 100 155, 100 165, 5 165z;M5 5, 315 5, 315 165, 160 165, 160 155, 160 155, 160 165, 5 165z;" 
+                            begin="Butt.mouseout" keySplines="0 0 .93 0" dur="1s" fill="freeze" restart="whenNotActive" calcMode="spline"/>
+                        </path>
+                    </clipPath>
+                    <clipPath id="rectangle-icon-clip">
+                        <path d="M10 160, 310 160, 310 320, 10 320z"/>
+                    </clipPath>
+                </defs>
+                <!-- <circle id="circle-test" cx="160" cy="160" r="60" clip-path="url(#rectangle-icon-clip)"> -->
+                <circle id="circle-test" cx="160" cy="99" r="60" clip-path="url(#rectangle-icon-clip)">
+                    <!-- <animate attributeName="cy" begin="Butt.mouseover" dur="0.3s"
+                        fill="freeze" restart="whenNotActive"
+                        from="99"
+                        to="160"/>
+                    <animate attributeName="cy" begin="Butt.mouseout" dur="0.3s"
+                        fill="freeze" restart="whenNotActive"
+                        from="160"
+                        to="99"/> -->
+                    <animate attributeName="cy" values="100;160;" 
+                    begin="Butt.mouseover" dur="1s" fill="freeze" restart="whenNotActive" calcMode="spline"/>
+                    <animate attributeName="cy" values="160;100;" 
+                    begin="Butt.mouseout" dur="1s" fill="freeze" restart="whenNotActive" calcMode="spline"/>
+                </circle>
+                <path d="M10 10, 310 10, 310 160, 10 160z" clip-path="url(#circle-icon-clip)"/>
+                <text id="Butt" x="50" y="60">Click</text>
+            </svg>
         </section>
 
         <section id="skill" class="container container_abilities">
