@@ -228,24 +228,24 @@
                 <path class="rectangle" d="M10 10, 310 10, 310 160, 10 160z"/>
             </svg> -->
             <svg id="losta" class="emblem_test" height="60rem" width="70rem" viewbox="0 0 385 385">
-                <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
+                <path class="pta" d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
                 <text id="stateTwo" class="stateTwo" x="135.87" y="101" text-anchor="end">Problem Solving</text>
                 <text id="stateThree" class="stateThree" x="101" y="208.33" text-anchor="end">Research</text>
                 <text id="stateFour" class="stateFour" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
                 <text id="stateFive" class="stateFive" x="283.6" y="208.33">Team Work</text>
                 <text id="stateOne" class="stateOne" x="248.73" y="101">Communication</text>
 
-                <path d="M248.73 101, 192.5 180.95" stroke="red"/>
-                <path d="M135.87 101, 192.5 180.95" stroke="yellow"/>
-                <path d="M101 208.33, 192.5 180.95" stroke="green"/>
-                <path d="M192.3 274.66, 192.5 180.95" stroke="aqua"/>
-                <path d="M283.6 208.33, 192.5 180.95" stroke="blue"/>
+                <path class="deg" d="M248.73 101, 192.5 180.95" stroke="red"/>
+                <path class="deg" d="M135.87 101, 192.5 180.95" stroke="yellow"/>
+                <path class="deg" d="M101 208.33, 192.5 180.95" stroke="green"/>
+                <path class="deg" d="M192.3 274.66, 192.5 180.95" stroke="aqua"/>
+                <path class="deg" d="M283.6 208.33, 192.5 180.95" stroke="blue"/>
 
-                <path d="M192.5 101, 192.5 180.95" stroke="orange"/>
-                <path d="M118.4 154.65, 192.5 180.95" stroke="#79ff00"/>
-                <path d="M146.65 241.53, 192.5 180.95" stroke="#00ff73"/>
-                <path d="M238.35 241.53, 192.5 180.95" stroke="#0086ff"/>
-                <path d="M266.6 154.65, 192.5 180.95" stroke="purple"/>
+                <path class="deg" d="M192.5 101, 192.5 180.95" stroke="orange"/>
+                <path class="deg" d="M118.4 154.65, 192.5 180.95" stroke="#79ff00"/>
+                <path class="deg" d="M146.65 241.53, 192.5 180.95" stroke="#00ff73"/>
+                <path class="deg" d="M238.35 241.53, 192.5 180.95" stroke="#0086ff"/>
+                <path class="deg" d="M266.6 154.65, 192.5 180.95" stroke="purple"/>
 
 
 
@@ -255,111 +255,170 @@
                 <!-- begin="stateOne.mouseover"
                 end="stateOne.mouseout"
                 begin="0;a2.end"-->
-                <circle class="tst" id="TESToNE" r="1" fill="white"/>
                 <circle class="crc" id="ONE" r="5" cx="0" cy="0" fill="red">
                     <animateMotion
-                        id="saas"
-                        dur="1.25s"
-                        fill="freeze" restart="whenNotActive"
-                        begin="0;saas1.end"
-                        keyPoints=".75;1"
+                        dur="5s"
+                        begin="1s"
+                        keyPoints=".5;1"
                         keyTimes="0;1"
-                        calcMode="linear"
-                        path="M248.73 101, 192.5 180.95z"/>
-                    <animateMotion
-                        id="saas1"
-                        dur="1.25s"
-                        fill="freeze" restart="whenNotActive"
-                        begin="saas.end"
-                        keyPoints="1;.75"
-                        keyTimes="0;1"
-                        calcMode="linear"
+                        calcMode="paced"
+                        repeatCount="indefinite"
                         path="M248.73 101, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTtWO" r="1" fill="white"/>
                 <circle class="crc" id="TWO" r="5" cx="0" cy="0" fill="orange">
                     <animateMotion
-                        id="saas"
-                        dur="5s"
-                        begin=".1s"
-                        repeatCount="indefinite"
+                        id="saas2"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin=".1s;saas22.end+3s"
+                        keyPoints=".9;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M192.5 101, 192.5 180.95z"/>
+                    <animateMotion
+                        id="saas22"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin="saas2.end"
+                        keyPoints="1;.9"
+                        keyTimes="0;1"
+                        calcMode="paced"
                         path="M192.5 101, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTtHREE" r="1" fill="white"/>
+
+
+
                 <circle class="crc" id="THREE" r="5" fill="yellow">
                     <animateMotion
-                      dur="5s"
-                      begin=".2s"
-                      repeatCount="indefinite"
-                      path="M135.87 101, 192.5 180.95z"/>
+                        dur="5s"
+                        begin=".8s"
+                        keyPoints=".5;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        repeatCount="indefinite"
+                        path="M135.87 101, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTfOUR" r="1" fill="white"/>
                 <circle class="crc" id="FOUR" r="5" fill="#79ff00">
                     <animateMotion
-                      dur="5s"
-                      begin=".3s"
-                      repeatCount="indefinite"
-                      path="M118.4 154.65, 192.5 180.95z"/>
+                        id="saas3"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin=".2s;saas33.end+3s"
+                        keyPoints=".9;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M118.4 154.65, 192.5 180.95z"/>
+                    <animateMotion
+                        id="saas33"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin="saas3.end"
+                        keyPoints="1;.9"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M118.4 154.65, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTfIVE" r="1" fill="white"/>
+
+
+
                 <circle class="crc" id="FIVE" r="5" fill="green">
                     <animateMotion
-                      dur="5s"
-                      begin=".4s"
-                      repeatCount="indefinite"
-                      path="M101 208.33, 192.5 180.95z"/>
+                        dur="5s"
+                        begin=".6s"
+                        keyPoints=".5;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        repeatCount="indefinite"
+                        path="M101 208.33, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTsIX" r="1" fill="white"/>
                 <circle class="crc" id="SIX" r="5" fill="#00ff73">
                     <animateMotion
-                      dur="5s"
-                      begin=".5s"
-                      repeatCount="indefinite"
-                      path="M146.65 241.53, 192.5 180.95z"/>
+                        id="saas4"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin=".3s;saas44.end+3s"
+                        keyPoints=".9;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M146.65 241.53, 192.5 180.95z"/>
+                    <animateMotion
+                        id="saas44"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin="saas4.end"
+                        keyPoints="1;.9"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M146.65 241.53, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTsEVEN" r="1" fill="white"/>
+
+
+
                 <circle class="crc" id="SEVEN" r="5" fill="aqua">
                     <animateMotion
-                      dur="5s"
-                      begin=".6s"
-                      repeatCount="indefinite"
-                      path="M192.3 274.66, 192.5 180.95z"/>
+                        dur="5s"
+                        begin=".6s"
+                        keyPoints=".5;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        repeatCount="indefinite"
+                        path="M192.3 274.66, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTeIGHT" r="1" fill="white"/>
                 <circle class="crc" id="EIGHT" r="5" fill="#0086ff">
                     <animateMotion
-                      dur="5s"
-                      begin=".7s"
-                      repeatCount="indefinite"
-                      path="M238.35 241.53, 192.5 180.95z"/>
+                        id="saas5"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin=".4s;saas54.end+3s"
+                        keyPoints=".9;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M238.35 241.53, 192.5 180.95z"/>
+                    <animateMotion
+                        id="saas54"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin="saas5.end"
+                        keyPoints="1;.9"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M238.35 241.53, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTnINE" r="1" fill="white"/>
+
+
+
                 <circle class="crc" id="NINE" r="5" fill="blue">
                     <animateMotion
-                      dur="5s"
-                      begin=".8s"
-                      repeatCount="indefinite"
-                      path="M283.6 208.33, 192.5 180.95z"/>
+                        dur="5s"
+                        begin=".2s"
+                        keyPoints=".5;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        repeatCount="indefinite"
+                        path="M283.6 208.33, 192.5 180.95z"/>
                 </circle>
-                <circle class="tst" id="TESTtEN" r="1" fill="white"/>
                 <circle class="crc" id="TEN" r="5" fill="purple">
                     <animateMotion
-                      dur="5s"
-                      begin=".9s"
-                      repeatCount="indefinite"
-                      path="M266.6 154.65, 192.5 180.95z"/>
+                        id="saas6"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin=".5s;saas64.end+3s"
+                        keyPoints=".9;1"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M266.6 154.65, 192.5 180.95z"/>
+                    <animateMotion
+                        id="saas64"
+                        dur=".1s"
+                        fill="freeze" restart="whenNotActive"
+                        begin="saas6.end"
+                        keyPoints="1;.9"
+                        keyTimes="0;1"
+                        calcMode="paced"
+                        path="M266.6 154.65, 192.5 180.95z"/>
                 </circle>
-                <line class="line" id="line0" x1="50" y1="50" x2="300" y2="50"/>
-                <line class="line" id="line1" x1="50" y1="60" x2="300" y2="60"/>
-                <line class="line" id="line2" x1="50" y1="70" x2="300" y2="70"/>
-                <line class="line" id="line3" x1="50" y1="80" x2="300" y2="80"/>
-                <line class="line" id="line4" x1="50" y1="90" x2="300" y2="90"/>
-                <line class="line" id="line5" x1="50" y1="50" x2="300" y2="50"/>
-                <line class="line" id="line6" x1="50" y1="60" x2="300" y2="60"/>
-                <line class="line" id="line7" x1="50" y1="70" x2="300" y2="70"/>
-                <line class="line" id="line8" x1="50" y1="80" x2="300" y2="80"/>
-                <line class="line" id="line9" x1="50" y1="90" x2="300" y2="90"/>
-                <path id="pnta" d="M10 10 50 10 50 20 10 20z" fill="white" stroke="white"/>
+
+                <path id="pnta" d="M10 10 50 10 50 20 10 20z" stroke="white"/>
             </svg>
         </section>
 

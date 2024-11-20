@@ -986,6 +986,17 @@ a:link, a:visited {
   transition: clip-path 0.3s cubic-bezier(0, 0.5, 0.5, 1), -webkit-clip-path 0.3s cubic-bezier(0, 0.5, 0.5, 1);
 }
 
+.crc {
+  fill: none;
+}
+
+#losta #pnta {
+  fill: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
+}
+#losta .deg {
+  stroke: none;
+}
+
 .navigation {
   position: sticky;
   left: 0;
