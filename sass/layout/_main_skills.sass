@@ -59,7 +59,7 @@
     left: 50%
     top: 50%
     transition: transform 1s ease, filter .5s ease
-    // perspective: 100rem
+    perspective: 100rem
     & > .software
         position: absolute
         stroke: none
@@ -71,6 +71,21 @@
         transform: translate(-50%,-50%)
         transform-origin: center
         transition: transform .2s ease, opacity .5s ease
+    #HTML-CSS
+        left: 12%
+        top: 33%
+    #JS
+        left: 25%
+        top: 84%
+    #SASS
+        left: 73%
+        top: 84%
+    #GIT
+        left: 85%
+        top: 35%
+    #REACT
+        left: 50%
+        top: 6%
     &_circle
         position: relative
         vector-effect: non-scaling-stroke
@@ -94,15 +109,27 @@
         stroke: none
         opacity: 0.6
         left: 50%
-        top: 50%
+        top: 30%
         transform: translate(-50%,-50%)
         transition: transform .5s ease, opacity .5s ease
+        animation: descrVisible 1s ease
     .description
         position: absolute
         left: 50%
         top: 42%
-        transform: translate(-50%, 0%)
+        translate: -50% 0%
+        // transform: translate(-50%, 0%)
         text-align: center
+        animation: descrVisible 1.5s ease
+
+@keyframes descrVisible
+    0%
+        filter: blur(2px)
+        transform: translateZ(-3rem)
+    100%
+        filter: blur()
+        transform: translateZ(0rem)
+
 
 .arrow
     position: absolute
@@ -110,6 +137,7 @@
     width: max-content
     left: 50%
     top: 50%
+    z-index: 3
     transform: translate(-50%, -50%)
     transition: filter .3s ease, opacity .3s ease
     & > svg
@@ -120,3 +148,7 @@
     left: 20%
 .right
     left: 75.4%
+
+#HTML-CSS
+    left: 12%
+    top: 33%

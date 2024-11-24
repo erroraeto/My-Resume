@@ -1192,6 +1192,8 @@ a:link, a:visited {
   transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease, -webkit-transform 1s ease, -webkit-filter 0.5s ease;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
 }
 .container_software > .software {
   position: absolute;
@@ -1209,6 +1211,26 @@ a:link, a:visited {
   transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
   transition: transform 0.2s ease, opacity 0.5s ease;
   transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
+}
+.container_software #HTML-CSS {
+  left: 12%;
+  top: 33%;
+}
+.container_software #JS {
+  left: 25%;
+  top: 84%;
+}
+.container_software #SASS {
+  left: 73%;
+  top: 84%;
+}
+.container_software #GIT {
+  left: 85%;
+  top: 35%;
+}
+.container_software #REACT {
+  left: 50%;
+  top: 6%;
 }
 .container_software_circle {
   position: relative;
@@ -1241,23 +1263,55 @@ a:link, a:visited {
   stroke: none;
   opacity: 0.6;
   left: 50%;
-  top: 50%;
+  top: 30%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: transform 0.5s ease, opacity 0.5s ease;
   transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-animation: descrVisible 1s ease;
+          animation: descrVisible 1s ease;
 }
 .container_software .description {
   position: absolute;
   left: 50%;
   top: 42%;
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+  translate: -50% 0%;
   text-align: center;
+  -webkit-animation: descrVisible 1.5s ease;
+          animation: descrVisible 1.5s ease;
 }
 
+@-webkit-keyframes descrVisible {
+  0% {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: translateZ(-3rem);
+            transform: translateZ(-3rem);
+  }
+  100% {
+    -webkit-filter: blur();
+            filter: blur();
+    -webkit-transform: translateZ(0rem);
+            transform: translateZ(0rem);
+  }
+}
+
+@keyframes descrVisible {
+  0% {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: translateZ(-3rem);
+            transform: translateZ(-3rem);
+  }
+  100% {
+    -webkit-filter: blur();
+            filter: blur();
+    -webkit-transform: translateZ(0rem);
+            transform: translateZ(0rem);
+  }
+}
 .arrow {
   position: absolute;
   height: -webkit-max-content;
@@ -1268,6 +1322,7 @@ a:link, a:visited {
   width: max-content;
   left: 50%;
   top: 50%;
+  z-index: 3;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
@@ -1287,6 +1342,11 @@ a:link, a:visited {
 
 .right {
   left: 75.4%;
+}
+
+#HTML-CSS {
+  left: 12%;
+  top: 33%;
 }
 
 .footer {
