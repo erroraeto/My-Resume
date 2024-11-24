@@ -41,8 +41,8 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    // home.scrollIntoView({behavior: "auto"});
-    skill.scrollIntoView({behavior: "auto"});
+    home.scrollIntoView({behavior: "auto"});
+    // skill.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
 
