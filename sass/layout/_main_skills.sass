@@ -110,26 +110,26 @@
         opacity: 0.6
         left: 50%
         top: 30%
-        transform: translate(-50%,-50%)
-        transition: transform .5s ease, opacity .5s ease
-        animation: descrVisible 1s ease
+        translate: -50% -50%
+        animation: descrVisible .5s ease
     .description
         position: absolute
         left: 50%
         top: 42%
         text-align: center
-        transition: transform .5s ease, filter .5s ease
-        transform: translate(-50%, 0%)
+        translate: -50% 0%
         animation: descrVisible .5s ease
+        svg
+            position: absolute
+            translate: -50% -34%
+            stroke: $color-juice-blue-opac
+            stroke-width: .1px
 
 @keyframes descrVisible
     0%
         filter: blur(2px)
-        transform: translate(-50%, 0%) translateZ(-3rem)
     100%
         filter: blur()
-        transform: translate(-50%, 0%) translateZ(0rem)
-
 
 .arrow
     position: absolute

@@ -160,7 +160,7 @@ let num = {
     j: 0,
     prev: -1,
 };
-let state = true;
+// let state = true;
 
 const sftSelect = {
     'HTML-CSS' : 'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
@@ -172,7 +172,7 @@ const sftSelect = {
 
 let softTrg = 0;
 
-document.addEventListener('mouseover', async function(e) {
+document.addEventListener('mouseover', function(e) {
     if (e.target.closest('.software')) {
         let targ = e.target.closest('.software');
         let i = 0;
@@ -183,14 +183,11 @@ document.addEventListener('mouseover', async function(e) {
                 if (softTrg != targ.id) {
                     for (use of softwareSlct.children) {
                         use.href.baseVal = '#' + targ.lastElementChild.id;
-                        use.style.display = "none";
-                        await sleep(50);
-                        use.style.display = "";
+                        ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
                     }
                     description.innerHTML = sftSelect[targ.id];
-                    description.style.display = "none";
-                    await sleep(50);
-                    description.style.display = "";
+                    ["none", ""].forEach( (st,i) => {setTimeout(() => {softwareSlct.style.display = st;}, i * 15);});
+                    ["none", ""].forEach( (st,i) => {setTimeout(() => {description.style.display = st;}, i * 20);});
                 }
                 softTrg = targ.id;
                 break;
