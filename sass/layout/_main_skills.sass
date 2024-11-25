@@ -117,18 +117,18 @@
         position: absolute
         left: 50%
         top: 42%
-        translate: -50% 0%
-        // transform: translate(-50%, 0%)
         text-align: center
-        animation: descrVisible 1.5s ease
+        transition: transform .5s ease, filter .5s ease
+        transform: translate(-50%, 0%)
+        animation: descrVisible .5s ease
 
 @keyframes descrVisible
     0%
         filter: blur(2px)
-        transform: translateZ(-3rem)
+        transform: translate(-50%, 0%) translateZ(-3rem)
     100%
         filter: blur()
-        transform: translateZ(0rem)
+        transform: translate(-50%, 0%) translateZ(0rem)
 
 
 .arrow

@@ -41,8 +41,8 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    home.scrollIntoView({behavior: "auto"});
-    // skill.scrollIntoView({behavior: "auto"});
+    // home.scrollIntoView({behavior: "auto"});
+    skill.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
 
@@ -172,7 +172,7 @@ const sftSelect = {
 
 let softTrg = 0;
 
-document.addEventListener('mouseover', function(e) {
+document.addEventListener('mouseover', async function(e) {
     if (e.target.closest('.software')) {
         let targ = e.target.closest('.software');
         let i = 0;
@@ -181,13 +181,17 @@ document.addEventListener('mouseover', function(e) {
                 software[i].style = "transform: translateZ(2rem) translate(-50%,-50%); opacity: 1;";
                 share[i].style = "filter: blur(); opacity: 1;";
                 if (softTrg != targ.id) {
-                    for (use of softwareSlct.children) use.href.baseVal = '#' + targ.lastElementChild.id;
-                    // description.style = "animation-play-state: running";
-                    description.style.animationPlayState = "running";
+                    for (use of softwareSlct.children) {
+                        use.href.baseVal = '#' + targ.lastElementChild.id;
+                        use.style.display = "none";
+                        await sleep(50);
+                        use.style.display = "";
+                    }
                     description.innerHTML = sftSelect[targ.id];
+                    description.style.display = "none";
+                    await sleep(50);
+                    description.style.display = "";
                 }
-                // description.style = "";
-                // description.style.animationPlayState = "";
                 softTrg = targ.id;
                 break;
             } else {
