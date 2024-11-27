@@ -7,12 +7,10 @@ html
     color-scheme: dark
     font-size: 62.5%
     scroll-behavior: smooth
-    // user-zoom: fixed
     overflow: hidden
 
 body
     background: black
-    // overflow: hidden
     perspective: 100rem
     width: max-content
     &::after
@@ -25,6 +23,19 @@ body
         z-index: -10
         mask-image: radial-gradient(rgb(0 0 0), rgb(0 0 0), rgb(0 0 0 / .2), transparent)
         background: radial-gradient(#c5e9f739 1px, transparent 0) -1.9rem -1.9rem / 1rem 1rem
+
+@media (max-width: 800px)
+    html
+        // position: fixed
+        // overflow-x: hidden
+    body
+        // position: fixed
+    .navigation
+        // position: fixed !important
+        // backface-visibility: hidden
+
+// @viewport
+//   user-zoom: fixed
 
 a:link, a:visited
     text-decoration: none

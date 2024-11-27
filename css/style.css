@@ -999,6 +999,7 @@ a:link, a:visited {
 
 .navigation {
   position: sticky;
+  position: -webkit-sticky;
   left: 0;
   top: 0;
   height: 9vh;
