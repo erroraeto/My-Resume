@@ -92,11 +92,11 @@
         stroke: $color-juice-blue
         stroke-width: 1px
         fill: none
+        overflow: hidden
         & :first-child
-            fill: $color-juice-blue
+            fill: $color-juice-blue-opac-2
             filter: blur(2rem)
             stroke: none
-            opacity: 0.2
         & > *:not(:first-child)
             stroke-width: 2px
             filter: blur(1px)
@@ -122,7 +122,7 @@
         svg
             position: absolute
             translate: -50% -34%
-            stroke: $color-juice-blue-opac
+            stroke: $color-juice-blue-opac-6
             stroke-width: .1px
 
 @keyframes descrVisible

@@ -41,8 +41,7 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    // home.scrollIntoView({behavior: "auto"});
-    skill.scrollIntoView({behavior: "auto"});
+    home.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
 
@@ -148,19 +147,11 @@ document.addEventListener('mouseover', function(e) {
 })
 
 //Выбор ПО
-let circle = document.querySelector(".container_software_circle");
 let description = document.querySelector(".description");
+let softwareSlct = document.querySelector("#selected");
 let software = document.querySelectorAll(".software");
 let share = document.querySelectorAll(".share");
-let softwareSlct = document.querySelector("#selected");
-let content;
-let icon;
-let num = {
-    i: 0,
-    j: 0,
-    prev: -1,
-};
-// let state = true;
+let softTrg = 0;
 
 const sftSelect = {
     'HTML-CSS' : 'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
@@ -170,7 +161,6 @@ const sftSelect = {
     'REACT' : 'I don`t fucking know.'
 };
 
-let softTrg = 0;
 
 document.addEventListener('mouseover', function(e) {
     if (e.target.closest('.software')) {

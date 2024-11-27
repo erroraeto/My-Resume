@@ -1238,13 +1238,13 @@ a:link, a:visited {
   stroke: #64ffff;
   stroke-width: 1px;
   fill: none;
+  overflow: hidden;
 }
 .container_software_circle :first-child {
-  fill: #64ffff;
+  fill: rgba(100, 255, 255, 0.2);
   -webkit-filter: blur(2rem);
           filter: blur(2rem);
   stroke: none;
-  opacity: 0.2;
 }
 .container_software_circle > *:not(:first-child) {
   stroke-width: 2px;
