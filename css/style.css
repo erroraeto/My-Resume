@@ -531,6 +531,11 @@ body::after {
   background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 1px, transparent 0) -1.9rem -1.9rem/1rem 1rem;
 }
 
+@media (max-width: 800px) {
+  html {
+    font-size: 62.5%;
+  }
+}
 a:link, a:visited {
   text-decoration: none;
 }
@@ -583,7 +588,7 @@ a:link, a:visited {
           box-sizing: border-box;
   translate: -50% -50%;
   height: 100%;
-  width: 100%;
+  width: 12rem;
   left: 50%;
   top: 50%;
 }
@@ -999,7 +1004,6 @@ a:link, a:visited {
 
 .navigation {
   position: sticky;
-  position: -webkit-sticky;
   left: 0;
   top: 0;
   height: 9vh;
@@ -1097,30 +1101,38 @@ a:link, a:visited {
     stroke-dashoffset: -20;
   }
 }
+.container_abilities {
+  position: relative;
+  display: grid;
+  grid-template: 50% 50%/100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .container_skills {
   position: relative;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
   -webkit-transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease, -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   z-index: 1;
 }
-.container_skills .parametr {
+.container_skills_parametr {
   position: absolute;
-  height: 26.67rem;
-  width: 28.05rem;
-  top: 48.8%;
+  top: 49.5%;
   left: 50%;
+  width: 48%;
+  aspect-ratio: 935/889;
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transform: translate(-50%, -50%);
@@ -1134,8 +1146,13 @@ a:link, a:visited {
   background: radial-gradient(at 50% 45.8%, transparent 0%, rgba(15, 116, 64, 0.4078431373) 30%, #0f7440 50%), conic-gradient(from 0.5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg);
 }
 .container_skills_status {
-  display: block;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  aspect-ratio: 7/5;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   shape-rendering: geometricprecision;
 }
 .container_skills_status :first-child {
@@ -1146,8 +1163,8 @@ a:link, a:visited {
   opacity: 0.3;
   -webkit-transform-origin: 50% 47%;
           transform-origin: 50% 47%;
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
   -webkit-animation: openBorder 0.5s ease 0.5s backwards;
           animation: openBorder 0.5s ease 0.5s backwards;
 }
@@ -1156,6 +1173,8 @@ a:link, a:visited {
   vector-effect: non-scaling-stroke;
   border: 1px solid #d1ffff;
   visibility: hidden;
+  -webkit-transform: scale(1.35) translate(-13%, -12%);
+          transform: scale(1.35) translate(-13%, -12%);
   fill: #d1ffff;
   cursor: pointer;
   -webkit-animation: inclusion 1s ease 0.3s both;
@@ -1179,16 +1198,9 @@ a:link, a:visited {
 }
 
 .container_software {
-  display: block;
-  position: absolute;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  left: 50%;
-  top: 50%;
+  position: relative;
+  height: 100%;
+  width: 100%;
   -webkit-transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: -webkit-transform 1s ease, -webkit-filter 0.5s ease;
   transition: transform 1s ease, filter 0.5s ease;
@@ -1214,19 +1226,19 @@ a:link, a:visited {
   transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
 }
 .container_software #HTML-CSS {
-  left: 12%;
-  top: 33%;
+  left: 16%;
+  top: 35%;
 }
 .container_software #JS {
-  left: 25%;
+  left: 27%;
   top: 84%;
 }
 .container_software #SASS {
-  left: 73%;
+  left: 71%;
   top: 84%;
 }
 .container_software #GIT {
-  left: 85%;
+  left: 80%;
   top: 35%;
 }
 .container_software #REACT {
@@ -1234,7 +1246,13 @@ a:link, a:visited {
   top: 6%;
 }
 .container_software_circle {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  aspect-ratio: 7/6;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   vector-effect: non-scaling-stroke;
   stroke: #64ffff;
   stroke-width: 1px;
@@ -1265,6 +1283,8 @@ a:link, a:visited {
   opacity: 0.6;
   left: 50%;
   top: 30%;
+  width: 20%;
+  aspect-ratio: 2/1;
   translate: -50% -50%;
   -webkit-animation: descrVisible 0.5s ease;
           animation: descrVisible 0.5s ease;
@@ -1273,14 +1293,19 @@ a:link, a:visited {
   position: absolute;
   left: 50%;
   top: 42%;
+  width: 35%;
   text-align: center;
   translate: -50% 0%;
   -webkit-animation: descrVisible 0.5s ease;
           animation: descrVisible 0.5s ease;
 }
 .container_software .description svg {
-  position: absolute;
-  translate: -50% -34%;
+  position: relative;
+  left: 50%;
+  top: 100%;
+  width: 40vw;
+  aspect-ratio: 1/1;
+  translate: -50% -50%;
   stroke: rgba(100, 255, 255, 0.6);
   stroke-width: 0.1px;
 }
@@ -1336,11 +1361,6 @@ a:link, a:visited {
 
 .right {
   left: 75.4%;
-}
-
-#HTML-CSS {
-  left: 12%;
-  top: 33%;
 }
 
 .footer {

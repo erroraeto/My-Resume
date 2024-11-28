@@ -53,7 +53,7 @@ document.addEventListener('click', async function (e) {
 });
 
 //Анимация скиллов
-let parametr = document.querySelector(".parametr");
+let parametr = document.querySelector(".container_skills_parametr");
 
 const mapCoupleCP = new Map([
     [/64% 65%/g, '67% 70.62%'],
