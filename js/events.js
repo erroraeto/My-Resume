@@ -41,7 +41,8 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    home.scrollIntoView({behavior: "auto"});
+    skill.scrollIntoView({behavior: "auto"});
+    // home.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
 
@@ -150,6 +151,7 @@ document.addEventListener('mouseover', function(e) {
 let description = document.querySelector(".description");
 let softwareSlct = document.querySelector("#selected");
 let software = document.querySelectorAll(".software");
+// let software = document.querySelectorAll(".software > g");
 let share = document.querySelectorAll(".share");
 let softTrg = 0;
 
@@ -164,11 +166,14 @@ const sftSelect = {
 
 document.addEventListener('mouseover', function(e) {
     if (e.target.closest('.software')) {
+    // if (e.target.closest('.software > g')) {
         let targ = e.target.closest('.software');
+        // let targ = e.target.closest('.software > g');
         let i = 0;
         for (el of software) {
             if (targ == el) {
-                software[i].style = "transform: translateZ(2rem) translate(-50%,-50%); opacity: 1;";
+                // software[i].style = "transform: translateZ(2rem) translate(-50%,-50%); opacity: 1;";
+                software[i].style = "transform: translateZ(2rem); opacity: 1;";
                 share[i].style = "filter: blur(); opacity: 1;";
                 if (softTrg != targ.id) {
                     for (use of softwareSlct.children) {

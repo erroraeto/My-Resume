@@ -528,12 +528,12 @@ body::after {
   z-index: -10;
   -webkit-mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
           mask-image: radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.2), transparent);
-  background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 1px, transparent 0) -1.9rem -1.9rem/1rem 1rem;
+  background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 0.1rem, transparent 0) -1.9rem -1.9rem/1rem 1rem;
 }
 
 @media (max-width: 800px) {
   html {
-    font-size: 62.5%;
+    font-size: 55%;
   }
 }
 a:link, a:visited {
@@ -1208,48 +1208,11 @@ a:link, a:visited {
   -webkit-perspective: 100rem;
           perspective: 100rem;
 }
-.container_software > .software {
-  position: absolute;
-  stroke: none;
-  fill: #64ffff;
-  cursor: pointer;
-  opacity: 0.6;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
-  transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
-  transition: transform 0.2s ease, opacity 0.5s ease;
-  transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
-}
-.container_software #HTML-CSS {
-  left: 16%;
-  top: 35%;
-}
-.container_software #JS {
-  left: 27%;
-  top: 84%;
-}
-.container_software #SASS {
-  left: 71%;
-  top: 84%;
-}
-.container_software #GIT {
-  left: 80%;
-  top: 35%;
-}
-.container_software #REACT {
-  left: 50%;
-  top: 6%;
-}
 .container_software_circle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 85%;
+  width: 100%;
   aspect-ratio: 7/6;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1258,6 +1221,11 @@ a:link, a:visited {
   stroke-width: 1px;
   fill: none;
   overflow: hidden;
+}
+.container_software_circle > * {
+  position: absolute;
+  -webkit-transform: translate(50%, 50%) scale(0.9);
+          transform: translate(50%, 50%) scale(0.9);
 }
 .container_software_circle :first-child {
   fill: rgba(100, 255, 255, 0.2);
@@ -1275,6 +1243,35 @@ a:link, a:visited {
   transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
   transition: filter 0.3s ease, opacity 0.3s ease;
   transition: filter 0.3s ease, opacity 0.3s ease, -webkit-filter 0.3s ease;
+}
+.container_software_icons {
+  position: absolute;
+  cursor: pointer;
+  stroke: none;
+  fill: #64ffff;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  aspect-ratio: 7/6;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+}
+.container_software_icons > .software {
+  position: absolute;
+  opacity: 0.6;
+  scale: 0.8;
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease, -webkit-transform 0.2s ease;
 }
 .container_software .software_main {
   position: absolute;
