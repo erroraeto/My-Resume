@@ -53,6 +53,56 @@ document.addEventListener('click', async function (e) {
     containerChoosed.scrollIntoView({ behavior: 'smooth' });
 });
 
+
+//Свайпы секций
+let main = document.querySelector('.main')
+
+document.addEventListener('touchstart', handleTouchStart, false);  
+document.addEventListener('touchmove', handleTouchMove, false);
+
+let xDown = null;
+let yDown = null;
+
+function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+    main.children;
+    main.children.length;
+};
+
+let tochScrollPos = 2;
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) return;
+
+    let xUp = evt.touches[0].clientX;
+    let yUp = evt.touches[0].clientY;
+
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+
+    // немного поясню здесь. Тут берутся модули движения по оси абсцисс и ординат (почему модули? потому что если движение сделано влево или вниз, то его показатель будет отрицательным) и сравнивается, чего было больше: движения по абсциссам или ординатам. Нужно это для того, чтобы, если пользователь провел вправо, но немного наискосок вниз, сработал именно коллбэк для движения вправо, а ни как-то иначе.
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+        if ( xDiff > 0 ) {
+            /* left swipe */
+            if (--main.children.length > tochScrollPos) ++tochScrollPos;
+        } else {
+            /* right swipe */
+            if (0 < tochScrollPos) --tochScrollPos;
+        }
+    } else { // Это вам, в общем-то, не надо, вы ведь только влево-вправо собираетесь двигать
+        if ( yDiff > 0 ) {
+            /* up swipe */ 
+        } else { 
+            /* down swipe */
+        }
+    }
+    xDown = null;
+    yDown = null;
+    console.log(tochScrollPos);
+    main.children[tochScrollPos].scrollIntoView({ behavior: 'smooth' });
+};
+
 //Анимация скиллов
 let parametr = document.querySelector(".container_skills_parametr");
 
@@ -151,7 +201,6 @@ document.addEventListener('mouseover', function(e) {
 let description = document.querySelector(".description");
 let softwareSlct = document.querySelector("#selected");
 let software = document.querySelectorAll(".software");
-// let software = document.querySelectorAll(".software > g");
 let share = document.querySelectorAll(".share");
 let softTrg = 0;
 
@@ -176,10 +225,11 @@ document.addEventListener('mouseover', function(e) {
                 software[i].style = "transform: translateZ(2rem); opacity: 1;";
                 share[i].style = "filter: blur(); opacity: 1;";
                 if (softTrg != targ.id) {
-                    for (use of softwareSlct.children) {
-                        use.href.baseVal = '#' + targ.lastElementChild.id;
-                        ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
-                    }
+                    softwareSlct.children[2].innerHTML = targ.lastElementChild.firstElementChild.outerHTML;
+                    // for (use of softwareSlct.children) {
+                    //     use.href.baseVal = '#' + targ.lastElementChild.id;
+                    //     ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
+                    // }
                     description.innerHTML = sftSelect[targ.id];
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {softwareSlct.style.display = st;}, i * 15);});
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {description.style.display = st;}, i * 20);});

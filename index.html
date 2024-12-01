@@ -235,12 +235,12 @@
             <div class="container_software">
             <!-- <div class="container_software" style="z-index: -1; opacity: 0.5; transform: translate3d(-10%, -50%, -2rem) scale(0.5); filter: blur(2px)"> -->
                 <svg class="container_software_circle" viewbox="0 0 385 385">
-                    <circle cx="0" cy="0" r="130"/>
-                    <circle class="share" stroke-dashoffset="483" stroke-dasharray="171 710" cx="0" cy="0" r="140"/>
-                    <circle class="share" stroke-dashoffset="658" stroke-dasharray="171 710" cx="0" cy="0" r="140"/>
-                    <circle class="share" stroke-dashoffset="834" stroke-dasharray="171 710" cx="0" cy="0" r="140"/>
-                    <circle class="share" stroke-dashoffset="130" stroke-dasharray="171 710" cx="0" cy="0" r="140"/>
-                    <circle class="share" stroke-dashoffset="307" stroke-dasharray="171 710" cx="0" cy="0" r="140"/>
+                    <circle cx="192.5" cy="192.5" r="110"/>
+                    <circle class="share" stroke-dashoffset="420" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
+                    <circle class="share" stroke-dashoffset="572" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
+                    <circle class="share" stroke-dashoffset="724" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
+                    <circle class="share" stroke-dashoffset="116" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
+                    <circle class="share" stroke-dashoffset="268" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
                 </svg>
                 <svg class="container_software_icons" viewbox="0 0 385 385">
                     <g id="HTML-CSS" class="software">
@@ -284,16 +284,27 @@
                         </g>
                     </g>
                 </svg>
-                <svg class="software_main" id="selected" viewBox="0 0 48 48">
-                    <use href="#" x="-1" style="fill: red"/>
-                    <use href="#" x="1" style="fill: blue"/>
-                    <use href="#"/>
-                </svg>
-                <p class="description">
-                    <!-- <svg viewbox="0 0 10 10" stroke-linecap="round">
-                        <path d="M1,1 9,9 M9,1 1,9"/>
-                    </svg> -->
-                </p>
+                <div class="container_software_desc">
+                    <svg id="arc_L" xml:space="preserve" style="visibility: hidden; fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" width="50%" height="100%" viewBox="0 0 192.5 385">
+                        <path d="M192.5 380A1 1 0 01192.5 5L192.5 0 0 0 0 420 192.5 420Z"/>
+                    </svg>
+                    <svg id="arc_R" xml:space="preserve" style="visibility: hidden; fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" width="50%" height="100%" viewBox="0 0 192.5 385">
+                        <path d="M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z"/>
+                    </svg>
+                    <svg class="software_main" id="selected" viewBox="0 0 48 48">
+                        <use href="#select" x="-1" style="fill: red"/>
+                        <use href="#select" x="1" style="fill: blue"/>
+                        <!-- <use href="#"/> -->
+                        <g id="select">
+                        </g>
+                    </svg>
+                    <p class="description">
+                        <!-- <span></span> -->
+                        <!-- <svg viewbox="0 0 10 10" stroke-linecap="round">
+                            <path d="M1,1 9,9 M9,1 1,9"/>
+                        </svg> -->
+                    </p>
+                </div>
             </div>
             <!-- <div class="arrow left" style="opacity: 0.6; filter: blur(2px);">
                 <svg id="left" height="5rem" width="5rem" viewbox="0 0 10 10" stroke-linecap="round">

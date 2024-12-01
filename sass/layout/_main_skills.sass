@@ -1,16 +1,18 @@
 .container_abilities
     position: relative
     display: grid
-    // grid-template: auto / 50% 50%
     grid-template: 50% 50% / 100%
     justify-content: center
-    align-items: center
+    place-items: center center
+    // grid-template: auto / 50% 50%
+    // align-items: center
+
 
 .container_skills
     position: relative
-    left: 50%
-    top: 50%
-    transform: translate(-50%, -50%)
+    // left: 50%
+    // top: 50%
+    // transform: translate(-50%, -50%)
     height: 100%
     width: 100%
     transition: transform 1s ease, filter .5s ease
@@ -71,21 +73,19 @@
     width: 100%
     transition: transform 1s ease, filter .5s ease
     perspective: 100rem
+    display: flex
+    justify-content: center
+    align-content: center
+    align-items: center
     &_circle
         position: absolute
-        top: 50%
-        left: 50%
-        width: 100%
         aspect-ratio: 7/6
-        transform: translate(-50%, -50%)
+        width: 100%
         vector-effect: non-scaling-stroke
         stroke: $color-juice-blue
         stroke-width: 1px
         fill: none
         overflow: hidden
-        & > *
-            position: absolute
-            transform: translate(50%, 50%) scale(.9)
         & :first-child
             fill: $color-juice-blue-opac-2
             filter: blur(2rem)
@@ -99,14 +99,11 @@
     &_icons
         position: absolute
         cursor: pointer
-        stroke: none
         fill: $color-juice-blue
-        left: 50%
-        top: 50%
-        width: 100%
+        stroke: none
         aspect-ratio: 7/6
-        transform: translate(-50%,-50%)
-        transform-origin: center
+        width: 100%
+        z-index: 2
         transition: transform .2s ease, opacity .5s ease
         perspective: 100rem
         & > .software
@@ -114,35 +111,60 @@
             opacity: 0.6
             scale: .8
             transition: transform .2s ease, opacity .5s ease
-    .software_main
+    &_desc
         position: absolute
+        aspect-ratio: 7/6
+        width: 55%
+        height: 50%
+        overflow: hidden
+        svg
+            width: 50%
+            height: auto
+            // visibility: hidden
+        #arc_R
+            float: right
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z'/%3E%3C/svg%3E%0A")
+        #arc_L
+            float: left
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M192.5 380A1 1 0 01192.5 5L192.5 0 0 0 0 420 192.5 420Z'/%3E%3C/svg%3E%0A")
+    .software_main
         fill: $color-juice-blue
         stroke: none
         opacity: 0.6
-        left: 50%
-        top: 30%
+        margin-top: 12%
+        top: 10%
         width: 20%
-        aspect-ratio: 2/1
-        translate: -50% -50%
         animation: descrVisible .5s ease
     .description
-        position: absolute
-        left: 50%
-        top: 42%
-        width: 35%
-        // aspect-ratio: 2/1
+        vertical-align: baseline
         text-align: center
-        translate: -50% 0%
+        font-size: 1.2rem
+        margin-top: 2%
+        // height: 50%
+        // width: 100%
         animation: descrVisible .5s ease
+        span
+            font-weight: unset
+            display: flex
+            justify-content: center
+            align-content: center
+            align-items: center
         svg
             position: relative
-            left: 50%
-            top: 100%
-            width: 40vw
+            // left: 50%
+            // top: 100%
+            width: 100%
             aspect-ratio: 1/1
-            translate: -50% -50%
+            // translate: -50% -50%
             stroke: $color-juice-blue-opac-6
             stroke-width: .1px
+
+
+
+
+
+
+
 
 @keyframes descrVisible
     0%
