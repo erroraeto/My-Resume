@@ -90,7 +90,7 @@ function handleTouchMove(evt) {
             /* right swipe */
             if (0 < tochScrollPos) --tochScrollPos;
         }
-    } else { // Это вам, в общем-то, не надо, вы ведь только влево-вправо собираетесь двигать
+    } else {
         if ( yDiff > 0 ) {
             /* up swipe */ 
         } else { 
