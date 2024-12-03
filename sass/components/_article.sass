@@ -2,20 +2,36 @@
     position: relative
     transform-style: preserve-3d
     backface-visibility: hidden
+    height: 100%
+    justify-self: center
+    // display: grid
+    // grid-template: repeat(3,auto) / 100%
+    // justify-content: center
+    // align-items: center
     &_title
         position: relative
-        height: 6.4rem
+        height: 12%
+        // height: 6.4rem
         top: .5rem
         text-align: center
         -webkit-text-stroke: 1px $color-blue
+        h2
+            display: flex
+            justify-content: center
+            align-content: center
+            align-items: flex-start
+            height: 100%
     &_description
         position: relative
-        height: 42.2rem
+        height: 76%
+        // height: 42.2rem
         p
             position: relative
             font-size: 1.9rem
             padding: 2rem
+            height: 100%
             text-align: justify
+            hyphens: auto
             br
                 margin-bottom: 1rem
     &_resume
@@ -23,7 +39,8 @@
         display: grid
         place-items: center
         grid-template: auto / repeat(2, auto)
-        height: 6rem
+        // height: 6rem
+        height: 12%
         width: 100%
         left: 0
         top: -.5rem
@@ -33,7 +50,8 @@
         & > *
             position: relative
             display: inline-block
-            height: 6rem
+            // height: 6rem
+            height: 100%
             width: 100%
             transition: transform .2s ease, filter .2s ease
             will-change: transform, filter
@@ -50,3 +68,59 @@
             top: 60%
             transform: translate(-50%, -50%)
             transform-origin: center
+
+@media (max-width: 1440px)
+    .article_title
+    .article_description
+        p
+            font-size: 1.88rem
+    .article_resume
+
+@media (max-width: 1024px)
+    .article
+        height: 90%
+    .article_title
+    .article_description
+        p
+            font-size: 1.5rem
+            padding: 1.4rem
+    .article_resume
+        span
+            font-size: 1.8rem
+
+@media (max-width: 768px)
+    .article
+            height: 70%
+    .article_title
+    .article_description
+        p
+            font-size: 1.29rem
+            padding: 1.2rem
+    .article_resume
+        span
+            font-size: 1.8rem
+
+@media (max-width: 426px)
+    .article
+            height: 100%
+            width: 80%
+    .article_title
+    .article_description
+        p
+            font-size: 1.15rem
+            padding: 1rem
+    .article_resume
+        span
+            font-size: 1.6rem
+
+@media (max-width: 376px)
+    .article
+        width: 80%
+    .article_title
+    .article_description
+        p
+            font-size: 1.1rem
+
+@media (max-width: 320px)
+    .article
+        width: 100%

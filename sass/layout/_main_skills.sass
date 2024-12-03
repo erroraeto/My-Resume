@@ -1,11 +1,16 @@
 .container_abilities
     position: relative
     display: grid
-    grid-template: 50% 50% / 100%
-    justify-content: center
+    grid-template: 100% / 50% 50%
     place-items: center center
-    // grid-template: auto / 50% 50%
-    // align-items: center
+    justify-content: center
+
+@media (max-width: 400px)
+    .container_abilities
+        grid-template: 50% 50% / 100%
+
+
+
 
 
 .container_skills
@@ -165,7 +170,6 @@
 
 
 
-
 @keyframes descrVisible
     0%
         filter: blur(2px)
@@ -195,3 +199,4 @@
 //     opacity: 0.5
 //     transform: translate3d(-10%, -50%, -2rem) scale(0.5)
 //     filter: blur(2px)
+
