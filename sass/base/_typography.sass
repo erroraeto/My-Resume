@@ -15,21 +15,21 @@ h2
     line-height: 1.6
     text-shadow: 1px 1px 2px rgba(255, 0, 0, 1), -1px -1px 2px rgba(0, 0, 255, 1), 0px 0px 2px rgb(0, 0, 0)
 
-@media (max-width: 1024px)
-    h2
-        font-size: 3rem
-        line-height: 1.5
+// @media (max-width: 1024px)
+//     h2
+//         font-size: 3rem
+//         line-height: 1.5
 
-@media (max-width: 768px)
-    h2
-        font-size: 2.4rem
-        line-height: 1.8
+// @media (max-width: 768px)
+//     h2
+//         font-size: 2.4rem
+//         line-height: 1.8
 
-@media (max-width: 426px)
-    h2
-        font-weight: 500
-        font-size: 2.2rem
-        line-height: 1.3
+// @media (max-width: 426px)
+//     h2
+//         font-weight: 500
+//         font-size: 2.2rem
+//         line-height: 1.3
 
 
 p
@@ -37,6 +37,8 @@ p
 
 .frame_descr
     font-size: 2.4rem
+    @include respond(big-screen)
+        font-size: 2.2rem
 
 .blockR > *
     font-size: 1.8rem
@@ -44,6 +46,15 @@ p
 .statuses_state-title
     font-weight: 400
     font-size: 2.8rem
+
+.container_skills_status
+    @include respond(big-screen)
+        font-size: 1.3rem
+
+.description
+    font-size: 1.2rem
+    @include respond(big-screen)
+        font-size: 2.1rem
 
 span
     font-weight: 600

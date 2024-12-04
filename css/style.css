@@ -22,31 +22,17 @@ h2 {
   text-shadow: 1px 1px 2px rgb(255, 0, 0), -1px -1px 2px rgb(0, 0, 255), 0px 0px 2px rgb(0, 0, 0);
 }
 
-@media (max-width: 1024px) {
-  h2 {
-    font-size: 3rem;
-    line-height: 1.5;
-  }
-}
-@media (max-width: 768px) {
-  h2 {
-    font-size: 2.4rem;
-    line-height: 1.8;
-  }
-}
-@media (max-width: 426px) {
-  h2 {
-    font-weight: 500;
-    font-size: 2.2rem;
-    line-height: 1.3;
-  }
-}
 p {
   font-size: 2rem;
 }
 
 .frame_descr {
   font-size: 2.4rem;
+}
+@media (max-width: 1800px) {
+  .frame_descr {
+    font-size: 2.2rem;
+  }
 }
 
 .blockR > * {
@@ -56,6 +42,21 @@ p {
 .statuses_state-title {
   font-weight: 400;
   font-size: 2.8rem;
+}
+
+@media (max-width: 1800px) {
+  .container_skills_status {
+    font-size: 1.3rem;
+  }
+}
+
+.description {
+  font-size: 1.2rem;
+}
+@media (max-width: 1800px) {
+  .description {
+    font-size: 2.1rem;
+  }
 }
 
 span {
@@ -528,6 +529,11 @@ html {
   scroll-behavior: smooth;
   overflow: hidden;
 }
+@media (max-width: 1800px) {
+  html {
+    font-size: 67%;
+  }
+}
 
 body {
   background: black;
@@ -550,11 +556,6 @@ body::after {
   background: radial-gradient(rgba(197, 233, 247, 0.2235294118) 0.1rem, transparent 0) -1.9rem -1.9rem/1rem 1rem;
 }
 
-@media (max-width: 800px) {
-  html {
-    font-size: 55%;
-  }
-}
 a:link, a:visited {
   text-decoration: none;
 }
@@ -657,8 +658,9 @@ a:link, a:visited {
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  height: 100%;
   justify-self: center;
+  height: 100%;
+  aspect-ratio: 0.9/1;
 }
 .article_title {
   position: relative;
@@ -685,18 +687,29 @@ a:link, a:visited {
   position: relative;
   height: 76%;
 }
-.article_description p {
-  position: relative;
-  font-size: 1.9rem;
-  padding: 2rem;
+.article_description-text {
   height: 100%;
+  width: 100%;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+.article_description-text p {
+  font-size: 1.9rem;
+  padding: 1rem 2rem;
   text-align: justify;
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
           hyphens: auto;
 }
-.article_description p br {
-  margin-bottom: 1rem;
+.article_description-arrow {
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  bottom: 0%;
+  text-align: center;
+  vertical-align: baseline;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(100, 255, 255, 0.6)));
+  background: linear-gradient(transparent, rgba(100, 255, 255, 0.6));
 }
 .article_resume {
   position: relative;
@@ -745,61 +758,6 @@ a:link, a:visited {
           transform-origin: center;
 }
 
-@media (max-width: 1440px) {
-  .article_description p {
-    font-size: 1.88rem;
-  }
-}
-@media (max-width: 1024px) {
-  .article {
-    height: 90%;
-  }
-  .article_description p {
-    font-size: 1.5rem;
-    padding: 1.4rem;
-  }
-  .article_resume span {
-    font-size: 1.8rem;
-  }
-}
-@media (max-width: 768px) {
-  .article {
-    height: 70%;
-  }
-  .article_description p {
-    font-size: 1.29rem;
-    padding: 1.2rem;
-  }
-  .article_resume span {
-    font-size: 1.8rem;
-  }
-}
-@media (max-width: 426px) {
-  .article {
-    height: 100%;
-    width: 80%;
-  }
-  .article_description p {
-    font-size: 1.15rem;
-    padding: 1rem;
-  }
-  .article_resume span {
-    font-size: 1.6rem;
-  }
-}
-@media (max-width: 376px) {
-  .article {
-    width: 80%;
-  }
-  .article_description p {
-    font-size: 1.1rem;
-  }
-}
-@media (max-width: 320px) {
-  .article {
-    width: 100%;
-  }
-}
 .slider {
   position: relative;
   -webkit-perspective: 100rem;
@@ -829,6 +787,8 @@ a:link, a:visited {
           transform: rotateY(-10deg) translateY(-50%);
   -webkit-animation: scrollFrame 27s infinite ease;
           animation: scrollFrame 27s infinite ease;
+  -webkit-animation-play-state: inherit;
+          animation-play-state: inherit;
 }
 .slider > * > * {
   -webkit-filter: drop-shadow(0 0 1rem black);
@@ -836,6 +796,8 @@ a:link, a:visited {
   opacity: 0;
   -webkit-animation: opacityFrame 27s infinite ease;
           animation: opacityFrame 27s infinite ease;
+  -webkit-animation-play-state: inherit;
+          animation-play-state: inherit;
 }
 .slider .frame_1 {
   -webkit-animation-delay: -6s;
@@ -902,25 +864,6 @@ a:link, a:visited {
           animation-delay: 18s;
 }
 
-.slider_frame:active {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-transform: rotateY(0deg) translateY(-50%);
-          transform: rotateY(0deg) translateY(-50%);
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
-}
-
-.slider:active .slider_frame:not(:active) {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-
-.slider:active .slider_frame > * {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
-
 .border {
   z-index: -1;
   position: absolute;
@@ -946,9 +889,13 @@ a:link, a:visited {
           filter: drop-shadow(0 0 4px #d1ffff);
   fill: rgba(70, 151, 180, 0.5490196078);
 }
-.border_description {
-  stroke-dasharray: 2;
+.border_description :first-child {
   fill: rgba(28, 60, 72, 0.6);
+  stroke-dasharray: 2;
+}
+.border_description :last-child {
+  fill: #d1ffff;
+  stroke: none;
 }
 .border_resume {
   height: 102%;
@@ -1100,7 +1047,9 @@ a:link, a:visited {
   position: sticky;
   left: 0;
   top: 0;
-  height: 9vh;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   width: 100vw;
   padding: 1.5rem;
   z-index: 20;
@@ -1125,7 +1074,7 @@ a:link, a:visited {
   height: 80vh;
   padding: 5vh 5vw;
   display: grid;
-  grid-template: auto/repeat(3, auto);
+  grid-template: 100%/repeat(3, auto);
   grid-column-gap: 10vw;
   -webkit-transform-origin: center;
           transform-origin: center;
@@ -1149,7 +1098,7 @@ a:link, a:visited {
 
 .container_about {
   display: grid;
-  grid-template: auto/40% 60%;
+  grid-template: 100%/40% 60%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1160,11 +1109,6 @@ a:link, a:visited {
           perspective: 100rem;
 }
 
-@media (max-width: 426px) {
-  .container_about {
-    grid-template: 50% 50%/auto;
-  }
-}
 .container_home {
   position: relative;
   height: 80vh;
@@ -1370,22 +1314,21 @@ a:link, a:visited {
 }
 .container_software_desc {
   position: absolute;
-  aspect-ratio: 7/6;
+  aspect-ratio: 1/1;
   width: 55%;
-  height: 50%;
   overflow: hidden;
 }
-.container_software_desc svg {
+.container_software_desc .arc {
   width: 50%;
-  height: auto;
+  height: 100%;
 }
-.container_software_desc #arc_R {
-  float: right;
-  shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z'/%3E%3C/svg%3E%0A");
-}
-.container_software_desc #arc_L {
+.container_software_desc .float_L {
   float: left;
   shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M192.5 380A1 1 0 01192.5 5L192.5 0 0 0 0 420 192.5 420Z'/%3E%3C/svg%3E%0A");
+}
+.container_software_desc .float_R {
+  float: right;
+  shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z'/%3E%3C/svg%3E%0A");
 }
 .container_software .software_main {
   fill: #64ffff;
@@ -1393,31 +1336,26 @@ a:link, a:visited {
   opacity: 0.6;
   margin-top: 12%;
   top: 10%;
-  width: 20%;
+  width: 40%;
   -webkit-animation: descrVisible 0.5s ease;
           animation: descrVisible 0.5s ease;
+}
+@media (max-width: 1800px) {
+  .container_software .software_main {
+    margin-top: 20%;
+  }
 }
 .container_software .description {
   vertical-align: baseline;
   text-align: center;
-  font-size: 1.2rem;
   margin-top: 2%;
   -webkit-animation: descrVisible 0.5s ease;
           animation: descrVisible 0.5s ease;
 }
-.container_software .description span {
-  font-weight: unset;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+@media (max-width: 1800px) {
+  .container_software .description {
+    margin-top: 5%;
+  }
 }
 .container_software .description svg {
   position: relative;
@@ -1448,38 +1386,6 @@ a:link, a:visited {
             filter: blur();
   }
 }
-.arrow {
-  position: absolute;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  left: 50%;
-  top: 50%;
-  z-index: 3;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-filter 0.3s ease;
-  transition: filter 0.3s ease, opacity 0.3s ease;
-  transition: filter 0.3s ease, opacity 0.3s ease, -webkit-filter 0.3s ease;
-}
-.arrow > svg {
-  stroke: #64ffff;
-  stroke-width: 0.2px;
-  fill: none;
-}
-
-.left {
-  left: 20%;
-}
-
-.right {
-  left: 75.4%;
-}
-
 .footer {
   position: sticky;
   height: 16rem;

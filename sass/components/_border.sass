@@ -19,8 +19,12 @@
         filter: drop-shadow(0 0 4px $color-blue)
         fill: $background-color-blue
     &_description
-        stroke-dasharray: 2
-        fill: $background-color-blue_darken
+        & :first-child
+            fill: $background-color-blue_darken
+            stroke-dasharray: 2
+        & :last-child
+            fill: $color-blue
+            stroke: none
     &_resume
         height: 102%
         width: 112%

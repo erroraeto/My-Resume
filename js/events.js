@@ -53,11 +53,46 @@ document.addEventListener('click', async function (e) {
     containerChoosed.scrollIntoView({ behavior: 'smooth' });
 });
 
+//Отмена контекстного меню элементам с анимацией
+let notContMenu = document.querySelectorAll("#nCM");
+for (el of notContMenu) el.oncontextmenu = () => {return false};
+
+//Отмена контекстного меню slider
+let slider = document.querySelector(".slider");
+
+slider.addEventListener("pointerdown", (e) => {
+    slider.style = 'animation-play-state: paused';
+    e.target.closest('.slider_frame').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
+    slider.addEventListener("pointerup", () => {
+        slider.style = 'animation-play-state: running';
+        e.target.closest('.slider_frame').style = '';
+    });
+});
+// slider.oncontextmenu = function(event) {
+//     event.preventDefault();
+//     // event.stopPropagation();
+//     return false;
+// };
+// slider.addEventListener('touchmove', () => document.addEventListener('touchmove', handleTouchMove, false), false);
+// slider.addEventListener("touchend", (event) => event.preventDefault(), false);
+// slider.addEventListener("touchstart", tapHandler);
+
+// let tapedTwice = false;
+
+// function tapHandler(event) {
+//     if(!tapedTwice) {
+//         tapedTwice = true;
+//         setTimeout( function() { tapedTwice = false; }, 300 );
+//         return false;
+//     }
+//     event.preventDefault();
+// };
+
 
 //Свайпы секций
 let main = document.querySelector('.main')
 
-document.addEventListener('touchstart', handleTouchStart, false);  
+document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
 
 let xDown = null;
@@ -73,6 +108,7 @@ function handleTouchStart(evt) {
 let tochScrollPos = 2;
 
 function handleTouchMove(evt) {
+    // if ( evt.target.closest('#nCM') ) return;
     if ( ! xDown || ! yDown ) return;
 
     let xUp = evt.touches[0].clientX;
@@ -160,7 +196,18 @@ const replaceClP = {
     '73.8% 38%, 67.68% 20.58%, 49.8% 21.25%' : '75.94% 37.5%, 77.68% 4.5%, 49.9% 17.12%',
 };
 
+// document.addEventListener('mouseover', parametrClipPath);
+// document.addEventListener('touchstart', parametrClipPath);
 document.addEventListener('mouseover', function(e) {
+    parametrClipPath(e);
+    e.target.onmouseout = () => parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)";
+});
+document.addEventListener('touchstart', function(e) {
+    parametrClipPath(e);
+    e.target.ontouchend = () => parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)";
+});
+
+function parametrClipPath(e) {
     if (e.target.className.baseVal == "state") {
         let i = 0;
         states.forEach((el) => {
@@ -173,8 +220,8 @@ document.addEventListener('mouseover', function(e) {
             }
         })
     };
-    e.target.onmouseout = () => parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)";
-});
+    // e.target.onmouseout = () => parametr.style.clipPath = "polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)";
+};
 
 //Выбор категории
 let contSkills = document.querySelector(".container_skills");
@@ -225,11 +272,11 @@ document.addEventListener('mouseover', function(e) {
                 software[i].style = "transform: translateZ(2rem); opacity: 1;";
                 share[i].style = "filter: blur(); opacity: 1;";
                 if (softTrg != targ.id) {
-                    softwareSlct.children[2].innerHTML = targ.lastElementChild.firstElementChild.outerHTML;
-                    // for (use of softwareSlct.children) {
-                    //     use.href.baseVal = '#' + targ.lastElementChild.id;
-                    //     ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
-                    // }
+                    // softwareSlct.children[2].innerHTML = targ.lastElementChild.firstElementChild.outerHTML;
+                    for (use of softwareSlct.children) {
+                        use.href.baseVal = '#' + targ.lastElementChild.id;
+                        ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
+                    }
                     description.innerHTML = sftSelect[targ.id];
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {softwareSlct.style.display = st;}, i * 15);});
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {description.style.display = st;}, i * 20);});

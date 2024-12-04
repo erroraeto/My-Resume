@@ -17,10 +17,12 @@
         transform-origin: right top
         transform: rotateY(-10deg) translateY(-50%)
         animation: scrollFrame 27s infinite ease
+        animation-play-state: inherit
         & > *
             filter: drop-shadow(0 0 1rem black)
             opacity: 0
             animation: opacityFrame 27s infinite ease
+            animation-play-state: inherit
     .frame_1
         animation-delay: -6s
         & > *
@@ -54,17 +56,3 @@
         animation-delay: 18s
         & > *
             animation-delay: 18s
-
-.slider_frame:active
-    animation-play-state: paused
-    transform: rotateY(0deg) translateY(-50%)
-    cursor: grabbing
-
-.slider:active .slider_frame:not(:active)
-    animation-play-state: paused
-
-.slider:active .slider_frame > *
-    animation-play-state: paused
-
-
-@media (max-width: 760px)

@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- NAVIGATION -->
-    <nav class="navigation">
+    <nav id="nCM" class="navigation">
         <a id="btn" class="btn" href="#about">About Me</a>
         <a id="btn" class="logo" href="#home">
             <svg class="emblem" viewbox="0 0 500 500">
@@ -38,28 +38,35 @@
                 <div class="article_description">
                     <svg class="border border_description" viewBox="0 0 100 428" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1,14 3,1 97,1 99,14 99,427 3,427 1,414z"/>
+                        <text x="98.4" y="415" font-size="2rem" text-anchor="end" textLength="3.6%" lengthAdjust="spacingAndGlyphs">⮟</text>
                     </svg>
-                    <p> I am a passionate <span class="txt__orange">frontend developer</span> as well as a <span class="txt__orange">2D</span> and <span class="txt__orange">3D graphics
-                        visualizer</span>.
-                    <br>My experience lies in creating <span class="txt__orange">website interfaces</span>, realizing <span class="txt__orange">volumetric
-                        effects</span> and website <span class="txt__orange">“life” effect</span>.
-                    <br>I was also engaged in <span class="txt__orange">modeling</span> of low- and high- poly
-                        models, their <span class="txt__orange">concepts & design</span>, <span class="txt__orange">sculpting</span>, <span class="txt__orange">retopology</span>, <span class="txt__orange">unwrap</span>, <span class="txt__orange">baking maps</span>, <span class="txt__orange">texturing</span>,
-                        <span class="txt__orange">rigging & skinning</span>.
-                    <br>In the last <span class="txt__orange">three months</span> I focused on honing <span class="txt__orange">my skills</span> in creating a
-                        <span class="txt__orange">native</span> and <span class="txt__orange">pleasantly perceived interface</span>.
-                    <br>I am <span class="txt__orange">actively</span> and <span class="txt__orange">rapidly exploring</span> development
-                        frontend options to <span class="txt__orange">expand my ability</span> to create <span class="txt__orange">extraordinary interfaces</span>.</p>
+                    <div class="article_description-text">
+                        <p> I am a passionate <span class="txt__orange">frontend developer</span> as well as a <span class="txt__orange">2D</span> and <span class="txt__orange">3D graphics
+                            visualizer</span>.
+                        </p>
+                        <p>My experience lies in creating <span class="txt__orange">website interfaces</span>, realizing <span class="txt__orange">volumetric
+                            effects</span> and website <span class="txt__orange">“life” effect</span>.
+                        </p>
+                        <p>I was also engaged in <span class="txt__orange">modeling</span> of low- and high- poly
+                            models, their <span class="txt__orange">concepts & design</span>, <span class="txt__orange">sculpting</span>, <span class="txt__orange">retopology</span>, <span class="txt__orange">unwrap</span>, <span class="txt__orange">baking maps</span>, <span class="txt__orange">texturing</span>,
+                            <span class="txt__orange">rigging & skinning</span>.
+                        </p>
+                        <p>In the last <span class="txt__orange">three months</span> I focused on honing <span class="txt__orange">my skills</span> in creating a
+                            <span class="txt__orange">native</span> and <span class="txt__orange">pleasantly perceived interface</span>.
+                        </p>
+                        <p>I am <span class="txt__orange">actively</span> and <span class="txt__orange">rapidly exploring</span> development
+                            frontend options to <span class="txt__orange">expand my ability</span> to create <span class="txt__orange">extraordinary interfaces</span>.</p>
+                    </div>
+                    <!-- <h2 class="article_description-arrow">⮟</h2> -->
                 </div>
-                <div class="article_resume">
+                <div id="nCM" class="article_resume">
                     <a class="resume" href="/files/resume.pdf">
                         <svg class="border border_resume border_resume_L" viewBox="0 0 60 64" preserveAspectRatio="none">
                             <path vector-effect="non-scaling-stroke" d="M1,1  3,14  50,14  54,52  57,52  59,63  3,63  1,51z"/>
-
                         </svg>
                         <span>Resume (EN)</span>
                     </a>
-                    <a class="resume" href="/files/resume.pdf">
+                    <a class="resume" href="/files/resume.pdf" oncontextmenu="return false">
                         <svg class="border border_resume border_resume_R" viewBox="0 0 50 64" preserveAspectRatio="none">
                             <path vector-effect="non-scaling-stroke" d="M1.7,14  49,14  49,52  47,63  9.3,63  7.2,49  4.8,49z"/>
                         </svg>
@@ -67,7 +74,7 @@
                     </a>
                 </div>
             </div>
-            <div class="slider">
+            <div id="nCM" class="slider">
                 <div class="slider_frame frame_9">
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1,40 11,30 285,30 285,11 275,1 11,1 1,11z"/>
@@ -221,9 +228,9 @@
         </section>
 
         <section id="skill" class="container container_abilities">
-            <div class="container_skills">
+            <div id="nCM" class="container_skills">
                 <div class="container_skills_parametr" style="clip-path: polygon(49.8% 75.51%, 64% 65%, 91.2% 59%, 73.8% 38%, 67.68% 20.58%, 49.8% 21.25%, 29.2% 16.45%, 24.69% 37.8%, 10.73% 58.3%, 35.59% 66.24%)"></div>
-                <svg class="container_skills_status" viewbox="0 0 385 385">
+                <svg onmousedown="return false" onselectstart="return false" class="container_skills_status" viewbox="0 0 385 385">
                     <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
                     <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
                     <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
@@ -242,11 +249,11 @@
                     <circle class="share" stroke-dashoffset="116" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
                     <circle class="share" stroke-dashoffset="268" stroke-dasharray="148.8 611.2" cx="192.5" cy="192.5" r="120"/>
                 </svg>
-                <svg class="container_software_icons" viewbox="0 0 385 385">
-                    <g id="HTML-CSS" class="software">
+                <svg id="nCM" class="container_software_icons" viewbox="0 0 385 385">
+                    <g id="HTML-CSS" class="software" transform="translate(20,145)">
                         <use href="#icon_HTML-CSS" x="-1" style="fill: red"/>
                         <use href="#icon_HTML-CSS" x="1" style="fill: blue"/>
-                        <g id="icon_HTML-CSS" transform="translate(20,145)">
+                        <g id="icon_HTML-CSS">
                             <path transform="translate(-33,0), scale(2)"  d="M2.6289 2l2.082 18 7.2871 2 7.2891-2 2.082-18H2.6289ZM4.8711 4H19.127l-1.67 14.4297L12 19.9258 6.543 18.4297 4.8711 4ZM7.0078 6 7.5449 12.3379h6.9356L14.2441 15.0918 12.0234 15.5918l-2.2617-.498-.0859-1.0196H7.6934l.2207 2.6231 4.0468 1.289L12.002 18 16.0938 16.6973 16.6406 10.2617H9.3516L9.1699 8.082h7.6543L17.0039 6H7.0078ZM24 2h1.5l5 20H29ZM48.2 20 41 22l-7.3-2L31.6 2h19Zm.1-16H34l1.5 14.5L41 20l5.5-1.5ZM36.6 14h2L38.7 15 41 15.6 43.2 15 43.4 12.2H38V10.2H43.8L44 8H36.2L36 6H46.3l-.5 4L45 16.7 41 18 36.9 16.7Z"/>
                             <path transform="translate(-29,2)" opacity=".01" d="M0,0 98,0 98,45 0,45z"/>
                         </g>
@@ -285,21 +292,15 @@
                     </g>
                 </svg>
                 <div class="container_software_desc">
-                    <svg id="arc_L" xml:space="preserve" style="visibility: hidden; fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" width="50%" height="100%" viewBox="0 0 192.5 385">
-                        <path d="M192.5 380A1 1 0 01192.5 5L192.5 0 0 0 0 420 192.5 420Z"/>
-                    </svg>
-                    <svg id="arc_R" xml:space="preserve" style="visibility: hidden; fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" width="50%" height="100%" viewBox="0 0 192.5 385">
-                        <path d="M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z"/>
-                    </svg>
-                    <svg class="software_main" id="selected" viewBox="0 0 48 48">
-                        <use href="#select" x="-1" style="fill: red"/>
-                        <use href="#select" x="1" style="fill: blue"/>
-                        <!-- <use href="#"/> -->
-                        <g id="select">
-                        </g>
+                    <div class="arc float_L"></div>
+                    <div class="arc float_R"></div>
+                    <svg class="software_main" id="selected" viewBox="0 0 96 48">
+                        <use href="#" x="-1" style="fill: red"/>
+                        <use href="#" x="1" style="fill: blue"/>
+                        <use href="#"/>
+                        <!-- <g id="select"></g> -->
                     </svg>
                     <p class="description">
-                        <!-- <span></span> -->
                         <!-- <svg viewbox="0 0 10 10" stroke-linecap="round">
                             <path d="M1,1 9,9 M9,1 1,9"/>
                         </svg> -->
@@ -319,7 +320,7 @@
         </section>
     </main>
 
-    <footer class="footer" style="transform: translate3d(0, 13rem, 0)">
+    <footer id="nCM" class="footer" style="transform: translate3d(0, 13rem, 0)">
             <svg class="border border_footer" height="160px" width="368px" viewbox="0 0 368 160" preserveAspectRatio="none">
                 <path vector-effect="non-scaling-stroke" d="M221,31 221,26 C 230,27 236,19 235,10 L 367,10  367,36  244,36  236,31z"/>
                 <path vector-effect="non-scaling-stroke" d="M1,49  10,34  235,34  242,39  367,39  367,159  1,159z"/>

@@ -2,16 +2,13 @@
     position: relative
     transform-style: preserve-3d
     backface-visibility: hidden
-    height: 100%
     justify-self: center
-    // display: grid
-    // grid-template: repeat(3,auto) / 100%
-    // justify-content: center
-    // align-items: center
+    height: 100%
+    // width: 100%
+    aspect-ratio: .9/1
     &_title
         position: relative
         height: 12%
-        // height: 6.4rem
         top: .5rem
         text-align: center
         -webkit-text-stroke: 1px $color-blue
@@ -24,22 +21,31 @@
     &_description
         position: relative
         height: 76%
-        // height: 42.2rem
-        p
-            position: relative
-            font-size: 1.9rem
-            padding: 2rem
+        &-text
             height: 100%
-            text-align: justify
-            hyphens: auto
-            br
-                margin-bottom: 1rem
+            width: 100%
+            scrollbar-width: none
+            overflow-y: scroll
+            p
+                font-size: 1.9rem
+                padding: 1rem 2rem
+                text-align: justify
+                hyphens: auto
+        &-arrow
+            position: absolute
+            width: 100%
+            height: 15%
+            bottom: 0%
+            text-align: center
+            vertical-align: baseline
+            background: linear-gradient(transparent, $color-juice-blue-opac-6)
+            // content: "⮝"
+            // content: "⮟"
     &_resume
         position: relative
         display: grid
         place-items: center
         grid-template: auto / repeat(2, auto)
-        // height: 6rem
         height: 12%
         width: 100%
         left: 0
@@ -50,7 +56,6 @@
         & > *
             position: relative
             display: inline-block
-            // height: 6rem
             height: 100%
             width: 100%
             transition: transform .2s ease, filter .2s ease
@@ -69,58 +74,116 @@
             transform: translate(-50%, -50%)
             transform-origin: center
 
-@media (max-width: 1440px)
-    .article_title
-    .article_description
-        p
-            font-size: 1.88rem
-    .article_resume
 
-@media (max-width: 1024px)
-    .article
-        height: 90%
-    .article_title
-    .article_description
-        p
-            font-size: 1.5rem
-            padding: 1.4rem
-    .article_resume
-        span
-            font-size: 1.8rem
 
-@media (max-width: 768px)
-    .article
-            height: 70%
-    .article_title
-    .article_description
-        p
-            font-size: 1.29rem
-            padding: 1.2rem
-    .article_resume
-        span
-            font-size: 1.8rem
 
-@media (max-width: 426px)
-    .article
-            height: 100%
-            width: 80%
-    .article_title
-    .article_description
-        p
-            font-size: 1.15rem
-            padding: 1rem
-    .article_resume
-        span
-            font-size: 1.6rem
+// @media (max-width: 1440px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.8rem
+//     .article_resume
 
-@media (max-width: 376px)
-    .article
-        width: 80%
-    .article_title
-    .article_description
-        p
-            font-size: 1.1rem
+// @media (max-width: 1322px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.7rem
+//     .article_resume
 
-@media (max-width: 320px)
-    .article
-        width: 100%
+// @media (max-width: 1200px)
+//     .article
+//         width: 100%
+//         height: unset
+
+// @media (max-width: 1170px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.6rem
+//     .article_resume
+
+// @media (max-width: 1106px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.5rem
+//     .article_resume
+
+// @media (max-width: 1024px)
+//     .article
+//         // height: 90%
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.5rem
+//             // padding: 1.4rem
+//     .article_resume
+//         span
+//             font-size: 1.8rem
+
+// @media (max-width: 1012px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.4rem
+//     .article_resume
+
+// @media (max-width: 855px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.3rem
+//     .article_resume
+
+// @media (max-width: 800px)
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.4rem
+//     .article_resume
+
+// @media (max-width: 768px)
+//     .article
+//             // height: 70%
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.6rem
+//             // padding: .5rem 1.2rem
+//     .article_resume
+//         span
+//             font-size: 1.8rem
+
+// // @media (max-width: 426px)
+// @media (max-width: 520px)
+//     // .article
+//     //         height: 100%
+//     //         width: unset
+//             // width: 80%
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.15rem
+//             // padding: 1rem
+//     .article_resume
+//         span
+//             font-size: 1.6rem
+
+// @media (max-width: 376px)
+//     .article
+//         // width: 80%
+//     .article_title
+//     // .article_description
+//     //     p
+//     //         font-size: 1.1rem
+
+// @media (max-width: 320px)
+//     .article
+//         // width: 100%
+
+// @media (max-width: 540px)
+//     .article
+//         height: 100%
+//         width: unset
+//         aspect-ratio: 1.1/1
