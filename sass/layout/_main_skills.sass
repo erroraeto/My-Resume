@@ -2,32 +2,22 @@
     position: relative
     display: grid
     grid-template: 100% / 50% 50%
-    place-items: center center
+    // place-items: center center
     justify-content: center
-
-@media (max-width: 400px)
-    .container_abilities
-        grid-template: 50% 50% / 100%
-
-
-
+    transition: grid-template 1s ease
 
 
 .container_skills
     position: relative
-    // left: 50%
-    // top: 50%
-    // transform: translate(-50%, -50%)
-    height: 100%
-    width: 100%
-    transition: transform 1s ease, filter .5s ease
+    aspect-ratio: 7/6
+    width: 99.6%
     z-index: 1
+    transition: transform 1s ease, filter .5s ease, width 1s ease
+    place-self: center end
     &_parametr
         position: absolute
         top: 49.5%
         left: 50%
-        // height: 26.67rem
-        // width: 28.05rem
         width: 48%
         aspect-ratio: 935/889
         transform-origin: center
@@ -39,8 +29,6 @@
         position: absolute
         top: 50%
         left: 50%
-        // height: 60rem
-        // width: 70rem
         width: 100%
         aspect-ratio: 7/5
         transform: translate(-50%, -50%)
@@ -59,7 +47,7 @@
             vector-effect: non-scaling-stroke
             border: $border-light-blue
             visibility: hidden
-            transform: scale(1.35)translate(-13%, -12%)
+            transform: scale(1.35) translate(-13%, -12%)
             fill: $color-blue
             cursor: pointer
             animation: inclusion 1s ease .3s both
@@ -74,18 +62,14 @@
 
 .container_software
     position: relative
-    height: 100%
-    width: 100%
-    transition: transform 1s ease, filter .5s ease
-    perspective: 100rem
-    display: flex
-    justify-content: center
-    align-content: center
-    align-items: center
+    aspect-ratio: 7/6
+    width: 99.6%
+    transition: transform 1s ease, filter .5s ease, width 1s ease
+    place-self: center start
     &_circle
         position: absolute
         aspect-ratio: 7/6
-        width: 100%
+        height: 100%
         vector-effect: non-scaling-stroke
         stroke: $color-juice-blue
         stroke-width: 1px
@@ -103,60 +87,85 @@
             transition: filter .3s ease, opacity .3s ease
     &_icons
         position: absolute
-        cursor: pointer
-        fill: $color-juice-blue
-        stroke: none
         aspect-ratio: 7/6
-        width: 100%
+        height: 100%
         z-index: 2
         transition: transform .2s ease, opacity .5s ease
+        backface-visibility: hidden
         perspective: 100rem
-        & > .software
+        .software
+            fill: $color-juice-blue
+            cursor: pointer
+            stroke: none
             position: absolute
             opacity: 0.6
-            scale: .8
+            height: 10%
+            width: 10%
+            translate: -50% -50%
             transition: transform .2s ease, opacity .5s ease
+        & :nth-child(1)
+            left: 20%
+            top: 35%
+        & :nth-child(2)
+            left: 27%
+            top: 80%
+        & :nth-child(3)
+            left: 73%
+            top: 80%
+        & :nth-child(4)
+            left: 80%
+            top: 35%
+        & :nth-child(5)
+            left: 50%
+            top: 13%
     &_desc
         position: absolute
         aspect-ratio: 1/1
         width: 55%
+        left: 50%
+        top: 50%
+        translate: -50% -50%
         overflow: hidden
         .arc
             width: 50%
             height: 100%
         .float_L
             float: left
-            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M192.5 380A1 1 0 01192.5 5L192.5 0 0 0 0 420 192.5 420Z'/%3E%3C/svg%3E%0A")
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M199 370a1 1 0 010-357l0-13-199 0 0 420 199 0z'/%3E%3C/svg%3E%0A")
         .float_R
             float: right
-            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 380A1 1 0 000 5L0 0 192.5 0 192.5 420 0 420Z'/%3E%3C/svg%3E%0A")
-    .software_main
-        fill: $color-juice-blue
-        stroke: none
-        opacity: 0.6
-        margin-top: 12%
-        top: 10%
-        width: 40%
-        animation: descrVisible .5s ease
-        @include respond(big-screen)
-            margin-top: 20%
-        
-    .description
-        vertical-align: baseline
-        text-align: center
-        margin-top: 2%
-        animation: descrVisible .5s ease
-        @include respond(big-screen)
-            margin-top: 5%
-        svg
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 370a1 1 0 000-357l0-13 192.5 0 0 420-192.5 0z'/%3E%3C/svg%3E%0A")
+        .software_main
+            fill: $color-juice-blue
+            stroke: none
+            opacity: 0.6
+            margin-top: 16%
+            top: 10%
+            width: 20%
+            animation: descrVisible .5s ease
+            & :last-child
+                transform: translate(-50%, 0)
+            @include respond(big-screen)
+                margin-top: 20%
+        .description
             position: relative
-            // left: 50%
-            // top: 100%
-            width: 100%
+            vertical-align: baseline
+            text-align: center
+            margin-top: 5%
+            hyphens: auto
+            animation: descrVisible .5s ease
+            @include respond(big-screen)
+                margin-top: 5%
+        .cross
+            position: absolute
+            left: 50%
+            top: 50%
+            width: 75%
             aspect-ratio: 1/1
-            // translate: -50% -50%
+            translate: -50% -50%
             stroke: $color-juice-blue-opac-6
             stroke-width: .1px
+            filter: blur(1px)
 
 
 
@@ -169,28 +178,3 @@
         filter: blur(2px)
     100%
         filter: blur()
-
-// .arrow
-//     position: absolute
-//     height: max-content
-//     width: max-content
-//     left: 50%
-//     top: 50%
-//     z-index: 3
-//     transform: translate(-50%, -50%)
-//     transition: filter .3s ease, opacity .3s ease
-//     & > svg
-//         stroke: $color-juice-blue
-//         stroke-width: .2px
-//         fill: none
-// .left
-//     left: 20%
-// .right
-//     left: 75.4%
-
-// .container_software:hover ~ .container_skills
-//     z-index: -1
-//     opacity: 0.5
-//     transform: translate3d(-10%, -50%, -2rem) scale(0.5)
-//     filter: blur(2px)
-

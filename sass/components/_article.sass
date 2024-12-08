@@ -14,9 +14,9 @@
         -webkit-text-stroke: 1px $color-blue
         h2
             display: flex
+            align-items: flex-start
             justify-content: center
             align-content: center
-            align-items: flex-start
             height: 100%
     &_description
         position: relative
@@ -26,6 +26,7 @@
             width: 100%
             scrollbar-width: none
             overflow-y: scroll
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 80%, transparent 100%)
             p
                 font-size: 1.9rem
                 padding: 1rem 2rem
@@ -62,8 +63,8 @@
             will-change: transform, filter
             transform: translateZ(0)
             &:hover
-                transform: translateZ(5rem)
                 filter: drop-shadow(0 0 4px $color-blue)
+                transform: translateZ(5rem)
         span
             position: absolute
             display: inline-block

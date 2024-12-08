@@ -23,21 +23,18 @@
             fill: $background-color-blue_darken
             stroke-dasharray: 2
         & :last-child
-            fill: $color-blue
             stroke: none
+        circle
+            mask: url(#circuit)
+            // clip-path: path("M1 15 15 1 514 1 529 15 529 445 15 445 1 431Z")
     &_resume
-        height: 102%
-        width: 112%
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        transform-origin: center
+        height: 100%
+        width: 105%
+        left: unset
         filter: drop-shadow(0 0 4px $color-blue)
         fill: $background-color-blue
-        &_L
-            transform: translate(-46%, -50%)
         &_R
-            transform: translate(-54%, -50%)
+            right: 0
     &_img
         &.bg
             fill: $background-color-blue

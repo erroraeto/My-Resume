@@ -139,6 +139,19 @@ function handleTouchMove(evt) {
     main.children[tochScrollPos].scrollIntoView({ behavior: 'smooth' });
 };
 
+//Scroll описания о себе
+let desc = document.querySelector(".article_description-text");
+let descHight = 0;
+
+desc.addEventListener('scroll', (e) => {
+    let centerScroll = Math.floor(( (desc.scrollTop + desc.clientHeight / 2) * 100) / desc.scrollHeight);
+    descHight = desc.clientHeight;
+    let posass = (desc.scrollTop + desc.clientHeight / 2);
+    let posa = (desc.scrollTop * 100) / desc.scrollHeight;
+    console.log(`1: ${centerScroll}% 2: ${posa}`);
+});
+
+
 //Анимация скиллов
 let parametr = document.querySelector(".container_skills_parametr");
 
@@ -224,23 +237,24 @@ function parametrClipPath(e) {
 };
 
 //Выбор категории
+let contAbil = document.querySelector(".container_abilities");
 let contSkills = document.querySelector(".container_skills");
-let contCircle = document.querySelector(".container_software");
-let arrow = document.querySelectorAll(".container_abilities > .arrow");
+let contSoft = document.querySelector(".container_software");
 
-document.addEventListener('mouseover', function(e) {
+// document.addEventListener('mouseover', function(e) {
+document.addEventListener('pointerover', function(e) {
     if (!e.target.closest('.container')) return;
 
-    if (e.target.closest('.left')) {
-        contCircle.style = "display: block; z-index: -1; opacity: 0.5; transform: translate3d(-10%, -50%, -2rem) scale(0.5); filter: blur(2px)";
-        contSkills.style = "display: block; z-index: 1; opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); filter: blur(0px)";
-        arrow[0].style = "opacity: 0.6; filter: blur(2px)";
-        arrow[1].style = "opacity: 1; filter: blur(0px)";
-    } else if (e.target.closest('.right')) {
-        contSkills.style = "display: block; z-index: -1; opacity: 0.5; transform: translate3d(-90%, -50%, -2rem) scale(0.5); filter: blur(2px);";
-        contCircle.style = "display: block; z-index: 1; opacity: 1; transform: translate3d(-50%, -50%, 0); filter: blur(0px)";
-        arrow[1].style = "opacity: 0.6; filter: blur(2px)";
-        arrow[0].style = "opacity: 1; filter: blur(0px)";
+    if (e.target.closest('.container_skills')) {
+        contAbil.style = "grid-template: 100% / 70% 30%";
+        contSoft.style = "opacity: 0.5; filter: blur(2px); width: 100%";
+        contSoft.lastElementChild.lastElementChild.style = "font-size: 1.19rem";
+        contSkills.style = "width: 71.14%";
+    } else if (e.target.closest('.container_software')) {
+        contAbil.style = "grid-template: 100% / 30% 70%";
+        contSkills.style = "opacity: 0.5; filter: blur(2px); width: 100%";
+        contSoft.style = "width: 71.14%";
+        contSoft.lastElementChild.lastElementChild.style = "";
     }
 })
 
@@ -261,23 +275,22 @@ const sftSelect = {
 
 
 document.addEventListener('mouseover', function(e) {
+// document.addEventListener('pointerover', function(e) {
+// document.addEventListener('pointerdown', function(e) {
     if (e.target.closest('.software')) {
-    // if (e.target.closest('.software > g')) {
         let targ = e.target.closest('.software');
-        // let targ = e.target.closest('.software > g');
         let i = 0;
         for (el of software) {
             if (targ == el) {
-                // software[i].style = "transform: translateZ(2rem) translate(-50%,-50%); opacity: 1;";
                 software[i].style = "transform: translateZ(2rem); opacity: 1;";
                 share[i].style = "filter: blur(); opacity: 1;";
                 if (softTrg != targ.id) {
-                    // softwareSlct.children[2].innerHTML = targ.lastElementChild.firstElementChild.outerHTML;
                     for (use of softwareSlct.children) {
                         use.href.baseVal = '#' + targ.lastElementChild.id;
                         ["none", ""].forEach( (st,i) => {setTimeout(() => {use.style.display = st;}, i * 50);});
                     }
-                    description.innerHTML = sftSelect[targ.id];
+                    description.innerHTML = sftSelect[targ.id.match(/^[^ ]*/, '')[0]];
+                    description.previousElementSibling.style.display = "none";
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {softwareSlct.style.display = st;}, i * 15);});
                     ["none", ""].forEach( (st,i) => {setTimeout(() => {description.style.display = st;}, i * 20);});
                 }
