@@ -6,25 +6,13 @@
     justify-content: center
     transition: grid-template 1s ease
 
-
 .container_skills
     position: relative
     aspect-ratio: 7/6
     width: 99.6%
     z-index: 1
-    transition: transform 1s ease, filter .5s ease, width 1s ease
+    transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
     place-self: center end
-    &_parametr
-        position: absolute
-        top: 49.5%
-        left: 50%
-        width: 48%
-        aspect-ratio: 935/889
-        transform-origin: center
-        transform: translate(-50%, -50%)
-        transition: clip-path .4s ease
-        animation: openFigure 1s ease .5s backwards
-        background: radial-gradient(at 50% 45.8%, transparent 0%, #0f744068 30%, #0f7440 50%), conic-gradient(from .5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg)
     &_status
         position: absolute
         top: 50%
@@ -33,141 +21,225 @@
         aspect-ratio: 7/5
         transform: translate(-50%, -50%)
         shape-rendering: geometricprecision
-        & :first-child
+        .parametr
+            position: absolute
+            top: 49.5%
+            left: 50%
+            width: 67.5%
+            aspect-ratio: 935/889
+            transform: translate(-50%, -50%)
+            transition: clip-path .4s ease
+            background: radial-gradient(at 50% 44.8%, transparent 0%, #0f7440 100%), conic-gradient(from .5turn at 50% 44.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg)
+            clip-path: polygon(49.8% 95.8%, 72.95% 78%, 96% 60.5%, 87% 32.3%, 78.5% 4%, 49.8% 4%, 21.5% 4%, 13% 32.3%, 4% 60.5%, 27.05% 78%)
+        & > *
+            transition: transform .5s ease, opacity .5s ease
+        & :nth-child(n+4):nth-child(-n+6)
+            opacity: .1 !important
+        & :nth-child(n+3):nth-child(-n+6)
             vector-effect: non-scaling-stroke
             stroke: $color-blue
             stroke-width: 1px
             fill: none
-            opacity: 0.3
+            opacity: .3
             transform-origin: 50% 47%
             transform: scale(1.3)
-            animation: openBorder .5s ease .5s backwards
-        & > *:nth-child(n+2):nth-child(-n+10)
+        & :nth-child(n+7):nth-child(-n+11)
+            cursor: pointer
+        & :nth-child(n+7):nth-child(-n+15)
             position: relative
             vector-effect: non-scaling-stroke
             border: $border-light-blue
-            visibility: hidden
             transform: scale(1.35) translate(-13%, -12%)
             fill: $color-blue
-            cursor: pointer
-            animation: inclusion 1s ease .3s both
-        & :nth-child(2)
-            animation-delay: .4s !important
-        & :nth-child(3)
-            animation-delay: .6s !important
-        & :nth-child(5)
-            animation-delay: .5s !important
-        & :nth-child(6)
-            animation-delay: .8s !important
 
 .container_software
     position: relative
     aspect-ratio: 7/6
     width: 99.6%
-    transition: transform 1s ease, filter .5s ease, width 1s ease
+    transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
     place-self: center start
-    &_circle
+    overflow: hidden
+    &_penta
         position: absolute
-        aspect-ratio: 7/6
+        top: 50%
+        left: 50%
         height: 100%
+        aspect-ratio: 7/5
+        transform: translate(-50%, -50%)
         vector-effect: non-scaling-stroke
-        stroke: $color-juice-blue
-        stroke-width: 1px
+        stroke: $color-blue
+        stroke-width: .5px
         fill: none
-        overflow: hidden
-        & :first-child
-            fill: $color-juice-blue-opac-2
-            filter: blur(2rem)
-            stroke: none
-        & > *:not(:first-child)
-            stroke-width: 2px
-            filter: blur(1px)
-            fill: none
-            opacity: 0.6
-            transition: filter .3s ease, opacity .3s ease
-    &_icons
-        position: absolute
-        aspect-ratio: 7/6
-        height: 100%
-        z-index: 2
-        transition: transform .2s ease, opacity .5s ease
-        backface-visibility: hidden
-        perspective: 100rem
-        .software
-            fill: $color-juice-blue
-            cursor: pointer
-            stroke: none
-            position: absolute
-            opacity: 0.6
-            height: 10%
-            width: 10%
-            translate: -50% -50%
-            transition: transform .2s ease, opacity .5s ease
-        & :nth-child(1)
-            left: 20%
-            top: 35%
-        & :nth-child(2)
-            left: 27%
-            top: 80%
-        & :nth-child(3)
-            left: 73%
-            top: 80%
-        & :nth-child(4)
-            left: 80%
-            top: 35%
-        & :nth-child(5)
-            left: 50%
-            top: 13%
+        g
+            transition: transform .3s ease
+            transform-origin: center
+            & > *
+                cursor: pointer
+            mask
+                circle
+                    fill: black
+                path
+                    stroke: white
+                    stroke-width: 1.5px
+            .icon_soft
+                transform: scale(0)
+        path
+            transition: d .3s ease, stroke .3s ease
+        circle
+            fill: $color-blue
+            transition: r .3s ease, cx .3s ease, cy .3s ease, fill .3s ease
     &_desc
         position: absolute
         aspect-ratio: 1/1
-        width: 55%
+        height: 100%
+        // line-height: 100%
         left: 50%
         top: 50%
         translate: -50% -50%
         overflow: hidden
+        z-index: -1
         .arc
             width: 50%
             height: 100%
         .float_L
             float: left
-            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M199 370a1 1 0 010-357l0-13-199 0 0 420 199 0z'/%3E%3C/svg%3E%0A")
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M192.5 0l0 107.5c-5.418-.069-11.876-2.266-16.175-8.236l-67.076 48.782c7.507 10.297 3.701 26.318-9.989 30.783l25.634 78.811c12.401-4.456 26.363 5.577 26.186 19.0193l41.42 0 0 108.3407-192.5 0 0-385z'/%3E%3C/svg%3E%0A")
         .float_R
             float: right
-            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 370a1 1 0 000-357l0-13 192.5 0 0 420-192.5 0z'/%3E%3C/svg%3E%0A")
-        .software_main
-            fill: $color-juice-blue
-            stroke: none
-            opacity: 0.6
-            margin-top: 16%
-            top: 10%
-            width: 20%
-            animation: descrVisible .5s ease
-            & :last-child
-                transform: translate(-50%, 0)
-            @include respond(big-screen)
-                margin-top: 20%
+            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M0 0l0 107.5c5.418-.069 11.876-2.266 16.175-8.236l67.076 48.782c-7.507 10.297-3.701 26.318 9.989 30.783l-25.634 78.811c-12.401-4.456-26.363 5.577-26.186 19.0193l-41.42 0 0 108.3407 192.5 0 0-385z'/%3E%3C/svg%3E%0A")
         .description
+            vertical-align: middle
             position: relative
-            vertical-align: baseline
-            text-align: center
-            margin-top: 5%
+            text-align: justify
+            text-align-last: center
             hyphens: auto
-            animation: descrVisible .5s ease
-            @include respond(big-screen)
-                margin-top: 5%
-        .cross
+
+
+//Наведение на блоки skill и software
+.hover_abil
+    .container_skills
+        &:has(.parametr:hover, .container_skills_status > path:hover)
+            transform: translateZ(3rem)
+    .container_software
+        &:has(.target_software:hover)
+            transform: translateZ(3rem)
+        svg:has(.target_software)
             position: absolute
-            left: 50%
-            top: 50%
-            width: 75%
-            aspect-ratio: 1/1
-            translate: -50% -50%
-            stroke: $color-juice-blue-opac-6
-            stroke-width: .1px
-            filter: blur(1px)
+            fill: $color-juice-blue-opac-2
+            z-index: 3
 
 
+//Срабатывают при выборе на блок skill или software
+.contSkills
+    grid-template: 100% / 70% 30%
+    .container_skills
+        width: 71.14%
+        &_status
+            & :nth-child(n+4):nth-child(-n+6)
+                opacity: .2 !important
+            & :nth-child(5)
+                transform: scale(.9) !important
+            & :nth-child(6)
+                transform: scale(.5) !important
+    .container_software
+        width: 100%
+        opacity: 0.5
+        filter: blur(2px) drop-shadow(0 0 2rem white)
+        &:has(.target_software:hover)
+            transform: translateZ(3rem)
+        svg:has(.target_software)
+            position: absolute
+            backface-visibility: hidden
+            fill: $color-juice-blue-opac-2
+            z-index: 3
+        .description
+            font-size: 1.19rem
+
+.contSoft
+    grid-template: 100% / 30% 70%
+    .container_skills
+        width: 100%
+        opacity: 0.5
+        filter: blur(2px) drop-shadow(0 0 2rem white)
+        &:has(.parametr:hover)
+            transform: translateZ(3rem)
+    .container_software
+        width: 71.14%
+        &_penta
+            .soft_circle-1
+                &:hover > mask > path
+                    d: path('M61.277 139.627l14.4 0-1.6 13.6-5.6 2-5.6-2zm11.24 3.2-7.64 0 .4 3.6 6.16 0-.32 4.16-2.64.8-2.64-.8-.16-.96m14 7.6 14.4 0-1.6 13.6-5.6 2-5.6-2zm2.8 3.2 8 0-.8 7.6-2.8.96-2.8-.96-.16-1.44m6.16-2.56-5.84 0m.48-21.6-16 27.2')
+                &:hover circle
+                    cx: 77.27px
+                    cy: 155.143px
+                    r: 25px
+                &:hover ~ .penta
+                    d: path('M144.256 286.517l96.488 0m26.186-19.018 29.857-91.796m-9.987-30.783-78.125-56.816m-32.685-.474-78.08 53.396m-12.222 37.654 31.832 89.005')
+            .soft_circle-2
+                &:hover > mask > path
+                    d: path('M106.12 278.564q0-3.2 2.8-3.2l24.4 0q3.2 0 3.2 3.2l0 24q0 3.2-3.2 3.2l-24 0q-3.2 0-3.2-3.2l0-24m15.2 12 0 9.6c0 3.2-4.4288 4.032-6 1.2m17.2-10c-4.0464-3.3296-7.4128 1.2152-4.5536 3.9912 1.6048 1.5304 3.0328.8608 4.5536 3.2088 1.476 3.2416-2.9016 6.676-6.1336 2.4192')
+                &:hover circle
+                    cx: 121.32px
+                    cy: 290.564px
+                    r: 25px
+                &:hover ~ .penta
+                    d: path('M146.3 289.839l94.444-2.742m26.186-19.598 29.857-91.796m-9.987-30.783-78.125-56.816m-32.35 0-78.123 56.816m-10.543 30.955 26.621 90.703')
+            .soft_circle-3
+                &:hover > mask > path
+                    d: path('M261.0664 287.5464c3.7912 4.6048 15.4048-2.3928 11.8472-7.156-4.0296-3.8264-17.6296.9736-18.76 7.9096-.0592 2.8232 2.7928 3.5288 6.4096 7.1744 2.4696 4.0872-2.4696 8.1152-4.94 6.704-1.5144-.6056-.9632-4.9808 6.4792-7.1488 6.5008-.9176 6.8424 4.2656 4.6384 4.964m-20.6568-9.4296a.8.8 90 0035.2 0 .8.8 90 00-35.2 0z')
+                &:hover circle
+                    cx: 263.684px
+                    cy: 290.564px
+                    r: 25px
+                &:hover ~ .penta
+                    d: path('M144.248 287.097l94.447 2.742m32.028-23.261 26.618-90.703m-10.541-30.955-78.125-56.816m-32.35 0-78.123 56.816m-9.989 30.783 29.857 91.796')
+            .soft_circle-4
+                &:hover > mask > path
+                    d: path('M290.84 156.839q-1.697-1.697 0-3.3941l10.4652-10.4652 2.8284 2.8284c-.7218 1.2251-.5687 2.825.4713 3.9287.3841.4169.835.6675 1.5528.9849l-.017 8.6946c-4.0888 2.3872-2.553 7.6271 1.6518 7.7273 4.8236.2166 5.3073-6.6423 1.6026-7.6102l.1171-8.2946 2.4868 2.4867c-1.3854 5.3904 4.7557 6.5252 6.5597 4.2449 3.4031-3.4269-.6522-7.9835-4.2426-6.5054l-2.8285-2.8284c1.3792-3.0886-1.8922-6.4935-5.0911-5.0912l-2.8285-2.8284 2.4262-2.4262q1.7599-1.7599 3.457-.0629l15.1604 15.1604q1.7536 1.7536 0 3.5072l-15.1038 15.1038q-1.7537 1.7536-3.3942.1131z')
+                &:hover circle
+                    cx: 307.72px
+                    cy: 155.143px
+                    r: 25px
+                &:hover ~ .penta
+                    d: path('M144.256 286.517l96.488 0m26.734-18.832 31.825-89.005m-12.224-37.654-78.071-53.396m-32.683.474-78.123 56.816m-9.989 30.783 29.857 91.796')
+            .soft_circle-5
+                &:hover > mask > path
+                    d: path('M192.5 68.94c-1.3998.0126-2.4001 1.0129-2.4 2.4-.0001 1.4122 1.0002 2.4126 2.4 2.4 1.3996.0126 2.3999-.9878 2.4-2.4-.0001-1.3871-1.0004-2.3874-2.4-2.4zm-9.0072-13.2064c-6.9928 3.6064 9.0072 35.6064 18.2968 31.1424 7.028-6.2816-11.5536-35.4752-18.2968-31.1424m17.8072-.0016c-6.6196-4.2527-26.3325 25.6037-17.8217 31.4167 8.954 2.9456 24.9456-27.7433 17.8217-31.4167m9.2 15.288c.3732-7.8591-35.3397-10.0027-36.1185.2743 1.926 9.2272 36.4992 7.7319 36.1185-.2743')
+                &:hover circle
+                    cx: 192.5px
+                    cy: 71.34px
+                    r: 25px
+                &:hover ~ .penta
+                    d: path('M144.256 286.517l96.488 0m26.186-19.018 29.857-91.796m-9.641-31.246-74.867-57.837m-39.559 0-74.866 57.837m-9.641 31.246 29.857 91.796')
+            .penta
+                d: path('M144.256 286.517l96.488 0m26.186-19.018 29.857-91.796m-9.987-30.783-78.125-56.816m-32.35 0-78.123 56.816m-9.989 30.783 29.857 91.796')
+            circle
+                r: 20px
+        &_icons
+            #HTML-CSS,
+            #JS,
+            #SASS,
+            #GIT,
+            #REACT
+                translate: -50% -50%
+
+.sel_soft
+    mask
+        circle
+            fill: white !important
+        path
+            stroke: black !important
+
+
+
+.soft_circle-1_hover
+
+
+
+.triggerCirc
+    filter: blur() !important
+    circle
+        r: 1
 
 
 
