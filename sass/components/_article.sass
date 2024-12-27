@@ -6,73 +6,68 @@
     height: 100%
     // width: 100%
     aspect-ratio: .9/1
-    &_title
+.title
+    position: relative
+    height: 12%
+    width: 100%
+    top: .5rem
+    text-align: center
+    -webkit-text-stroke: 1px $color-blue
+.title_text
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    align-content: center
+    height: 100%
+
+.description
+    position: relative
+    height: 76%
+.description-text
+    // mask-image: linear-gradient(to bottom, transparent, #000 0%, #000 70%, transparent 96%)
+    height: 100%
+    width: 100%
+    scrollbar-width: none
+    overflow-y: scroll
+    p
+        font-size: 1.9rem
+        padding: 1rem 2rem
+        text-align: justify
+        hyphens: auto
+        // content: "⮝"
+        // content: "⮟"
+.article_resume
+    position: relative
+    display: grid
+    place-items: center
+    grid-template: auto / repeat(2, auto)
+    height: 12%
+    width: 100%
+    left: 0
+    top: -.5rem
+    perspective: 100rem
+    &:link, &:visited
+        color: $color-blue
+    & > *
         position: relative
-        height: 12%
-        top: .5rem
-        text-align: center
-        -webkit-text-stroke: 1px $color-blue
-        h2
-            display: flex
-            align-items: flex-start
-            justify-content: center
-            align-content: center
-            height: 100%
-    &_description
-        position: relative
-        height: 76%
-        &-text
-            height: 100%
-            width: 100%
-            scrollbar-width: none
-            overflow-y: scroll
-            p
-                font-size: 1.9rem
-                padding: 1rem 2rem
-                text-align: justify
-                hyphens: auto
-        &-arrow
-            position: absolute
-            width: 100%
-            height: 15%
-            bottom: 0%
-            text-align: center
-            vertical-align: baseline
-            background: linear-gradient(transparent, $color-juice-blue-opac-6)
-            // content: "⮝"
-            // content: "⮟"
-    &_resume
-        position: relative
-        display: grid
-        place-items: center
-        grid-template: auto / repeat(2, auto)
-        height: 12%
+        display: inline-block
+        height: 100%
         width: 100%
-        left: 0
-        top: -.5rem
-        perspective: 100rem
-        &:link, &:visited
-            color: $color-blue
-        & > *
-            position: relative
-            display: inline-block
-            height: 100%
-            width: 100%
-            transition: transform .2s ease, filter .2s ease
-            will-change: transform, filter
-            transform: translateZ(0)
-            &:hover
-                filter: drop-shadow(0 0 4px $color-blue)
-                transform: translateZ(5rem)
-        span
-            position: absolute
-            display: inline-block
-            text-align: center
-            width: 100%
-            left: 50%
-            top: 60%
-            transform: translate(-50%, -50%)
-            transform-origin: center
+        transition: transform .2s ease, filter .2s ease
+        will-change: transform, filter
+        transform: translateZ(0)
+        &:hover
+            filter: drop-shadow(0 0 4px $color-blue)
+            transform: translateZ(5rem)
+    span
+        position: absolute
+        display: inline-block
+        text-align: center
+        width: 100%
+        left: 50%
+        top: 60%
+        transform: translate(-50%, -50%)
+        transform-origin: center
 
 
 

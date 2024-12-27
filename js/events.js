@@ -24,7 +24,8 @@ function play(past, content, ms) {
 let undo,
     typing;
 async function textTyping(doc, speed, txt) {
-    undo = undo == false ? true : false;
+    undo = true;
+    await sleep(10);
     if (txt) {
         undo = false;
         let i = 0;
@@ -36,8 +37,7 @@ async function textTyping(doc, speed, txt) {
             await sleep(speed);
         }
     } else if (!txt) {
-        undo = true;
-        while (0 != doc.innerHTML.length && undo) {
+        while (0 != doc.innerHTML.length) {
             doc.innerHTML = doc.innerHTML.slice(0, -1);
             await sleep(speed);
         }
@@ -150,27 +150,72 @@ function handleTouchMove(evt) {
 };
 
 //Scroll описания о себе
-let desc = document.querySelector(".article_description-text");
-const maskDesc = ["0%","80%"];
+let desc = document.querySelectorAll(".description-text");
 
 document.addEventListener('DOMContentLoaded', function(e) {
-    if (desc.scrollHeight > desc.clientHeight) {
-        desc.style.maskImage = "mask-image: linear-gradient(to bottom, transparent, #000 0%, #000 80%, transparent 96%)";
-    }
+    desc.forEach( function(el) {
+        if (el.scrollHeight > el.clientHeight) {
+            el.style.maskImage = "linear-gradient(to bottom, transparent, #000 0%, #000 70%, transparent 100%)";
+            el.addEventListener('scroll', () => {
+                let descScrollTop = Math.floor(( el.scrollTop * 100) / el.scrollHeight);
+                let descScrollBot = Math.floor(( (el.scrollTop + el.clientHeight) * 100) / el.scrollHeight);
+
+                if (descScrollTop < 30) {
+                    el.style.maskImage = el.style.maskImage.replace(el.getAttribute('data-mask-value-top'), `${descScrollTop}%`);
+                    el.setAttribute('data-mask-value-top', `${descScrollTop}%`);
+                }
+                if (descScrollBot > 70) {
+                    el.style.maskImage = el.style.maskImage.replace(el.getAttribute('data-mask-value-bot'), `${descScrollBot}%`);
+                    el.setAttribute('data-mask-value-bot', `${descScrollBot}%`);
+                }
+            });
+        }
+    });
 });
 
-desc.addEventListener('scroll', (e) => {
-    let descScrollTop = Math.floor(( desc.scrollTop * 100) / desc.scrollHeight);
-    let descScrollBot = Math.floor(( (desc.scrollTop + desc.clientHeight) * 100) / desc.scrollHeight);
 
-    if (descScrollTop <= 20) {
-        desc.style.maskImage = desc.style.maskImage.replace(maskDesc[0], `${descScrollTop}%`);
-        maskDesc[0] = `${descScrollTop}%`;
-    } else if (descScrollBot >= 80) {
-        desc.style.maskImage = desc.style.maskImage.replace(maskDesc[1], `${descScrollBot}%`);
-        maskDesc[1] = `${descScrollBot}%`;
-    }
+
+let abilCont = document.querySelector('.container_content');
+let abilTitle = document.querySelector('.container_conductor > .title > .title_text');
+let abilDesc = document.querySelector('.container_conductor > .description > .description_wrapper');
+const rangeCont = [];
+
+
+abilCont.addEventListener('scroll', (e) => {
+    let posAbilCont = abilCont.getBoundingClientRect();
+    rangeCont.push(posAbilCont.left + (posAbilCont.width / 5));
+    rangeCont.push(posAbilCont.left + (posAbilCont.width / 4) * 4);
+    
+    for (let i = 0; i < abilCont.children.length; i++) {
+        let posEl = abilCont.children[i].getBoundingClientRect();
+        let posCent = posEl.left + (posEl.width / 2);
+        if (rangeCont[0] < posCent && posCent < rangeCont[1]) {
+            abilTitle.style.transform = `translateY(${abilTitle.children[i].getAttribute('data-translateY')})`;
+            abilDesc.style.transform = `translateX(${abilDesc.children[i].getAttribute('data-translateX')})`;
+        }
+    };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Выбор категории
 let contAbil = document.querySelector(".container_abilities");
@@ -197,17 +242,19 @@ document.addEventListener('pointerup', function(e) {
     if (targ.className == "container_skills" && targ != prevTarg) {
         contAbil.classList.add("contSkills");
         contAbil.classList.remove("contSoft", "hover_abil");
+        document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
+        document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
         for (let i = 0; i < skillsTitul.length; i++) {
             textTyping(skillsTitul[i], 100, skills[i]);
         };
-        document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
-        document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
         selectSoft();
     } else if (targ.className == "container_software" && targ != prevTarg) {
         contAbil.classList.add("contSoft");
         contAbil.classList.remove("contSkills", "hover_abil");
+        document.onmouseover = (e) => selectSoft(e);
+        document.ontouchstart = (e) => selectSoft(e);
         for (el of skillsTitul) {
-            textTyping(el, 100);
+            textTyping(el, 50);
         }
     }
 
@@ -312,9 +359,6 @@ function parametrClipPath(e, event) {
 let description = document.querySelector(".description");
 let software = document.querySelectorAll(".container_software_penta > g");
 let softTrg = '';
-
-document.onmouseover = (e) => selectSoft(e);
-document.ontouchstart = (e) => selectSoft(e);
 
 const sftSelect = [
     'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
