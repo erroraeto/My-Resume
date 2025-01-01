@@ -1,21 +1,15 @@
 .border
     z-index: -1
-    position: absolute
+    @include AbsoluteCenter
     display: block
     height: 100%
     width: 100%
-    left: 0
-    top: 0
     fill: none
     stroke: $color-blue
     stroke-width: 1px
     &_title
         height: 102%
         width: 102%
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        transform-origin: center
         filter: drop-shadow(0 0 4px $color-blue)
         fill: $background-color-blue
     &_description
@@ -24,30 +18,38 @@
             stroke-dasharray: 2
         & :last-child
             stroke: none
-        circle
-            mask: url(#circuit)
-            // clip-path: path("M1 15 15 1 514 1 529 15 529 445 15 445 1 431Z")
     &_resume
         height: 100%
         width: 105%
-        left: unset
+        left: 52%
         filter: drop-shadow(0 0 4px $color-blue)
         fill: $background-color-blue
         &_R
-            right: 0
+            left: 47%
     &_img
         &.bg
             fill: $background-color-blue
-            transform: translate(-50%, -50%) translateZ(-4rem)
+            transform: translateZ(-4rem)
             & :last-child
                 stroke: none
                 fill: $background-color-blue-darken
     &_ability
         stroke: $color-orange
         & :first-child
-            fill: $background-color-orange
+            fill: $color-orange-opacity1_5
         & :last-child
-            fill: $color-orange-opacity2
+            fill: $background-color-orange
+            filter: drop-shadow(0 0 4px $color-orange)
+    &_software
+        stroke: $color-orange
+        &_description
+            stroke: $color-orange
+            fill: $color-orange-opacity1
+        & :nth-child(n+1):nth-child(-n+2)
+            fill: $background-color-orange
+            filter: drop-shadow(0 0 4px $color-orange)
+        & :last-child
+            fill: $color-orange-opacity1
     &_footer
         fill: $color-orange-opacity2
         stroke: $color-orange
@@ -58,10 +60,6 @@
 
 
 .bg
-    position: absolute
-    left: 50%
-    top: 50%
-    z-index: -1
-    transform-origin: center
-    transform: translate(-50%, -50%) translateZ(-1rem)
+    transform: translateZ(-1rem)
     filter: blur(.12rem)
+    z-index: -1

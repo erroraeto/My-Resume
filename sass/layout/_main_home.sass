@@ -9,13 +9,10 @@
     //     stroke: $color-juice-blue
     //     animation: shift 3s infinite linear
     .planet
-        position: absolute
+        @include AbsoluteCenter
         stroke: none
         height: 150vh
         width: 150vw
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
         text
             font-family: "Square"
             // color: #ffffff57

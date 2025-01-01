@@ -149,7 +149,7 @@ function handleTouchMove(evt) {
     main.children[tochScrollPos].scrollIntoView({ behavior: 'smooth' });
 };
 
-//Scroll описания о себе
+//Скрытие доступного текста для скролла
 let desc = document.querySelectorAll(".description-text");
 
 document.addEventListener('DOMContentLoaded', function(e) {
@@ -173,18 +173,16 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-
-
-let abilCont = document.querySelector('.container_content');
-let abilTitle = document.querySelector('.container_conductor > .title > .title_text');
-let abilDesc = document.querySelector('.container_conductor > .description > .description_wrapper');
+//Скролл контента в секции Skills
+let abilCont = document.querySelector('.conductor_content');
+let abilTitle = document.querySelector('.conductor_title > .title_text');
+let abilDesc = document.querySelector('.conductor_description > .description_wrapper');
 const rangeCont = [];
-
 
 abilCont.addEventListener('scroll', (e) => {
     let posAbilCont = abilCont.getBoundingClientRect();
     rangeCont.push(posAbilCont.left + (posAbilCont.width / 5));
-    rangeCont.push(posAbilCont.left + (posAbilCont.width / 4) * 4);
+    rangeCont.push(posAbilCont.left + (posAbilCont.width / 5) * 4);
     
     for (let i = 0; i < abilCont.children.length; i++) {
         let posEl = abilCont.children[i].getBoundingClientRect();
@@ -196,89 +194,14 @@ abilCont.addEventListener('scroll', (e) => {
     };
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Выбор категории
-let contAbil = document.querySelector(".container_abilities");
-let contSkills = document.querySelector(".container_skills");
-let contSoft = document.querySelector(".container_software");
-let skillsTitul = document.querySelectorAll(".container_skills_status > text");
-const skills = [
-    "Problem Solving",
-    "Research",
-    "Fast Learner",
-    "Team Work",
-    "Communication",
-    "0",
-    ".3",
-    ".6",
-    "1",
-];
-let prevTarg;
-
-document.addEventListener('pointerup', function(e) {
-    if (!e.target.closest('.container')) return;
-    let targ = e.target.closest('#nCM');
-
-    if (targ.className == "container_skills" && targ != prevTarg) {
-        contAbil.classList.add("contSkills");
-        contAbil.classList.remove("contSoft", "hover_abil");
-        document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
-        document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
-        for (let i = 0; i < skillsTitul.length; i++) {
-            textTyping(skillsTitul[i], 100, skills[i]);
-        };
-        selectSoft();
-    } else if (targ.className == "container_software" && targ != prevTarg) {
-        contAbil.classList.add("contSoft");
-        contAbil.classList.remove("contSkills", "hover_abil");
-        document.onmouseover = (e) => selectSoft(e);
-        document.ontouchstart = (e) => selectSoft(e);
-        for (el of skillsTitul) {
-            textTyping(el, 50);
-        }
-    }
-
-    if (targ == prevTarg) {
-        contAbil.classList.remove("contSoft", "contSkills");
-        contAbil.classList.add("hover_abil");
-        selectSoft();
-        for (el of skillsTitul) {
-            textTyping(el, 100);
-        }
-    }
-
-    prevTarg = prevTarg == targ ? 0 : targ;
-})
-
-
 //Анимация скиллов
 let parametr = document.querySelector(".parametr");
 
 const mapCoupleCP = new Map([
     [/63.95% 65%/g, '67.8% 70.62%'],
     [/67.8% 70.62%/g, '63.95% 65%'],
-    [/66.7% 69%/g, '69.5% 73%'],
-    [/69.5% 73%/g, '66.7% 69%'],
+    [/66% 68%/g, '69.5% 73%'],
+    [/69.5% 73%/g, '66% 68%'],
     [/75.94% 36.1%/g, '78% 35.4%'],
     [/78% 35.4%/g, '75.94% 36.1%'],
     [/73.8% 36.8%/g, '82% 34%'],
@@ -311,6 +234,9 @@ document.addEventListener('DOMContentLoaded', async function(e) {
 //Выбор скилла
 let states = document.querySelectorAll(".state");
 
+document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
+document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
+
 const macthClP = [
     /49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%/g,
     /24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%/g,
@@ -322,18 +248,11 @@ const macthClP = [
 const replaceClP = {
     '49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%' : '49.9% 17.12%, 22% 4.5%, 22% 35.3%',
     '24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%' : '22% 35.3%, 4.8% 60.4%, 34% 68%',
-    '49.8% 75.51%, 63.95% 65%' : '49.9% 94.7%, 66.7% 69%',
+    '49.8% 75.51%, 63.95% 65%' : '49.9% 94.7%, 66% 68%',
     '35.2% 66.24%' : '34% 68%',
-    '63.95% 65%, 91.2% 59.1%, 73.8% 36.8%' : '66.7% 69%, 95% 60.3%, 75.94% 36.1%',
+    '63.95% 65%, 91.2% 59.1%, 73.8% 36.8%' : '66% 68%, 95% 60.3%, 75.94% 36.1%',
     '73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%' : '75.94% 36.1%, 77.8% 4.5%, 49.9% 17.12%',
 };
-
-// document.addEventListener('mouseover', function(e) {
-//     parametrClipPath(e, 'mouseout');
-// });
-// document.addEventListener('touchstart', function(e) {
-//     parametrClipPath(e, 'touchend');
-// });
 
 function parametrClipPath(e, event) {
     if (e.target.className.baseVal == "state") {
@@ -351,53 +270,40 @@ function parametrClipPath(e, event) {
             parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
         });
     };
-
-    if (!contAbil.classList.contains("contSkills")) parametr.style.clipPath = '';
 };
 
 //Выбор ПО
-let description = document.querySelector(".description");
-let software = document.querySelectorAll(".container_software_penta > g");
-let softTrg = '';
+let descriptionSoft = document.querySelector(".wrapper_section_software > .description-text");
+let softwareIcon = document.querySelector(".content_software > .container");
+let softwareSection = document.querySelector(".wrapper_section_software");
 
-const sftSelect = [
-    'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
-    'Events, object, array.',
-    'Creation and formation of style files, their convenient and expedient arrangement.',
-    'Working in a team, creating commits.',
-    'I don`t fucking know.'
-];
-const marginDescr = [
-    '30%',
-    '46%',
-    '39%',
-    '44%',
-    '44%'
-];
-
-
-function selectSoft(elEvent) {
-    if (!elEvent && softTrg) {
-        description.innerHTML = "";
-        softTrg.classList.remove("sel_soft");
-        return softTrg = "";
-    };
-    if (elEvent && elEvent.target.closest('.container_software_penta > g')) {
-        let targ = elEvent.target.closest('.container_software_penta > g');
-        let i = 0;
-        for (let i=0;i<software.length;i++) {
-            if (targ == software[i] && softTrg != targ) {
-                textTyping(description, 10, sftSelect[i]);
-                description.style = `margin-top: ${marginDescr[i]}`;
-                targ.classList.add("sel_soft");
-                if (softTrg) softTrg.classList.remove("sel_soft");
-                softTrg = targ;
-            }
-        }
-    };
+const sftSelect = {
+    "HTML-CSS": 'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
+    "JavaScript": 'Events, object, array.',
+    "SASS": 'Creation and formation of style files, their convenient and expedient arrangement.',
+    "GIT": 'Working in a team, creating commits.',
+    "React": 'I don`t fucking know.'
 };
 
+softwareIcon.addEventListener('click', (e) => {
+    if (!e.target.closest(".icon_button")) return;
+    abilDesc.children[1].children[1].children[0].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
+    abilDesc.children[1].children[1].children[0].children[1].innerHTML = e.target.closest(".icon_button").value;
+    descriptionSoft.innerHTML = `<p>${sftSelect[e.target.closest(".icon_button").value]}</p>`;
+    messageResize();
+});
 
+let SVG = document.querySelector(".wrapper_section > .border_software");
+
+function messageResize() {
+    let descSize = softwareSection.getBoundingClientRect();
+    //Высота вьюбокса
+    SVG.attributes[1].nodeValue = `0 0 342 ${Math.floor(descSize.height + 18)}`;
+    //Высота содержания
+    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\8 0 (.*)\-10 /gi, `8 0 ${Math.floor(descSize.height - 53)}-10 `);
+    //Положение нижнего бордера
+    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\ (.*)\l/gi, ` ${Math.floor(descSize.height + 12)}l`);
+};
 
 //Анимация глаза
 let x = +bounds.getAttribute('cx');
@@ -443,25 +349,18 @@ document.addEventListener('click', async function (e) {
 });
 
 //Анимация наведения на контакты
-let icons = document.querySelectorAll('.icon');
+let icons = document.querySelectorAll('.hovering');
 
 document.addEventListener('mouseover', function(e) {
-    if ((!e.target.closest('.icon')) || e.target.className == "icon") return;
-    
-    let targetIcon = e.target.closest('.icon');
-    targetIcon.style.transform = "translate3d(0, 0, 4rem)";
-
-    for (icon of icons) {
-        if (targetIcon == icon) continue;
-        icon.style.filter = "blur(1px)";
+    let targEl = e.target.closest('.hovering');
+    if (!targEl || e.target.className == "hovering") return;
+    for (icon of targEl.offsetParent.children) {
+        if (targEl == icon) {
+            icon.style = "transform: translate3d(0, 0, 4rem); filter: contrast(130%) saturate(150%)";
+        } else icon.style = "filter: blur(1px)";
     }
-    
-    targetIcon.addEventListener('mouseout', function() {
-        targetIcon.style.transform = "";
-        for (icon of icons) {
-            if (targetIcon == icon) continue;
-            icon.style.filter = "";
-        }
+    targEl.addEventListener('mouseout', function() {
+        for (icon of targEl.offsetParent.children) icon.style = "";
     })
 });
 

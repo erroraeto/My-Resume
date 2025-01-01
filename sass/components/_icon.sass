@@ -15,25 +15,18 @@
             text-anchor: middle
 
 .emblem
-    position: absolute
+    @include AbsoluteCenter
     height: 100%
     width: 100%
-    left: 50%
-    top: 50%
-    transform: translate(-50%, -50%)
-    transform-origin: center
     fill: none
     stroke: $color-blue
     stroke-width: 35px
 
 .emblem_test
+    @include AbsoluteCenter
     position: absolute
     height: 100%
     width: 100%
-    left: 50%
-    top: 50%
-    transform: translate(-50%, -50%)
-    transform-origin: center
     fill: none
     stroke: $color-blue
     stroke-width: .5

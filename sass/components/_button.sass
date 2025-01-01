@@ -1,10 +1,9 @@
 .btn
     position: relative
+    @include FlexCenter
     height: 3.6rem
     width: max-content
     cursor: pointer
-    display: flex
-    align-items: center
     padding: 0 1.2rem
     backface-visibility: hidden
     &:link, &:visited
@@ -12,13 +11,10 @@
     &::after,
     &::before
         content: ''
-        position: absolute
         box-sizing: border-box
-        translate: -50% -50%
         height: 100%
         width: 12rem
-        left: 50%
-        top: 50%
+        @include AbsoluteCenter
     &::after
         border: $border-light-blue
         clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)

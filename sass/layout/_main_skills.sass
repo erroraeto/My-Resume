@@ -1,125 +1,168 @@
 .container_abilities
     position: relative
-    display: flex
-    align-items: center
-    justify-content: center
-    // display: grid
-    // grid-template: 100% / 50% 50%
-    // justify-content: center
-    // transition: grid-template 1s ease
-
-.container_conductor
-    position: relative
-    display: grid
-    grid-template: 10% 90% / 65% 35%
-    justify-content: center
-    height: 100%
-    // width: 100%
-    aspect-ratio: 7/4
-    .title
-        grid-area: 1 / 1 / 2 / 2
-        height: 92%
-        top: 1%
-        left: 50%
-        display: block
-        position: absolute
-        transform: translate(-50%, 0%)
-        mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent 100%)
-        overflow: hidden
-        .title_text
-            display: block
-            height: max-content
-            transition: transform .3s ease
-            h2
-                height: 100%
-    .container_content
-        grid-area: 2 / 1 / 3 / 2
-        height: 94%
-        width: 100%
+    @include FlexCenter
+    &_conductor
         position: relative
-        overflow-y: hidden
-        overflow-x: scroll
-        white-space: nowrap
-        scroll-snap-type: x mandatory
-        scroll-behavior: smooth
-        z-index: 1
-        mask-image: linear-gradient(to left, transparent, #000 13%, #000 87%, transparent 100%)
-        transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
-        & > *
+        display: grid
+        grid-template: 10% 75% 15% / 65% 34%
+        // grid-template: 10% 75% 15% / 65% 34%
+        place-content: center
+        place-items: center
+        height: 100%
+        // width: 100%
+        aspect-ratio: 7/4
+        .conductor_title
             position: relative
+            display: block
+            height: 92%
+            top: unset
+            grid-area: 1 / 1 / 2 / 2
+            mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent 100%)
+            overflow: hidden
+            .title_text
+                display: block
+                height: max-content
+                transition: transform .3s ease
+                h2
+                    height: 100%
+        .conductor_content
+            grid-area: 2 / 1 / 4 / 2
+            height: 94%
             width: 100%
-            vertical-align: middle
-            scroll-snap-align: start
-            display: inline-block
-        &::-webkit-scrollbar
-            height: 2rem
-        &::-webkit-scrollbar-track
-            cursor: pointer
-            background: repeating-linear-gradient(to left, transparent, transparent 10px, $color-orange-opacity6 10px, $color-orange-opacity6 11px)
-            border: .7rem solid transparent
-            background-clip: content-box
-        &::-webkit-scrollbar-thumb
-            cursor: pointer
-            height: 3rem
-            background: radial-gradient(closest-side circle at 50%, $color-orange-opacity6 0%, $color-orange 99%, transparent 100%)
-        &_skills
-            height: 80%
-            aspect-ratio: 7/5
-            shape-rendering: geometricprecision
-            .parametr
-                position: absolute
-                top: 49.5%
-                left: 50%
-                width: 67.5%
-                aspect-ratio: 935/889
-                transform: translate(-50%, -50%)
-                transition: clip-path .4s ease
-                background: radial-gradient(at 50% 44.8%, transparent 0%, #0f7440 100%), conic-gradient(from .5turn at 50% 44.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg)
-                clip-path: polygon(49.8% 95.8%, 72.95% 78%, 96% 60.5%, 87% 32.3%, 78.5% 4%, 49.8% 4%, 21.5% 4%, 13% 32.3%, 4% 60.5%, 27.05% 78%)
-            & > *
-                transition: transform .5s ease, opacity .5s ease
-            & :nth-child(n+4):nth-child(-n+6)
-                opacity: .2 !important
-            & :nth-child(5)
-                transform: scale(.9) !important
-            & :nth-child(6)
-                transform: scale(.5) !important
-            & :nth-child(n+3):nth-child(-n+6)
-                vector-effect: non-scaling-stroke
-                stroke: $color-blue
-                stroke-width: 1px
-                fill: none
-                opacity: .3
-                transform-origin: 50% 47%
-                transform: scale(1.3)
-            & :nth-child(n+7):nth-child(-n+11)
-                cursor: pointer
-            & :nth-child(n+7):nth-child(-n+15)
-                position: relative
-                vector-effect: non-scaling-stroke
-                border: $border-light-blue
-                transform: scale(1.35) translate(-13%, -12%)
-                fill: $color-blue
-                width: 71.14%
-        &_software
-            height: 100%
-    .description
-        grid-area: 1 / 2 / 3 / 3
-        top: 6%
-        height: 79%
-        overflow: hidden
-        mask-image: linear-gradient(to left, transparent, #000 7%, #000 93%, transparent 100%)
-        .description_wrapper
+            position: relative
+            overflow-y: hidden
+            overflow-x: scroll
             white-space: nowrap
-            height: 100%
-            width: calc( 100% * 2 )
-            transition: transform .3s ease
-            .description-text
+            scroll-snap-type: x mandatory
+            scroll-behavior: smooth
+            z-index: 1
+            mask-image: linear-gradient(to left, transparent, #000 13%, #000 87%, transparent 100%)
+            transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
+            & > *
+                position: relative
                 display: inline-block
-                white-space: normal
-                text-align: justify
-                hyphens: auto
-                width: calc( 100% / 2 )
+                scroll-snap-align: start
+                vertical-align: middle
+                width: 100%
+            &::-webkit-scrollbar
+                height: 2rem
+            &::-webkit-scrollbar-track
+                cursor: pointer
+                background: repeating-linear-gradient(to left, transparent, transparent 10px, $color-orange-opacity6 10px, $color-orange-opacity6 11px)
+                border: .7rem solid transparent
+                background-clip: content-box
+            &::-webkit-scrollbar-thumb
+                cursor: pointer
+                height: 3rem
+                background: radial-gradient(closest-side circle at 50%, $color-orange-opacity6 0%, $color-orange 99%, transparent 100%)
+            .content_skills
+                height: 80%
+                aspect-ratio: 7/5
+                shape-rendering: geometricprecision
+                .parametr
+                    position: absolute
+                    top: 49.5%
+                    left: 50%
+                    width: 67.5%
+                    aspect-ratio: 935/889
+                    transform: translate(-50%, -50%)
+                    transition: clip-path .4s ease
+                    background: radial-gradient(at 50% 44.8%, transparent 0%, $color-orange 100%), conic-gradient(from .5turn at 50% 44.8%, transparent 0deg 36deg, $color-orange-darken 36deg, $color-orange 72deg, transparent 72deg 108deg, $color-orange-darken 108deg, $color-orange 144deg, transparent 144deg 180deg, $color-orange-darken 180deg, $color-orange 216deg, transparent 216deg 252deg, $color-orange-darken 252deg, $color-orange 288deg, transparent 288deg 324deg, $color-orange-darken 324deg, $color-orange 360deg)
+                & > *
+                    transition: transform .5s ease, opacity .5s ease
+                & :nth-child(n+4):nth-child(-n+6)
+                    opacity: .2 !important
+                & :nth-child(5)
+                    transform: scale(.9) !important
+                & :nth-child(6)
+                    transform: scale(.5) !important
+                & :nth-child(n+3):nth-child(-n+6)
+                    vector-effect: non-scaling-stroke
+                    stroke: $color-blue
+                    stroke-width: 1px
+                    fill: none
+                    opacity: .3
+                    transform-origin: 50% 47%
+                    transform: scale(1.3)
+                & :nth-child(n+7):nth-child(-n+11)
+                    cursor: pointer
+                & :nth-child(n+7):nth-child(-n+15)
+                    position: relative
+                    vector-effect: non-scaling-stroke
+                    border: $border-light-blue
+                    transform: scale(1.35) translate(-13%, -12%)
+                    fill: $color-blue
+                    width: 71.14%
+            .content_software
+                height: 100%
+                .container
+                    position: relative
+                    height: 100%
+                    width: 100%
+                    display: grid
+                    grid-template: repeat(3, auto) / repeat(4, 15%)
+                    place-content: center
+                    place-items: center
+                    gap: 4% 3%
+        .conductor_description
+            position: relative
+            grid-area: 2 / 2 / 3 / 3
+            height: 90%
+            width: 97%
+            overflow: hidden
+            // mask-image: linear-gradient(to left, transparent, #000 7%, #000 93%, transparent 100%)
+            mask-size: 100% 80%
+            mask-position: left bottom
+            .description_wrapper
+                white-space: nowrap
+                height: 100%
+                width: calc( 100% * 2 )
+                transition: transform .3s ease
+                & > *
+                    position: relative
+                    display: inline-flex
+                    place-items: center
+                    width: calc( 100% / 2 )
+                    height: 100%
+                    white-space: normal
+                    vertical-align: middle
+                    .wrapper_section_skill
+                        height: 100%
+                    .border_software
+                        height: max-content
+                        width: 100%
+                        translate: -50% -40%
+                        // top: 54%
+                    .wrapper_section_software
+                        position: relative
+                        display: grid
+                        grid-template: 2.95em max-content / 100%
+                        // height: 82%
+                        height: max-content
+                        width: 100%
+                        .title
+                            text-align: start
+                            & > *
+                                display: inline-block
+                                vertical-align: middle
+                            .icon_figure
+                                filter: drop-shadow(0 0 2px black)
+                                stroke: $color-juice-orange
+                                margin-inline: 6% 0%
+                                stroke-width: 1.2px
+                                height: 100%
+                                #targ_icon
+                                    scale: .7
+                                    transform-origin: center
+                                & :first-child
+                                    fill: $color-orange-darken-opacity6
+                                    stroke: none
+                            .title_text
+                                justify-content: start
+                        .description-text
+                            max-height: 18em
+                        .bottom
+                            position: relative
 
 
 
