@@ -232,7 +232,8 @@ document.addEventListener('DOMContentLoaded', async function(e) {
 });
 
 //Выбор скилла
-let states = document.querySelectorAll(".state");
+let statesDescrTerm = document.querySelectorAll(".wrapper_section_skill dt");
+let statesPenta = document.querySelectorAll(".content_skills > .state");
 
 document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
 document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
@@ -255,19 +256,21 @@ const replaceClP = {
 };
 
 function parametrClipPath(e, event) {
-    if (e.target.className.baseVal == "state") {
+    if (e.target.className.baseVal == "state" || e.target.className == "state") {
         let i = 0;
-        states.forEach((el) => {
+        Array.from(e.target.parentElement.querySelectorAll('.state')).some((el) => {
             if (e.target == el) {
                 parametr.style.clipPath = parametr.style.clipPath.replace(macthClP[i], function(matched){
                     return replaceClP[matched];
-                })
+                });
+                return statesDescrTerm[i].style = statesDescrTerm[i].nextElementSibling.style = statesPenta[i].style = "color: #e8be45; fill: #e8be45;";
             } else {
                 i++;
             }
         })
         e.target.addEventListener(event, () => {
             parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
+            statesDescrTerm[i].style = statesDescrTerm[i].nextElementSibling.style = statesPenta[i].style = "";
         });
     };
 };
@@ -287,13 +290,15 @@ const sftSelect = {
 
 softwareIcon.addEventListener('click', (e) => {
     if (!e.target.closest(".icon_button")) return;
-    abilDesc.children[1].children[1].children[0].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
-    abilDesc.children[1].children[1].children[0].children[1].innerHTML = e.target.closest(".icon_button").value;
+    // abilDesc.children[1].children[1].children[0].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
+    // abilDesc.children[1].children[1].children[0].children[1].innerHTML = e.target.closest(".icon_button").value;
+    abilDesc.children[1].children[0].children[1].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
+    abilDesc.children[1].children[0].children[1].children[1].innerHTML = e.target.closest(".icon_button").value;
     descriptionSoft.innerHTML = `<p>${sftSelect[e.target.closest(".icon_button").value]}</p>`;
     messageResize();
 });
 
-let SVG = document.querySelector(".wrapper_section > .border_software");
+let SVG = document.querySelector(".wrapper_section_software > .border_software");
 
 function messageResize() {
     let descSize = softwareSection.getBoundingClientRect();

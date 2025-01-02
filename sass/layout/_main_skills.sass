@@ -86,6 +86,7 @@
                     transform: scale(1.3)
                 & :nth-child(n+7):nth-child(-n+11)
                     cursor: pointer
+                    transition: fill .3s ease
                 & :nth-child(n+7):nth-child(-n+15)
                     position: relative
                     vector-effect: non-scaling-stroke
@@ -106,10 +107,11 @@
                     gap: 4% 3%
         .conductor_description
             position: relative
-            grid-area: 2 / 2 / 3 / 3
+            grid-area: 1 / 2 / 3 / 3
             height: 90%
             width: 97%
             overflow: hidden
+            top: 3%
             // mask-image: linear-gradient(to left, transparent, #000 7%, #000 93%, transparent 100%)
             mask-size: 100% 80%
             mask-position: left bottom
@@ -121,23 +123,39 @@
                 & > *
                     position: relative
                     display: inline-flex
+                    place-content: center
                     place-items: center
                     width: calc( 100% / 2 )
                     height: 100%
                     white-space: normal
                     vertical-align: middle
                     .wrapper_section_skill
-                        height: 100%
+                        width: 100%
+                        filter: contrast()
+                        .description-text
+                            dl
+                                dt
+                                    display: inline-block
+                                    font-weight: bold
+                                    cursor: pointer
+                                    transition: color .3s ease
+                                    &::before
+                                        content: '🞂 '
+                                        height: 1em
+                                        width: 1em
+                                dd
+                                    margin-inline-start: 1rem
+                                    margin-bottom: 1em
+                                    transition: color .3s ease
                     .border_software
                         height: max-content
                         width: 100%
-                        translate: -50% -40%
-                        // top: 54%
+                        top: .5rem
+                        translate: -50% 0%
                     .wrapper_section_software
                         position: relative
                         display: grid
                         grid-template: 2.95em max-content / 100%
-                        // height: 82%
                         height: max-content
                         width: 100%
                         .title
