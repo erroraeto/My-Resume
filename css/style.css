@@ -951,6 +951,10 @@ a:link, a:visited {
 .border_software {
   stroke: #e8be45;
 }
+.border_software > * {
+  -webkit-transition: d 0.3s ease;
+  transition: d 0.3s ease;
+}
 .border_software_description {
   stroke: #e8be45;
   fill: rgba(255, 169, 20, 0.1);
