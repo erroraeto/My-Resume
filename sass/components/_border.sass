@@ -42,11 +42,6 @@
             filter: drop-shadow(0 0 4px $color-orange)
     &_software
         stroke: $color-orange
-        & > *
-            transition: d .3s ease
-        &_description
-            stroke: $color-orange
-            fill: $color-orange-opacity1
         & :nth-child(n+1):nth-child(-n+2)
             fill: $background-color-orange
             filter: drop-shadow(0 0 4px $color-orange)
@@ -60,6 +55,29 @@
         & :last-child
             fill: $color-orange
 
+// .corner
+//     position: absolute
+//     height: 33%
+//     z-index: -1
+//     stroke: $color-orange
+//     fill: $background-color-orange
+//     &_cornerTL
+//         left: 0
+//         top: 4%
+//     &_cornerTR
+//         right: 0
+//         top: 4%
+//     &_cornerBL
+//         bottom: -20%
+//         left: 0
+//     &_cornerBR
+//         bottom: -20%
+//         right: 0
+//     &_cornerTC
+//         left: 50%
+//         top: 4%
+//         width: 10%
+//         translate: -50% 0%
 
 .bg
     transform: translateZ(-1rem)

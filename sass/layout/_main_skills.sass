@@ -131,6 +131,7 @@
                     vertical-align: middle
                     .wrapper_section_skill
                         width: 100%
+                        height: 100%
                         filter: contrast()
                         .description-text
                             dl
@@ -148,16 +149,22 @@
                                     margin-bottom: 1em
                                     transition: color .3s ease
                     .border_software
-                        height: max-content
+                        // height: max-content
+                        // width: 100%
+                        // top: .5rem
+                        height: 100%
                         width: 100%
-                        top: .5rem
-                        translate: -50% 0%
+                        top: 54%
+                        & > *
+                            transition: d .3s ease
                     .wrapper_section_software
                         position: relative
                         display: grid
                         grid-template: 2.95em max-content / 100%
                         height: max-content
                         width: 100%
+                        & > *
+                            transition: opacity .3s ease
                         .title
                             text-align: start
                             & > *
@@ -183,6 +190,10 @@
                             position: relative
 
 
+.hidden-wrapper_section_software
+    .title,
+    .description-text
+        opacity: 0
 
 
 

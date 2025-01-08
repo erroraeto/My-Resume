@@ -951,14 +951,6 @@ a:link, a:visited {
 .border_software {
   stroke: #e8be45;
 }
-.border_software > * {
-  -webkit-transition: d 0.3s ease;
-  transition: d 0.3s ease;
-}
-.border_software_description {
-  stroke: #e8be45;
-  fill: rgba(255, 169, 20, 0.1);
-}
 .border_software :nth-child(n+1):nth-child(-n+2) {
   fill: rgba(255, 169, 20, 0.6);
   -webkit-filter: drop-shadow(0 0 4px #e8be45);
@@ -1465,6 +1457,7 @@ a:link, a:visited {
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill {
   width: 100%;
+  height: 100%;
   -webkit-filter: contrast();
           filter: contrast();
 }
@@ -1488,12 +1481,13 @@ a:link, a:visited {
   transition: color 0.3s ease;
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .border_software {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  height: 100%;
   width: 100%;
-  top: 0.5rem;
-  translate: -50% 0%;
+  top: 54%;
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .border_software > * {
+  -webkit-transition: d 0.3s ease;
+  transition: d 0.3s ease;
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_software {
   position: relative;
@@ -1503,6 +1497,10 @@ a:link, a:visited {
   height: -moz-max-content;
   height: max-content;
   width: 100%;
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_software > * {
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_software .title {
   text-align: start;
@@ -1538,6 +1536,11 @@ a:link, a:visited {
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_software .bottom {
   position: relative;
+}
+
+.hidden-wrapper_section_software .title,
+.hidden-wrapper_section_software .description-text {
+  opacity: 0;
 }
 
 .hover_abil .container_skills:has(.parametr:hover, .container_skills_status > path:hover) {
