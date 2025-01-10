@@ -232,11 +232,13 @@ document.addEventListener('DOMContentLoaded', async function(e) {
 });
 
 //Выбор скилла
-let statesDescrTerm = document.querySelectorAll(".wrapper_section_skill dt");
+let statesDescrTerm = document.querySelectorAll(".wrapper_section_skill .state");
 let statesPenta = document.querySelectorAll(".content_skills > .state");
 
 document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
 document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
+let click = false;
+// document.onclick = (e) => click = !click;
 
 const macthClP = [
     /49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%/g,
@@ -255,25 +257,42 @@ const replaceClP = {
     '73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%' : '75.94% 36.1%, 77.8% 4.5%, 49.9% 17.12%',
 };
 
+let detailSoft = document.querySelector(".wrapper_section_skill .description-text");
+// detailSoft.onclick = (e) => {for (st of detailSoft.children) e.target == st ? st.open = !st.open : st.open = false};
+detailSoft.onclick = (e) => {
+    for (st of detailSoft.children) {
+        if (e.target.closest(".state") == st) {
+            // st.open = !st.open;
+            st.lastElementChild.classList.add("open")
+        } else {
+            st.lastElementChild.classList.remove("open");
+            st.open = false;
+        }
+    }
+};
+
 function parametrClipPath(e, event) {
-    if (e.target.className.baseVal == "state" || e.target.className == "state") {
+    if (e.target.className.baseVal == "state" || e.target.closest('.state')) {
         let i = 0;
-        Array.from(e.target.parentElement.querySelectorAll('.state')).some((el) => {
-            if (e.target == el) {
+        Array.from(e.target.closest('.state').parentElement.querySelectorAll('.state')).some((el) => {
+            if (e.target.closest('.state') == el) {
+                statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
                 parametr.style.clipPath = parametr.style.clipPath.replace(macthClP[i], function(matched){
                     return replaceClP[matched];
                 });
-                return statesDescrTerm[i].style = statesDescrTerm[i].nextElementSibling.style = statesPenta[i].style = "color: #e8be45; fill: #e8be45;";
+                return statesDescrTerm[i].style = statesPenta[i].style = "color: #e8be45; fill: #e8be45;";
             } else {
                 i++;
             }
-        })
+        });
         e.target.addEventListener(event, () => {
             parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
-            statesDescrTerm[i].style = statesDescrTerm[i].nextElementSibling.style = statesPenta[i].style = "";
+            statesDescrTerm[i].style = statesPenta[i].style = "";
         });
     };
 };
+
+
 
 //Выбор ПО
 let descriptionSoft = document.querySelector(".wrapper_section_software > .description-text");

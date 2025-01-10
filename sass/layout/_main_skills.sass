@@ -130,24 +130,37 @@
                     white-space: normal
                     vertical-align: middle
                     .wrapper_section_skill
+                        // height: 100%
                         width: 100%
-                        height: 100%
+                        height: max-content
+                        // width: max-content
                         filter: contrast()
                         .description-text
-                            dl
-                                dt
-                                    display: inline-block
-                                    font-weight: bold
+                            details
+                                overflow: hidden
+                                &[open] > summary::before
+                                    transform: rotate(90deg)
+                                summary
                                     cursor: pointer
-                                    transition: color .3s ease
+                                    &::marker
+                                        content: ''
                                     &::before
-                                        content: '🞂 '
+                                        content: '🞂'
+                                        display: inline-block
+                                        position: relative
+                                        vertical-align: text-top
+                                        text-align: center
                                         height: 1em
                                         width: 1em
-                                dd
-                                    margin-inline-start: 1rem
-                                    margin-bottom: 1em
-                                    transition: color .3s ease
+                                        transform: rotate(0)
+                                        transition: transform .25s ease
+                                p
+                                    padding: .3rem 2rem
+                                    text-align: left
+                                    cursor: default
+                                    translate: 0% -30%
+                                    opacity: 0
+                                    transition: translate 1s ease, opacity 1s ease
                     .border_software
                         // height: max-content
                         // width: 100%
@@ -189,6 +202,9 @@
                         .bottom
                             position: relative
 
+.open
+    translate: 0% 0% !important
+    opacity: 1 !important
 
 .hidden-wrapper_section_software
     .title,

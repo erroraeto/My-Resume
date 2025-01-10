@@ -39,7 +39,8 @@ p {
   font-size: 2rem;
 }
 
-dl {
+summary {
+  font-weight: 600;
   font-size: 2rem;
 }
 
@@ -1457,28 +1458,48 @@ a:link, a:visited {
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill {
   width: 100%;
-  height: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   -webkit-filter: contrast();
           filter: contrast();
 }
-.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text dl dt {
-  display: inline-block;
-  font-weight: bold;
-  cursor: pointer;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details {
+  overflow: hidden;
 }
-.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text dl dt::before {
-  content: "🞂 ";
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details[open] > summary::before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details summary {
+  cursor: pointer;
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details summary::marker {
+  content: "";
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details summary::before {
+  content: "🞂";
+  display: inline-block;
+  position: relative;
+  vertical-align: text-top;
+  text-align: center;
   height: 1em;
   width: 1em;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  -webkit-transition: -webkit-transform 0.25s ease;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, -webkit-transform 0.25s ease;
 }
-.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text dl dd {
-  -webkit-margin-start: 1rem;
-          margin-inline-start: 1rem;
-  margin-bottom: 1em;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details p {
+  padding: 0.3rem 2rem;
+  text-align: left;
+  cursor: default;
+  translate: 0% -30%;
+  opacity: 0;
+  -webkit-transition: translate 1s ease, opacity 1s ease;
+  transition: translate 1s ease, opacity 1s ease;
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .border_software {
   height: 100%;
@@ -1536,6 +1557,11 @@ a:link, a:visited {
 }
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_software .bottom {
   position: relative;
+}
+
+.open {
+  translate: 0% 0% !important;
+  opacity: 1 !important;
 }
 
 .hidden-wrapper_section_software .title,
