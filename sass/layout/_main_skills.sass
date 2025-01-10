@@ -138,6 +138,16 @@
                         .description-text
                             details
                                 overflow: hidden
+                                @media (prefers-reduced-motion: no-preference)
+                                    interpolate-size: allow-keywords
+                                &::details-content
+                                    opacity: 0
+                                    block-size: 0
+                                    overflow-y: clip
+                                    transition: content-visibility .3s allow-discrete, opacity .3s ease, block-size .3s ease
+                                &[open]::details-content
+                                    opacity: 1
+                                    block-size: auto
                                 &[open] > summary::before
                                     transform: rotate(90deg)
                                 summary
@@ -158,8 +168,8 @@
                                     padding: .3rem 2rem
                                     text-align: left
                                     cursor: default
-                                    translate: 0% -30%
-                                    opacity: 0
+                                    // translate: 0% -30%
+                                    // opacity: 0
                                     transition: translate 1s ease, opacity 1s ease
                     .border_software
                         // height: max-content
@@ -201,6 +211,29 @@
                             max-height: 18em
                         .bottom
                             position: relative
+
+
+.closing summary~*
+    animation: close .5s
+
+
+@keyframes open
+  0%
+    opacity: 0
+    translate: 0% -30%
+  100%
+    opacity: 1
+    translate: 0% 0%
+
+/* closing animation */
+@keyframes close
+  0%
+    opacity: 1
+    translate: 0% 0%
+  100%
+    opacity: 0
+    translate: 0% -30%
+
 
 .open
     translate: 0% 0% !important

@@ -258,18 +258,7 @@ const replaceClP = {
 };
 
 let detailSoft = document.querySelector(".wrapper_section_skill .description-text");
-// detailSoft.onclick = (e) => {for (st of detailSoft.children) e.target == st ? st.open = !st.open : st.open = false};
-detailSoft.onclick = (e) => {
-    for (st of detailSoft.children) {
-        if (e.target.closest(".state") == st) {
-            // st.open = !st.open;
-            st.lastElementChild.classList.add("open")
-        } else {
-            st.lastElementChild.classList.remove("open");
-            st.open = false;
-        }
-    }
-};
+detailSoft.onclick = (e) => {for (st of detailSoft.children) if (e.target.closest(".state") != st) st.open = false};
 
 function parametrClipPath(e, event) {
     if (e.target.className.baseVal == "state" || e.target.closest('.state')) {

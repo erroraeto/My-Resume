@@ -1467,6 +1467,22 @@ a:link, a:visited {
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details {
   overflow: hidden;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details {
+    interpolate-size: allow-keywords;
+  }
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details::details-content {
+  opacity: 0;
+  block-size: 0;
+  overflow-y: clip;
+  -webkit-transition: content-visibility 0.3s allow-discrete, opacity 0.3s ease, block-size 0.3s ease;
+  transition: content-visibility 0.3s allow-discrete, opacity 0.3s ease, block-size 0.3s ease;
+}
+.container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details[open]::details-content {
+  opacity: 1;
+  block-size: auto;
+}
 .container_abilities_conductor .conductor_description .description_wrapper > * .wrapper_section_skill .description-text details[open] > summary::before {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
@@ -1496,8 +1512,6 @@ a:link, a:visited {
   padding: 0.3rem 2rem;
   text-align: left;
   cursor: default;
-  translate: 0% -30%;
-  opacity: 0;
   -webkit-transition: translate 1s ease, opacity 1s ease;
   transition: translate 1s ease, opacity 1s ease;
 }
@@ -1559,6 +1573,53 @@ a:link, a:visited {
   position: relative;
 }
 
+.closing summary ~ * {
+  -webkit-animation: close 0.5s;
+          animation: close 0.5s;
+}
+
+@-webkit-keyframes open {
+  0% {
+    opacity: 0;
+    translate: 0% -30%;
+  }
+  100% {
+    opacity: 1;
+    translate: 0% 0%;
+  }
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+    translate: 0% -30%;
+  }
+  100% {
+    opacity: 1;
+    translate: 0% 0%;
+  }
+}
+/* closing animation */
+@-webkit-keyframes close {
+  0% {
+    opacity: 1;
+    translate: 0% 0%;
+  }
+  100% {
+    opacity: 0;
+    translate: 0% -30%;
+  }
+}
+@keyframes close {
+  0% {
+    opacity: 1;
+    translate: 0% 0%;
+  }
+  100% {
+    opacity: 0;
+    translate: 0% -30%;
+  }
+}
 .open {
   translate: 0% 0% !important;
   opacity: 1 !important;
