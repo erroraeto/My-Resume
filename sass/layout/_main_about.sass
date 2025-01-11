@@ -9,3 +9,53 @@
                         top: .5rem
                         .title_text
                                 align-items: flex-start
+                .description
+                        .description-text
+                                .attn
+                                        cursor: cell
+
+.attn_message
+        position: absolute
+        height: 9.5vw
+        width: 17vw
+        z-index: 10
+        image
+                height: 88%
+                width: 88%
+                x: 6%
+                y: 6%
+        path
+                vector-effect: non-scaling-stroke
+                d: path("M 0 10l10 -10 500 0 10 10 0 270 -10 10 -500 0 -10 -10z")
+                fill: white
+        // &::before
+        //         content: ""
+        //         background-color: white
+        //         height: 100%
+        //         width: 100%
+        //         left: 0
+        //         top: 0
+        // perspective: 10rem
+        // img
+        //         @include AbsoluteCenter
+        //         height: 88%
+        //         width: 88%
+        //         filter: drop-shadow(.8px 0 0px #ff000080) drop-shadow(-.1px 0 0px #0400ff80)
+        // &::after,
+        // &::before
+        //         content: ''
+        //         box-sizing: border-box
+        //         height: 100%
+        //         width: 100%
+        //         @include AbsoluteCenter
+        // &::after
+        //         border: $border-light-blue
+        //         border-width: 2.8px
+        //         clip-path: polygon(.8rem 0, .8rem .8rem, calc( 100% - .8rem ) .8rem, calc( 100% - .8rem ) 0, 100% 0, 100% .8rem, calc( 100% - .8rem ) .8rem, calc( 100% - .8rem ) calc( 100% - .8rem ), 100% calc( 100% - .8rem ), 100% 100%, calc( 100% - .8rem ) 100%, calc( 100% - .8rem ) calc( 100% - .8rem ), .8rem calc( 100% - .8rem ), .8rem 100%, 0 100%, 0 calc( 100% - .8rem ), .8rem calc( 100% - .8rem ), .8rem .8rem, 0 .8rem, 0 0)
+        //         transition: clip-path .25s ease, transform .25s ease
+        // &::before
+        //         background: $background-color-blue-opacity3
+        //         border-radius: .5rem
+        //         transform: translateZ(-.3rem)
+        //         z-index: -1
+        //         transition: opacity .3s ease, transform .3s ease

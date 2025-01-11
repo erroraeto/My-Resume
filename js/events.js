@@ -51,7 +51,7 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    skill.scrollIntoView({behavior: "auto"});
+    about.scrollIntoView({behavior: "auto"});
     // home.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
@@ -171,6 +171,56 @@ document.addEventListener('DOMContentLoaded', function(e) {
             });
         }
     });
+});
+
+let elemInnerShadow = document.querySelectorAll(".inner_shadow");
+for (el of elemInnerShadow) {filterInnerShdw(el)}
+
+function filterInnerShdw(el) {
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 .7 0 0 0 0 1 0 0 0 .7 0"/></filter></svg>',
+          blob = new Blob([svg], { type: 'image/svg+xml' }),
+          url = URL.createObjectURL(blob);
+    
+    el.style.filter = `url('${url}#inner_shadow')`;
+}
+
+//Всплывающие изображения/подсказки
+document.addEventListener("mouseover", (e) => {
+    if (e.target.classList.contains("attn")) {
+        Array.from(e.target.closest('.description-text').parentElement.querySelectorAll('.attn')).some((el) => {
+            if (e.target == el) {
+                let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('class', 'attn_message');
+                svg.setAttribute('viewBox', '0 0 520 290');
+                svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
+                image.setAttribute('href', el.getAttribute('data-img-href'));
+                // image.setAttribute('height', '88%');
+                // image.setAttribute('width', '88%');
+                // image.setAttribute('x', '6%');
+                // image.setAttribute('y', '6%');
+                let path = document.createElementNS('http://www.w3.org/2000/svg', "path");
+                // path.setAttribute('d', 'M 0 10l10 -10 500 0 10 10 0 270 -10 10 -500 0 -10 -10z');
+                filterInnerShdw(path);
+                svg.appendChild(image);
+                svg.appendChild(path);
+                document.body.append(svg);
+             
+                function onMouseMove(e) {
+                    svg.style.top = e.y + 10 + "px";
+                    svg.style.left = e.x + 10 + "px";
+                };
+                function onMouseOut() {
+                    svg.remove()
+                    el.removeEventListener("mousemove", onMouseMove);
+                    el.removeEventListener("mouseout", onMouseOut);
+                };
+
+                el.addEventListener("mousemove", onMouseMove);
+                el.addEventListener("mouseout", onMouseOut);
+            }
+        });
+    }
 });
 
 //Скролл контента в секции Skills
