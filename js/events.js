@@ -173,21 +173,60 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-let elemInnerShadow = document.querySelectorAll(".inner_shadow");
-for (el of elemInnerShadow) {filterInnerShdw(el)}
+document.addEventListener('DOMContentLoaded', () => {
+    let elemInnerShadowT01 = document.querySelectorAll(".inner_shadow-type01");
+    for (el of elemInnerShadowT01) {filterInnerShdw(el, 0)};
 
-function filterInnerShdw(el) {
-    const svg = '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 .7 0 0 0 0 1 0 0 0 .7 0"/></filter></svg>',
-          blob = new Blob([svg], { type: 'image/svg+xml' }),
-          url = URL.createObjectURL(blob);
-    
+    let elemInnerShadowT02 = document.querySelectorAll(".inner_shadow-type02");
+    for (el of elemInnerShadowT02) {filterInnerShdw(el, 1)};
+
+    let resBttn = document.querySelectorAll('.article_resume > a');
+    for (el of resBttn) {el.addEventListener('mouseover', resBttn_hover)};
+
+});
+
+function filterInnerShdw(el, num) {
+    // const svg = '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 .7 0 0 0 0 1 0 0 0 1 0"/></filter></svg>',
+    // blob = new Blob([svg], { type: 'image/svg+xml' }),
+    const svg = [
+        '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="8"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/></filter></svg>',
+        // '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 .7 0 0 0 0 1 0 0 0 1 0"/></filter></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/></filter></svg>',
+    ]
+        blob = new Blob([svg[num]], { type: 'image/svg+xml' }),
+        url = URL.createObjectURL(blob);
+
     el.style.filter = `url('${url}#inner_shadow')`;
-}
+};
+
+function filterRepeatLGrad(el) {
+    // const svg = '<svg xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="LineGradient" x1="3%" y1="2%" x2="3%" y2="3.5%" spreadMethod="reflect"><stop offset="20%" stop-color="#d1ffff4d" /><stop offset="90%" stop-color="transparent" /></linearGradient><radialGradient id="RadGradient"><stop offset="0%" stop-color="white" stop-opacity="100%"/><stop offset="10%" stop-color="white" stop-opacity="70%"/><stop offset="20%" stop-color="white" stop-opacity="15%"/><stop offset="30%" stop-color="white" stop-opacity="0%"/></radialGradient><mask id="mask_circle" maskContentUnits="objectBoundingBox"><circle cx=".5" cy=".5" r="2" fill="url(#RadGradient)"/></mask></defs></svg>',
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg"><defs>
+                    <linearGradient id="LineGradient" x1="3%" y1="2%" x2="3%" y2="3.5%" spreadMethod="reflect">
+                        <stop offset="15%" stop-color="#8decff4d" />
+                        <stop offset="70%" stop-color="transparent" />
+                    </linearGradient>
+                    <radialGradient id="RadGradient">
+                        <stop offset="0%" stop-color="white" stop-opacity="100%"/>
+                        <stop offset="18%" stop-color="white" stop-opacity="80%"/>
+                        <stop offset="35%" stop-color="white" stop-opacity="0%"/>
+                    </radialGradient>
+                    <mask id="mask_circle" maskContentUnits="objectBoundingBox">
+                        <circle cx=".5" cy=".5" r="1.45" fill="url(#RadGradient)"/>
+                    </mask>
+                    </defs>
+                </svg>`,
+        blob = new Blob([svg], { type: 'image/svg+xml' }),
+        url = URL.createObjectURL(blob);
+    
+    el.style.fill = `url('${url}#LineGradient')`;
+    el.style.mask = `url('${url}#mask_circle')`;
+};
 
 //Всплывающие изображения/подсказки
 document.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("attn")) {
-        Array.from(e.target.closest('.description-text').parentElement.querySelectorAll('.attn')).some((el) => {
+    if (e.target.closest(".attn > *")) {
+        Array.from(e.target.parentElement.children).some((el) => {
             if (e.target == el) {
                 let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 svg.setAttribute('class', 'attn_message');
@@ -195,15 +234,16 @@ document.addEventListener("mouseover", (e) => {
                 svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
                 let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
                 image.setAttribute('href', el.getAttribute('data-img-href'));
-                // image.setAttribute('height', '88%');
-                // image.setAttribute('width', '88%');
-                // image.setAttribute('x', '6%');
-                // image.setAttribute('y', '6%');
-                let path = document.createElementNS('http://www.w3.org/2000/svg', "path");
-                // path.setAttribute('d', 'M 0 10l10 -10 500 0 10 10 0 270 -10 10 -500 0 -10 -10z');
-                filterInnerShdw(path);
+                
+                let id = "asdadfsasfrw"
+                let rect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
+                rect.setAttribute('id', id);
+                rect.setAttribute('height', 280);
+                rect.setAttribute('width', 510);
+                filterRepeatLGrad(rect);
+                // filterInnerShdw(rect);
+                svg.appendChild(rect);
                 svg.appendChild(image);
-                svg.appendChild(path);
                 document.body.append(svg);
              
                 function onMouseMove(e) {
@@ -222,6 +262,31 @@ document.addEventListener("mouseover", (e) => {
         });
     }
 });
+
+//Выбор резюме
+function resBttn_hover(e) {
+    let resBord_grad = document.querySelectorAll('.border_resume #grad-border_resume stop');
+    let resBord_g = document.querySelectorAll('.border_resume g');
+
+    if (e.target.closest('.resume_left')) {
+        resBord_grad[1].attributes[1].nodeValue = resBord_grad[0].attributes[1].nodeValue
+        resBord_grad[0].attributes[1].nodeValue = 'white';
+        for (let i=1; i<3; i++) {
+            resBord_g[0].attributes[0].nodeValue = 1;
+        }
+    } else if (e.target.closest('.resume_right')) {
+        resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue
+        resBord_grad[1].attributes[1].nodeValue = 'white';
+        for (let i=1; i<3; i++) {
+            resBord_g[1].attributes[0].nodeValue = 1;
+        }
+    }
+
+    e.target.closest('a').addEventListener('mouseout', () => {
+        resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue = '#d1ffff80';
+        for (let i=0; i<2; i++) resBord_g[i].attributes[0].nodeValue = 0;
+    });
+}
 
 //Скролл контента в секции Skills
 let abilCont = document.querySelector('.conductor_content');
