@@ -173,20 +173,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // let elemInnerShadowT01 = document.querySelectorAll(".inner_shadow-type01");
-//     // for (el of elemInnerShadowT01) {filterInnerShdw(el, 0)};
+document.addEventListener('DOMContentLoaded', () => {
+    // let elemInnerShadowT01 = document.querySelectorAll(".inner_shadow-type01");
+    // for (el of elemInnerShadowT01) {filterInnerShdw(el, 0)};
 
-//     // let elemInnerShadowT02 = document.querySelectorAll(".inner_shadow-type02");
-//     // for (el of elemInnerShadowT02) {filterInnerShdw(el, 1)};
+    // let elemInnerShadowT02 = document.querySelectorAll(".inner_shadow-type02");
+    // for (el of elemInnerShadowT02) {filterInnerShdw(el, 1)};
 
-//     let backRepeatLGrad02 = document.querySelectorAll(".back_repeat-grad01");
-//     for (el of backRepeatLGrad02) {backMask(el, 1)};
+    // let backRepeatLGrad02 = document.querySelectorAll(".back_repeat-grad01");
+    // for (el of backRepeatLGrad02) {backMask(el, 1)};
 
-//     let resBttn = document.querySelectorAll('.article_resume > a');
-//     for (el of resBttn) {el.addEventListener('mouseover', resBttn_hover)};
+    let resBttn = document.querySelectorAll('.article_resume > a');
+    for (el of resBttn) {el.addEventListener('mouseover', resBttn_hover)};
 
-// });
+});
 
 function filterInnerShdw(el, type) {
     const svg = [
