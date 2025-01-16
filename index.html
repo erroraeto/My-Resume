@@ -7,7 +7,7 @@
     <meta content="width" name="MobileOptimized" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>D.D.S. Resume</title>
-    <link rel="shortcut icon" href="./image/Logo-1.webp">
+    <link rel="shortcut icon" href="./src/image/Logo-1.webp">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -29,20 +29,27 @@
     <main class="main">
         <section id="about" class="container container_about">
             <div class="article">
-                <svg class="border border_description" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
-                    <path class="inner_shadow-type02" fill="#ffffffd5" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
+                <svg class="border border_article" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
+                    <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
+                    <!-- <use href="#CA-BA" filter="url(#inner_shadow_type-2)" stroke="none" fill="#ffffffd5" />
+                    <use href="#CA-BA" fill="url(#line_grad-anim)" mask="url(#mask_bg-desc)" stroke="none" /> -->
+                    <use href="#CA-BA" filter="url(./src/sprite/bg.svg#inner_shadow_type-2)" stroke="none" fill="#ffffffd5" />
+                    <use href="#CA-BA" fill="url(./src/sprite/bg.svg#line_grad-anim)" mask="url(./src/sprite/bg.svg#mask_bg-desc)" stroke="none" />
+                    <text textLength="110" lengthAdjust="spacingAndGlyphs" fill="#9acece" x="80" y="20">D.D.S.</text>
+                    <text textLength="100" lengthAdjust="spacingAndGlyphs" fill="#9acece" dominant-baseline="hanging" font-size="1rem" x="83" y="22">compendium</text>
+                    <text fill="#9acece" dominant-baseline="middle" text-anchor="end" font-size="2.5rem" x="77" y="20">電</text>
                 </svg>
                 <div class="title">
                     <svg class="border border_title" viewBox="0 0 540 45" preserveAspectRatio="xMidYMid meet">
                         <use href="#CA-title" class="inner_shadow-type01" stroke="none" fill="#ffffffd5" />
-                        <path id="CA-title" vector-effect="non-scaling-stroke" d="M1 9l12 0 12-8 490 0 12 8 12 0 0 28-12-9-248 0-12 7-254 0-12 9z"/>
+                        <path id="CA-title" vector-effect="non-scaling-stroke" d="M1 6l6 0 6-5 514 0 6 5 6 0 0 31-6-5-248 0-6 6-272 0-6 6z"/>
                     </svg>
                     <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                         <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
                         <use href="#CA-icon" x="-.3" fill="red"/>
                         <use href="#CA-icon" x=".3" fill="blue"/>
                         <path id="CA-icon" d="M16 23a.5.5 0 010 3 .5.5 0 110-3m2-13a.5.5 0 10-4 0c0 1 .311 8.075.5 10a.6.6 0 103 0c.119-1.997.5-9 .5-10"/>
-                    </svg><h2 class="title_text">Resume</h2>
+                    </svg><h2 class="title_text">Insertion</h2>
                 </div>
                 <div class="description">
                     <div class="description-text" data-mask-value-top="0%" data-mask-value-bot="70%">
@@ -54,17 +61,15 @@
                         </p>
                         <p>I was also engaged in modeling of low- and high- poly
                             models, their:
-                            <ul class="attn">
-                                <li data-img-href="./image/frame/1frame.webp">Concepts & design</li>
-                                <li data-img-href="./image/frame/2frame.webp">Sculpting</li>
-                                <li data-img-href="./image/frame/3frame.webp">Retopology</li>
-                                <li data-img-href="./image/frame/5frame.webp">Unwrap</li>
-                                <li data-img-href="./image/frame/7frame.webp">Baking maps</li>
-                                <li data-img-href="./image/frame/8frame.webp">Texturing</li>
-                                <li data-img-href="./image/frame/9frame.webp">Rigging & skinning</li>
-                              </ul>
-                              <!-- <span class="txt__orange attn" data-img-href="./image/frame/1frame.webp">concepts & design</span>, <span class="txt__orange attn" data-img-href="./image/frame/2frame.webp">sculpting</span>, <span class="txt__orange attn" data-img-href="./image/frame/3frame.webp">retopology</span>, <span class="txt__orange attn" data-img-href="./image/frame/5frame.webp">unwrap</span>, <span class="txt__orange attn" data-img-href="./image/frame/7frame.webp">baking maps</span>, <span class="txt__orange attn" data-img-href="./image/frame/8frame.webp">texturing</span>,
-                            <span class="txt__orange attn" data-img-href="./image/frame/9frame.webp">rigging & skinning</span>. -->
+                        <ul class="attn">
+                            <li data-img-href="./image/frame/1frame.webp">Concepts & design</li>
+                            <li data-img-href="./image/frame/2frame.webp">Sculpting</li>
+                            <li data-img-href="./image/frame/3frame.webp">Retopology</li>
+                            <li data-img-href="./image/frame/5frame.webp">Unwrap</li>
+                            <li data-img-href="./image/frame/7frame.webp">Baking maps</li>
+                            <li data-img-href="./image/frame/8frame.webp">Texturing</li>
+                            <li data-img-href="./image/frame/9frame.webp">Rigging & skinning</li>
+                        </ul>
                         </p>
                         <p>In the last three months I focused on honing my skills in creating a native and pleasantly perceived interface.
                         </p>
@@ -82,16 +87,12 @@
                         </defs>
                         <path stroke="url(#grad-border_resume)" d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
                         <g opacity="0">
-                            <!-- <path d="M28 14l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
-                            <path d="M28 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/> -->
                             <path d="M28 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
                             <path d="M28 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
                         </g>
                         <g opacity="0">
-                            <path d="M321 19l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
-                            <path d="M321 42l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
-                            <!-- <path d="M321 14l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
-                            <path d="M321 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/> -->
+                            <path d="M321 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
+                            <path d="M321 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
                         </g>
                     </svg>
                     <a class="resume resume_left" href="/files/resume.pdf">
@@ -121,7 +122,7 @@
                     <p>Rigging & Skinning</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 268 0 10 5 504 0 7 7-501 0-20 14-275 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/9frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/9frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 283 0 20-14 502 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -131,7 +132,7 @@
                     <p>Texturing</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 138 0 10 5 634 0 7 7-631 0-20 14-145 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/8frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/8frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 153 0 20-14 632 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -141,7 +142,7 @@
                     <p>Texturing Maps</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 208 0 10 5 564 0 7 7-561 0-20 14-215 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/7frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/7frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 223 0 20-14 562 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -151,7 +152,7 @@
                     <p>Texturing Maps</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 208 0 10 5 564 0 7 7-561 0-20 14-215 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/6frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/6frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 223 0 20-14 562 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -161,7 +162,7 @@
                     <p>Unwrap</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 88 0 10 5 684 0 7 7-681 0-20 14-95 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/5frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/5frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 103 0 20-14 682 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -171,7 +172,7 @@
                     <p>Retopology</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 148 0 10 5 624 0 7 7-621 0-20 14-155 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/4frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/4frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 163 0 20-14 622 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -181,7 +182,7 @@
                     <p>Retopology</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 148 0 10 5 624 0 7 7-621 0-20 14-155 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/3frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/3frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 163 0 20-14 622 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -191,7 +192,7 @@
                     <p>Sculpting</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 138 0 10 5 634 0 7 7-631 0-20 14-145 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/2frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/2frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 153 0 20-14 632 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -201,7 +202,7 @@
                     <p>Concepts & Design</p>
                     <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 253 0 10 5 519 0 7 7-516 0-20 14-260 0-13-9 0 9-6-6z"/>
-                        <image href="./image/frame/1frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <image href="./src/image/frame/1frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
                     </svg>
                     <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <path vector-effect="non-scaling-stroke" d="M4 40l10-10 268 0 20-14 517 1 10 10 0 428-10 10-805 0-10-10z"/>
@@ -460,18 +461,43 @@
 </body>
 </html>
 
-<!-- <svg class="border border_title" viewBox="0 0 530 64" preserveAspectRatio="xMidYMid meet">
-                        <filter id="inner_shadow">
-                            <feOffset dx="0" dy="0"/>
-                            <feGaussianBlur stdDeviation="8"/>
-                            <feComposite in="SourceAlpha" operator="out"/>
-                            <feColorMatrix type="matrix"
-                            values=" 1.000  0.000  0.000  0.000  0.200 
-                                    0.000  1.000  0.000  0.000  0.200 
-                                    0.000  0.000  1.000  0.000  0.300 
-                                    0.000  0.000  0.000  2.000  0.000">
-                            </feColorMatrix>
-                        </filter>
-                        <use href="#bord_title" class="inner_shadow-type01" stroke="none" fill="#ffffffd5" />
-                        <path id="bord_title" vector-effect="non-scaling-stroke" d="M1 16l19 0 14-15 462 0 14 15 19 0 0 47-15-14-499 0-14 14z"/>
-                    </svg> -->
+
+
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="line_grad-anim" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
+            <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+            <stop offset="20%" stop-color="#a0dbff3c" />
+            <stop offset="80%" stop-color="transparent" />
+        </linearGradient>
+        <radialGradient id="rad_grad">
+            <stop offset="0%" stop-color="white" stop-opacity="100%"/>
+            <stop offset="8%" stop-color="white" stop-opacity="70%"/>
+            <stop offset="32%" stop-color="white" stop-opacity="0%"/>
+        </radialGradient>
+        <linearGradient id="line_grad">
+            <stop offset="0%" stop-color="black" stop-opacity="0%"/>
+            <stop offset="20%" stop-color="black" stop-opacity="45%"/>
+            <stop offset="40%" stop-color="black" stop-opacity="0%"/>
+        </linearGradient>
+        <mask id="mask_bg-desc" maskContentUnits="objectBoundingBox">
+            <circle cx=".5" cy=".5" r="1.45" fill="url(#rad_grad)"/>
+            <rect width="1" height="1" fill="url(#line_grad)">
+                <animate attributeName="x" values="0;1" begin="0s" dur="1s" repeatCount="indefinite"/>
+            </rect>
+        </mask>
+        <filter id="inner_shadow_type-1">
+            <feOffset dx="0" dy="0"/>
+            <feGaussianBlur stdDeviation="8"/>
+            <feComposite in="SourceAlpha" operator="out"/>
+            <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/>
+        </filter>
+        <filter id="inner_shadow_type-2">
+            <feOffset dx="0" dy="0"/>
+            <feGaussianBlur stdDeviation="13"/>
+            <feComposite in="SourceAlpha" operator="out"/>
+            <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/>
+        </filter>
+    </defs>
+</svg> -->

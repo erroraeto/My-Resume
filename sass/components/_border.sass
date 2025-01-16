@@ -9,6 +9,9 @@
     stroke-width: 1px
     &_attn_message
         stroke-dasharray: 10 5
+    &_article
+        stroke: none
+        fill: none
     &_title
         fill: $background-color-blue-type1
     &_description
@@ -18,9 +21,6 @@
             stroke-width: 2px
             stroke-dasharray: 10 190 10 90
             stroke-dashoffset: 5
-        // & :last-child
-        //     fill: #ffffffd5
-        //     stroke: none
     &_img
         & :first-child
             filter: drop-shadow(0 0 4px $color-blue)
@@ -56,30 +56,6 @@
             fill: $color-orange-opacity6
         & :last-child
             fill: $color-orange
-
-// .corner
-//     position: absolute
-//     height: 33%
-//     z-index: -1
-//     stroke: $color-orange
-//     fill: $background-color-orange
-//     &_cornerTL
-//         left: 0
-//         top: 4%
-//     &_cornerTR
-//         right: 0
-//         top: 4%
-//     &_cornerBL
-//         bottom: -20%
-//         left: 0
-//     &_cornerBR
-//         bottom: -20%
-//         right: 0
-//     &_cornerTC
-//         left: 50%
-//         top: 4%
-//         width: 10%
-//         translate: -50% 0%
 
 .bg
     transform: translateZ(-1rem)

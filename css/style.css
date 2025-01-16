@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Michroma&family=Zen+Dots&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 body {
   font-family: "Cutive Mono", monospace;
@@ -6,7 +7,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.2;
   text-shadow: 0.5px 0.5px 0px rgba(0, 0, 255, 0.8), -0.5px -0.5px 0px rgba(255, 0, 0, 0.8), 0px 0px 1px rgb(0, 0, 0);
-  color: #d1ffff;
+  color: white;
 }
 
 .btn {
@@ -38,6 +39,13 @@ h4 {
 p {
   font-size: 2rem;
   line-height: 1.2em;
+}
+
+.border_article text {
+  font-family: "Michroma", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 0.3px 0.3px 0px rgba(255, 0, 0, 0.8), -0.3px -0.3px 0px rgba(0, 0, 255, 0.8), 0px 0px 2px rgb(0, 0, 0);
 }
 
 .description-text > p {
@@ -719,7 +727,6 @@ a:link, a:visited {
   height: 100%;
   width: 100%;
   text-align: center;
-  -webkit-text-stroke: 1px #d1ffff;
 }
 
 .title_text {
@@ -927,6 +934,10 @@ a:link, a:visited {
 }
 .border_attn_message {
   stroke-dasharray: 10 5;
+}
+.border_article {
+  stroke: none;
+  fill: none;
 }
 .border_title {
   fill: rgba(98, 207, 246, 0.5058823529);
@@ -1294,6 +1305,7 @@ a:link, a:visited {
   text-indent: 2rem;
 }
 .container_about .article .description .description-text p:last-of-type {
+  text-decoration-line: overline;
   padding-top: 1rem;
   text-align: right;
 }
@@ -1309,7 +1321,7 @@ a:link, a:visited {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  cursor: cell;
+  cursor: help;
 }
 .container_about .article .description .description-text ul ::marker {
   content: ">";
@@ -1331,8 +1343,12 @@ a:link, a:visited {
 }
 .container_about .article .article_resume .border_resume g {
   stroke: white;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+.container_about .article .article_resume .border_resume g path {
+  -webkit-transition: d 0.2s ease;
+  transition: d 0.2s ease;
 }
 
 .attn_message {
@@ -1356,6 +1372,7 @@ a:link, a:visited {
 }
 .attn_message path {
   vector-effect: non-scaling-stroke;
+  stroke: rgba(209, 255, 255, 0.5019607843);
 }
 
 .container_home {
