@@ -1,72 +1,69 @@
-.article
-    position: relative
-    display: grid
-    // grid-template: 12% 76% 12% / 100%
-    grid-template: 5% 9% 72% 9% / 100%
-    row-gap: 1%
-    transform-style: preserve-3d
-    backface-visibility: hidden
-    justify-content: center
-    justify-self: center
-    height: 94%
-    width: 100%
-    // aspect-ratio: .9/1
-.title
-    position: relative
-    height: 100%
-    width: 100%
-    text-align: center
-    // -webkit-text-stroke: 1px $color-blue
-.title_text
-    height: 100%
+// .article
+//     position: relative
+//     display: grid
+//     grid-template: 5% 9% 72% 9% / 100%
+//     row-gap: 1%
+//     transform-style: preserve-3d
+//     backface-visibility: hidden
+//     justify-content: center
+//     justify-self: center
+//     height: 94%
+//     width: 100%
+// .title
+//     position: relative
+//     height: 100%
+//     width: 100%
+//     text-align: center
+// .title_text
+//     height: 100%
 
-.description
-    position: relative
-    height: 100%
-.description-text
-    height: 100%
-    width: 100%
-    scrollbar-width: none
-    overflow-y: scroll
-.article_resume
-    position: relative
-    display: grid
-    place-items: center
-    grid-template: 100% / repeat(2, auto)
-    height: 100%
-    width: 100%
-    left: 0
-    perspective: 100rem
-    &:link, &:visited
-        color: $color-blue
-    & > *
-        position: relative
-        display: inline-block
-        height: 78%
-        width: 60%
-        transition: transform .2s ease, filter .2s ease
-        will-change: transform, filter
-        transform: translateZ(0)
-        text-align: center
-        &:hover circle
-            fill: white !important
-        & > *
-            vertical-align: middle
-        .inline_icon
-            height: 100%
-            margin-inline: .3rem
-            stroke: none
-            filter: unset
-            circle
-                transition: fill .3s ease
-                fill: $color-blue-opacity5
-                stroke: none
-        .resimeEN
-        .resimeRU
-        span
-            display: inline-block
-            text-align: center
+// .description
+//     position: relative
+//     height: 100%
+// .description-text
+//     height: 100%
+//     width: 100%
+//     scrollbar-width: none
+//     overflow-y: scroll
 
-.article_bottom
-    position: relative
-    @include FlexCenter
+
+// .article_resume
+//     position: relative
+//     display: grid
+//     place-items: center
+//     grid-template: 100% / repeat(2, auto)
+//     height: 100%
+//     width: 100%
+//     left: 0
+//     perspective: 100rem
+//     & > *
+//         position: relative
+//         display: inline-block
+//         height: 78%
+//         width: 60%
+//         transition: transform .2s ease, filter .2s ease
+//         will-change: transform, filter
+//         transform: translateZ(0)
+//         text-align: center
+//         &:hover circle
+//             fill: var(--color-white) !important
+//         & > *
+//             vertical-align: middle
+//         .inline_icon
+//             height: 100%
+//             margin-inline: .3rem
+//             stroke: none
+//             // filter: unset
+//             circle
+//                 transition: fill .3s ease
+//                 fill: var(--color-light-cyan)
+//                 stroke: none
+//         .resimeEN
+//         .resimeRU
+//         span
+//             display: inline-block
+//             text-align: center
+
+// .article_bottom
+//     position: relative
+//     @include FlexCenter

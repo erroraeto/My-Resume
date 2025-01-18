@@ -1,60 +1,13 @@
-.logo
-    position: relative
-    height: 3.6rem
-    width: 3.6rem
-    cursor: pointer
-    &_img
-        height: 100%
-        width: 100%
-        &:first-child
-            font-size: 10rem
-            stroke: white
-            stroke-width: 1.5px
-            fill: $color-blue
-            dominant-baseline: hanging
-            text-anchor: middle
+// .logo
+//     position: relative
+//     height: 3.6rem
+//     width: 3.6rem
+//     cursor: pointer
 
-.emblem
-    @include AbsoluteCenter
-    height: 100%
-    width: 100%
-    fill: none
-    stroke: $color-blue
-    stroke-width: 35px
-
-.emblem_test
-    @include AbsoluteCenter
-    position: absolute
-    height: 100%
-    width: 100%
-    fill: none
-    stroke: $color-blue
-    stroke-width: .5
-    circle
-        stroke: none
-
-
-#circle-test
-    transition: cy .3s cubic-bezier(.5,.5,.5,.5)
-
-#Butt:hover ~ #circle-test
-    cy: 160px
-    transition: cy .3s cubic-bezier(.5,.5,.5,.5)
-
-.rectangle
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 90%, 50% 90%, 50% 100%, 0% 100%)
-    transition: clip-path .3s cubic-bezier(.5,0,1,.5)
-
-#Butt:hover ~ .rectangle
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 69.9% 100%, 69.9% 90%, 30.1% 90%, 30.1% 100%, 0% 100%)
-    transition: clip-path .3s cubic-bezier(0,.5,.5,1)
-
-
-.crc
-    fill: none
-
-#losta
-    #pnta
-        fill: radial-gradient(at 50% 45.8%, transparent 0%, #0f744068 30%, #0f7440 50%), conic-gradient(from .5turn at 50% 45.8%, transparent 0deg 36deg, #033119 36deg, #0f7440 72deg, transparent 72deg 108deg, #033119 108deg, #0f7440 144deg, transparent 144deg 180deg, #033119 180deg, #0f7440 216deg, transparent 216deg 252deg, #033119 252deg, #0f7440 288deg, transparent 288deg 324deg, #033119 324deg, #0f7440 360deg)
-    .deg
-        stroke: none
+// .emblem
+//     @include AbsoluteCenter
+//     height: 100%
+//     width: 100%
+//     fill: none
+//     stroke: var(--color-white)
+//     stroke-width: 35px

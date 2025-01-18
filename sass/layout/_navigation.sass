@@ -1,15 +1,27 @@
-.navigation
+nav
     position: sticky
-    left: 0
-    top: 0
-    height: max-content
-    width: 100vw
-    padding: 1.5rem
-    z-index: 20
-    backdrop-filter: blur(6px)
     display: grid
     grid-template: auto / repeat(3, 12rem)
     grid-column-gap: auto
     justify-content: space-around
-    place-items: center center
-    border-bottom: $border-light-blue
+    place-items: center
+    height: max-content
+    width: 100vw
+    left: 0
+    top: 0
+    z-index: 20
+    padding: 1.5rem
+    border-bottom: 1px solid var(--color-white)
+    backdrop-filter: blur(6px)
+    .nav__logo
+        position: relative
+        height: 3.6rem
+        width: 3.6rem
+        cursor: pointer
+        &-emblem
+            @include AbsoluteCenter
+            height: 100%
+            width: 100%
+            fill: none
+            stroke: var(--color-white)
+            stroke-width: 35px

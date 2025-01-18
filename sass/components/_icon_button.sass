@@ -4,7 +4,7 @@
     aspect-ratio: 1 / 1
     transition: transform .2s ease, filter .2s ease
     text-decoration: none
-    color: $color-orange
+    color: var(--color-orange)
     text-shadow: unset
     background: none
     cursor: pointer
@@ -15,14 +15,14 @@
         aspect-ratio: 1 / 1
         width: 100%
     &_bg
-        fill: $color-orange-opacity2
-        stroke: $color-orange
+        fill: rgba(var(--color-orange-rgb), .2)
+        stroke: var(--color-orange)
     span
         text-align: left
         left: 64%
         top: 60%
 
 .icon_figure
-    stroke: $color-orange
+    stroke: var(--color-orange)
     stroke-width: .8px
     fill: none

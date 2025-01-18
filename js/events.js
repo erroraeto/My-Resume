@@ -68,14 +68,14 @@ let notContMenu = document.querySelectorAll("#nCM");
 for (el of notContMenu) el.oncontextmenu = () => {return false};
 
 //Отмена контекстного меню slider
-let slider = document.querySelector(".slider");
+let slider = document.querySelector(".section-about__slider");
 
 slider.addEventListener("pointerdown", (e) => {
     slider.style = 'animation-play-state: paused';
-    e.target.closest('.slider_frame').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
+    e.target.closest('div').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
     slider.addEventListener("pointerup", () => {
         slider.style = 'animation-play-state: running';
-        e.target.closest('.slider_frame').style = '';
+        e.target.closest('div').style = '';
     });
 });
 // slider.oncontextmenu = function(event) {
@@ -100,7 +100,7 @@ slider.addEventListener("pointerdown", (e) => {
 
 
 //Свайпы секций
-let main = document.querySelector('.main')
+let main = document.querySelector('main')
 
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
@@ -150,10 +150,10 @@ function handleTouchMove(evt) {
 };
 
 //Скрытие доступного текста для скролла
-let desc = document.querySelectorAll(".description-text");
+let scrollable = document.querySelectorAll(".scrollable");
 
 document.addEventListener('DOMContentLoaded', function(e) {
-    desc.forEach( function(el) {
+    scrollable.forEach( function(el) {
         if (el.scrollHeight > el.clientHeight) {
             el.style.maskImage = "linear-gradient(to bottom, transparent, #000 0%, #000 70%, transparent 100%)";
             el.addEventListener('scroll', () => {
@@ -174,122 +174,34 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // let elemInnerShadowT01 = document.querySelectorAll(".inner_shadow-type01");
-    // for (el of elemInnerShadowT01) {filterInnerShdw(el, 0)};
-
-    // let elemInnerShadowT02 = document.querySelectorAll(".inner_shadow-type02");
-    // for (el of elemInnerShadowT02) {filterInnerShdw(el, 1)};
-
-    // let backRepeatLGrad02 = document.querySelectorAll(".back_repeat-grad01");
-    // for (el of backRepeatLGrad02) {backMask(el, 1)};
-
-    let resBttn = document.querySelectorAll('.article_resume > a');
+    let resBttn = document.querySelectorAll('.section-about__article-resume > a');
     for (el of resBttn) {el.addEventListener('mouseover', resBttn_hover)};
 
 });
-
-function filterInnerShdw(el, type) {
-    const svg = [
-        '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="8"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/></filter></svg>',
-        '<svg xmlns="http://www.w3.org/2000/svg"><filter id="inner_shadow"><feOffset dx="0" dy="0"/><feGaussianBlur stdDeviation="13"/><feComposite in="SourceAlpha" operator="out"/><feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/></filter></svg>',
-    ]
-        blob = new Blob([svg[type]], { type: 'image/svg+xml' }),
-        url = URL.createObjectURL(blob);
-
-    el.style.filter = `url('${url}#inner_shadow')`;
-};
-
-function backMask(el, type) {
-    const svg = [
-        `<svg xmlns="http://www.w3.org/2000/svg">
-            <defs>
-            <radialGradient id="RadGradient">
-                <stop offset="0%" stop-color="white" stop-opacity="100%"/>
-                <stop offset="18%" stop-color="white" stop-opacity="80%"/>
-                <stop offset="35%" stop-color="white" stop-opacity="0%"/>
-            </radialGradient>
-            <mask id="mask_circle" maskContentUnits="objectBoundingBox">
-                <circle cx=".5" cy=".5" r="1.45" fill="url(#RadGradient)"/>
-            </mask>
-            </defs>
-        </svg>`,
-        `<svg xmlns="http://www.w3.org/2000/svg">
-            <defs>
-            <radialGradient id="RadGradient">
-                <stop offset="0%" stop-color="white" stop-opacity="100%"/>
-                <stop offset="8%" stop-color="white" stop-opacity="70%"/>
-                <stop offset="32%" stop-color="white" stop-opacity="0%"/>
-            </radialGradient>
-            <mask id="mask_circle" maskContentUnits="objectBoundingBox">
-                <circle cx=".5" cy=".5" r="1.45" fill="url(#RadGradient)"/>
-            </mask>
-            </defs>
-        </svg>`,
-    ];
-    blob = new Blob([svg[type]], { type: 'image/svg+xml' }),
-    url = URL.createObjectURL(blob);
-
-    el.style.mask = `url('${url}#mask_circle')`;
-};
 
 //Всплывающие изображения/подсказки
 document.addEventListener("mouseover", (e) => {
     if (e.target.closest(".attn > *")) {
         Array.from(e.target.parentElement.children).some((el) => {
             if (e.target == el) {
-                let id = "asdadfsasfrw";
 
                 let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                svg.setAttribute('class', 'attn_message');
+                svg.setAttribute('class', 'attn-message');
                 svg.setAttribute('viewBox', '0 0 520 290');
                 svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-
-                let linearGradient = document.createElementNS('http://www.w3.org/2000/svg', "linearGradient");
-                linearGradient.setAttribute('id', 'LineGradient');
-                linearGradient.setAttribute('x1', '3%');
-                linearGradient.setAttribute('x2', '3%');
-                linearGradient.setAttribute('y1', '2%');
-                linearGradient.setAttribute('y2', '3.3%');
-                linearGradient.setAttribute('spreadMethod', 'reflect');
-
-                let animateTransform = document.createElementNS('http://www.w3.org/2000/svg', "animateTransform");
-                animateTransform.setAttribute('attributeName', 'gradientTransform');
-                animateTransform.setAttribute('type', 'translate');
-                animateTransform.setAttribute('from', '0 -1');
-                animateTransform.setAttribute('to', '0 1');
-                animateTransform.setAttribute('begin', '0s');
-                animateTransform.setAttribute('dur', '60s');
-                animateTransform.setAttribute('repeatCount', 'indefinite');
-
                 
-                let stopFirst = document.createElementNS('http://www.w3.org/2000/svg', "stop");
-                stopFirst.setAttribute('offset', '20%');
-                stopFirst.setAttribute('stop-color', '#a0dbff3c');
-                let stopSecond = document.createElementNS('http://www.w3.org/2000/svg', "stop");
-                stopSecond.setAttribute('offset', '80%');
-                stopSecond.setAttribute('stop-color', 'transparent');
-                
-                linearGradient.appendChild(animateTransform);
-                linearGradient.appendChild(stopFirst);
-                linearGradient.appendChild(stopSecond);
-
-                let rect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
-                rect.setAttribute('fill', 'url(#LineGradient)');
-                rect.setAttribute('id', id);
-                rect.setAttribute('height', 280);
-                rect.setAttribute('width', 510);
-                backMask(rect, 0);
-
-                let path = document.createElementNS('http://www.w3.org/2000/svg', "path");
-                path.setAttribute('d', 'M100 70l0-10 10-10 300 0 10 10 0 10M100 220l0 10 10 10 300 0 10-10 0-10');
-
                 let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
                 image.setAttribute('href', el.getAttribute('data-img-href'));
+                
+                let rect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
+                rect.setAttribute('height', 280);
+                rect.setAttribute('width', 480);
 
-                svg.appendChild(linearGradient);
+                let path = document.createElementNS('http://www.w3.org/2000/svg', "path");
+
+                svg.appendChild(image);
                 svg.appendChild(rect);
                 svg.appendChild(path);
-                svg.appendChild(image);
 
                 document.body.append(svg);
 
@@ -312,12 +224,12 @@ document.addEventListener("mouseover", (e) => {
 
 //Выбор резюме
 function resBttn_hover(e) {
-    let resBord_grad = document.querySelectorAll('.border_resume #grad-border_resume stop');
-    let resBord_g = document.querySelectorAll('.border_resume g');
+    let resBord_grad = document.querySelectorAll('#section-about__article-resume-border_grad stop');
+    let resBord_g = document.querySelectorAll('.section-about__article-resume-border g');
     let pointY = [[' 19', ' 42'], [' 13', ' 46']];
     let j = 0;
 
-    if (e.target.closest('.resume_left')) {
+    if (e.target.closest('a').getAttribute('data-position') == 'left') {
         resBord_grad[1].attributes[1].nodeValue = resBord_grad[0].attributes[1].nodeValue
         resBord_grad[0].attributes[1].nodeValue = 'white';
         for (let i=0; i<2; i++) {
@@ -325,7 +237,7 @@ function resBttn_hover(e) {
             resBord_g[0].children[i].attributes[0].nodeValue = resBord_g[0].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[0][i]);
         }
         j = 0;
-    } else if (e.target.closest('.resume_right')) {
+    } else if (e.target.closest('a').getAttribute('data-position') == 'right') {
         resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue
         resBord_grad[1].attributes[1].nodeValue = 'white';
         for (let i=0; i<2; i++) {
@@ -519,6 +431,7 @@ softwareIcon.addEventListener('click', async (e) => {
 
     await sleep(300);
 
+    abilDesc.children[1].children[1].children[0].children[0].children[4].innerHTML = '';
     abilDesc.children[1].children[1].children[0].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
     abilDesc.children[1].children[1].children[0].children[1].innerHTML = e.target.closest(".icon_button").value;
     descriptionSoft.innerHTML = `<p>${sftSelect[e.target.closest(".icon_button").value]}</p>`;

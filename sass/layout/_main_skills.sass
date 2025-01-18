@@ -48,13 +48,13 @@
                 height: 2rem
             &::-webkit-scrollbar-track
                 cursor: pointer
-                background: repeating-linear-gradient(to left, transparent, transparent 10px, $color-orange-opacity6 10px, $color-orange-opacity6 11px)
+                background: repeating-linear-gradient(to left, transparent, transparent 10px, rgba(var(--color-orange-rgb), .6) 10px, rgba(var(--color-orange-rgb), .6) 11px)
                 border: .7rem solid transparent
                 background-clip: content-box
             &::-webkit-scrollbar-thumb
                 cursor: pointer
                 height: 3rem
-                background: radial-gradient(closest-side circle at 50%, $color-orange-opacity6 0%, $color-orange 99%, transparent 100%)
+                background: radial-gradient(closest-side circle at 50%, rgba(var(--color-orange-rgb), .6) 0%, var(--color-orange) 99%, transparent 100%)
             .content_skills
                 height: 80%
                 aspect-ratio: 7/5
@@ -67,7 +67,7 @@
                     aspect-ratio: 935/889
                     transform: translate(-50%, -50%)
                     transition: clip-path .4s ease
-                    background: radial-gradient(at 50% 44.8%, transparent 0%, $color-orange 100%), conic-gradient(from .5turn at 50% 44.8%, transparent 0deg 36deg, $color-orange-darken 36deg, $color-orange 72deg, transparent 72deg 108deg, $color-orange-darken 108deg, $color-orange 144deg, transparent 144deg 180deg, $color-orange-darken 180deg, $color-orange 216deg, transparent 216deg 252deg, $color-orange-darken 252deg, $color-orange 288deg, transparent 288deg 324deg, $color-orange-darken 324deg, $color-orange 360deg)
+                    background: radial-gradient(at 50% 44.8%, transparent 0%, var(--color-orange) 100%), conic-gradient(from .5turn at 50% 44.8%, transparent 0deg 36deg, var(--color-cinnamon) 36deg, var(--color-orange) 72deg, transparent 72deg 108deg, var(--color-cinnamon) 108deg, var(--color-orange) 144deg, transparent 144deg 180deg, var(--color-cinnamon) 180deg, var(--color-orange) 216deg, transparent 216deg 252deg, var(--color-cinnamon) 252deg, var(--color-orange) 288deg, transparent 288deg 324deg, var(--color-cinnamon) 324deg, var(--color-orange) 360deg)
                 & > *
                     transition: transform .5s ease, opacity .5s ease
                 & :nth-child(n+4):nth-child(-n+6)
@@ -78,7 +78,7 @@
                     transform: scale(.5) !important
                 & :nth-child(n+3):nth-child(-n+6)
                     vector-effect: non-scaling-stroke
-                    stroke: $color-blue
+                    stroke: var(--color-white)
                     stroke-width: 1px
                     fill: none
                     opacity: .3
@@ -90,9 +90,9 @@
                 & :nth-child(n+7):nth-child(-n+15)
                     position: relative
                     vector-effect: non-scaling-stroke
-                    border: $border-light-blue
+                    border: 1px solid var(--color-white)
                     transform: scale(1.35) translate(-13%, -12%)
-                    fill: $color-blue
+                    fill: var(--color-white)
                     width: 71.14%
             .content_software
                 height: 100%
@@ -196,9 +196,12 @@
                                 #targ_icon
                                     scale: .7
                                     transform-origin: center
-                                & :first-child
-                                    fill: $color-orange-darken-opacity6
+                                path:not(#targ_icon)
+                                    fill: var(--color-cinnamon)
                                     stroke: none
+                                text
+                                    fill: var(--color-orange)
+                                    stroke-width: .5px
                             .title_text
                                 // margin-left: 1%
                                 vertical-align: sub
@@ -398,7 +401,8 @@
         svg:has(.target_software)
             position: absolute
             backface-visibility: hidden
-            fill: $color-juice-blue-opac-2
+            // fill: $color-juice-blue-opac-2
+            fill: rgba(var(--color-light-blue-rgb), .2)
             z-index: 3
         .description
             font-size: 1.19rem

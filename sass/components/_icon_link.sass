@@ -9,11 +9,11 @@
         width: 100%
         @include AbsoluteCenter
     &_bg
-        fill: $color-orange-opacity2
-        stroke: $color-orange
+        fill: rgba(var(--color-orange-rgb), .2)
+        stroke: var(--color-orange)
     button
         text-decoration: none
-        color: $color-orange
+        color: var(--color-orange)
         text-shadow: unset
         background: none
         cursor: pointer
@@ -24,9 +24,9 @@
         font-size: 1.8rem
         text-align: center
         &:link, &:visited
-            color: $color-orange
+            color: var(--color-orange)
     .icon_figure
-        stroke: $color-orange
+        stroke: var(--color-orange)
         stroke-width: .8px
         fill: none
     span

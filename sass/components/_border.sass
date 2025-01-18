@@ -1,61 +1,55 @@
 .border
-    z-index: -1
     @include AbsoluteCenter
     display: block
     height: 100%
     width: 100%
+    z-index: -1
     fill: none
-    stroke: $color-blue
+    stroke: rgba(var(--color-white-rgb), .6)
     stroke-width: 1px
     &_attn_message
         stroke-dasharray: 10 5
-    &_article
-        stroke: none
-        fill: none
-    &_title
-        fill: $background-color-blue-type1
-    &_description
-        stroke: none
-        rect
-            stroke: $color-blue
-            stroke-width: 2px
-            stroke-dasharray: 10 190 10 90
-            stroke-dashoffset: 5
-    &_img
-        & :first-child
-            filter: drop-shadow(0 0 4px $color-blue)
-            shape-outside: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='50%' height='100%' viewBox='0 0 192.5 385' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M192.5 0l0 107.5c-5.418-.069-11.876-2.266-16.175-8.236l-67.076 48.782c7.507 10.297 3.701 26.318-9.989 30.783l25.634 78.811c12.401-4.456 26.363 5.577 26.186 19.0193l41.42 0 0 108.3407-192.5 0 0-385z'/%3E%3C/svg%3E%0A")
-            filter: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cfilter%20id%3D%22desaturate%22%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22/%3E%3C/filter%3E%3C/svg%3E#desaturate)
-            fill: $background-color-blue
-        image
-            filter: drop-shadow(.5px 0 0px red) drop-shadow(-.5px 0 0px blue)
-        &.bg
-            fill: $background-color-blue
-            transform: translateZ(-2rem)
-            & :last-child
-                stroke: none
-                fill: $background-color-blue-darken
+    // &_article
+    //     stroke: none
+    //     fill: none
+    //     text
+    //         fill: var(--color-light-gray-blue)
+    // &_title
+    //     fill: rgba(var(--color-light-blue-rgb), .4)
+    // &_description
+    //     stroke: none
+    //     rect
+    //         stroke: var(--color-white)
+    //         stroke-width: 2px
+    //         stroke-dasharray: 10 190 10 90
+    //         stroke-dashoffset: 5
+    // &_img
+    //     path
+    //         fill: rgba(var(--color-light-blue-rgb), .4)
+    //     image
+    //         // filter: drop-shadow(.5px 0 0px red) drop-shadow(-.5px 0 0px blue)
+    // &_bg
+    //     fill: rgba(var(--color-light-blue-rgb), .4)
+    //     transform: translateZ(4rem)
     &_ability
-        stroke: $color-orange
+        stroke: var(--color-orange)
         & :first-child
-            fill: $color-orange-opacity1_5
+            fill: rgba(var(--color-dark-tangerine-rgb), .15)
         & :last-child
-            fill: $background-color-orange
-            filter: drop-shadow(0 0 4px $color-orange)
+            fill: rgba(var(--color-dark-tangerine-rgb), .6)
     &_software
-        stroke: $color-orange
+        stroke: var(--color-orange)
         & :nth-child(n+1):nth-child(-n+2)
-            fill: $background-color-orange
-            filter: drop-shadow(0 0 4px $color-orange)
+            fill: rgba(var(--color-dark-tangerine-rgb), .6)
         & :last-child
-            fill: $color-orange-opacity1
+            fill: rgba(var(--color-dark-tangerine-rgb), .1)
     &_footer
-        fill: $color-orange-opacity2
-        stroke: $color-orange
+        fill: rgba(var(--color-dark-tangerine-rgb), .2)
+        stroke: var(--color-orange)
         & :first-child
-            fill: $color-orange-opacity6
+            fill: rgba(var(--color-dark-tangerine-rgb), .6)
         & :last-child
-            fill: $color-orange
+            fill: var(--color-orange)
 
 .bg
     transform: translateZ(-1rem)

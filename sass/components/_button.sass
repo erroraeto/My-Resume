@@ -1,13 +1,11 @@
 .btn
-    position: relative
     @include FlexCenter
+    position: relative
     height: 3.6rem
     width: max-content
-    cursor: pointer
     padding: 0 1.2rem
+    cursor: pointer
     backface-visibility: hidden
-    &:link, &:visited
-        color: $color-blue
     &::after,
     &::before
         content: ''
@@ -16,24 +14,24 @@
         width: 12rem
         @include AbsoluteCenter
     &::after
-        border: $border-light-blue
+        border: 2px solid var(--color-white)
         clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
-        transition: clip-path .25s ease, transform .25s ease
+        transition: clip-path .2s ease, transform .2s ease
     &:hover::after
         transform: scale(0.85, 0.68)
         clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
-        border: $border-light-blue
+        border: 2px solid var(--color-white)
     &::before
-        background: $background-color-blue
+        background: rgba(var(--color-thrush-eggs-rgb), .5)
         z-index: -1
         opacity: 0
-        transition: opacity .3s ease, transform .3s ease
+        transition: opacity .2s ease, transform .2s ease
     &:hover::before
         opacity: 1
         transform: scale(0.85, 0.68)
     &:active::before
-        background: $background-color-orange
+        background: rgba(var(--color-orange-rgb), .6)
     &:active::after
-        border: $border-light-orange
-    &:active 
-        color: $color-orange
+        border: 2px solid var(--color-orange)
+    &:active
+        color: var(--color-orange)

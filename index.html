@@ -11,48 +11,139 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <!-- Это должен быть спрайт, но я ХЗ как это правильно делать -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="20%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+            <linearGradient id="line-grad-anim-02" x1="3%" y1="2%" x2="3%" y2="2.6%" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+            <linearGradient id="line-grad-anim-03" x1="3%" y1="2%" x2="3%" y2="3%" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+            
+            <radialGradient id="rad-grad-type01">
+                <stop offset="0%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="8%" stop-color="white" stop-opacity="70%"/>
+                <stop offset="32%" stop-color="white" stop-opacity="0%"/>
+            </radialGradient>
+            <linearGradient id="line-grad-type01">
+                <stop offset="0%" stop-color="black" stop-opacity="0%"/>
+                <stop offset="20%" stop-color="black" stop-opacity="45%"/>
+                <stop offset="40%" stop-color="black" stop-opacity="0%"/>
+            </linearGradient>
+            <mask id="mask-bg-desc-type01" maskContentUnits="objectBoundingBox">
+                <circle cx=".5" cy=".5" r="1.45" fill="url(#rad-grad-type01)"/>
+                <rect width="1" height="1" fill="url(#line-grad-type01)">
+                    <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
+                </rect>
+            </mask>
+
+            <linearGradient id="line-grad-type02">
+                <stop offset="0%" stop-color="white" stop-opacity="0%"/>
+                <stop offset="20%" stop-color="white" stop-opacity="50%"/>
+                <stop offset="80%" stop-color="white" stop-opacity="50%"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0%"/>
+            </linearGradient>
+            <linearGradient id="line-grad-type03" gradientTransform="rotate(90)">
+                <stop offset="0%" stop-color="black" stop-opacity="100%"/>
+                <stop offset="20%" stop-color="black" stop-opacity="0%"/>
+                <stop offset="80%" stop-color="black" stop-opacity="0%"/>
+                <stop offset="100%" stop-color="black" stop-opacity="100%"/>
+            </linearGradient>
+            <mask id="mask-bg-desc-type02" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#line-grad-type02)"/>
+                <rect width="1" height="1" fill="url(#line-grad-type03)"/>
+                <rect width=".4" height="1" fill="url(#line-grad-type01)">
+                    <animate attributeName="x" values="-.5;1.5" begin="0s" dur="2s" repeatCount="indefinite"/>
+                </rect>
+            </mask>
+
+            <radialGradient id="rad-grad-type02">
+                <stop offset="20%" stop-color="black" stop-opacity="0%"/>
+                <stop offset="45%" stop-color="black" stop-opacity="50%"/>
+                <stop offset="60%" stop-color="black" stop-opacity="100%"/>
+            </radialGradient>
+            <mask id="mask-bg-desc-type03" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#line-grad-type02)"/>
+                <rect width="1" height="1" fill="url(#line-grad-type03)"/>
+                <circle cx=".5" cy=".5" r="1" fill="url(#rad-grad-type02)"/>
+                <rect width=".4" height="1" fill="url(#line-grad-type01)">
+                    <animate attributeName="x" values="-.5;1.5" begin="0s" dur="2s" repeatCount="indefinite"/>
+                </rect>
+            </mask>
+
+            <filter id="inner-shadow-type01">
+                <feOffset dx="0" dy="0"/>
+                <feGaussianBlur stdDeviation="8"/>
+                <feComposite in="SourceAlpha" operator="out"/>
+                <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/>
+            </filter>
+            <filter id="inner-shadow-type02">
+                <feOffset dx="0" dy="0"/>
+                <feGaussianBlur stdDeviation="13"/>
+                <feComposite in="SourceAlpha" operator="out"/>
+                <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/>
+            </filter>
+
+            <filter id="led-screen">
+                <feFlood id="filterPxl" x="1" y="1" width="2" height="2" result="flood"></feFlood>
+                <feComposite id="filterCs" in="flood" in2="flood" operator="over" x="0" y="0" width="4" height="4" result="composite"></feComposite>
+                <feTile x="0" y="0" width="10000" height="10000" in="composite" result="tile"></feTile>
+                <feComposite in="SourceGraphic" in2="tile" operator="in"></feComposite>
+                <feMorphology id="filterMorph" operator="dilate" radius="1" in="composite2" result="morphology"></feMorphology>
+                <feImage id="filterCsImg" xlink:href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' id='svg_1' y='5' x='5' /%3E%3C/svg%3E" x="0" y="0" width="3" height="2.4" preserveAspectRatio="xMidYMid meet" result="image"></feImage>
+                <feTile x="0" y="0" width="10000" height="10000" in="image" result="tile1"></feTile>
+                <feComposite in="morphology" in2="tile1" operator="in" result="composite3"></feComposite>
+                <feGaussianBlur stdDeviation="4 8" in="composite3" result="blur3"></feGaussianBlur>
+                <feBlend mode="screen" in="blur3" in2="composite3" result="blend"></feBlend>
+            </filter>
+        </defs>
+    </svg>
     <!-- NAVIGATION -->
-    <nav id="nCM" class="navigation">
-        <a id="btn" class="btn" href="#about">About Me</a>
-        <a id="btn" class="logo" href="#home">
-            <svg class="emblem" viewbox="0 0 500 500">
-                <use href="#emblem" transform="translate(5, 5)" stroke="blue"/>
-                <use href="#emblem" transform="translate(-5, -5)" stroke="red"/>
-                <path id="emblem" stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
+    <nav>
+        <a id="btn" class="btn" href="#about"><span>About Me</span></a>
+        <a id="btn" class="nav__logo" href="#home">
+            <svg class="nav__logo-emblem" viewbox="0 0 500 500">
+                <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
                     <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
                 </path>
             </svg>
         </a>
-        <a id="btn" class="btn" href="#skill">Skill</a>
+        <a id="btn" class="btn" href="#skill"><span>Skill</span></a>
     </nav>
     <!-- CONTENT -->
-    <main class="main">
-        <section id="about" class="container container_about">
-            <div class="article">
-                <svg class="border border_article" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
+    <main>
+        <section id="about" class="section-about">
+            <div class="section-about__article">
+                <svg class="section-about__article-border border" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
                     <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
-                    <!-- <use href="#CA-BA" filter="url(#inner_shadow_type-2)" stroke="none" fill="#ffffffd5" />
-                    <use href="#CA-BA" fill="url(#line_grad-anim)" mask="url(#mask_bg-desc)" stroke="none" /> -->
-                    <use href="#CA-BA" filter="url(./src/sprite/bg.svg#inner_shadow_type-2)" stroke="none" fill="#ffffffd5" />
-                    <use href="#CA-BA" fill="url(./src/sprite/bg.svg#line_grad-anim)" mask="url(./src/sprite/bg.svg#mask_bg-desc)" stroke="none" />
-                    <text textLength="110" lengthAdjust="spacingAndGlyphs" fill="#9acece" x="80" y="20">D.D.S.</text>
-                    <text textLength="100" lengthAdjust="spacingAndGlyphs" fill="#9acece" dominant-baseline="hanging" font-size="1rem" x="83" y="22">compendium</text>
-                    <text fill="#9acece" dominant-baseline="middle" text-anchor="end" font-size="2.5rem" x="77" y="20">電</text>
+                    <use href="#CA-BA" filter="url(#inner-shadow-type02)" stroke="none" fill="#ffffffd5" />
+                    <use href="#CA-BA" fill="url(#line-grad-anim-01)" mask="url(#mask-bg-desc-type01)" stroke="none" />
+                    <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
+                    <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging" font-size="1rem" x="83" y="23">compendium</text>
+                    <text dominant-baseline="middle" text-anchor="end" font-size="2.5rem" x="77" y="21">電</text>
                 </svg>
-                <div class="title">
-                    <svg class="border border_title" viewBox="0 0 540 45" preserveAspectRatio="xMidYMid meet">
-                        <use href="#CA-title" class="inner_shadow-type01" stroke="none" fill="#ffffffd5" />
-                        <path id="CA-title" vector-effect="non-scaling-stroke" d="M1 6l6 0 6-5 514 0 6 5 6 0 0 31-6-5-248 0-6 6-272 0-6 6z"/>
+                <div class="section-about__article-title">
+                    <svg class="section-about__article-title-border border" viewBox="0 0 540 45" preserveAspectRatio="xMidYMid meet">
+                        <use href="#section-about__article-title-border" filter="url(#inner-shadow-type01)" stroke="none" fill="#ffffffd5" />
+                        <path id="section-about__article-title-border" vector-effect="non-scaling-stroke" d="M1 6l6 0 6-5 514 0 6 5 6 0 0 31-6-5-248 0-6 6-272 0-6 6z"/>
                     </svg>
                     <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                         <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
-                        <use href="#CA-icon" x="-.3" fill="red"/>
-                        <use href="#CA-icon" x=".3" fill="blue"/>
-                        <path id="CA-icon" d="M16 23a.5.5 0 010 3 .5.5 0 110-3m2-13a.5.5 0 10-4 0c0 1 .311 8.075.5 10a.6.6 0 103 0c.119-1.997.5-9 .5-10"/>
-                    </svg><h2 class="title_text">Insertion</h2>
+                        <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">!</text>
+                    </svg><h2>Insertion</h2>
                 </div>
-                <div class="description">
-                    <div class="description-text" data-mask-value-top="0%" data-mask-value-bot="70%">
+                <div class="section-about__article-description">
+                    <div class="section-about__article-description-text scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
                         <p> I am a passionate frontend developer as well as a 2D and 3D graphics
                             visualizer.
                         </p>
@@ -77,15 +168,15 @@
                         <p>Enjoy your visit.</p>
                     </div>
                 </div>
-                <div id="nCM" class="article_resume">
-                    <svg class="border border_resume" viewBox="0 0 500 60" preserveAspectRatio="xMidYMid meet">
+                <div class="section-about__article-resume">
+                    <svg class="section-about__article-resume-border border" viewBox="0 0 500 60" preserveAspectRatio="xMidYMid meet">
                         <defs>
-                            <linearGradient id="grad-border_resume">
+                            <linearGradient id="section-about__article-resume-border_grad">
                                 <stop offset="0" stop-color="#d1ffff80" />
                                 <stop offset="1" stop-color="#d1ffff80" />
                             </linearGradient>
                         </defs>
-                        <path stroke="url(#grad-border_resume)" d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
+                        <path stroke="url(#section-about__article-resume-border_grad)" d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
                         <g opacity="0">
                             <path d="M28 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
                             <path d="M28 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
@@ -95,123 +186,123 @@
                             <path d="M321 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
                         </g>
                     </svg>
-                    <a class="resume resume_left" href="/files/resume.pdf">
-                        <span>Resume</span><svg class="inline_icon resumeEN" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                    <a data-position="left" href="/files/resume.pdf">
+                        <span>Resume</span><svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                             <defs>
-                                <mask id='text-mask-EN' x='0' y='0' width='32' height='32'>
+                                <mask id='section-about__article-resume_mask-EN' x='0' y='0' width='32' height='32'>
                                     <rect x='0' y='0' width='32' height='32' fill='white' />
                                     <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle" fill='black'>EN</text>
                                 </mask>
                             </defs>
-                            <circle mask="url(#text-mask-EN)" cx="16" cy="16" r="15"/>
+                            <circle mask="url(#section-about__article-resume_mask-EN)" cx="16" cy="16" r="15"/>
                         </svg>
                     </a>
-                    <a class="resume resume_right" href="/files/resume.pdf">
-                        <svg class="inline_icon resumeRU" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                            <mask id='text-mask-RU' x='0' y='0' width='32' height='32'>
+                    <a data-position="right" href="/files/resume.pdf">
+                        <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                            <mask id='section-about__article-resume_mask-RU' x='0' y='0' width='32' height='32'>
                                 <rect x='0' y='0' width='32' height='32' fill='white' />
                                 <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle" fill='black'>RU</text>
                             </mask>
-                            <circle mask="url(#text-mask-RU)" vector-effect="non-scaling-stroke" cx="16" cy="16" r="15"/>
+                            <circle mask="url(#section-about__article-resume_mask-RU)" vector-effect="non-scaling-stroke" cx="16" cy="16" r="15"/>
                         </svg><span>Resume</span>
                     </a>
                 </div>
             </div>
-            <div id="nCM" class="slider">
-                <div class="slider_frame frame_9">
+            <div class="section-about__slider">
+                <div>
                     <p>Rigging & Skinning</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 268 0 10 5 504 0 7 7-501 0-20 14-275 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/9frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 283 0 20-14 502 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_8">
+                <div>
                     <p>Texturing</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 138 0 10 5 634 0 7 7-631 0-20 14-145 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/8frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 153 0 20-14 632 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_7">
+                <div>
                     <p>Texturing Maps</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 208 0 10 5 564 0 7 7-561 0-20 14-215 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/7frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 223 0 20-14 562 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_6">
+                <div>
                     <p>Texturing Maps</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 208 0 10 5 564 0 7 7-561 0-20 14-215 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/6frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 223 0 20-14 562 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_5">
+                <div>
                     <p>Unwrap</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 88 0 10 5 684 0 7 7-681 0-20 14-95 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/5frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 103 0 20-14 682 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_4">
+                <div>
                     <p>Retopology</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 148 0 10 5 624 0 7 7-621 0-20 14-155 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/4frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 163 0 20-14 622 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_3">
+                <div>
                     <p>Retopology</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 148 0 10 5 624 0 7 7-621 0-20 14-155 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/3frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 163 0 20-14 622 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_2">
+                <div>
                     <p>Sculpting</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 138 0 10 5 634 0 7 7-631 0-20 14-145 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/2frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 153 0 20-14 632 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-                <div class="slider_frame frame_1">
+                <div>
                     <p>Concepts & Design</p>
-                    <svg class="border border_img" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M1 7l16 0 10-6 253 0 10 5 519 0 7 7-516 0-20 14-260 0-13-9 0 9-6-6z"/>
+                    <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
                         <image href="./src/image/frame/1frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
+                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
                     </svg>
-                    <svg class="border border_img bg inner_shadow-type02" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path vector-effect="non-scaling-stroke" d="M4 40l10-10 268 0 20-14 517 1 10 10 0 428-10 10-805 0-10-10z"/>
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
             </div>
         </section>
 
-        <section id="home" class="container container_home">
+        <section id="home" class="section-home">
             <svg class="planet" viewbox="0 0 120 120">
                 <circle id="planet" fill="url('#planetGrad')" cx="60" cy="-30" r="100" mask="url(#textMask)">
                     <animate attributeName="cy" values="-40;-30;" dur="3s" keySplines="0 0 0.2 1" calcMode="spline"/>
@@ -252,8 +343,8 @@
             </svg>
         </section>
 
-        <section id="skill" class="container container_abilities">
-            <div class="container_abilities_conductor">
+        <section id="skill" class="section-abilities">
+            <div class="section_abilities_conductor">
                 <svg class="border border_ability" viewBox="0 0 1032 590" preserveAspectRatio="xMidYMid meet">
                     <path vector-effect="non-scaling-stroke" d="M5 79l20-20 642 0 20-30 330 0 10 10 1 455-10 10-325 0-20 20 0 46-20 19-627 0-20-19z"/>
                     <path vector-effect="non-scaling-stroke" d="M1 74l20-20 642 0 20-30 338 0 10 10 0-25-11 0-13-8-971 0-11 12-24 0z"/>
@@ -289,7 +380,7 @@
                         <text dx="1ch" x="192.3" y="102">1</text>
                     </svg>
                     <div class="content_software">
-                        <div class="container">
+                        <div class="section">
                             <button class="icon_button hovering" value="HTML-CSS" type="button">
                                 <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                                     <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
@@ -382,17 +473,13 @@
                                 <path vector-effect="non-scaling-stroke" d="M3 46l10-8  210 0 10-6   96 0 10 8 0    105 -10 8     -316 0-10-8z"/>
                             </svg>
                             <div class="wrapper_section_software">
-                                <!-- <svg class="border border_software" viewBox="0 0 342 181" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M11 33l-10 8 0-33 10 0 10-7  300 0 10 7 10 0 0 27-10-8   -100 0-10 6z"/>
-                                    <path vector-effect="non-scaling-stroke" d="M11 158l-10-8 0 24 10 0 10 6  300 0 10-6 10 0 0-24-10 8z"/>
-                                    <path vector-effect="non-scaling-stroke" d="M3 46l10-8  210 0 10-6   96 0 10 8 0    105 -10 8     -316 0-10-8z"/>
-                                </svg> -->
                                 <div class="title">
                                     <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                                         <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
                                         <use href="#targ_icon" x="-.3" stroke="red"/>
                                         <use href="#targ_icon" x=".3" stroke="blue"/>
-                                        <path id="targ_icon" d="M11 11a-1-1-1 0110 0c-.331 5.96-6.02 3.579-4.221 9.501a.6.6 0 11-1.779.499c-1.994-7.872 3.579-5.376 4-10a1 1 0 00-6 0 .5.5 0 11-2 0m5 13a.5.5 0 100 2 .5.5 0 000-2"/>
+                                        <path id="targ_icon" d=""/>
+                                        <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">?</text>
                                     </svg><h3 class="title_text">Software</h3>
                                 </div>
                                 <div class="description-text" data-mask-value-top="0%" data-mask-value-bot="70%">
@@ -406,7 +493,7 @@
         </section>
     </main>
 
-    <footer id="nCM" class="footer" style="transform: translate3d(0, 13rem, 0)">
+    <footer id="nCM" style="transform: translate3d(0, 13rem, 0)">
             <svg class="border border_footer" height="160px" width="368px" viewbox="0 0 368 160" preserveAspectRatio="none">
                 <path vector-effect="non-scaling-stroke" d="M221,31 221,26 C 230,27 236,19 235,10 L 367,10  367,36  244,36  236,31z"/>
                 <path vector-effect="non-scaling-stroke" d="M1,49  10,34  235,34  242,39  367,39  367,159  1,159z"/>
@@ -481,19 +568,19 @@
             <stop offset="20%" stop-color="black" stop-opacity="45%"/>
             <stop offset="40%" stop-color="black" stop-opacity="0%"/>
         </linearGradient>
-        <mask id="mask_bg-desc" maskContentUnits="objectBoundingBox">
+        <mask id="mask-bg-des-type" maskContentUnits="objectBoundingBox">
             <circle cx=".5" cy=".5" r="1.45" fill="url(#rad_grad)"/>
             <rect width="1" height="1" fill="url(#line_grad)">
                 <animate attributeName="x" values="0;1" begin="0s" dur="1s" repeatCount="indefinite"/>
             </rect>
         </mask>
-        <filter id="inner_shadow_type-1">
+        <filter id="inner-shadow-type01">
             <feOffset dx="0" dy="0"/>
             <feGaussianBlur stdDeviation="8"/>
             <feComposite in="SourceAlpha" operator="out"/>
             <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/>
         </filter>
-        <filter id="inner_shadow_type-2">
+        <filter id="inner-shadow-type02">
             <feOffset dx="0" dy="0"/>
             <feGaussianBlur stdDeviation="13"/>
             <feComposite in="SourceAlpha" operator="out"/>
