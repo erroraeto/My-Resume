@@ -16,7 +16,7 @@
         <defs>
             <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
-                <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="20%"/>
+                <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="40%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
             <linearGradient id="line-grad-anim-02" x1="3%" y1="2%" x2="3%" y2="2.6%" spreadMethod="reflect">
@@ -25,6 +25,11 @@
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
             <linearGradient id="line-grad-anim-03" x1="3%" y1="2%" x2="3%" y2="3%" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+            <linearGradient id="line-grad-anim-04" x1="3%" y1="2%" x2="3%" y2="4%" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
                 <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
@@ -79,6 +84,33 @@
                 <rect width=".4" height="1" fill="url(#line-grad-type01)">
                     <animate attributeName="x" values="-.5;1.5" begin="0s" dur="2s" repeatCount="indefinite"/>
                 </rect>
+            </mask>
+
+            <radialGradient id="rad-grad-type03">
+                <stop offset="0%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="8%" stop-color="white" stop-opacity="50%"/>
+                <stop offset="20%" stop-color="white" stop-opacity="10%"/>
+                <stop offset="32%" stop-color="white" stop-opacity="0%"/>
+            </radialGradient>
+            <mask id="mask-bg-desc-type04" maskContentUnits="objectBoundingBox">
+                <circle cx=".5" cy=".5" r="1.45" fill="url(#rad-grad-type03)"/>
+                <rect width="1" height="1" fill="url(#line-grad-type01)">
+                    <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
+                </rect>
+            </mask>
+
+            
+            <linearGradient id="line-grad-type04">
+                <stop offset="0%" stop-color="white" stop-opacity="0%"/>
+                <stop offset="10%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="90%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0%"/>
+            </linearGradient>
+            <mask id="mask-bg-desc-type05" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#line-grad-type04)"/>
+                <rect y=".9" width="1" height=".1" fill="white"/>
+                <!-- <rect y=".9" width=".02" height=".1" fill="black"/>
+                <rect x=".85" y=".9" width=".15" height=".1" fill="black"/> -->
             </mask>
 
             <filter id="inner-shadow-type01">
@@ -212,91 +244,91 @@
                 <div>
                     <p>Rigging & Skinning</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/9frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/9frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Texturing</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/8frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/8frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Texturing Maps</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/7frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/7frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Texturing Maps</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/6frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/6frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Unwrap</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/5frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/5frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Retopology</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/4frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/4frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Retopology</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/3frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/3frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Sculpting</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/2frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/2frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
                 <div>
                     <p>Concepts & Design</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <image href="./src/image/frame/1frame.webp" x="5%" y="7.5%" height="90%" width="90%" />
-                        <rect fill="url(#line-grad-anim-02)" height="466" width="830"/>
+                        <image href="./src/image/frame/1frame.webp"/>
+                        <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
-                        <path stroke="none" vector-effect="non-scaling-stroke" d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
+                        <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
             </div>
@@ -344,26 +376,25 @@
         </section>
 
         <section id="skill" class="section-abilities">
-            <div class="section_abilities_conductor">
-                <svg class="border border_ability" viewBox="0 0 1032 590" preserveAspectRatio="xMidYMid meet">
-                    <path vector-effect="non-scaling-stroke" d="M5 79l20-20 642 0 20-30 330 0 10 10 1 455-10 10-325 0-20 20 0 46-20 19-627 0-20-19z"/>
-                    <path vector-effect="non-scaling-stroke" d="M1 74l20-20 642 0 20-30 338 0 10 10 0-25-11 0-13-8-971 0-11 12-24 0z"/>
+            <div class="section-abilities__content">
+                <svg class="section-abilities__content-border border" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet">
+                    <path vector-effect="non-scaling-stroke" d="M15 4l3 3 64 0 3-3M8 77l-6 0-1-1 0-71 1-1 13 0 3-3 64 0 3 3 13 0 1 1 0 71-1 1-6 0"/>
                 </svg>
-                <div class="conductor_title title">
-                    <div class="title_text">
+                <div class="section-abilities__content-title">
+                    <div class="section-abilities__content-title-wrapper">
                         <h2 data-translateY="0%">Skills</h2>
                         <h2 data-translateY="-50%">Software</h2>
                     </div>
                 </div>
-                <div id="nCM" class="conductor_content">
-                    <svg class="content_skills" viewbox="0 0 385 385">
+                <div class="section-abilities__content-section">
+                    <svg class="section-abilities__content-section-skills" viewbox="0 0 385 385">
                         <defs>
-                            <mask id="mask">
+                            <mask id="mask-pentagon">
                                 <path fill="white" transform-origin="192.5 180" transform="scale(1.3)" d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
                             </mask>
                         </defs>
-                        <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#mask)">
-                            <div class='parametr' style="clip-path: polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)"></div>
+                        <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#mask-pentagon)">
+                            <div style="clip-path: polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)"></div>
                         </foreignObject>
                         <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
                         <path d="M248.73 101, 192.3 178.52 M135.84 101, 192.3 178.52 M101 208.33, 192.3 178.52 M192.3 274.66, 192.3 178.52 M283.6 208.33, 192.3 178.52 M192.5 101, 192.3 178.52 M118.4 154.65, 192.3 178.52 M146.65 241.53, 192.3 178.52 M238.35 241.53, 192.3 178.52 M266.6 154.65, 192.3 178.52"/>
@@ -379,129 +410,134 @@
                         <text x="192.3" y="126">.6</text>
                         <text dx="1ch" x="192.3" y="102">1</text>
                     </svg>
-                    <div class="content_software">
-                        <div class="section">
-                            <button class="icon_button hovering" value="HTML-CSS" type="button">
-                                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                                </svg>
-                                <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <use href="#iconHTML-CSS" x="-.4" stroke="red"/>
-                                    <use href="#iconHTML-CSS" x=".4" stroke="blue"/>
-                                    <path id="iconHTML-CSS" d="M16 16m-10.3526-10.4737 9.477 0-1.053 8.9505-3.6855 1.3163-3.6855-1.3163zm7.3973 2.106-5.0281 0 .2633 2.3693 4.0541 0-.2106 2.7378-1.7375.5265-1.7375-.5265-.1053-.6318m9.2138 5.0018 9.477 0-1.053 8.9505-3.6855 1.3163-3.6855-1.3163zm1.8427 2.106 5.265 0-.5265 5.0018-1.8427.6318-1.8427-.6318-.1053-.9477m4.0541-1.6848-3.8435 0m.3159-14.2155-10.53 17.901"/>
-                                </svg>
-                                <span>HTML-CSS</span>
-                            </button>
-                            <button class="icon_button hovering" value="JavaScript" type="button">
-                                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                                </svg>
-                                <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <use href="#iconJS" x="-.4" stroke="red"/>
-                                    <use href="#iconJS" x=".4" stroke="blue"/>
-                                    <path id="iconJS" d="M16 16m-9.89-7.8q0-2.08 1.82-2.08l15.86 0q2.08 0 2.08 2.08l0 15.6q0 2.08-2.08 2.08l-15.6 0q-2.08 0-2.08-2.08l0-15.6m9.88 7.8 0 6.24c0 2.08-2.8787 2.6208-3.9.78m11.18-6.5c-2.6302-2.1642-4.8183.7898-2.9598 2.5943 1.0431.9948 1.9714.5595 2.9598 2.0858.9594 2.107-1.886 4.3394-3.9869 1.5725"/>
-                                </svg>
-                                <span>JavaScr.</span>
-                            </button>
-                            <button class="icon_button hovering" value="SASS" type="button">
-                                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                                </svg>
-                                <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <use href="#iconSASS" x="-.4" stroke="red"/>
-                                    <use href="#iconSASS" x=".4" stroke="blue"/>
-                                    <path id="iconSASS" d="M16 16m-1.7056-2.08c2.4643 2.9931 10.0131-1.5554 7.7006-4.6514-2.6192-2.4872-11.4592.6329-12.194 5.1413-.0385 1.835 1.8154 2.2937 4.1662 4.6634 1.6053 2.6567-1.6053 5.2749-3.211 4.3576-.9844-.3937-.6261-3.2375 4.2115-4.6467 4.2255-.5965 4.4476 2.7726 3.015 3.2266m-13.427-6.1293a.52.52 90 0022.88 0 .52.52 90 00-22.88 0z"/>
-                                </svg>
-                                <span>SASS</span>
-                            </button>
-                            <button class="icon_button hovering" value="GIT" type="button">
-                                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                                </svg>
-                                <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <use href="#iconGIT" x="-.4" stroke="red"/>
-                                    <use href="#iconGIT" x=".4" stroke="blue"/>
-                                    <path id="iconGIT" d="M16 16m-11.115 1.116q-1.1168-1.1168 0-2.2337l6.8874-6.8874 1.8615 1.8615c-.4751.8063-.3743 1.8592.3101 2.5856.2528.2743.5495.4394 1.0219.6482l-.0112 5.7221c-2.691 1.571-1.6802 5.0196 1.0871 5.0855 3.1746.1426 3.4929-4.3715 1.0547-5.0085l.0771-5.459 1.6366 1.6366c-.9117 3.5475 3.1298 4.2943 4.317 2.7937 2.2397-2.2553-.4292-5.2541-2.7922-4.2813l-1.8615-1.8615c.9076-2.0327-1.2453-4.2736-3.3505-3.3506l-1.8615-1.8615 1.5968-1.5968q1.1582-1.1582 2.2751-.0414l9.9774 9.9774q1.1541 1.1541 0 2.3081l-9.9401 9.9402q-1.1542 1.1541-2.2338.0744z"/>
-                                </svg>
-                                <span>Git</span>
-                            </button>
-                            <button class="icon_button hovering" value="React" type="button">
-                                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                                </svg>
-                                <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <use href="#iconREACT" x="-.4" stroke="red"/>
-                                    <use href="#iconREACT" x=".4" stroke="blue"/>
-                                    <path id="iconREACT" d="M16 16m.035-1.365c-.7961.0071-1.3651.5761-1.365 1.365-.0001.8032.5689 1.3721 1.365 1.365.796.0071 1.3649-.5618 1.365-1.365-.0001-.7889-.569-1.3579-1.365-1.365zm-5.1229-7.5111c-3.9772 2.0511 5.1229 20.2511 10.4063 17.7122 3.9972-3.5727-6.5711-20.1765-10.4063-17.7122m10.1279-.0009c-3.7649-2.4187-14.9766 14.5621-10.1361 17.8683 5.0926 1.6753 14.1878-15.779 10.1361-17.8683m5.2325 8.6951c.2122-4.4699-20.0994-5.689-20.5424.156 1.0954 5.248 20.7589 4.3975 20.5424-.156"/>
-                                </svg>
-                                <span>React</span>
-                            </button>
-                        </div>
+                    <div class="section-abilities__content-section-software">
+                        <button class="icon-button hovering" value="HTML-CSS" type="button">
+                            <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path vector-effect="non-scaling-stroke" d="M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z"/>
+                                <rect width="32" height="32"/>
+                            </svg>
+                            <svg class="icon-button__figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path id="iconHTML-CSS" d="M6 8l8.5293 0-.9477 8.0555-3.317 1.1847-3.317-1.1847zm6.6576 1.8954-4.5253 0 .237 2.1324 3.6487 0-.1895 2.464-1.5637.4738-1.5637-.4738-.0948-.5686m8.8644 4.8366 8.5293-0-.9477 8.0555-3.317 1.1847-3.317-1.1847zm1.6584 1.8954 4.7385 0-.4738 4.5016-1.6584.5686-1.6584-.5686-.0948-.8529m3.6487-1.5163-3.4592 0m-1.3977-8.7886-6.027 6.931"/>
+                            </svg>
+                            <span>HTML-CSS</span>
+                        </button>
+                        <button class="icon-button hovering" value="JAVA-SCRIPT" type="button">
+                            <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path vector-effect="non-scaling-stroke" d="M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z"/>
+                                <rect width="32" height="32"/>
+                            </svg>
+                            <svg class="icon-button__figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path id="iconJS" d="M16 17m-9.8133-7.7396q0-2.0639 1.8059-2.0639l15.7371 0q2.0639 0 2.0639 2.0639l0 15.4791q0 2.0639-2.0639 2.0639l-15.4791 0q-2.0639 0-2.0639-2.0639l0-15.4791m9.8034 7.7396 0 6.1916c0 2.0639-2.8563 2.6004-3.8698.774m11.0934-6.4496c-2.6099-2.1475-4.781.7836-2.9369 2.5742 1.035.9871 1.9562.5552 2.9369 2.0697.952 2.0907-1.8714 4.3058-3.956 1.5604"/>
+                            </svg>
+                            <span>JavaScr.</span>
+                        </button>
+                        <button class="icon-button hovering" value="SASS" type="button">
+                            <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path vector-effect="non-scaling-stroke" d="M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z"/>
+                                <rect width="32" height="32"/>
+                            </svg>
+                            <svg class="icon-button__figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path id="iconSASS" d="M16 16m-1.7056-2.08c2.4643 2.9931 10.0131-1.5554 7.7006-4.6514-2.6192-2.4872-11.4592.6329-12.194 5.1413-.0385 1.835 1.8154 2.2937 4.1662 4.6634 1.6053 2.6567-1.6053 5.2749-3.211 4.3576-.9844-.3937-.6261-3.2375 4.2115-4.6467 4.2255-.5965 4.4476 2.7726 3.015 3.2266m-13.427-6.1293a.52.52 90 0022.88 0 .52.52 90 00-22.88 0z"/>
+                            </svg>
+                            <span>SASS</span>
+                        </button>
+                        <button class="icon-button hovering" value="GIT" type="button">
+                            <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path vector-effect="non-scaling-stroke" d="M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z"/>
+                                <rect width="32" height="32"/>
+                            </svg>
+                            <svg class="icon-button__figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path id="iconGIT" d="M16 16m-11.115 1.116q-1.1168-1.1168 0-2.2337l6.8874-6.8874 1.8615 1.8615c-.4751.8063-.3743 1.8592.3101 2.5856.2528.2743.5495.4394 1.0219.6482l-.0112 5.7221c-2.691 1.571-1.6802 5.0196 1.0871 5.0855 3.1746.1426 3.4929-4.3715 1.0547-5.0085l.0771-5.459 1.6366 1.6366c-.9117 3.5475 3.1298 4.2943 4.317 2.7937 2.2397-2.2553-.4292-5.2541-2.7922-4.2813l-1.8615-1.8615c.9076-2.0327-1.2453-4.2736-3.3505-3.3506l-1.8615-1.8615 1.5968-1.5968q1.1582-1.1582 2.2751-.0414l9.9774 9.9774q1.1541 1.1541 0 2.3081l-9.9401 9.9402q-1.1542 1.1541-2.2338.0744z"/>
+                            </svg>
+                            <span>Git</span>
+                        </button>
+                        <button class="icon-button hovering" value="REACT" type="button">
+                            <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path vector-effect="non-scaling-stroke" d="M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z"/>
+                                <rect width="32" height="32"/>
+                            </svg>
+                            <svg class="icon-button__figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                <path id="iconREACT" d="M16 16m.035-1.365c-.7961.0071-1.3651.5761-1.365 1.365-.0001.8032.5689 1.3721 1.365 1.365.796.0071 1.3649-.5618 1.365-1.365-.0001-.7889-.569-1.3579-1.365-1.365zm-5.1229-7.5111c-3.9772 2.0511 5.1229 20.2511 10.4063 17.7122 3.9972-3.5727-6.5711-20.1765-10.4063-17.7122m10.1279-.0009c-3.7649-2.4187-14.9766 14.5621-10.1361 17.8683 5.0926 1.6753 14.1878-15.779 10.1361-17.8683m5.2325 8.6951c.2122-4.4699-20.0994-5.689-20.5424.156 1.0954 5.248 20.7589 4.3975 20.5424-.156"/>
+                            </svg>
+                            <span>React</span>
+                        </button>
                     </div>
                 </div>
-                <div class="conductor_description">
-                    <div class="description_wrapper">
-                        <div class="wrapper_section" data-translateX="0%">
-                            <div class="wrapper_section_skill">
-                                <div class="description-text" data-mask-value-top="0%" data-mask-value-bot="70%">
-                                    <details class="state">
-                                        <summary>Problem Solving</summary>
-                                        <p>- structuring the problem and examining its solution through the least cost and speed of execution.</p>
-                                    </details>
-                                    <details class="state">
-                                        <summary>Research</summary>
-                                        <p>- setting up a correct query or "rolling back" to consider similar queries more closely.</p>
-                                    </details>
-                                    <details class="state">
-                                        <summary>Fast Learner</summary>
-                                        <p>- clarification of terminology, visualization of the process and interest in understanding the ongoing process help to quickly and accurately integrate into the process.</p>
-                                    </details>
-                                    <details class="state">
-                                        <summary>Team Work</summary>
-                                        <p>- agreement with colleagues and smooth work with common processes.</p>
-                                    </details>
-                                    <details class="state">
-                                        <summary>Communication</summary>
-                                        <p>- free, easy, unobtrusive communication with people.</p>
-                                    </details>
-                                </div>
+            </div>
+            <div class="section-abilities__description">
+                <div class="description-wrapper">
+                    <div class="description-wrapper__skill scrollable" data-translateX="0%" data-mask-value-top="0%" data-mask-value-bot="70%">
+                        <details class="state">
+                            <summary>Problem Solving</summary>
+                            <p>- structuring the problem and examining its solution through the least cost and speed of execution.</p>
+                        </details>
+                        <details class="state">
+                            <summary>Research</summary>
+                            <p>- setting up a correct query or "rolling back" to consider similar queries more closely.</p>
+                        </details>
+                        <details class="state">
+                            <summary>Fast Learner</summary>
+                            <p>- clarification of terminology, visualization of the process and interest in understanding the ongoing process help to quickly and accurately integrate into the process.</p>
+                        </details>
+                        <details class="state">
+                            <summary>Team Work</summary>
+                            <p>- agreement with colleagues and smooth work with common processes.</p>
+                        </details>
+                        <details class="state">
+                            <summary>Communication</summary>
+                            <p>- free, easy, unobtrusive communication with people.</p>
+                        </details>
+                    </div>
+                    <div class="description-wrapper__software" data-translateX="-50%">
+                        <svg class="description-wrapper__software-border border" viewBox="0 -11 342 181" preserveAspectRatio="xMidYMin meet">
+                            <path vector-effect="non-scaling-stroke" d="M8 24l-7 6 0-24 9 0 6-5  310 0 6 5 9 0 0 19-7-5   -107 0-6 4z"/>
+                            <path vector-effect="non-scaling-stroke" d="M8 156l-7-6 0 21 9 0 6 5  310 0 6-5 9 0 0-21-7 6z"/>
+                            <path vector-effect="non-scaling-stroke" d="M3 35l7-6  213 0 6-4   103 0 7 5 0    115 -7 6     -322 0-7-6z"/>
+                        </svg>
+                        <div class="description-wrapper__software-article">
+                            <div class="description-wrapper__software-article-title">
+                                <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                    <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
+                                    <path id="targ_icon" d=""/>
+                                    <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">?</text>
+                                </svg><h3>Software</h3>
                             </div>
-                        </div><div class="wrapper_section" data-translateX="-50%">
-                            <svg class="border border_software" viewBox="0 0 342 181" preserveAspectRatio="xMidYMid meet">
-                                <path vector-effect="non-scaling-stroke" d="M11 33l-10 8 0-33 10 0 10-7  300 0 10 7 10 0 0 27-10-8   -100 0-10 6z"/>
-                                <path vector-effect="non-scaling-stroke" d="M11 158l-10-8 0 24 10 0 10 6  300 0 10-6 10 0 0-24-10 8z"/>
-                                <path vector-effect="non-scaling-stroke" d="M3 46l10-8  210 0 10-6   96 0 10 8 0    105 -10 8     -316 0-10-8z"/>
-                            </svg>
-                            <div class="wrapper_section_software">
-                                <div class="title">
-                                    <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                        <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
-                                        <use href="#targ_icon" x="-.3" stroke="red"/>
-                                        <use href="#targ_icon" x=".3" stroke="blue"/>
-                                        <path id="targ_icon" d=""/>
-                                        <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">?</text>
-                                    </svg><h3 class="title_text">Software</h3>
-                                </div>
-                                <div class="description-text" data-mask-value-top="0%" data-mask-value-bot="70%">
-                                    <p>Select a programming language to determine the author's level of familiarity with it.</p>
-                                </div>
+                            <div class="description-wrapper__software-article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
+                                <p>Select a programming language to determine the author's level of familiarity with it.</p>
                             </div>
                         </div>
+                        <!-- <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMid meet">
+                            <path vector-effect="non-scaling-stroke" d="M11 33l-10 8 0-33 10 0 10-7  300 0 10 7 10 0 0 27-10-8   -100 0-10 6z"/>
+                            <path vector-effect="non-scaling-stroke" d="M11 158l-10-8 0 24 10 0 10 6  300 0 10-6 10 0 0-24-10 8z"/>
+                            <path vector-effect="non-scaling-stroke" d="M3 46l10-8  210 0 10-6   96 0 10 8 0    105 -10 8     -316 0-10-8z"/>
+                        </svg>
+                        <div class="description-wrapper__software-article">
+                            <div class="description-wrapper__software-article-title">
+                                <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                                    <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
+                                    <path id="targ_icon" d=""/>
+                                    <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">?</text>
+                                </svg><h3>Software</h3>
+                            </div>
+                            <div class="description-wrapper__software-article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
+                                <p>Select a programming language to determine the author's level of familiarity with it.</p>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="nCM" style="transform: translate3d(0, 13rem, 0)">
-            <svg class="border border_footer" height="160px" width="368px" viewbox="0 0 368 160" preserveAspectRatio="none">
+    <footer style="transform: translate3d(0, 13rem, 0)">
+            <svg class="footer__border border" height="160px" width="368px" viewbox="0 0 368 160" preserveAspectRatio="none">
                 <path vector-effect="non-scaling-stroke" d="M221,31 221,26 C 230,27 236,19 235,10 L 367,10  367,36  244,36  236,31z"/>
                 <path vector-effect="non-scaling-stroke" d="M1,49  10,34  235,34  242,39  367,39  367,159  1,159z"/>
                 <circle id="bounds" cx="222" cy="13" r="10"/>
                 <circle id="drag" r="4" transform="translate(222,13)"/>
             </svg>
-            <h4 class="contact_target">Contact me</h4>
-            <div class="contacts">
+            <h4 class="footer__contact-target">Contact me</h4>
+            <div class="footer__contacts">
                 <div class="icon hovering">
                     <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
                         <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>

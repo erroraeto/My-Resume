@@ -7,7 +7,14 @@ footer
     right: 0
     z-index: 20
     transition: transform .5s ease
-    .contact_target
+    .footer__border
+        fill: rgba(var(--color-dark-tangerine-rgb), .2)
+        stroke: var(--color-orange)
+        & :first-child
+            fill: rgba(var(--color-dark-tangerine-rgb), .6)
+        & :last-child
+            fill: var(--color-orange)
+    .footer__contact-target
         position: absolute
         z-index: 1
         cursor: pointer
@@ -17,7 +24,7 @@ footer
         display: inline-block
         color: var(--color-orange)
         margin-bottom: 1rem
-    .contacts
+    .footer__contacts
         display: none
         position: absolute
         height: 87%
