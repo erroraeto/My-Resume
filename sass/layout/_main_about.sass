@@ -9,6 +9,11 @@
                 fill: none
                 text
                         fill: var(--color-light-gray-blue)
+                use:first-of-type
+                        filter: url(#inner-shadow-descr-type01)
+                use:last-of-type
+                        fill: url(#line-grad-anim-01)
+                        mask: url(#mask-bg-desc-type01)
         &__article
                 position: relative
                 display: grid
@@ -47,6 +52,9 @@
                 height: 102%
                 width: 102%
                 top: 60%
+                use
+                        fill: var(--color-light-greenish-blue)
+                        filter: url(#inner-shadow-title-type01)
         &__article-description
                 grid-area: 3 / 1 / 4 / 2
                 position: relative

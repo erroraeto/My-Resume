@@ -24,15 +24,20 @@
         grid-template: 10% 90% / 100%
         place-content: center
         place-items: center
-        // transform: rotateY(6deg)
+        transform: rotateY(6deg)
         &-border
-            stroke: var(--color-light-cyan)
+            stroke: var(--color-moderate-blue)
+            filter: url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+            stroke-width: .5px
+            path:first-of-type
+                stroke-width: 1px
         &-title
             position: relative
             height: 100%
             width: 100%
-            mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent 100%)
+            mask-image: linear-gradient(to bottom, transparent 10%, white 23%, white 77%, transparent 90%)
             overflow: hidden
+            transform: rotateY(6deg)
             &-wrapper
                 display: grid
                 grid-template: repeat(2, calc( 100% / 2 )) / 100%
@@ -45,7 +50,7 @@
                     height: 100%
         &-section
             position: relative
-            height: 99%
+            height: 99.5%
             width: 100%
             align-self: start
             overflow-y: hidden
@@ -54,9 +59,9 @@
             scroll-snap-type: x mandatory
             scroll-behavior: smooth
             z-index: 1
-            mask-image: url(#mask-bg-desc-type05)
+            mask-image: url(#mask-hor-scroll-type01)
+            transform: rotateY(6deg)
             transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
-            // mask-image: linear-gradient(to left, transparent, #000 13%, #000 87%, transparent 100%)
             & > *
                 position: relative
                 display: inline-block
@@ -64,20 +69,19 @@
                 vertical-align: middle
                 width: 100%
             &::-webkit-scrollbar
-                height: .7rem
+                height: .8rem
             &::-webkit-scrollbar-button
                 width: 6rem
             &::-webkit-scrollbar-track
-                border: .1rem solid var(--color-light-cyan)
+                border: .2rem solid var(--color-moderate-blue)
                 border-radius: 6px
                 cursor: pointer
                 background: none
-                // border: .7rem solid transparent
                 background-clip: content-box
             &::-webkit-scrollbar-thumb
+                background: var(--color-grideperleft)
                 border-radius: 6px
                 cursor: pointer
-                background: var(--color-light-cyan)
             &-skills
                 height: 80%
                 aspect-ratio: 7/5
@@ -128,6 +132,7 @@
                 place-items: center
                 gap: 4% 3%
                 perspective: 100rem
+                perspective-origin: left center
     &__description
         position: relative
         justify-self: start
@@ -156,8 +161,18 @@
                 place-content: center
                 place-items: center
             &__skill
+                align-self: center
+                justify-content: center
                 height: 100%
                 width: 96%
+                &-border
+                    stroke: none
+                    filter: url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                    mask: radial-gradient(at 50% 44.8%, white 0%, transparent 100%)
+                    mask-size: 80% 50%
+                    mask-position: center
+                    mask-repeat: no-repeat
+                    fill: var(--color-light-greenish-blue)
                 details
                     display: block
                     width: 100%
@@ -192,8 +207,6 @@
                         padding: .3rem 2rem
                         text-align: left
                         cursor: default
-                        // translate: 0% -30%
-                        // opacity: 0
                         transition: translate 1s ease, opacity 1s ease
             &__software
                 align-self: start
@@ -203,18 +216,28 @@
                 justify-content: start
                 // aspect-ratio: 1 / 1.328
                 & > *
-                    transition: opacity .3s ease
+                    transition: opacity .4s ease
                 &-border
                     height: 100%
                     width: 100%
                     top: 50%
-                    stroke: var(--color-orange)
-                    & :nth-child(n+1):nth-child(-n+2)
-                        fill: rgba(var(--color-dark-tangerine-rgb), .6)
-                    & :last-child
-                        fill: rgba(var(--color-dark-tangerine-rgb), .1)
-                    & > *
+                    stroke: none
+                    fill: rgba(100, 142, 163, .3)
+                    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='.8' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                    path
                         transition: d .3s ease
+                    path:nth-of-type(n+1):nth-of-type(-n+2)
+                        stroke: var(--color-light-greenish-blue)
+                    path:last-of-type
+                        fill: #282b3e
+                    use
+                        transition: opacity .2s ease
+                    use:nth-of-type(n+1):nth-of-type(-n+2)
+                        fill: var(--color-grideperleft)
+                        filter: url(#inner-shadow-title-type02)
+                    use:last-of-type
+                        fill: var(--color-grideperleft)
+                        filter: url(#inner-shadow-descr-type02)
                 &-article
                     position: relative
                     display: grid
@@ -222,6 +245,7 @@
                     height: max-content
                     width: 100%
                     &-title
+                        position: relative
                         height: 100%
                         width: 100%
                         text-align: start
@@ -229,24 +253,37 @@
                             display: inline-block
                             vertical-align: middle
                         .inline_icon
-                            margin-inline: .8rem .8rem
-                            #targ_icon
+                            margin-inline: .8rem .6rem
+                            circle
+                                stroke: none
+                                fill: var(--color-grideperleft)
+                            path
                                 scale: .7
                                 transform-origin: center
-                            path:not(#targ_icon)
-                                fill: var(--color-cinnamon)
-                                stroke: none
+                                stroke: var(--color-ocean-blue)
                             text
-                                fill: var(--color-orange)
-                                stroke-width: .5px
+                                fill: var(--color-ocean-blue)
+                                stroke: var(--color-ocean-blue)
                         h3
                             vertical-align: sub
+                        p
+                            position: absolute
+                            top: 46%
+                            right: 10%
+                            translate: 0 -50%
+                            color: var(--color-fern-crayola)
+                            // -webkit-text-stroke: .2px var(--color-fern-crayola)
                     &-description
                         width: 100%
                         max-height: 18em
                         p
                             text-align: justify
                             padding: .2rem 1rem
+
+
+.software__hidden
+    div, use
+        opacity: 0
 
 
 
@@ -308,9 +345,6 @@
             //                 text-align: justify
             //                 padding: 1rem 2rem
 
-
-.hidden-wrapper_section_software
-    opacity: 0
 
 
 

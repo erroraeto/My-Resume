@@ -376,7 +376,7 @@ let SVG = document.querySelector(".description-wrapper__software-border");
 
 const colTitle_Desc = {
     "HTML-CSS": 'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
-    "JAVA-SCRIPT": 'Events, object, array.',
+    "JAVASCRIPT": 'Events, object, array.',
     "SASS": 'Creation and formation of style files, their convenient and expedient arrangement.',
     "GIT": 'Working in a team, creating commits.',
     "REACT": 'I don`t fucking know.'
@@ -384,53 +384,65 @@ const colTitle_Desc = {
 
 
 softwareIcon.addEventListener('click', async (e) => {
-    if (!e.target.closest(".icon-button")) return;
+    let targButton = e.target.closest(".icon-button");
+    if (!targButton) return;
 
-    abilDesc.children[1].children[1].classList.add("hidden-wrapper_section_software");
-    await sleep(100);
+    for (btn of targButton.offsetParent.children) {
+        if (targButton != btn) {
+            btn.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z';
+            btn.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 0 5 0 2 0z';
+            btn.children[0].children[2].style = '';
+        }
+    }
+    targButton.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 2 6 0 2-2 6 0 2 2 0 27-28 0-2-2z';
+    targButton.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 2 5 0 2-2z';
+    targButton.children[0].children[2].style = 'opacity: 1;';
 
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 48`);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
+
+    abilDesc.children[1].classList.add("software__hidden");
+    await sleep(200);
+
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 48`);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
 
     await sleep(300);
 
-    let wdt = SVG.children[0].attributes[1].nodeValue.match(/\s{2}.*?\s/gi);
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\d.*?\s/, `160 `);
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   -8 `);
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\d.*?\s/, `160 `);
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\d.*?\s/, `155 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  8 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   4 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{5}.*?\s/, `     -18 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `160 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   -8 `);
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `160 `);
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `155 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  8 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   4 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -18 `);
 
     await sleep(300);
 
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\d.*?\s/, `8 `);
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
-    SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   -107 `);
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\d.*?\s/, `8 `);
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\d.*?\s/, `3 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  213 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   103 `);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{5}.*?\s/, `     -322 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
+    SVG.children[0].attributes[2].nodeValue = SVG.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   -107 `);
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  213 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   103 `);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -322 `);
 
     await sleep(300);
 
     descrTitleSoft.children[0].children[2].innerHTML = '';
-    descrTitleSoft.children[0].children[1].attributes[1].nodeValue = e.target.closest(".icon-button").children[1].children[0].attributes[1].nodeValue;
-    descrTitleSoft.children[1].innerHTML = e.target.closest(".icon-button").value;
-    descrTxtSoft.innerHTML = `<p>${colTitle_Desc[e.target.closest(".icon-button").value]}</p>`;
+    descrTitleSoft.children[0].children[1].attributes[1].nodeValue = targButton.children[1].children[0].attributes[1].nodeValue;
+    descrTitleSoft.children[1].innerHTML = targButton.value;
+    descrTxtSoft.innerHTML = `<p>${colTitle_Desc[targButton.value]}</p>`;
 
     let descSize = descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight;
 
-    SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize - 44))}`);
-    SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 44))} `);
+    SVG.children[1].attributes[2].nodeValue = SVG.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize - 44))}`);
+    SVG.children[2].attributes[2].nodeValue = SVG.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 44))} `);
 
-    await sleep(100);
-    abilDesc.children[1].children[1].classList.remove("hidden-wrapper_section_software");
+    await sleep(200);
+    abilDesc.children[1].classList.remove("software__hidden");
 });
 
 
@@ -538,21 +550,21 @@ document.addEventListener('click', async function (e) {
 });
 
 //Анимация наведения на контакты
-let icons = document.querySelectorAll('.hovering');
+// let icons = document.querySelectorAll('.hovering');
 
-document.addEventListener('mouseover', function(e) {
-    let targEl = e.target.closest('.hovering');
-    // if (!targEl || e.target.className == "hovering") return;
-    if (!targEl) return;
-    for (icon of targEl.offsetParent.children) {
-        if (targEl == icon) {
-            icon.style = "transform: translate3d(0, 0, 1rem);";
-        } else icon.style = "filter: blur(1px)";
-    }
-    targEl.addEventListener('mouseout', function() {
-        for (icon of targEl.offsetParent.children) icon.style = "";
-    })
-});
+// document.addEventListener('mouseover', function(e) {
+//     let targEl = e.target.closest('.hovering');
+//     // if (!targEl || e.target.className == "hovering") return;
+//     if (!targEl) return;
+//     for (icon of targEl.offsetParent.children) {
+//         if (targEl == icon) {
+//             icon.style = "transform: translateZ(1rem) rotateY(6deg);";
+//         } else icon.style = "filter: blur(1px)";
+//     }
+//     targEl.addEventListener('mouseout', function() {
+//         for (icon of targEl.offsetParent.children) icon.style = "";
+//     })
+// });
 
 
 

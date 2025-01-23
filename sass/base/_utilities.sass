@@ -16,3 +16,13 @@
 .scrollable
     scrollbar-width: none
     overflow-y: scroll
+
+.border
+    @include AbsoluteCenter
+    display: block
+    height: 100%
+    width: 100%
+    z-index: -1
+    fill: none
+    stroke: rgba(var(--color-white-rgb), .6)
+    stroke-width: 1px
