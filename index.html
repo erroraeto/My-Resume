@@ -162,6 +162,35 @@
                 <feBlend mode="screen" in="blur3" in2="composite3" result="blend"></feBlend>
             </filter>
 
+            <filter id="led-screen3">
+                <feFlood id="filterPxl" x="1" y="1" width="2" height="2" result="flood"></feFlood>
+                <feComposite id="filterCs" in="flood" in2="flood" operator="over" x="0" y="0" width="4" height="4" result="composite"></feComposite>
+                <feTile x="0" y="0" width="10000" height="10000" in="composite" result="tile"></feTile>
+                <feComposite in="SourceGraphic" in2="tile" operator="in"></feComposite>
+                <feMorphology id="filterMorph" operator="dilate" radius=".1" in="composite2" result="morphology"></feMorphology>
+                <feImage id="filterCsImg" xlink:href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='35' id='svg_1' y='2.5' x='5' /%3E%3C/svg%3E" x=".3" y="0" width="4" height="3" preserveAspectRatio="xMidYMid meet" result="image"></feImage>
+                <feTile x="0" y="0" width="10000" height="10000" in="image" result="tile1"></feTile>
+                <feComposite in="morphology" in2="tile1" operator="in" result="composite3"></feComposite>
+            </filter>
+
+            <filter id="SphereMapTest" filterUnits="objectBoundingBox" x="-0.45" y="-1.29" width="1.6" height="3.5">
+                <feImage id="mapa" result="Map" xlink:href="./src/image/sphere_wide_1.png" />
+                <feDisplacementMap id="despMap" in="SourceGraphic" in2="map" scale="100" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+
+
+            <filter id='chrom_aber' color-interpoation-filters='sRGB'>
+                <feColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dx='.5' result='cr'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dy='.5' result='cg'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'></feColorMatrix>
+                <feBlend in='cr' mode='screen'></feBlend>
+                <feBlend in='cg' mode='screen'></feBlend>
+            </filter>
+
+
+
         </defs>
     </svg>
     <!-- NAVIGATION -->
@@ -360,14 +389,55 @@
 
         <section id="home" class="section-home">
             <svg class="planet" viewbox="0 0 120 120">
-                <circle id="planet" fill="url('#planetGrad')" cx="60" cy="-30" r="100" mask="url(#textMask)">
+                <circle fill="var(--color-cinnamon)" mask="url(#adfsdg)" cx="60" cy="60" r="40"/>
+                <circle fill="var(--color-orange-yellow-crayola)" mask="url(#maskasdasda)" cx="60" cy="60" r="40"/>
+
+
+                <defs>
+                    <linearGradient id="line0233" gradientTransform="rotate(70)">
+                        <stop offset="0%" stop-color="white" stop-opacity="100%"/>
+                        <stop offset="50%" stop-color="white" stop-opacity="0%"/>
+                    </linearGradient>
+                    <linearGradient id="line0232" gradientTransform="rotate(70)">
+                        <stop offset="0%" stop-color="black" stop-opacity="0%"/>
+                        <stop offset="100%" stop-color="black" stop-opacity="100%"/>
+                    </linearGradient>
+                    <radialGradient id="rad013">
+                        <stop offset="50%" stop-color="black" stop-opacity="100%"/>
+                        <stop offset="70%" stop-color="black" stop-opacity="0%"/>
+                    </radialGradient>
+                    <mask id="maskasdasda" maskContentUnits="objectBoundingBox">
+                        <!-- <circle fill="white" cx=".5" cy=".5" r=".5" /> -->
+                        <rect x="0" y="0" width="1" height="1" fill="url(#line0233)" />
+                        <circle fill="url(#rad013)" cx=".58" cy=".62" r=".9">
+                            <animate attributeName="cx" values=".5;.58" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                            <animate attributeName="cy" values=".5;.62" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                            <animate attributeName="r" values="1;.9" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                        </circle>
+                    </mask>
+                    <mask id="adfsdg" maskContentUnits="objectBoundingBox">
+                        <circle fill="white" cx=".5" cy=".5" r=".5" />
+                        <circle fill="url(#rad013)" cx=".66" cy=".70" r=".8" >
+                            <animate attributeName="cx" values=".5;.66" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                            <animate attributeName="cy" values=".5;.70" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                            <animate attributeName="r" values="1;.8" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                        </circle>
+                    </mask>
+
+
+
+
+ <!-- <rect id="sun" fill="url('#sunGrad')" x="-50" y="0" width="220" height="220" mask="url(#circleMask)"/> -->
+
+                <!-- <circle id="planet" fill="url('#planetGrad')" cx="60" cy="-30" r="100" mask="url(#textMask)">
                     <animate attributeName="cy" values="-40;-30;" dur="3s" keySplines="0 0 0.2 1" calcMode="spline"/>
                 </circle>
                 <rect id="sun" fill="url('#sunGrad')" x="-50" y="0" width="220" height="220" mask="url(#circleMask)">
                 </rect>
                 <text x="60" y="45" fill="url('#textGrad')">Front-</text>
-                <text x="60" y="45" fill="url('#textGrad')" dominant-baseline="hanging">End</text>
-                <defs>
+                <text x="60" y="45" fill="url('#textGrad')" dominant-baseline="hanging">End</text> -->
+
+<!-- 
                     <path id="back" fill="gray" d="M-54, 0 154, 0 154, 100 -54, 100z"/>
                     <radialGradient id="textGrad" gradientUnits="userSpaceOnUse" cx="90" cy="-110" r="150">
                         <stop offset="80%" stop-color="white"/>
@@ -394,7 +464,7 @@
                         <rect x="-50" y="0" width="220" height="220" fill="white"/>
                         <text x="60" y="45" fill="black">Front-</text>
                         <text x="60" y="45" fill="black" dominant-baseline="hanging">End</text>
-                    </mask>
+                    </mask> -->
                 </defs>
             </svg>
         </section>
@@ -412,29 +482,54 @@
                     </div>
                 </div>
                 <div class="section-abilities__content-section">
-                    <svg class="section-abilities__content-section-skills" viewbox="0 0 385 385">
-                        <defs>
-                            <mask id="mask-pentagon">
-                                <path fill="white" transform-origin="192.5 180" transform="scale(1.3)" d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                            </mask>
-                        </defs>
-                        <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#mask-pentagon)">
-                            <div style="clip-path: polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)"></div>
-                        </foreignObject>
-                        <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                        <path d="M248.73 101, 192.3 178.52 M135.84 101, 192.3 178.52 M101 208.33, 192.3 178.52 M192.3 274.66, 192.3 178.52 M283.6 208.33, 192.3 178.52 M192.5 101, 192.3 178.52 M118.4 154.65, 192.3 178.52 M146.65 241.53, 192.3 178.52 M238.35 241.53, 192.3 178.52 M266.6 154.65, 192.3 178.52"/>
-                        <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                        <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                        <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
-                        <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
-                        <text class="state" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
-                        <text class="state" x="283.6" y="208.33">Team Work</text>
-                        <text class="state" x="248.73" y="101">Communication</text>
-                        <text dx=".5ch"x="192.3" y="175">0</text>
-                        <text x="192.3" y="150">.3</text>
-                        <text x="192.3" y="126">.6</text>
-                        <text dx="1ch" x="192.3" y="102">1</text>
-                    </svg>
+                    <div class="section-abilities__content-section-skills">
+                        <svg viewbox="0 0 75 72" preserveAspectRatio="xMidYMid meet">
+                            <!-- <path d="M37.5 71l-18.265-13.512-18.235-13.488 6.474-21.414 6.526-21.586 23.5 0 23.5 0 6.526 21.586 6.474 21.414-18.235 13.488z"/> -->
+                            <!-- <path id="skills-pentagon" d="M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318Z"/> -->
+                            <path id="skills-pentagon" d="M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318ZM51.672 13.264 37.5 32M21.991 11.541 37.5 32M10.998 40.713 37.5 32M37.5 59 37.5 32M61.957 40.039 37.5 32M37.5 18 37.5 32M21.735 27.058 37.5 32M28.515 44.53 37.5 32M45.688 43.318 37.5 32M52.535 27.276 37.5 32"/>
+                            <path id="penta-edge" d="M61 1l-47 0-13 43 36.5 27 36.5-27zm0 0-16.45 21.7m-30.55-21.7 16.45 21.7m-29.45 21.3 25.55-8.4m10.95 35.4 0-27.3m36.5.3-25.55-8.4m3.15-22.2-28.2 0-7.8 25.8 21.9 16.2 21.9-16.2zm-7.05 9.3-14.1 0-3.9 12.9 10.95 8.1 10.95-8.1z"/>
+                            <!-- <use href="#penta-edge"/>
+                            <use href="#penta-edge"/> -->
+
+                            <!-- <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
+                            <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
+                            <text class="state" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
+                            <text class="state" x="283.6" y="208.33">Team Work</text>
+                            <text class="state" x="248.73" y="101">Communication</text>
+                            <text dx=".5ch"x="192.3" y="175">0</text>
+                            <text x="192.3" y="150">.3</text>
+                            <text x="192.3" y="126">.6</text>
+                            <text dx="1ch" x="192.3" y="102">1</text> -->
+                        </svg>
+                        <p class="state">Problem Solving</p>
+                        <p class="state">Research</p>
+                        <p class="state">Fast Learner</p>
+                        <p class="state">Team Work</p>
+                        <p class="state">Communication</p>
+                        <!-- <svg class="section-abilities__content-section-skills" viewbox="0 0 385 385">
+                            <defs>
+                                <mask id="mask-pentagon">
+                                    <path fill="white" transform-origin="192.5 180" transform="scale(1.3)" d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
+                                </mask>
+                            </defs>
+                            <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#mask-pentagon)">
+                                <div style="clip-path: polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)"></div>
+                            </foreignObject>
+                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
+                            <path d="M248.73 101, 192.3 178.52 M135.84 101, 192.3 178.52 M101 208.33, 192.3 178.52 M192.3 274.66, 192.3 178.52 M283.6 208.33, 192.3 178.52 M192.5 101, 192.3 178.52 M118.4 154.65, 192.3 178.52 M146.65 241.53, 192.3 178.52 M238.35 241.53, 192.3 178.52 M266.6 154.65, 192.3 178.52"/>
+                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
+                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
+                            <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
+                            <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
+                            <text class="state" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
+                            <text class="state" x="283.6" y="208.33">Team Work</text>
+                            <text class="state" x="248.73" y="101">Communication</text>
+                            <text dx=".5ch"x="192.3" y="175">0</text>
+                            <text x="192.3" y="150">.3</text>
+                            <text x="192.3" y="126">.6</text>
+                            <text dx="1ch" x="192.3" y="102">1</text>
+                        </svg> -->
+                    </div>
                     <div class="section-abilities__content-section-software">
                         <button class="icon-button hovering" value="HTML-CSS" type="button">
                             <svg class="icon-button__bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
@@ -547,23 +642,6 @@
                                 <p>Select a programming language to determine the author's level of familiarity with it.</p>
                             </div>
                         </div>
-                        <!-- <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMid meet">
-                            <path vector-effect="non-scaling-stroke" d="M11 33l-10 8 0-33 10 0 10-7  300 0 10 7 10 0 0 27-10-8   -100 0-10 6z"/>
-                            <path vector-effect="non-scaling-stroke" d="M11 158l-10-8 0 24 10 0 10 6  300 0 10-6 10 0 0-24-10 8z"/>
-                            <path vector-effect="non-scaling-stroke" d="M3 46l10-8  210 0 10-6   96 0 10 8 0    105 -10 8     -316 0-10-8z"/>
-                        </svg>
-                        <div class="description-wrapper__software-article">
-                            <div class="description-wrapper__software-article-title">
-                                <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
-                                    <path id="targ_icon" d=""/>
-                                    <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">?</text>
-                                </svg><h3>Software</h3>
-                            </div>
-                            <div class="description-wrapper__software-article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
-                                <p>Select a programming language to determine the author's level of familiarity with it.</p>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

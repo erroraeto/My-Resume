@@ -279,66 +279,132 @@ sectionAbilContent.addEventListener('scroll', (e) => {
 });
 
 //Анимация скиллов
-let parametr = document.querySelector(".section-abilities__content-section-skills > foreignObject > div");
+let parametr = document.querySelector("#skills-pentagon");
 
 const mapCoupleCP = new Map([
-    [/63.95% 65%/g, '67.8% 70.62%'],
-    [/67.8% 70.62%/g, '63.95% 65%'],
-    [/66% 68%/g, '69.5% 73%'],
-    [/69.5% 73%/g, '66% 68%'],
-    [/75.94% 36.1%/g, '78% 35.4%'],
-    [/78% 35.4%/g, '75.94% 36.1%'],
-    [/73.8% 36.8%/g, '82% 34%'],
-    [/82% 34%/g, '73.8% 36.8%'],
-    [/49.9% 17.12%/g, '49.9% 12%'],
-    [/49.9% 12%/g, '49.9% 17.12%'],
-    [/49.8% 21.25%/g, '49.8% 10.75%'],
-    [/49.8% 10.75%/g, '49.8% 21.25%'],
-    [/22% 35.3%/g, '17% 33.6%'],
-    [/17% 33.6%/g, '22% 35.3%'],
-    [/24.69% 36.3%/g, '17.56% 34%'],
-    [/17.56% 34%/g, '24.69% 36.3%'],
-    [/34% 68%/g, '31.2% 72%'],
-    [/31.2% 72%/g, '34% 68%'],
-    [/35.2% 66.24%/g, '31.2% 72.23%'],
-    [/31.2% 72.23%/g, '35.2% 66.24%'],
+    [/28.515 44.53/g, '27.459 46.008'],
+    [/27.66 45.722/g, '26.699 47.082'],
+    [/21.735 27.058/g, '19.773 26.462'],
+    [/19.459 26.344/g, '17.766 25.817'],
+    [/37.5 18/g, '37.5 16.418'],
+    [/37.5 15.5/g, '37.5 13.428'],
+    [/52.535 27.276/g, '54.21 26.783'],
+    [/55.079 26.527/g, '56.962 25.927'],
+    [/45.688 43.318/g, '47.02 45.17'],
+    [/47.117 45.299/g, '48.574 47.301'],
+
+    [/27.459 46.008/g, '28.515 44.53'],
+    [/26.699 47.082/g, '27.66 45.722'],
+    [/19.773 26.462/g, '21.735 27.058'],
+    [/17.766 25.817/g, '19.459 26.344'],
+    [/37.5 16.418/g, '37.5 18'],
+    [/37.5 13.428/g, '37.5 15.5'],
+    [/54.21 26.783/g, '52.535 27.276'],
+    [/56.962 25.927/g, '55.079 26.527'],
+    [/47.02 45.17/g, '45.688 43.318'],
+    [/48.574 47.301/g, '47.117 45.299'],
 ]);
 document.addEventListener('DOMContentLoaded', async function(e) {
     while(parametr) {
         for (const [key, value] of mapCoupleCP.entries()) {
-            if (parametr.style.clipPath.search(key) > 0) {
-                parametr.style.clipPath = parametr.style.clipPath.replace(key, value);
-                await sleep(100);
+            if (parametr.attributes[1].nodeValue.search(key) > 0) {
+                parametr.attributes[1].nodeValue = parametr.attributes[1].nodeValue.replace(key, value);
+                await sleep(40);
             }
         }
         await sleep(3000);
     }
 });
 
+// let parametr = document.querySelector(".section-abilities__content-section-skills > foreignObject > div");
+
+// const mapCoupleCP = new Map([
+//     [/63.95% 65%/g, '67.8% 70.62%'],
+//     [/67.8% 70.62%/g, '63.95% 65%'],
+//     [/66% 68%/g, '69.5% 73%'],
+//     [/69.5% 73%/g, '66% 68%'],
+//     [/75.94% 36.1%/g, '78% 35.4%'],
+//     [/78% 35.4%/g, '75.94% 36.1%'],
+//     [/73.8% 36.8%/g, '82% 34%'],
+//     [/82% 34%/g, '73.8% 36.8%'],
+//     [/49.9% 17.12%/g, '49.9% 12%'],
+//     [/49.9% 12%/g, '49.9% 17.12%'],
+//     [/49.8% 21.25%/g, '49.8% 10.75%'],
+//     [/49.8% 10.75%/g, '49.8% 21.25%'],
+//     [/22% 35.3%/g, '17% 33.6%'],
+//     [/17% 33.6%/g, '22% 35.3%'],
+//     [/24.69% 36.3%/g, '17.56% 34%'],
+//     [/17.56% 34%/g, '24.69% 36.3%'],
+//     [/34% 68%/g, '31.2% 72%'],
+//     [/31.2% 72%/g, '34% 68%'],
+//     [/35.2% 66.24%/g, '31.2% 72.23%'],
+//     [/31.2% 72.23%/g, '35.2% 66.24%'],
+// ]);
+// document.addEventListener('DOMContentLoaded', async function(e) {
+//     while(parametr) {
+//         for (const [key, value] of mapCoupleCP.entries()) {
+//             if (parametr.style.clipPath.search(key) > 0) {
+//                 parametr.style.clipPath = parametr.style.clipPath.replace(key, value);
+//                 await sleep(100);
+//             }
+//         }
+//         await sleep(3000);
+//     }
+// });
+
 //Выбор скилла
 let statesDescrTerm = document.querySelectorAll(".description-wrapper__skill .state");
 let statesPenta = document.querySelectorAll(".section-abilities__content-section-skills .state");
+let pentaGrad = document.querySelector("#skills-pentagon__rad-grad");
 
 document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
 document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
 let click = false;
-// document.onclick = (e) => click = !click;
+
+const pentagonVertex = [
+    [14,1],
+    [1,44],
+    [37.5,71],
+    [74,44],
+    [61,1],
+];
+
+// const macthClP = [
+//     /21.735 27.058 21.991 11.541 37.5 18/g,
+//     /28.515 44.53 10.998 40.713 21.735 27.058/g,
+//     /37.5 59 28.515 44.53|45.688 43.318/gi,
+//     /52.535 27.276 61.957 40.039 45.688 43.318/g,
+//     /37.5 18 51.672 13.264 52.535 27.276/g,
+// ];
+
+// const replaceClP = {
+//     '37.5 59 28.515 44.53' : '37.5 71 27.66 45.722',
+//     '45.688 43.318' : '47.117 45.299',
+//     '28.515 44.53 10.998 40.713 21.735 27.058' : '27.66 45.722 1 44 19.459 26.344',
+//     '21.735 27.058 21.991 11.541 37.5 18' : '19.459 26.344 14 1 37.5 15.5',
+//     '37.5 18 51.672 13.264 52.535 27.276' : '37.5 15.5 61 1 55.079 26.527',
+//     '52.535 27.276 61.957 40.039 45.688 43.318' : '55.079 26.527 74 44 47.117 45.299',
+// };
 
 const macthClP = [
-    /49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%/g,
-    /24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%/g,
-    /49.8% 75.51%, 63.95% 65%|35.2% 66.24%/gi,
-    /63.95% 65%, 91.2% 59.1%, 73.8% 36.8%/g,
-    /73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%/g
+    /21.735 27.058|21.991 11.541|37.5 18/g,
+    /28.515 44.53|10.998 40.713|21.735 27.058/g,
+    /37.5 59|28.515 44.53|45.688 43.318/gi,
+    /52.535 27.276|61.957 40.039|45.688 43.318/g,
+    /37.5 18|51.672 13.264|52.535 27.276/g,
 ];
 
 const replaceClP = {
-    '49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%' : '49.9% 17.12%, 22% 4.5%, 22% 35.3%',
-    '24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%' : '22% 35.3%, 4.8% 60.4%, 34% 68%',
-    '49.8% 75.51%, 63.95% 65%' : '49.9% 94.7%, 66% 68%',
-    '35.2% 66.24%' : '34% 68%',
-    '63.95% 65%, 91.2% 59.1%, 73.8% 36.8%' : '66% 68%, 95% 60.3%, 75.94% 36.1%',
-    '73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%' : '75.94% 36.1%, 77.8% 4.5%, 49.9% 17.12%',
+    '37.5 59' : '37.5 71',
+    '28.515 44.53' : '27.66 45.722',
+    '45.688 43.318' : '47.117 45.299',
+    '10.998 40.713' : ' 1 44',
+    '21.735 27.058' : '19.459 26.344',
+    '21.991 11.541' : '14 1',
+    '37.5 18' : '37.5 15.5',
+    '51.672 13.264' : '61 1',
+    '52.535 27.276' : '55.079 26.527',
+    '61.957 40.039' : '74 44',
 };
 
 let detailSoft = document.querySelector(".description-wrapper__skill");
@@ -350,7 +416,7 @@ function parametrClipPath(e, event) {
         Array.from(e.target.closest('.state').parentElement.querySelectorAll('.state')).some((el) => {
             if (e.target.closest('.state') == el) {
                 statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
-                parametr.style.clipPath = parametr.style.clipPath.replace(macthClP[i], function(matched){
+                parametr.attributes[1].nodeValue = parametr.attributes[1].nodeValue.replace(macthClP[i], function(matched){
                     return replaceClP[matched];
                 });
                 return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-orange); fill: var(--color-orange);";
@@ -359,12 +425,64 @@ function parametrClipPath(e, event) {
             }
         });
         e.target.addEventListener(event, () => {
-            parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
+            parametr.attributes[1].nodeValue = "M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318ZM51.672 13.264 37.5 32M21.991 11.541 37.5 32M10.998 40.713 37.5 32M37.5 59 37.5 32M61.957 40.039 37.5 32M37.5 18 37.5 32M21.735 27.058 37.5 32M28.515 44.53 37.5 32M45.688 43.318 37.5 32M52.535 27.276 37.5 32";
+            // parametr.attributes[1].nodeValue = "M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318Z";
             statesDescrTerm[i].style = statesPenta[i].style = "";
         });
     };
 };
 
+
+
+
+// let statesDescrTerm = document.querySelectorAll(".description-wrapper__skill .state");
+// let statesPenta = document.querySelectorAll(".section-abilities__content-section-skills .state");
+
+// document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
+// document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
+// let click = false;
+// // document.onclick = (e) => click = !click;
+
+// const macthClP = [
+//     /49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%/g,
+//     /24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%/g,
+//     /49.8% 75.51%, 63.95% 65%|35.2% 66.24%/gi,
+//     /63.95% 65%, 91.2% 59.1%, 73.8% 36.8%/g,
+//     /73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%/g
+// ];
+
+// const replaceClP = {
+//     '49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%' : '49.9% 17.12%, 22% 4.5%, 22% 35.3%',
+//     '24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%' : '22% 35.3%, 4.8% 60.4%, 34% 68%',
+//     '49.8% 75.51%, 63.95% 65%' : '49.9% 94.7%, 66% 68%',
+//     '35.2% 66.24%' : '34% 68%',
+//     '63.95% 65%, 91.2% 59.1%, 73.8% 36.8%' : '66% 68%, 95% 60.3%, 75.94% 36.1%',
+//     '73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%' : '75.94% 36.1%, 77.8% 4.5%, 49.9% 17.12%',
+// };
+
+// let detailSoft = document.querySelector(".description-wrapper__skill");
+// detailSoft.onclick = (e) => {for (st of detailSoft.children) if (e.target.closest(".state") != st) st.open = false};
+
+// function parametrClipPath(e, event) {
+//     if (e.target.className.baseVal == "state" || e.target.closest('.state')) {
+//         let i = 0;
+//         Array.from(e.target.closest('.state').parentElement.querySelectorAll('.state')).some((el) => {
+//             if (e.target.closest('.state') == el) {
+//                 statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
+//                 parametr.style.clipPath = parametr.style.clipPath.replace(macthClP[i], function(matched){
+//                     return replaceClP[matched];
+//                 });
+//                 return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-orange); fill: var(--color-orange);";
+//             } else {
+//                 i++;
+//             }
+//         });
+//         e.target.addEventListener(event, () => {
+//             parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
+//             statesDescrTerm[i].style = statesPenta[i].style = "";
+//         });
+//     };
+// };
 
 
 //Выбор ПО
