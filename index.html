@@ -16,7 +16,8 @@
         <defs>
             <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
-                <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="40%"/>
+                <!-- <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="40%"/> -->
+                <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
             <linearGradient id="line-grad-anim-02" x1="3%" y1="2%" x2="3%" y2="2.6%" spreadMethod="reflect">
@@ -34,79 +35,101 @@
                 <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
+            <linearGradient id="line-grad-anim-05" gradientUnits="userSpaceOnUse" x1="3" y1="0" x2="3" y2="4" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -300" to="0 300" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="50%"/>
+                <stop offset="50%" stop-color="transparent" />
+            </linearGradient>
             
-            <radialGradient id="rad-grad-type01">
+            <radialGradient id="mask-bg-desc-type01__rad-grad">
                 <stop offset="0%" stop-color="white" stop-opacity="100%"/>
                 <stop offset="8%" stop-color="white" stop-opacity="70%"/>
                 <stop offset="32%" stop-color="white" stop-opacity="0%"/>
             </radialGradient>
-            <linearGradient id="line-grad-type01">
+            <linearGradient id="mask-bg-desc-type01__line-grad">
                 <stop offset="0%" stop-color="black" stop-opacity="0%"/>
                 <stop offset="20%" stop-color="black" stop-opacity="45%"/>
                 <stop offset="40%" stop-color="black" stop-opacity="0%"/>
             </linearGradient>
             <mask id="mask-bg-desc-type01" maskContentUnits="objectBoundingBox">
-                <circle cx=".5" cy=".5" r="1.45" fill="url(#rad-grad-type01)"/>
-                <rect width="1" height="1" fill="url(#line-grad-type01)">
+                <circle cx=".5" cy=".5" r="1.45" fill="url(#mask-bg-desc-type01__rad-grad)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
                     <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
                 </rect>
             </mask>
 
-            <linearGradient id="line-grad-type02">
+            <linearGradient id="mask-bg-desc-type02__line-grad-01">
                 <stop offset="0%" stop-color="white" stop-opacity="0%"/>
                 <stop offset="20%" stop-color="white" stop-opacity="50%"/>
                 <stop offset="80%" stop-color="white" stop-opacity="50%"/>
                 <stop offset="100%" stop-color="white" stop-opacity="0%"/>
             </linearGradient>
-            <linearGradient id="line-grad-type03" gradientTransform="rotate(90)">
+            <linearGradient id="mask-bg-desc-type02__line-grad-02" gradientTransform="rotate(90)">
                 <stop offset="0%" stop-color="black" stop-opacity="100%"/>
                 <stop offset="20%" stop-color="black" stop-opacity="0%"/>
                 <stop offset="80%" stop-color="black" stop-opacity="0%"/>
                 <stop offset="100%" stop-color="black" stop-opacity="100%"/>
             </linearGradient>
             <mask id="mask-bg-desc-type02" maskContentUnits="objectBoundingBox">
-                <rect width="1" height="1" fill="url(#line-grad-type02)"/>
-                <rect width="1" height="1" fill="url(#line-grad-type03)"/>
-                <rect width=".4" height="1" fill="url(#line-grad-type01)">
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-01)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-02)"/>
+                <rect width=".4" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
                     <animate attributeName="x" values="-.5;1.5" begin="0s" dur="2s" repeatCount="indefinite"/>
                 </rect>
             </mask>
 
-            <radialGradient id="rad-grad-type02">
+            <radialGradient id="mask-bg-desc-type03__grad">
                 <stop offset="20%" stop-color="black" stop-opacity="0%"/>
                 <stop offset="45%" stop-color="black" stop-opacity="50%"/>
                 <stop offset="60%" stop-color="black" stop-opacity="100%"/>
             </radialGradient>
             <mask id="mask-bg-desc-type03" maskContentUnits="objectBoundingBox">
-                <rect width="1" height="1" fill="url(#line-grad-type02)"/>
-                <rect width="1" height="1" fill="url(#line-grad-type03)"/>
-                <circle cx=".5" cy=".5" r="1" fill="url(#rad-grad-type02)"/>
-                <rect width=".4" height="1" fill="url(#line-grad-type01)">
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-01)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-02)"/>
+                <circle cx=".5" cy=".5" r="1" fill="url(#mask-bg-desc-type03__grad)"/>
+                <rect width=".4" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
                     <animate attributeName="x" values="-.5;1.5" begin="0s" dur="2s" repeatCount="indefinite"/>
                 </rect>
             </mask>
 
-            <radialGradient id="rad-grad-type03">
+            <radialGradient id="mask-bg-desc-type04__grad">
                 <stop offset="0%" stop-color="white" stop-opacity="100%"/>
                 <stop offset="8%" stop-color="white" stop-opacity="50%"/>
                 <stop offset="20%" stop-color="white" stop-opacity="10%"/>
                 <stop offset="32%" stop-color="white" stop-opacity="0%"/>
             </radialGradient>
             <mask id="mask-bg-desc-type04" maskContentUnits="objectBoundingBox">
-                <circle cx=".5" cy=".5" r="1.6" fill="url(#rad-grad-type03)"/>
-                <rect width="1" height="1" fill="url(#line-grad-type01)">
+                <circle cx=".5" cy=".5" r="1.6" fill="url(#mask-bg-desc-type04__grad)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
                     <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
                 </rect>
             </mask>
 
-            <linearGradient id="line-grad-type04">
+            <mask id="mask-bg-desc-type05" maskContentUnits="objectBoundingBox">
+                <circle cx=".5" cy=".5" r="1.65" fill="url(#mask-bg-desc-type01__rad-grad)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
+                    <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
+                </rect>
+            </mask>
+
+            <linearGradient id="mask-hor-scroll-type01__grad">
                 <stop offset="2%" stop-color="white" stop-opacity="0%"/>
                 <stop offset="10%" stop-color="white" stop-opacity="100%"/>
                 <stop offset="90%" stop-color="white" stop-opacity="100%"/>
                 <stop offset="98%" stop-color="white" stop-opacity="0%"/>
             </linearGradient>
             <mask id="mask-hor-scroll-type01" maskContentUnits="objectBoundingBox">
-                <rect width="1" height="1" fill="url(#line-grad-type04)"/>
+                <rect width="1" height="1" fill="url(#mask-hor-scroll-type01__grad)"/>
+            </mask>
+
+            <linearGradient id="mask-hor-scroll-type02__grad">
+                <stop offset="0%" stop-color="white" stop-opacity="0%"/>
+                <stop offset="2%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="98%" stop-color="white" stop-opacity="100%"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0%"/>
+            </linearGradient>
+            <mask id="mask-hor-scroll-type02" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#mask-hor-scroll-type02__grad)"/>
             </mask>
 
             <filter id="inner-shadow-title-type01">
@@ -121,6 +144,15 @@
                 <feComposite in="SourceAlpha" operator="out"/>
                 <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1 0"/>
             </filter>
+            <filter id="inner-shadow-title-type03">
+                <feOffset dx="0" dy="0"/>
+                <feGaussianBlur stdDeviation="3"/>
+                <feComposite in="SourceAlpha" operator="out"/>
+                <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1 0"/>
+            </filter>
+
+
+
             <filter id="inner-shadow-descr-type01">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="13"/>
@@ -211,7 +243,7 @@
             <div class="section-about__article">
                 <svg class="section-about__article-border border" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
                     <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
-                    <use href="#CA-BA" stroke="none" fill="#ffffffd5" />
+                    <use href="#CA-BA" stroke="none" />
                     <use href="#CA-BA" stroke="none" />
                     <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
                     <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging" font-size="1rem" x="83" y="23">compendium</text>
@@ -261,7 +293,7 @@
                                 <stop offset="1" stop-color="#d1ffff80" />
                             </linearGradient>
                         </defs>
-                        <path stroke="url(#section-about__article-resume-border_grad)" d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
+                        <path d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
                         <g opacity="0">
                             <path d="M28 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
                             <path d="M28 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
@@ -270,6 +302,7 @@
                             <path d="M321 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
                             <path d="M321 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
                         </g>
+                        <path d="M15 1l460 0 0 39-19 19-441 0z"/>
                     </svg>
                     <a data-position="left" href="/files/resume.pdf">
                         <span>Resume</span><svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
@@ -484,51 +517,20 @@
                 <div class="section-abilities__content-section">
                     <div class="section-abilities__content-section-skills">
                         <svg viewbox="0 0 75 72" preserveAspectRatio="xMidYMid meet">
-                            <!-- <path d="M37.5 71l-18.265-13.512-18.235-13.488 6.474-21.414 6.526-21.586 23.5 0 23.5 0 6.526 21.586 6.474 21.414-18.235 13.488z"/> -->
-                            <!-- <path id="skills-pentagon" d="M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318Z"/> -->
+                            <radialGradient id="afdadfsd" gradientUnits="userSpaceOnUse" cx="37.5" cy="32">
+                                <stop offset="0%" stop-color="white" />
+                                <stop offset="20%" stop-color="#8095a5" stop-opacity="80%" />
+                                <stop offset="100%" stop-color="#8095a5" stop-opacity="20%" />
+                            </radialGradient>
+                            <path id="penta-edge" d="M61 1l-47 0-13 43 36.5 27 36.5-27zm-9.4 12.4-28.2 0-7.8 25.8 21.9 16.2 21.9-16.2zm-7.05 9.3-14.1 0-3.9 12.9 10.95 8.1 10.95-8.1z"/>
                             <path id="skills-pentagon" d="M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318ZM51.672 13.264 37.5 32M21.991 11.541 37.5 32M10.998 40.713 37.5 32M37.5 59 37.5 32M61.957 40.039 37.5 32M37.5 18 37.5 32M21.735 27.058 37.5 32M28.515 44.53 37.5 32M45.688 43.318 37.5 32M52.535 27.276 37.5 32"/>
-                            <path id="penta-edge" d="M61 1l-47 0-13 43 36.5 27 36.5-27zm0 0-16.45 21.7m-30.55-21.7 16.45 21.7m-29.45 21.3 25.55-8.4m10.95 35.4 0-27.3m36.5.3-25.55-8.4m3.15-22.2-28.2 0-7.8 25.8 21.9 16.2 21.9-16.2zm-7.05 9.3-14.1 0-3.9 12.9 10.95 8.1 10.95-8.1z"/>
-                            <!-- <use href="#penta-edge"/>
-                            <use href="#penta-edge"/> -->
-
-                            <!-- <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
-                            <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
-                            <text class="state" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
-                            <text class="state" x="283.6" y="208.33">Team Work</text>
-                            <text class="state" x="248.73" y="101">Communication</text>
-                            <text dx=".5ch"x="192.3" y="175">0</text>
-                            <text x="192.3" y="150">.3</text>
-                            <text x="192.3" y="126">.6</text>
-                            <text dx="1ch" x="192.3" y="102">1</text> -->
+                            <rect x="-2.5" y="-6" width="80" height="80"/>
                         </svg>
                         <p class="state">Problem Solving</p>
                         <p class="state">Research</p>
                         <p class="state">Fast Learner</p>
                         <p class="state">Team Work</p>
                         <p class="state">Communication</p>
-                        <!-- <svg class="section-abilities__content-section-skills" viewbox="0 0 385 385">
-                            <defs>
-                                <mask id="mask-pentagon">
-                                    <path fill="white" transform-origin="192.5 180" transform="scale(1.3)" d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                                </mask>
-                            </defs>
-                            <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#mask-pentagon)">
-                                <div style="clip-path: polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)"></div>
-                            </foreignObject>
-                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                            <path d="M248.73 101, 192.3 178.52 M135.84 101, 192.3 178.52 M101 208.33, 192.3 178.52 M192.3 274.66, 192.3 178.52 M283.6 208.33, 192.3 178.52 M192.5 101, 192.3 178.52 M118.4 154.65, 192.3 178.52 M146.65 241.53, 192.3 178.52 M238.35 241.53, 192.3 178.52 M266.6 154.65, 192.3 178.52"/>
-                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                            <path d="M248.73, 101 135.87, 101 101, 208.33 192.3, 274.66 283.6, 208.33z"/>
-                            <text class="state" x="135.87" y="101" text-anchor="end">Problem Solving</text>
-                            <text class="state" x="101" y="208.33" text-anchor="end">Research</text>
-                            <text class="state" x="192.3" y="274.66" text-anchor="middle" dominant-baseline="hanging">Fast Learner</text>
-                            <text class="state" x="283.6" y="208.33">Team Work</text>
-                            <text class="state" x="248.73" y="101">Communication</text>
-                            <text dx=".5ch"x="192.3" y="175">0</text>
-                            <text x="192.3" y="150">.3</text>
-                            <text x="192.3" y="126">.6</text>
-                            <text dx="1ch" x="192.3" y="102">1</text>
-                        </svg> -->
                     </div>
                     <div class="section-abilities__content-section-software">
                         <button class="icon-button hovering" value="HTML-CSS" type="button">
@@ -597,35 +599,38 @@
             <div class="section-abilities__description">
                 <div class="description-wrapper">
                     <div class="description-wrapper__skill scrollable" data-translateX="0%" data-mask-value-top="0%" data-mask-value-bot="70%">
-                        <svg class="description-wrapper__skill-border border" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                            <rect width="100" height="100"/>
+                        <svg class="description-wrapper__skill-border border" viewBox="0 0 342 144" preserveAspectRatio="xMidYMin meet">
+                            <rect height="144" width="382" y="-41"/>
+                            <path vector-effect="non-scaling-stroke" stroke-linejoin="miter" d="M30 6l5-5 21 0 3 3-23 0-3 3 0  130 3 3 23 0-3 3-21 0-5-5zm-9 17 2-1.5 2 0-2 1.5 0   98 2 1.5-2 0-2-1.5z M312 6l-5-5-21 0-3 3 23 0 3 3 0  130 -3 3-23 0 3 3 21 0 5-5zm9 17-2-1.5-2 0 2 1.5 0   98 -2 1.5 2 0 2-1.5z"/>
                         </svg>
-                        <details class="state">
-                            <summary>Problem Solving</summary>
-                            <p>- structuring the problem and examining its solution through the least cost and speed of execution.</p>
-                        </details>
-                        <details class="state">
-                            <summary>Research</summary>
-                            <p>- setting up a correct query or "rolling back" to consider similar queries more closely.</p>
-                        </details>
-                        <details class="state">
-                            <summary>Fast Learner</summary>
-                            <p>- clarification of terminology, visualization of the process and interest in understanding the ongoing process help to quickly and accurately integrate into the process.</p>
-                        </details>
-                        <details class="state">
-                            <summary>Team Work</summary>
-                            <p>- agreement with colleagues and smooth work with common processes.</p>
-                        </details>
-                        <details class="state">
-                            <summary>Communication</summary>
-                            <p>- free, easy, unobtrusive communication with people.</p>
-                        </details>
+                        <div class="description-wrapper__skill-details">
+                            <details class="state">
+                                <summary>Problem Solving</summary>
+                                <p>- structuring the problem and examining its solution through the least cost and speed of execution.</p>
+                            </details>
+                            <details class="state">
+                                <summary>Research</summary>
+                                <p>- setting up a correct query or "rolling back" to consider similar queries more closely.</p>
+                            </details>
+                            <details class="state">
+                                <summary>Fast Learner</summary>
+                                <p>- clarification of terminology, visualization of the process and interest in understanding the ongoing process help to quickly and accurately integrate into the process.</p>
+                            </details>
+                            <details class="state">
+                                <summary>Team Work</summary>
+                                <p>- agreement with colleagues and smooth work with common processes.</p>
+                            </details>
+                            <details class="state">
+                                <summary>Communication</summary>
+                                <p>- free, easy, unobtrusive communication with people.</p>
+                            </details>
+                        </div>
                     </div>
                     <div class="description-wrapper__software" data-translateX="-50%">
-                        <svg class="description-wrapper__software-border border" viewBox="0 -11 342 181" preserveAspectRatio="xMidYMin meet">
-                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M8 24l-7 6 0-24 9 0 6-5  310 0 6 5 9 0 0 19-7-5   -107 0-6 4z"/>
-                            <path id="description-wrapper__software-border-2" vector-effect="non-scaling-stroke" d="M8 156l-7-6 0 21 9 0 6 5  310 0 6-5 9 0 0-21-7 6z"/>
-                            <path id="description-wrapper__software-border-3" vector-effect="non-scaling-stroke" d="M3 35l7-6  213 0 6-4   103 0 7 5 0    115 -7 6     -322 0-7-6z"/>
+                        <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
+                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M8 42l-7 6 0  -34 9 0 6-5   310 0 6 5 9 0 0    29 -7-5     -187 0-6 4z"/>
+                            <path id="description-wrapper__software-border-2" vector-effect="non-scaling-stroke" d="M8 164l-7-6 0 32 9 0 6 5  310 0 6-5 9 0 0-32-7 6z"/>
+                            <path id="description-wrapper__software-border-3" vector-effect="non-scaling-stroke" d="M3 52l7-6  213 0 6-4   103 0 7 5 0    115 -7 6     -322 0-7-6z"/>
                             <use href="#description-wrapper__software-border-1"/>
                             <use href="#description-wrapper__software-border-2"/>
                             <use href="#description-wrapper__software-border-3"/>

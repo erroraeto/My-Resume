@@ -10,10 +10,14 @@
                 text
                         fill: var(--color-light-gray-blue)
                 use:first-of-type
+                        fill: #ffffff
                         filter: url(#inner-shadow-descr-type01)
                 use:last-of-type
+                        // filter:  url(#led-screen2) blur(.2px)
                         fill: url(#line-grad-anim-01)
-                        mask: url(#mask-bg-desc-type01)
+                        mask: url(#mask-bg-desc-type05)
+                        // mask: url(#mask-bg-desc-type01)
+                        // #a0dbff
         &__article
                 position: relative
                 display: grid
@@ -62,6 +66,7 @@
         &__article-description-text
                 height: 100%
                 width: 100%
+                filter: drop-shadow(0 0 6px black)
                 p
                         padding: .5rem 2.5rem
                         text-indent: 2rem
@@ -124,10 +129,12 @@
                 filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
                 stop
                         transition: stop-color .3s ease
+                path:first-of-type
+                        stroke: url(#section-about__article-resume-border_grad)
                 g
-                        stroke: white
                         transition: opacity .2s ease
                         path
+                                stroke: white !important
                                 transition: d .2s ease
         &__slider
                 position: relative
@@ -214,24 +221,30 @@
 
 .attn-message
         position: absolute
-        height: 9.5vw
-        width: 17vw
+        height: 7vw
+        width: 10vw
         z-index: 10
         stroke: none
-        fill: none
-        filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='.5' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='.5' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+        fill: rgba(var(--color-moderate-blue-rgb), .5)
+        filter: drop-shadow(0 0 10px black)
         image
-                height: 60%
-                width: 60%
-                x: 20%
-                y: 20%
-        rect
-                fill: url(#line-grad-anim-03)
-                mask: url(#mask-bg-desc-type03)
-                vector-effect: non-scaling-stroke
-                x: 20
-                y: 5
+                filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                height: 80%
+                width: 80%
+                x: 10%
+                y: 18%
         path
                 vector-effect: non-scaling-stroke
-                stroke: var(--color-light-cyan)
-                d: path("M89.5 61.5l0-9 7-7 327 0 7 7 0 9m-341 167 0 9 7 7 327 0 7-7 0-9")
+        path:first-of-type
+                d: path("M8 24l-7 6 0-24 9 0 6-5 200 0 6 5 9 0 0 19-7-5-70 0-6 4z")
+        use:first-of-type
+                fill: var(--color-grideperleft)
+                filter: url(#inner-shadow-title-type03)
+        path:last-of-type
+                d: path("M3 35l7-6 140 0 6-4 66 0 7 5 0 115-7 6-212 0-7-6z")
+                filter: brightness(30%)
+        use:last-of-type
+                fill: var(--color-grideperleft)
+                filter: url(#inner-shadow-descr-type01) brightness(5%)
+        text
+                fill: white

@@ -26,8 +26,9 @@
         place-items: center
         transform: rotateY(6deg)
         &-border
-            stroke: var(--color-moderate-blue)
-            filter: url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+            // stroke: var(--color-moderate-blue)
+            stroke: var(--color-light-slate-gray)
+            filter: url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
             stroke-width: .5px
             path:first-of-type
                 stroke-width: 1px
@@ -60,7 +61,7 @@
             scroll-behavior: smooth
             z-index: 1
             mask-image: url(#mask-hor-scroll-type01)
-            transform: rotateY(6deg)
+            transform: rotateY(6deg) translateZ(10px)
             transition: transform .3s ease, filter .5s ease, width 1s ease, opacity 1s ease
             perspective: 100rem
             perspective-origin: left center
@@ -75,7 +76,8 @@
             &::-webkit-scrollbar-button
                 width: 6rem
             &::-webkit-scrollbar-track
-                border: .2rem solid var(--color-moderate-blue)
+                // border: .2rem solid var(--color-moderate-blue)
+                border: .2rem solid var(--color-light-slate-gray)
                 border-radius: 6px
                 cursor: pointer
                 background: none
@@ -128,21 +130,17 @@
                         fill: none
                         transition: d .3s ease
                     path:first-of-type
-                        stroke: #8095a5
-                        stroke-width: 3px
-                        fill: #28323d
-                    path:last-of-type
                         opacity: .3
-                    text:nth-of-type(n+1):nth-of-type(-n+5)
-                        cursor: pointer
-                        transition: fill .3s ease
-                    text
-                        position: relative
-                        vector-effect: non-scaling-stroke
-                        border: 1px solid var(--color-white)
-                        transform: scale(1.35) translate(-13%, -12%)
-                        fill: var(--color-white)
-                        width: 71.14%
+                    path:last-of-type
+                        // stroke: #8095a5
+                        stroke: url(#afdadfsd)
+                        stroke-width: 3px
+                        // fill: url(#afdadfsd)
+                        fill: #28323d
+                    rect
+                        mask: url(#mask-bg-desc-type01)
+                        fill: url(#line-grad-anim-04)
+                        opacity: .3
             &-software
                 height: 100%
                 position: relative
@@ -159,12 +157,13 @@
         position: relative
         justify-self: start
         height: 94%
-        width: 66%
+        width: 80%
         transform: rotateY(-6deg)
         overflow: hidden
+        mask: url('#mask-hor-scroll-type02')
         // mask-image: linear-gradient(to left, transparent, #000 7%, #000 93%, transparent 100%)
-        mask-size: 100% 80%
-        mask-position: left bottom
+        // mask-size: 100% 80%
+        // mask-position: left bottom
         .description-wrapper
             position: relative
             left: 0
@@ -172,7 +171,6 @@
             grid-template: 100% / repeat(2, calc( 100% / 2 ))
             place-content: center
             place-items: center
-            // white-space: nowrap
             height: 100%
             width: calc( 100% * 2 )
             transition: transform .3s ease
@@ -186,56 +184,57 @@
                 align-self: center
                 justify-content: center
                 height: 100%
-                width: 96%
+                width: 100%
                 &-border
+                    filter: drop-shadow(0 0 8px black) url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
                     stroke: none
-                    // filter: url(#led-screen2) blur(.2px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                    // mask: radial-gradient(at 50% 44.8%, white 0%, transparent 100%)
-                    // mask-size: 80% 50%
-                    // mask-position: center
-                    // mask-repeat: no-repeat
-                    // fill: var(--color-light-greenish-blue)
-                    mask: url(#mask-bg-desc-type04)
-                    fill: url(#line-grad-anim-04)
-                details
-                    display: block
-                    width: 100%
-                    overflow: hidden
-                    @media (prefers-reduced-motion: no-preference)
-                        interpolate-size: allow-keywords
-                    &::details-content
-                        opacity: 0
-                        block-size: 0
-                        overflow-y: clip
-                        transition: content-visibility .3s allow-discrete, opacity .3s ease, block-size .3s ease
-                    &[open]::details-content
-                        opacity: 1
-                        block-size: auto
-                    &[open] > summary::before
-                        transform: rotate(90deg)
-                    summary
-                        cursor: pointer
-                        &::marker
-                            content: ''
-                        &::before
-                            content: '🞂'
-                            display: inline-block
-                            position: relative
-                            vertical-align: text-top
-                            text-align: center
-                            height: 1em
-                            width: 1em
-                            transform: rotate(0)
-                            transition: transform .25s ease
-                    p
-                        padding: .3rem 2rem
-                        text-align: left
-                        cursor: default
-                        transition: translate 1s ease, opacity 1s ease
+                    path
+                        fill: var(--color-light-slate-gray)
+                    rect
+                        mask: url(#mask-bg-desc-type05)
+                        fill: url(#line-grad-anim-05)
+                &-details
+                    width: 78%
+                    details
+                        display: block
+                        overflow: hidden
+                        @media (prefers-reduced-motion: no-preference)
+                            interpolate-size: allow-keywords
+                        & > *
+                            filter: drop-shadow(0 0 8px black)
+                        &::details-content
+                            opacity: 0
+                            block-size: 0
+                            overflow-y: clip
+                            transition: content-visibility .3s allow-discrete, opacity .3s ease, block-size .3s ease
+                        &[open]::details-content
+                            opacity: 1
+                            block-size: auto
+                        &[open] > summary::before
+                            transform: rotate(90deg)
+                        summary
+                            cursor: pointer
+                            &::marker
+                                content: ''
+                            &::before
+                                content: '🞂'
+                                display: inline-block
+                                position: relative
+                                vertical-align: text-top
+                                text-align: center
+                                height: 1em
+                                width: 1em
+                                transform: rotate(0)
+                                transition: transform .25s ease
+                        p
+                            padding: .3rem 2rem
+                            text-align: left
+                            cursor: default
+                            transition: translate 1s ease, opacity 1s ease
             &__software
                 align-self: start
                 width: 95.6%
-                height: 50%
+                height: 100%
                 min-height: 40%
                 justify-content: start
                 // aspect-ratio: 1 / 1.328
@@ -265,8 +264,8 @@
                 &-article
                     position: relative
                     display: grid
-                    grid-template: 2.95em max-content / 100%
-                    height: max-content
+                    grid-template: 5rem max-content / 100%
+                    height: 100%
                     width: 100%
                     &-title
                         position: relative
@@ -289,20 +288,22 @@
                                 fill: var(--color-ocean-blue)
                                 stroke: var(--color-ocean-blue)
                         h3
+                            font-size: 2.8rem
                             vertical-align: sub
                         p
                             position: absolute
-                            top: 46%
+                            font-size: 1.8rem
+                            top: 44%
                             right: 10%
                             translate: 0 -50%
                             color: var(--color-fern-crayola)
-                            // -webkit-text-stroke: .2px var(--color-fern-crayola)
                     &-description
                         width: 100%
-                        max-height: 18em
                         p
+                            font-size: 2.3rem
                             text-align: justify
-                            padding: .2rem 1rem
+                            padding: 0.2rem 1.4rem
+
 
 
 .software__hidden
