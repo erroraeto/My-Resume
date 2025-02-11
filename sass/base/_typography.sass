@@ -14,8 +14,11 @@ span, text
 mask:has(text) > text
     filter: none
 
-.attn-message
-    font-size: 2rem
+.button-state
+    span
+        font-size: 2rem
+        line-height: 1.2em
+
 
 .inline_icon > text
     font-size: 2.4rem
@@ -23,10 +26,6 @@ mask:has(text) > text
 .icon-button span
     font-weight: bold
     text-shadow: -.6px -.6px 0 #000, .6px -.6px 0 #000, -.6px .6px 0 #000, .6px .6px 0 #000
-
-.description-wrapper__software-article-title p
-    font-weight: bold
-    font-size: 1.6rem
 
 span
     font-weight: lighter
@@ -58,15 +57,21 @@ p
     font-style: normal
     font-weight: lighter
 
-.section-about__article-description-text p
+.section-about__article-description p
     font-size: 1.9rem
     padding: 1rem 2rem
     text-align: justify
     hyphens: auto
+
+.attn-message
+    font-size: 2rem
     font-weight: lighter
 
-.section-about__article-description-text ul
+.section-about__article-description ul
     font-size: 2rem
+    & ::marker
+        font-size: 1.6rem
+
 
 
 .section-about__article-resume span
@@ -76,6 +81,13 @@ p
 .section-about__slider p
         font-size: 2.4rem
         font-weight: 600
+
+.section-abilities__content-section-skills span
+    font-weight: bold
+
+.description-wrapper__software-article-title p
+    font-weight: bold
+    font-size: 1.6rem
 
 summary
     font-weight: 600

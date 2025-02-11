@@ -13,19 +13,16 @@
     transform: rotateY(6deg)
     perspective: 50rem
     perspective-origin: left center
-    &:focus,
     &:hover
         transform: translateZ(2rem) rotateY(6deg)
-    &:hover  &__bg,
-    &:focus &__bg
+    &:hover  &__bg
         fill: rgba(var(--color-moderate-blue-rgb), .8)
         stroke: rgba(var(--color-white-rgb), .6)
         stroke-width: 1.5px
         rect
             fill: var(--color-light-gray-blue)
             mask: radial-gradient(circle at center, #ffffff38 0%, #ffffff00 50%)
-    &:hover  &__figure,
-    &:focus &__figure
+    &:hover  &__figure
             stroke: var(--color-light-gray-blue)
             rect
                 fill: url(#line-grad-anim-04)

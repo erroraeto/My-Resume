@@ -51,8 +51,8 @@ function sleep(ms) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     document.all[0].style.scrollBehavior = "auto";
-    skill.scrollIntoView({behavior: "auto"});
-    // home.scrollIntoView({behavior: "auto"});
+    // skill.scrollIntoView({behavior: "auto"});
+    home.scrollIntoView({behavior: "auto"});
     document.all[0].style.scrollBehavior = "";
 }
 
@@ -266,7 +266,7 @@ function resBttn_hover(e) {
             resBord_g[j].children[i].attributes[0].nodeValue = resBord_g[j].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[1][i]);
         };
     });
-}
+};
 
 //Скролл контента в секции Skills
 let sectionAbilTitle = document.querySelector('.section-abilities__content-title-wrapper');
@@ -420,25 +420,61 @@ const replaceClP = {
 };
 
 let detailSoft = document.querySelector(".description-wrapper__skill-details");
-detailSoft.onclick = (e) => {for (st of detailSoft.children) if (e.target.closest(".state") != st) st.open = false};
+// detailSoft.onclick = (e) => {for (st of detailSoft.children) if (e.target.closest(".state") != st) st.open = false};
+detailSoft.onclick = (e) => {
+    for (let i=0; i<statesDescrTerm.length; i++) {
+        if (statesDescrTerm[i] == e.target.closest(".state")) {
+            statesDescrTerm[i].classList.toggle('skill-desc__select');
+            statesPenta[i].classList.toggle('skill__select');
+        } else {
+            statesDescrTerm[i].open = false;
+            statesDescrTerm[i].classList.remove('skill-desc__select');
+            statesPenta[i].classList.remove('skill__select');
+        }
+    }
+    // for (st of statesPenta) statesPenta[i] == st ? st.classList.toggle('skill__select') : st.classList.remove('skill__select');
+    // for (st of detailSoft.children) {
+        //     if (e.target.closest(".state") == st) {
+    //         st.classList.toggle('skill-desc__select');
+    //     } else {
+    //         st.open = false;
+    //         st.classList.remove('skill-desc__select');
+    //     }
+    // }
+    // for (st of statesPenta) statesPenta[i] == st ? st.classList.toggle('skill__select') : st.classList.remove('skill__select');
+    // }
+};
 
 function parametrClipPath(e, event) {
-    if (e.target.className.baseVal == "state" || e.target.closest('.state')) {
+    // if (e.target.className.baseVal == "state" || e.target.closest('.state')) {
+    // if (e.target.className.baseVal == "state") {
+    if (e.target.closest('.state')) {
         let i = 0;
         Array.from(e.target.closest('.state').parentElement.querySelectorAll('.state')).some((el) => {
             if (e.target.closest('.state') == el) {
-                statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
+                // statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
+                statesPenta[i].onclick = () => {
+                    for (st of statesDescrTerm) {
+                        if (statesDescrTerm[i] == st) {
+                            st.open = !st.open;
+                            st.classList.toggle('skill-desc__select');
+                        } else {
+                            st.open = false;
+                            st.classList.remove('skill-desc__select');
+                        }
+                    }
+                    for (st of statesPenta) statesPenta[i] == st ? st.classList.toggle('skill__select') : st.classList.remove('skill__select');
+                };
                 parametr.attributes[1].nodeValue = parametr.attributes[1].nodeValue.replace(macthClP[i], function(matched){
                     return replaceClP[matched];
                 });
-                return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-orange); fill: var(--color-orange);";
+                return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-fern-crayola);";
             } else {
                 i++;
             }
         });
         e.target.addEventListener(event, () => {
             parametr.attributes[1].nodeValue = "M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318ZM51.672 13.264 37.5 32M21.991 11.541 37.5 32M10.998 40.713 37.5 32M37.5 59 37.5 32M61.957 40.039 37.5 32M37.5 18 37.5 32M21.735 27.058 37.5 32M28.515 44.53 37.5 32M45.688 43.318 37.5 32M52.535 27.276 37.5 32";
-            // parametr.attributes[1].nodeValue = "M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318Z";
             statesDescrTerm[i].style = statesPenta[i].style = "";
         });
     };
@@ -446,18 +482,17 @@ function parametrClipPath(e, event) {
 
 
 let SVGdescSkill = document.querySelector(".description-wrapper__skill-border");
-let SVGdescSkillBg = document.querySelector(".description-wrapper__skill-border-bg");
 let skillSection = document.querySelector(".description-wrapper__skill-details");
 
-const resizeObserver = new ResizeObserver((entries) => {
+const observerSkillSection = new ResizeObserver((entries) => {
     for (const entry of entries) {
         const matchedSkill = new Map([
             [/\b\s{2}\S+/g, `  ${entry.contentRect.height + 10}`],
             [/\b\s{3}\S+/g, `   ${entry.contentRect.height - 22}`],
         ]);
         if (entry.contentBoxSize) {
-            // SVGdescSkill.attributes[1].nodeValue = `0 ${Math.round(-(entry.target.offsetTop - 70))} 342 144`;
-            SVGdescSkill.attributes[1].nodeValue = `0 -${Math.round(entry.target.offsetTop - 14)} ${Math.round(entry.target.parentElement.offsetWidth)} 144`;
+            // SVGdescSkill.attributes[1].nodeValue = `0 -${Math.round(entry.target.offsetTop - 14)} ${Math.round(entry.target.parentElement.offsetWidth)} 144`;
+            SVGdescSkill.attributes[1].nodeValue = `0 ${-Math.round(entry.target.offsetTop - 14)} ${Math.round(entry.target.parentElement.offsetWidth)} 144`;
             SVGdescSkill.children[0].attributes[0].nodeValue = entry.contentRect.height + 100;
             SVGdescSkill.children[0].attributes[1].nodeValue = entry.target.parentElement.offsetWidth;
             SVGdescSkill.children[1].attributes[2].nodeValue = SVGdescSkill.children[1].attributes[2].nodeValue.replace(/\s\M\S+/, ` M${entry.target.parentElement.offsetWidth - 30}`);
@@ -468,7 +503,38 @@ const resizeObserver = new ResizeObserver((entries) => {
     }
 });
 
-resizeObserver.observe(skillSection);
+observerSkillSection.observe(skillSection);
+
+let SVGContSkill = document.querySelectorAll(".button-state__border");
+let skillSectionCont = document.querySelectorAll(".button-state");
+
+(function () {
+    for (border of SVGContSkill) {
+        border.attributes[1].nodeValue = `0 0 ${Math.round(border.clientWidth)} ${Math.round(border.clientHeight)}`;
+        border.children[0].attributes[0].nodeValue = border.children[0].attributes[0].nodeValue.replace(/10/g, Math.round((border.clientWidth / 2) - 10));
+
+        border.children[1].attributes[0].nodeValue = border.children[1].attributes[0].nodeValue.replace(/\S+\l/, `${Math.round(border.clientHeight - 13)}l` );
+        border.children[1].attributes[0].nodeValue = border.children[1].attributes[0].nodeValue.replace(/10/g, Math.round((border.clientWidth / 2) - 10));
+
+        border.children[2].attributes[0].nodeValue = border.children[2].attributes[0].nodeValue.replace(/\d.*?\b/, Math.round((border.clientWidth / 2) - 7));
+
+        border.children[3].attributes[0].nodeValue = border.children[3].attributes[0].nodeValue.replace(/\d.*?\b/, Math.round((border.clientWidth / 2) - 7));
+        border.children[3].attributes[0].nodeValue = border.children[3].attributes[0].nodeValue.replace(/\S+\l/, `${Math.round(border.clientHeight - 16)}l` );
+    }
+})();
+
+// const resizeObserver = new ResizeObserver((entries) => {
+//     let i = 0;
+//     for (const entry of entries) {
+//         if (entry.contentBoxSize) {
+//             SVGContSkill[i].attributes[1].nodeValue = `0 0 ${Math.round(entry.target.offsetWidth)} ${Math.round(entry.target.offsetHeight)}`;
+//             i++;
+//         }
+//     }
+// });
+
+// resizeObserver.observe(skillSectionCont);
+
 
 
 // let statesDescrTerm = document.querySelectorAll(".description-wrapper__skill .state");
@@ -528,6 +594,13 @@ let descrTitleSoft = document.querySelector(".description-wrapper__software-arti
 let descrTxtSoft = document.querySelector(".description-wrapper__software-article-description");
 let SVGdescSoft = document.querySelector(".description-wrapper__software-border");
 
+// let SVGdescSoftTop = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-1");
+// let SVGdescSoftMidle = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-3");
+// let SVGdescSoftBottom = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-2");
+
+let SVGdescSoftTitle = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-1");
+let SVGdescSoftDesc = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-2");
+
 const colTitle_Desc = {
     "HTML-CSS": 'Fluent in HTML, CSS. Freely use grid and flex layout. I know the BEM methodology. As well as without problems layout sites by design with Figma.',
     "JAVASCRIPT": 'Events, object, array.',
@@ -556,112 +629,178 @@ softwareIcon.addEventListener('click', async (e) => {
     abilDesc.children[1].classList.add("software__hidden");
     await sleep(200);
 
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight + 14)}`);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     15`);
+    
+    await sleep(300);
+    
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\d+/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 30)}`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  45`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{3}\S+/g, `   0`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    0`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\s\-\d+/, ` -45`);
 
     await sleep(300);
-
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 16)} `);
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   32 `);
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -16 `);
-    
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 16)} `);
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  32 `);
-
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 22)} `);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  28 `);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   12 `);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -46 `);
-
-    
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoftSize.height + 3)}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
-
-    // await sleep(300);
-
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 16)} `);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   32 `);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -16 `);
-    
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 16)} `);
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  32 `);
-
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 22)} `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  28 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   12 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -46 `);
-
-    await sleep(300);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoftSize.width + 9)}`);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoftSize.width * 58) / 100) - 13}`);
-
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
-
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  213 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   103 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -322 `);
-
-    // await sleep(300);
 
     descrTitleSoft.children[0].children[2].innerHTML = '';
     descrTitleSoft.children[0].children[1].attributes[1].nodeValue = targButton.children[1].children[0].attributes[1].nodeValue;
     descrTitleSoft.children[1].innerHTML = targButton.value;
     descrTxtSoft.innerHTML = `<p>${colTitle_Desc[targButton.value]}</p>`;
 
-    let descSize = descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight;
-
     resizeSoftDescr();
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.round(+match + (descSize - 44))}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    ${Math.round(descrTxtSoft.getBoundingClientRect().height)} `);
-
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize - 44))}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 44))} `);
 
     await sleep(500);
     abilDesc.children[1].classList.remove("software__hidden");
 });
 
+
 async function resizeSoftDescr() {
 
-    SVGdescSoft.attributes[1].nodeValue = `0 0 ${Math.round(descrTitleSoft.offsetWidth)} ${Math.round(descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight)}`;
+    SVGdescSoft.attributes[1].nodeValue = `0 -${Math.round((SVGdescSoft.clientHeight / 2) - (descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight) / 2) - 26} ${Math.round(descrTitleSoft.offsetWidth)} ${Math.round(descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight)}`;
 
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoft.offsetWidth - 32)}`);
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoft.offsetWidth * 42) / 100) - 10}`);
-
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrTitleSoft.offsetWidth - 32)}`);
+    // SVGdescSoftTitle.attributes[2].nodeValue = SVGdescSoftTitle.attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+    // SVGdescSoftTitle.attributes[2].nodeValue = SVGdescSoftTitle.attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoft.offsetWidth - 32)}`);
+    // SVGdescSoftTitle.attributes[2].nodeValue = SVGdescSoftTitle.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoft.offsetWidth * 42) / 100) - 10}`);
     
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round((descrTitleSoft.offsetWidth * 58) / 100) - 13}`);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round((descrTitleSoft.offsetWidth * 42) / 100) - 13}`);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round(descrTitleSoft.offsetWidth - 32) + 12}`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\d+/, `12`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrTitleSoft.offsetWidth / 3 - 15)}`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{3}\S+/g, `   15`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTitleSoft.offsetWidth / 3 * 2 - 52)}`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\s\-\d+/, ` -${Math.round(descrTitleSoft.offsetWidth - 37)}`);
     
     await sleep(300);
-    SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight - 8)}`);
-    SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTxtSoft.offsetHeight + descrTitleSoft.offsetHeight + 7)}`);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight + 2)}`);
-    SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTxtSoft.offsetHeight)}`);
-    
-    // SVGdescSoft.attributes[1].nodeValue = `0 0 ${Math.round(descrTitleSoftSize.width)} ${Math.round(descrTitleSoftSize.height + descrTxtSoftSize.height)}`;
-
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoftSize.width - 32)}`);
-    // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoftSize.width * 42) / 100) - 10}`);
-
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrTitleSoftSize.width - 32)}`);
-    // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTxtSoftSize.height + descrTitleSoftSize.height + 10)}`);
-
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoftSize.height - 12)}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round((descrTitleSoftSize.width * 58) / 100) - 13}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round((descrTitleSoftSize.width * 42) / 100) - 13}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTxtSoftSize.height + 17)}`);
-    // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round(descrTitleSoftSize.width - 32) + 12}`);
+    SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     ${Math.round(descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight + 20)}`);
+    // SVGdescSoftTitle.attributes[2].nodeValue = SVGdescSoftTitle.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight - 8)}`);
+    // SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight + 2)}`);
+    // SVGdescSoftDesc.attributes[2].nodeValue = SVGdescSoftDesc.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTxtSoft.offsetHeight)}`);
 };
+
+
+// softwareIcon.addEventListener('click', async (e) => {
+//     let targButton = e.target.closest(".icon-button");
+//     if (!targButton) return;
+
+//     for (btn of targButton.offsetParent.children) {
+//         if (targButton != btn) {
+//             btn.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z';
+//             btn.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 0 5 0 2 0z';
+//             btn.children[0].children[2].style = '';
+//         }
+//     }
+//     targButton.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 2 6 0 2-2 6 0 2 2 0 27-28 0-2-2z';
+//     targButton.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 2 5 0 2-2z';
+//     targButton.children[0].children[2].style = 'opacity: 1;';
+
+
+//     abilDesc.children[1].classList.add("software__hidden");
+//     await sleep(200);
+
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight + 14)}`);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
+
+//     await sleep(300);
+
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 16)} `);
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   32 `);
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -16 `);
+    
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 16)} `);
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  32 `);
+
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoft.offsetWidth / 2 - 22)} `);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  28 `);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   12 `);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -46 `);
+
+    
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoftSize.height + 3)}`);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
+
+//     // await sleep(300);
+
+//     // SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 16)} `);
+//     // SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   32 `);
+//     // SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -16 `);
+    
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 16)} `);
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  32 `);
+
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\d.*?\s/, `${Math.round(descrTitleSoftSize.width / 2 - 22)} `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  28 `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   12 `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -46 `);
+
+//     await sleep(300);
+//     // SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoftSize.width + 9)}`);
+//     // SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoftSize.width * 58) / 100) - 13}`);
+
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
+
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  213 `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   103 `);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -322 `);
+
+//     // await sleep(300);
+
+//     descrTitleSoft.children[0].children[2].innerHTML = '';
+//     descrTitleSoft.children[0].children[1].attributes[1].nodeValue = targButton.children[1].children[0].attributes[1].nodeValue;
+//     descrTitleSoft.children[1].innerHTML = targButton.value;
+//     descrTxtSoft.innerHTML = `<p>${colTitle_Desc[targButton.value]}</p>`;
+
+//     let descSize = descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight;
+
+//     resizeSoftDescr();
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.round(+match + (descSize - 44))}`);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    ${Math.round(descrTxtSoft.getBoundingClientRect().height)} `);
+
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize - 44))}`);
+//     // SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 44))} `);
+
+//     await sleep(500);
+//     abilDesc.children[1].classList.remove("software__hidden");
+// });
+
+
+// async function resizeSoftDescr() {
+
+//     SVGdescSoft.attributes[1].nodeValue = `0 0 ${Math.round(descrTitleSoft.offsetWidth)} ${Math.round(descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight)}`;
+
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoft.offsetWidth - 32)}`);
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoft.offsetWidth * 42) / 100) - 10}`);
+
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrTitleSoft.offsetWidth - 32)}`);
+    
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round((descrTitleSoft.offsetWidth * 58) / 100) - 13}`);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round((descrTitleSoft.offsetWidth * 42) / 100) - 13}`);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round(descrTitleSoft.offsetWidth - 32) + 12}`);
+    
+//     await sleep(300);
+//     SVGdescSoftTop.attributes[2].nodeValue = SVGdescSoftTop.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight - 8)}`);
+//     // SVGdescSoftBottom.attributes[2].nodeValue = SVGdescSoftBottom.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTxtSoft.offsetHeight + descrTitleSoft.offsetHeight + 7)}`);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoft.offsetHeight + 2)}`);
+//     SVGdescSoftMidle.attributes[2].nodeValue = SVGdescSoftMidle.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTxtSoft.offsetHeight)}`);
+    
+//     // SVGdescSoft.attributes[1].nodeValue = `0 0 ${Math.round(descrTitleSoftSize.width)} ${Math.round(descrTitleSoftSize.height + descrTxtSoftSize.height)}`;
+
+//     // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+//     // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round(descrTitleSoftSize.width - 32)}`);
+//     // SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round((descrTitleSoftSize.width * 42) / 100) - 10}`);
+
+//     // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
+//     // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrTitleSoftSize.width - 32)}`);
+//     // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTxtSoftSize.height + descrTitleSoftSize.height + 10)}`);
+
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` ${Math.round(descrTitleSoftSize.height - 12)}`);
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round((descrTitleSoftSize.width * 58) / 100) - 13}`);
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{3}\S+/, `   ${Math.round((descrTitleSoftSize.width * 42) / 100) - 13}`);
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrTxtSoftSize.height + 17)}`);
+//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     -${Math.round(descrTitleSoftSize.width - 32) + 12}`);
+// };
 
 resizeSoftDescr();
 // const resizeSoftDescr = new ResizeObserver((entries) => {
