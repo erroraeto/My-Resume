@@ -14,9 +14,9 @@
     <!-- Это должен быть спрайт, но я ХЗ как это правильно делать -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
-            <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
+            <!-- <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect"> -->
+            <linearGradient id="line-grad-anim-01" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="7" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
-                <!-- <stop offset="20%" stop-color="#a0dbff3c" stop-opacity="40%"/> -->
                 <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
@@ -666,8 +666,9 @@
                     <div class="description-wrapper__software" data-translateX="-50%">
                         <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
                             <use href="#description-wrapper__software-border-1"/>
-                            <use href="#description-wrapper__software-border-2"/>
-                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M1 35l6 0 6-5 514 0 6 5 6 0 0 31-6-5-248 0-6 6-272 0-6 6z"/>
+                            <!-- <use href="#description-wrapper__software-border-2"/> -->
+                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M1 35l6 0 6-5  514 0 6 5 6 0 0 31-6-5 -248 0-6 6  -272 0-6 6z"/>
+                            <rect x='0' y='152' width='412' height='250' />
                             <path id="description-wrapper__software-border-2" vector-effect="non-scaling-stroke" d="M1 16l15-15  105 0   15 15    190 0   15 15 0     149 -325 0-15-15z"/>
                         </svg>
                         <div class="description-wrapper__software-article">

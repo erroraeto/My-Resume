@@ -1832,12 +1832,10 @@ main section {
   width: 100%;
   top: 50%;
   fill: rgba(var(--color-light-blue-rgb), 0.4);
-  -webkit-transition: viewbox 1s ease;
-  transition: viewbox 1s ease;
 }
 .section-abilities__description .description-wrapper__software-border path {
-  -webkit-transition: d 0.3s ease;
-  transition: d 0.3s ease;
+  -webkit-transition: d 0.3s ease, opacity 0.3s ease;
+  transition: d 0.3s ease, opacity 0.3s ease;
 }
 .section-abilities__description .description-wrapper__software-border path:last-of-type {
   fill: #ffffff;
@@ -1848,6 +1846,11 @@ main section {
   fill: var(--color-light-greenish-blue);
   -webkit-filter: url(#inner-shadow-title-type01);
           filter: url(#inner-shadow-title-type01);
+}
+.section-abilities__description .description-wrapper__software-border rect {
+  fill: url(#line-grad-anim-01);
+  -webkit-mask: url(#mask-bg-desc-type05);
+          mask: url(#mask-bg-desc-type05);
 }
 .section-abilities__description .description-wrapper__software-article {
   position: relative;
@@ -1894,6 +1897,18 @@ main section {
   translate: 0 -50%;
   color: var(--color-fern-crayola);
 }
+.section-abilities__description .description-wrapper__software-article-title p::after {
+  content: "";
+  height: 120%;
+  width: 120%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border: 2px solid var(--color-white);
+  -webkit-clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
+          clip-path: polygon(0.7rem 0, 0.7rem 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) 0, 100% 0, 100% 0.7rem, calc(100% - 0.7rem) 0.7rem, calc(100% - 0.7rem) calc(100% - 0.7rem), 100% calc(100% - 0.7rem), 100% 100%, calc(100% - 0.7rem) 100%, calc(100% - 0.7rem) calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 100%, 0 100%, 0 calc(100% - 0.7rem), 0.7rem calc(100% - 0.7rem), 0.7rem 0.7rem, 0 0.7rem, 0 0);
+}
 .section-abilities__description .description-wrapper__software-article-description {
   margin-inline: 1rem;
 }
@@ -1903,6 +1918,9 @@ main section {
   padding: 0.2rem 1.4rem;
 }
 
+.software__hidden path:first-of-type {
+  opacity: 0;
+}
 .software__hidden div, .software__hidden use {
   opacity: 0;
 }
