@@ -52,10 +52,18 @@ p
     font-size: 2rem
     line-height: 1.2em
 
-.section-about__article-border text
+.section-about__article-border text,
+.description-wrapper__software-border text
     font-family: "Michroma", serif
     font-style: normal
     font-weight: lighter
+
+.section-about__article-border
+    text:nth-of-type(1)
+    text:nth-of-type(2)
+        font-size: 1rem
+    text:nth-of-type(3)
+        font-size: 2.5rem
 
 .section-about__article-description p
     font-size: 1.9rem
@@ -72,8 +80,6 @@ p
     & ::marker
         font-size: 1.6rem
 
-
-
 .section-about__article-resume span
     color: var(--color-white)
     font-size: 2rem
@@ -85,9 +91,6 @@ p
 .section-abilities__content-section-skills span
     font-weight: bold
 
-.description-wrapper__software-article-title p
-    font-weight: bold
-    font-size: 1.6rem
 
 summary
     font-weight: 600
@@ -119,3 +122,18 @@ summary
     transition: font-size 1s ease
     @include respond(big-screen)
         font-size: 2.1rem
+
+.description-wrapper__software-article-title p
+    font-weight: bold
+    font-size: 1.6rem
+    &::after,
+    &::before
+        font-size: 2rem
+
+.description-wrapper__software-border
+    text:nth-of-type(1)
+        font-size: 1.6rem
+    text:nth-of-type(2)
+        font-size: 1rem
+    text:nth-of-type(3)
+        font-size: 2.5rem

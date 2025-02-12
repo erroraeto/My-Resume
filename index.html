@@ -16,7 +16,8 @@
         <defs>
             <!-- <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect"> -->
             <linearGradient id="line-grad-anim-01" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="7" spreadMethod="reflect">
-                <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <!-- <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/> -->
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -7" to="0 7" dur="2s" repeatCount="indefinite" />
                 <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
@@ -35,10 +36,15 @@
                 <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
-            <linearGradient id="line-grad-anim-05" gradientUnits="userSpaceOnUse" x1="3" y1="0" x2="3" y2="4" spreadMethod="reflect">
+            <linearGradient id="line-grad-anim-05" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="6" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -300" to="0 300" begin="0s" dur="60s" repeatCount="indefinite"/>
-                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="50%"/>
-                <stop offset="50%" stop-color="transparent" />
+                <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+            <linearGradient id="line-grad-anim-06" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="8" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -300" to="0 300" begin="0s" dur="60s" repeatCount="indefinite"/>
+                <stop offset="5%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
+                <stop offset="40%" stop-color="transparent" />
             </linearGradient>
 
 
@@ -109,8 +115,14 @@
             <mask id="mask-bg-desc-type05" maskContentUnits="objectBoundingBox">
                 <circle cx=".5" cy=".5" r="1.65" fill="url(#mask-bg-desc-type01__rad-grad)"/>
                 <rect width="1" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
-                    <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
+                    <animate attributeName="x" values="-.2;1.2" begin="0s" dur="2s" repeatCount="indefinite"/>
                 </rect>
+            </mask>
+
+            <mask id="mask-bg-desc-type06" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-01)"/>
+                <rect width="1" height="1" fill="url(#mask-bg-desc-type02__line-grad-02)"/>
+                <rect width=".4" height="1" fill="url(#mask-bg-desc-type01__line-grad)"/>
             </mask>
 
             <linearGradient id="mask-hor-scroll-type01__grad">
@@ -260,8 +272,8 @@
                     <use href="#CA-BA" stroke="none" />
                     <use href="#CA-BA" stroke="none" />
                     <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
-                    <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging" font-size="1rem" x="83" y="23">compendium</text>
-                    <text dominant-baseline="middle" text-anchor="end" font-size="2.5rem" x="77" y="21">電</text>
+                    <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging"  x="83" y="23">compendium</text>
+                    <text dominant-baseline="middle" text-anchor="end" x="77" y="21">電</text>
                 </svg>
                 <div class="section-about__article-title">
                     <svg class="section-about__article-title-border border" viewBox="0 0 540 45" preserveAspectRatio="xMidYMid meet">
@@ -512,13 +524,16 @@
         <section id="skill" class="section-abilities">
             <div class="section-abilities__content">
                 <svg class="section-abilities__content-border border" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet">
-                    <path vector-effect="non-scaling-stroke" d="M15 4l3 3 64 0 3-3M8 77l-6 0-1-1 0-71 1-1 13 0 3-3 64 0 3 3 13 0 1 1 0 71-1 1-6 0"/>
-                    <path vector-effect="non-scaling-stroke" d="M8 75l-.5.5-4.5 0-.5-.5 0-69 .5-.5 11 0 3 3 66 0 3-3 11 0 .5.5 0 69-.5.5-4.5 0-.5-.5z"/>
+                    <path vector-effect="non-scaling-stroke" d="M1 61l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136 33l0-23 18 0 10-9 374 0 10 9 18 0 0 23"/>
+                    <path vector-effect="non-scaling-stroke" d="M1 526l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/>
+                    <use href="#section-abilities__content-border-1"/>
+                    <path id="section-abilities__content-border-1" vector-effect="non-scaling-stroke" d="M32 65l14-14  468 0 14-14 131 0 14 14 0   482-7 7-7 0-7-7 -599 0-7 7-7 0-7-7z"/>
+                    <use href="#section-abilities__content-border-1"/>
                 </svg>
                 <div class="section-abilities__content-title">
                     <div class="section-abilities__content-title-wrapper">
-                        <h2 data-translateY="0%">Skills</h2>
-                        <h2 data-translateY="-50%">Software</h2>
+                        <h2 data-translateY="0%">SKILLS</h2>
+                        <h2 data-translateY="-50%">SOFTWARE</h2>
                     </div>
                 </div>
                 <div class="section-abilities__content-section">
@@ -666,10 +681,12 @@
                     <div class="description-wrapper__software" data-translateX="-50%">
                         <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
                             <use href="#description-wrapper__software-border-1"/>
-                            <!-- <use href="#description-wrapper__software-border-2"/> -->
-                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M1 35l6 0 6-5  514 0 6 5 6 0 0 31-6-5 -248 0-6 6  -272 0-6 6z"/>
+                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M1 35l6 0 6-5  514 0 6 5 6 0 0   31-6-5 -248 0-6 6  -272 0-6 6z"/>
                             <rect x='0' y='152' width='412' height='250' />
                             <path id="description-wrapper__software-border-2" vector-effect="non-scaling-stroke" d="M1 16l15-15  105 0   15 15    190 0   15 15 0     149 -325 0-15-15z"/>
+                            <text x="0" y="0" dx="5" textLength="80" lengthAdjust="spacingAndGlyphs">D.D.S.</text>
+                            <text x="0" y="0" dx="5" textLength="80" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging" >compendium</text>
+                            <text x="0" y="0" dominant-baseline="middle" text-anchor="end">電</text>
                         </svg>
                         <div class="description-wrapper__software-article">
                             <div class="description-wrapper__software-article-title">
