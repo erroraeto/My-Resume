@@ -102,41 +102,52 @@
                         transition: transform .2s ease, filter .2s ease
                         transform: translateZ(0)
                         text-align: center
-                        span
-                                display: inline-block
-                                text-align: center
-                        &:hover circle
-                                fill: var(--color-white) !important
-                        & > *
-                                vertical-align: middle
-                        .inline_icon
-                                height: 100%
-                                margin-inline: .3rem
-                                circle
-                                        transition: fill .3s ease
-                                        fill: var(--color-light-cyan)
-                                        stroke: none
-                                text
-                                        stroke: black
-                                        stroke-width: 1px
-        &__article-resume-border
-                vector-effect: non-scaling-stroke
-                stroke-width: 3px
-                height: 116%
-                width: 100%
-                filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                stop
-                        transition: stop-color .3s ease
-                path:first-of-type
-                        stroke: url(#section-about__article-resume-border_grad)
-                g
-                        transition: opacity .2s ease
-                        path
-                                stroke: white !important
-                                transition: d .2s ease
-                path:last-of-type
-                        stroke: none
-                        fill: var(--color-ocean-blue)
+                        // span
+                        //         display: inline-block
+                        //         text-align: center
+                        // &:hover circle
+                        //         fill: var(--color-white) !important
+                        // & > *
+                        //         vertical-align: middle
+                        // .inline_icon
+                        //         height: 100%
+                        //         margin-inline: .3rem
+                        //         circle
+                        //                 transition: fill .3s ease
+                        //                 fill: var(--color-light-cyan)
+                        //                 stroke: none
+                        //         text
+                        //                 stroke: black
+                        //                 stroke-width: 1px
+                &-icon-link
+                        circle
+                                transition: fill .3s ease
+                                fill: var(--color-light-cyan)
+                                stroke: none
+                        mask text
+                                stroke: black
+                                stroke-width: 2px
+                        text
+                                // stroke: black
+                                // stroke-width: 2px
+        // &__article-resume-border
+        //         vector-effect: non-scaling-stroke
+        //         stroke-width: 3px
+        //         height: 116%
+        //         width: 100%
+        //         filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+        //         stop
+        //                 transition: stop-color .3s ease
+        //         path:first-of-type
+        //                 stroke: url(#section-about__article-resume-border_grad)
+        //         g
+        //                 transition: opacity .2s ease
+        //                 path
+        //                         stroke: white !important
+        //                         transition: d .2s ease
+        //         path:last-of-type
+        //                 stroke: none
+        //                 fill: var(--color-ocean-blue)
         &__slider
                 position: relative
                 perspective: 100rem

@@ -134,6 +134,16 @@ p {
   font-size: 2rem;
 }
 
+.section-about__article-resume-icon-link mask text {
+  fill: black;
+  font-size: 2.6rem;
+}
+
+.section-about__article-resume-icon-link text {
+  fill: var(--color-white);
+  font-size: 2.4rem;
+}
+
 .section-about__slider p {
   font-size: 2.4rem;
   font-weight: 600;
@@ -1262,56 +1272,15 @@ main section {
           transform: translateZ(0);
   text-align: center;
 }
-.section-about__article-resume a span {
-  display: inline-block;
-  text-align: center;
-}
-.section-about__article-resume a:hover circle {
-  fill: var(--color-white) !important;
-}
-.section-about__article-resume a > * {
-  vertical-align: middle;
-}
-.section-about__article-resume a .inline_icon {
-  height: 100%;
-  margin-inline: 0.3rem;
-}
-.section-about__article-resume a .inline_icon circle {
+.section-about__article-resume-icon-link circle {
   -webkit-transition: fill 0.3s ease;
   transition: fill 0.3s ease;
   fill: var(--color-light-cyan);
   stroke: none;
 }
-.section-about__article-resume a .inline_icon text {
+.section-about__article-resume-icon-link mask text {
   stroke: black;
-  stroke-width: 1px;
-}
-.section-about__article-resume-border {
-  vector-effect: non-scaling-stroke;
-  stroke-width: 3px;
-  height: 116%;
-  width: 100%;
-  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber");
-}
-.section-about__article-resume-border stop {
-  -webkit-transition: stop-color 0.3s ease;
-  transition: stop-color 0.3s ease;
-}
-.section-about__article-resume-border path:first-of-type {
-  stroke: url(#section-about__article-resume-border_grad);
-}
-.section-about__article-resume-border g {
-  -webkit-transition: opacity 0.2s ease;
-  transition: opacity 0.2s ease;
-}
-.section-about__article-resume-border g path {
-  stroke: white !important;
-  -webkit-transition: d 0.2s ease;
-  transition: d 0.2s ease;
-}
-.section-about__article-resume-border path:last-of-type {
-  stroke: none;
-  fill: var(--color-ocean-blue);
+  stroke-width: 2px;
 }
 .section-about__slider {
   position: relative;
@@ -1551,7 +1520,7 @@ main section {
   stroke: var(--color-onahau);
   filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber");
   stroke-width: 0.3px;
-  fill: rgba(88, 89, 135, 0.07);
+  fill: rgba(var(--color-light-gray-blue-rgb), 0.07);
 }
 .section-abilities__content-border path:not(:nth-of-type(3)) {
   fill: none;
