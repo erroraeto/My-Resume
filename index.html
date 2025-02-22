@@ -14,9 +14,7 @@
     <!-- Это должен быть спрайт, но я ХЗ как это правильно делать -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
-            <!-- <linearGradient id="line-grad-anim-01" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect"> -->
             <linearGradient id="line-grad-anim-01" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="7" spreadMethod="reflect">
-                <!-- <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/> -->
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -7" to="0 7" dur="2s" repeatCount="indefinite" />
                 <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
                 <stop offset="80%" stop-color="transparent" />
@@ -46,6 +44,12 @@
                 <stop offset="5%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
                 <stop offset="40%" stop-color="transparent" />
             </linearGradient>
+            <linearGradient id="line-grad-anim-07" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2=".2" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -7" to="0 7" dur="8s" repeatCount="indefinite" />
+                <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
+                <stop offset="80%" stop-color="transparent" />
+            </linearGradient>
+
 
 
             <radialGradient id="mask-bg-desc-type01__rad-grad">
@@ -145,6 +149,10 @@
                 <rect width="1" height="1" fill="url(#mask-hor-scroll-type02__grad)"/>
             </mask>
 
+            <mask id="mask-ver-scroll-type01" maskContentUnits="objectBoundingBox">
+                <rect width="1" height="1" fill="url(#mask-hor-scroll-type01__grad)" transform-origin=".5 .5" transform="rotate(90, 0, 0)"/>
+            </mask>
+
             <filter id="inner-shadow-title-type01">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="6"/>
@@ -179,18 +187,26 @@
                 <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 1 0"/>
             </filter>
 
-            <filter id="led-screen">
+            <filter id="led-screen" filterUnits="userSpaceOnUse">
                 <feFlood id="filterPxl" x="1" y="1" width="2" height="2" result="flood"></feFlood>
                 <feComposite id="filterCs" in="flood" in2="flood" operator="over" x="0" y="0" width="4" height="4" result="composite"></feComposite>
                 <feTile x="0" y="0" width="10000" height="10000" in="composite" result="tile"></feTile>
                 <feComposite in="SourceGraphic" in2="tile" operator="in"></feComposite>
                 <feMorphology id="filterMorph" operator="dilate" radius="1" in="composite2" result="morphology"></feMorphology>
-                <feImage id="filterCsImg" xlink:href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' id='svg_1' y='5' x='5' /%3E%3C/svg%3E" x="0" y="0" width="3" height="2.4" preserveAspectRatio="xMidYMid meet" result="image"></feImage>
+                
+                <feImage id="filterCsImg" xlink:href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='25' height='25' id='svg_1' y='15' x='15' /%3E%3C/svg%3E" x="1.2" y="1.5" width="2.2" height="1.8" preserveAspectRatio="xMidYMid meet" result="image"></feImage>
                 <feTile x="0" y="0" width="10000" height="10000" in="image" result="tile1"></feTile>
                 <feComposite in="morphology" in2="tile1" operator="in" result="composite3"></feComposite>
-                <feGaussianBlur stdDeviation="4 8" in="composite3" result="blur3"></feGaussianBlur>
+                
+                <feGaussianBlur stdDeviation="1" in="composite3" result="blur3"></feGaussianBlur>
                 <feBlend mode="screen" in="blur3" in2="composite3" result="blend"></feBlend>
             </filter>
+
+            <filter id="led-screen1" filterUnits="userSpaceOnUse">
+
+            </filter>
+
+
 
             <filter id="led-screen2">
                 <feFlood id="filterPxl" x="1" y="1" width="2" height="2" result="flood"></feFlood>
@@ -246,6 +262,14 @@
                 <feBlend in='cr' mode='screen'></feBlend>
                 <feBlend in='cg' mode='screen'></feBlend>
             </filter>
+
+
+
+
+            <filter id="shadow1" filterUnits="userSpaceOnUse">
+                <feDropShadow dx="0" dy="0" stdDeviation="0.2" flood-color="red" />
+            </filter>
+
 
 
 
@@ -310,57 +334,162 @@
                     <p>Enjoy your visit.</p>
                 </div>
                 <div class="section-about__article-resume">
-                    <svg class="section-about__article-resume-border border" viewBox="0 0 500 60" preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <linearGradient id="section-about__article-resume-border_grad">
-                                <stop offset="0" stop-color="#d1ffff80" />
-                                <stop offset="1" stop-color="#d1ffff80" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M163 30l17 0 7 6 35.5 0 7-6 41 0 7 6 35.5 0 7-6 17 0"/>
-                        <path d="M15 1l460 0 0 39-19 19-441 0z"/>
-                        <g opacity="0">
-                            <path d="M28 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
-                            <path d="M28 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
-                        </g>
-                        <g opacity="0">
-                            <path d="M321 13l2 0 0 2-2 2 0-14 67 0 2-2 12 0 2 2 67 0 0 14-2-2 0-2 2 0"/>
-                            <path d="M321 46l2 0 0-2-2-2 0 14 67 0 2 2 12 0 2-2 67 0 0-14-2 2 0 2 2 0"/>
-                        </g>
-                    </svg>
-                    <a data-position="left" href="/files/resume.pdf">
-                        <span>Resume</span><svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                            <defs>
-                                <mask id='section-about__article-resume_mask-EN' x='0' y='0' width='32' height='32'>
-                                    <rect x='0' y='0' width='32' height='32' fill='white' />
-                                    <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle" fill='black'>EN</text>
-                                </mask>
-                            </defs>
-                            <circle mask="url(#section-about__article-resume_mask-EN)" cx="16" cy="16" r="15"/>
-                        </svg>
+                    <a href="/files/resume.pdf">
+                        <svg class="form-slider-border border" viewBox="0 0 260 50" preserveAspectRatio="xMidYMid meet">
+                            <path vector-effect="non-scaling-stroke" d="M1 1 259 1 259 49 1 49Z"/>
+                        </svg><span>Resume</span>
                     </a>
-                    <a data-position="right" href="/files/resume.pdf">
-                        <svg class="section-about__article-resume-icon-link border" viewBox="0 0 160 50" preserveAspectRatio="xMidYMid meet">
-                            <path d="M44 9l8-5 23 0 8 5 76 0 0 27-10 10-97 0-8-5z"/>
-                            <circle mask="url(#section-about__article-resume_mask-RU)" vector-effect="non-scaling-stroke" cx="25" cy="25" r="25"/>
-                            <mask id='section-about__article-resume_mask-RU' x='0' y='0' width='32' height='32'>
-                                <rect x='0' y='0' width='50' height='50' fill='white' />
-                                <text x='25' y='26' text-anchor="middle" dominant-baseline="middle">RU</text>
-                            </mask>
-                            <text x='55' y='25' dominant-baseline="middle">Resume</text>
+                    <div class="form-slider">
+                        <svg class="form-slider-border border" viewBox="0 0 170 50" preserveAspectRatio="xMidYMid meet">
+                            <path vector-effect="non-scaling-stroke" d="M1 1 169 1 169 49 1 49Z"/>
                         </svg>
-                        <!-- <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                            <mask id='section-about__article-resume_mask-RU' x='0' y='0' width='32' height='32'>
-                                <rect x='0' y='0' width='32' height='32' fill='white' />
-                                <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle" fill='black'>RU</text>
-                            </mask>
-                            <circle mask="url(#section-about__article-resume_mask-RU)" vector-effect="non-scaling-stroke" cx="16" cy="16" r="15"/>
-                        </svg> -->
-                        <!-- <span>Resume</span> -->
-                    </a>
+                        <fieldset class="form-slider__button">
+                            <legend>Choose language</legend>
+                            <button type="button" title="Previous">🞀</button>
+                            <div class="form-slider__button-content">
+                                <p data-view="">English</p><p>Russia</p>
+                            </div>
+                            <button type="button" title="Next">🞂</button>
+                        </fieldset>
+                        <fieldset class="form-slider__radio">
+                            <legend>Selected language</legend>
+                            <input type="radio" name="language" value="English" checked>
+                            <input type="radio" name="language" value="Russia">
+                        </fieldset>
+                    </div>
                 </div>
             </div>
             <div class="section-about__slider">
+                <div class="section-about__slider-wrapper">
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-9000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Rigging & Skinning" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/9frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-8000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Texturing" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/8frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-7000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Texturing Maps" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/7frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-6000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Texturing Maps" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/6frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-5000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Unwrap" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/5frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-4000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Retopology" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/4frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-3000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Retopology" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/3frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-2000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Sculpting" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/2frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame" style="transform: translateZ(-1000px) rotateX(14deg)">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Concepts & Design" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/1frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-about__slider-viewport">
+                </div>
+
+
+
+
+
+
+
+                    <!-- <svg class="section-about__slider-border border" viewBox="0 0 690 420" preserveAspectRatio="xMidYMid meet">
+                    <path vector-effect="non-scaling-stroke" d="M1 29l0-14 21 0 14-14  633 0 14 14 21 0 0 14"/>
+                    <path vector-effect="non-scaling-stroke" d="M1 489l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/> -->
+                    <!-- <path vector-effect="non-scaling-stroke" d="M1 40l0-39 39 0M624 1l39 0 0 39M1 427l0 39 39 0M624 466l39 0 0-39"/> -->
+                    <!-- <foreignObject x="0" y="0" width="100%" height="8%">
+                        <div class="section-about__slider-title">
+                            <p>Rigging & Skinning</p>
+                            <p>Texturing</p>
+                            <p>Texturing Maps</p>
+                            <p>Texturing Maps</p>
+                            <p>Unwrap</p>
+                            <p>Retopology</p>
+                            <p>Retopology</p>
+                            <p>Sculpting</p>
+                            <p>Concepts & Design</p>
+                        </div>
+                        <h2 class="section-about__slider-title">:NAME</h2>
+                    </foreignObject> -->
+
+
+                    <!-- <path vector-effect="non-scaling-stroke" d="M1 66l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136  38l0-28 18 0 10-9L538   1l10 9 18 0 0 28"/>
+                    <path vector-effect="non-scaling-stroke" d="M1 526l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/>
+                    <foreignObject x="0" y="0" width="100%" height="8%">
+                        <div class="section-about__slider-title">
+                            <p>Rigging & Skinning</p>
+                            <p>Texturing</p>
+                            <p>Texturing Maps</p>
+                            <p>Texturing Maps</p>
+                            <p>Unwrap</p>
+                            <p>Retopology</p>
+                            <p>Retopology</p>
+                            <p>Sculpting</p>
+                            <p>Concepts & Design</p>
+                        </div>
+                      </foreignObject> -->
+                    <!-- </svg> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- Clone -->
+                    <!-- <div class="section-about__slider-wrapper-frame is-clone">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Rigging & Skinning" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/9frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div>
+                    <div class="section-about__slider-wrapper-frame is-clone">
+                        <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Texturing" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/8frame.webp"/>
+                            <rect width="466" height="830"/>
+                        </svg>
+                    </div> -->
+                <!-- </div> -->
+            </div>
+            <!-- <div class="section-about__slider">
                 <div>
                     <p>Rigging & Skinning</p>
                     <svg class="section-about__slider-border-img border" viewBox="0 0 830 466" preserveAspectRatio="none">
@@ -368,6 +497,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -378,6 +509,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -388,6 +521,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -398,6 +533,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -408,6 +545,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -418,6 +557,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -428,6 +569,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -438,6 +581,8 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
@@ -448,15 +593,50 @@
                         <rect height="466" width="830"/>
                     </svg>
                     <svg class="section-about__slider-border-bg border" viewBox="0 0 830 466" preserveAspectRatio="none">
+                    <svg class="section-about__slider-border-bg border" viewBox="0 0 690 420" preserveAspectRatio="none">
+                        <path d="M1 11l10-10 230 0 20 20 168 0 20-20 230 0 10 10 0 398-10 10-230 0-20-20-168 0-20 20-230 0-10-10z"/>
                         <path d="M80 45l-5-5-35 0-5 5 0 376 5 5 35 0 5-5-38 0-2-2 0-372 2-2zm-48 45-5 0-2 2 0 284 2 2 5 0-3-2 0-284zM750 45l5-5 35 0 5 5 0 376-5 5-35 0-5-5 38 0 2-2 0-372-2-2zm48 45 5 0 2 2 0 284-2 2-5 0 3-2 0-284z"/>
                     </svg>
                 </div>
-            </div>
+            </div> -->
         </section>
 
         <section id="home" class="section-home">
-            <svg class="planet" viewbox="0 0 120 120">
+            <svg class="planet" viewbox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
 
+                <rect height="120" width="120" />
+
+                <defs>
+                    <path id="textcircle" transform="scale(.87)" d="M16 60A1 1 0 01104 60"/>
+                    <filter id="shadow" filterUnits="userSpaceOnUse">
+                        <feDropShadow dx="0.2" dy="0.4" stdDeviation="0.2" flood-color="#1e3d50" />
+                    </filter>
+                </defs>
+
+
+
+                <g filter="url(#shadow)">
+                    <path vector-effect="non-scaling-stroke" transform="scale(.9)" d="M119.169 65.822q.523.093.43.841c-3.49 31.71-28.94 50.038-51.748 52.806q-.427.049-.854-.378l-2.958-3.009q-.238-.561.309-.701c6.799-.159 16.325-3.139 21.312-6.184q.339-.212.773-.127l3.811.688q.233.032.519-.138c8.669-5.162 16.775-13.821 21.273-23.498q.157-.33-.032-.644l-1.319-2.119q-.204-.33-.031-.597c2.202-4.061 3.972-11.797 4.574-17.066q.052-.367.367-.336zM54.178 119.169q-.093.523-.841.43c-31.71-3.49-50.038-28.94-52.806-51.748q-.049-.427.378-.854l3.009-2.958q.561-.238.701.309c.159 6.799 3.139 16.325 6.184 21.312q.212.339.127.773l-.688 3.811q-.032.233.138.519c5.162 8.669 13.821 16.775 23.498 21.273q.33.157.644-.032l2.119-1.319q.33-.204.597-.031c4.061 2.202 11.797 3.972 17.066 4.574q.367.052.336.367zM.831 54.178q-.523-.093-.43-.841c3.49-31.71 28.94-50.038 51.748-52.806q.427-.049.854.378l2.958 3.009q.238.561-.309.701c-6.799.159-16.325 3.139-21.312 6.184q-.339.212-.773.127l-3.811-.688q-.233-.032-.519.138c-8.669 5.162-16.775 13.821-21.273 23.498q-.157.33.032.644l1.319 2.119q.204.33.031.597c-2.202 4.061-3.972 11.797-4.574 17.066q-.052.367-.367.336zM65.822.831q.093-.523.841-.43c31.71 3.49 50.038 28.94 52.806 51.748q.049.427-.378.854l-3.009 2.958q-.561.238-.701-.309c-.159-6.799-3.139-16.325-6.184-21.312q-.212-.339-.127-.773l.688-3.811q.032-.233-.138-.519c-5.162-8.669-13.821-16.775-23.498-21.273q-.33-.157-.644.032l-2.119 1.319q-.33.204-.597.031c-4.061-2.202-11.797-3.972-17.066-4.574q-.367-.052-.336-.367z" >
+                        <animateTransform attributeName="transform" type="rotateY" from="0" to="360" dur="40s" repeatCount="indefinite" additive="sum"/>
+                    </path>
+                    <animate id="planet_g-op" attributeName="opacity" values="0;1;0;1" begin="3s;planet_g-op.end+3s" dur=".2s" />
+                </g>
+
+                <circle vector-effect="non-scaling-stroke" transform="scale(.9)" cx="60" cy="60" r="40" >
+                    <animate id="planet_circle-op" attributeName="opacity" values="0;1" begin="2s;planet_circle-op.end+2s" dur=".2s" />
+                </circle>
+                <text>
+                    <textPath xlink:href="#textcircle" aria-label="D.D.S. - COMPENDIUM" method="align" text-anchor="middle" startOffset="50%">D.D.S. - COMPENDIUM</textPath>
+                </text>
+
+                <text dominant-baseline="middle" text-anchor="middle" x="60" y="66">電</text>
+
+
+                <rect height="120" width="120" />
+
+
+
+<!-- 
                 <path vector-effect="non-scaling-stroke" d="M60 65m-127.816 0a2.184.4 0 00257.712 0 2.184.4 0 00-257.712 0z" />
                 <path vector-effect="non-scaling-stroke" d="M75 65m-94.9698 25.4471a1.68.4-15 00191.4852-51.3083 1.68.4-15 00-191.4852 51.3083z" />
 
@@ -474,25 +654,8 @@
                 </text>
 
 
-                <circle vector-effect="non-scaling-stroke" stroke-width="2px" stroke="var(--color-orange)" fill="var(--color-cinnamon)" cx="60" cy="60" r="25"/>
-                
-                <!-- <circle fill="var(--color-cinnamon)" mask="url(#adfsdg)" cx="60" cy="60" r="40"/>
-                <circle fill="var(--color-orange-yellow-crayola)" mask="url(#maskasdasda)" cx="60" cy="60" r="40"/>
-                <ellipse cx="100" cy="50" rx="100" ry="30" />
-                <circle mask="url(#adfsdg)" class="sada" r="3">
-                    <animateMotion
-                    dur="60s"
-                    repeatCount="indefinite"
-                    path="M-8 80a1.2.6-15 00136.7751-36.6488 1.2.6-15 00-136.7751 36.6488z" />
-                </circle>
-                <circle mask="url(#adfsdg)" class="sada" r="3">
-                    <animateMotion
-                    dur="60s"
-                    repeatCount="indefinite"
-                    path="M-23 60a1.4.5 0 00165.2 0 1.4.5 0 00-165.2 0z" />
-                </circle>
-                <path vector-effect="non-scaling-stroke" d="M-23 60a1.4.5 0 00165.2 0 1.4.5 0 00-165.2 0z" />
-                <path vector-effect="non-scaling-stroke" d="M-8 80a1.2.6-15 00136.7751-36.6488 1.2.6-15 00-136.7751 36.6488z" /> -->
+                <circle vector-effect="non-scaling-stroke" stroke-width="2px" stroke="var(--color-orange)" fill="var(--color-cinnamon)" cx="60" cy="60" r="25"/> -->
+
 
                 <defs>
                     <linearGradient id="line0233" gradientTransform="rotate(70)">
@@ -534,7 +697,7 @@
         <section id="skill" class="section-abilities">
             <div class="section-abilities__content">
                 <svg class="section-abilities__content-border border" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet">
-                    <path vector-effect="non-scaling-stroke" d="M1 61l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136 33l0-23 18 0 10-9 374 0 10 9 18 0 0 23"/>
+                    <path vector-effect="non-scaling-stroke" d="M1 61l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136 33l0-23 18 0 10-9L538 1l10 9 18 0 0 23"/>
                     <path vector-effect="non-scaling-stroke" d="M1 526l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/>
                     <use href="#section-abilities__content-border-1"/>
                     <path id="section-abilities__content-border-1" vector-effect="non-scaling-stroke" d="M32 65l14-14  468 0 14-14 131 0 14 14 0   482-7 7-7 0-7-7 -599 0-7 7-7 0-7-7z"/>

@@ -68,16 +68,16 @@ let notContMenu = document.querySelectorAll("#nCM");
 for (el of notContMenu) el.oncontextmenu = () => {return false};
 
 //Отмена контекстного меню slider
-let slider = document.querySelector(".section-about__slider");
+// let slider = document.querySelector(".section-about__slider");
 
-slider.addEventListener("pointerdown", (e) => {
-    slider.style = 'animation-play-state: paused';
-    e.target.closest('div').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
-    slider.addEventListener("pointerup", () => {
-        slider.style = 'animation-play-state: running';
-        e.target.closest('div').style = '';
-    });
-});
+// slider.addEventListener("pointerdown", (e) => {
+//     slider.style = 'animation-play-state: paused';
+//     e.target.closest('div').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
+//     slider.addEventListener("pointerup", () => {
+//         slider.style = 'animation-play-state: running';
+//         e.target.closest('div').style = '';
+//     });
+// });
 // slider.oncontextmenu = function(event) {
 //     event.preventDefault();
 //     // event.stopPropagation();
@@ -173,12 +173,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    let resBttn = document.querySelectorAll('.section-about__article-resume > a');
-    for (el of resBttn) {el.addEventListener('mouseover', resBttn_hover)};
-
-});
-
 //Всплывающие изображения/подсказки
 document.addEventListener("mouseover", (e) => {
     if (e.target.closest(".attn > *")) {
@@ -235,38 +229,410 @@ document.addEventListener("mouseover", (e) => {
 });
 
 //Выбор резюме
-function resBttn_hover(e) {
-    let resBord_grad = document.querySelectorAll('#section-about__article-resume-border_grad stop');
-    let resBord_g = document.querySelectorAll('.section-about__article-resume-border g');
-    let pointY = [[' 19', ' 42'], [' 13', ' 46']];
-    let j = 0;
+let formSliderCont = document.querySelector('.form-slider__button-content');
+let formSliderBtn = document.querySelectorAll('.form-slider__button button');
+let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
 
-    if (e.target.closest('a').getAttribute('data-position') == 'left') {
-        resBord_grad[1].attributes[1].nodeValue = resBord_grad[0].attributes[1].nodeValue
-        resBord_grad[0].attributes[1].nodeValue = 'white';
-        for (let i=0; i<2; i++) {
-            resBord_g[0].attributes[0].nodeValue = 1;
-            resBord_g[0].children[i].attributes[0].nodeValue = resBord_g[0].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[0][i]);
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    for (btn of formSliderBtn) {
+        btn.addEventListener('click', (event) => {
+
+            let content = event.target.parentElement.querySelectorAll('p');
+            let radioCheck = event.target.parentElement.parentElement.querySelector('input:checked');
+
+            switch (event.target.title) {
+                case 'Previous':
+                    for (ctn of content) {
+                        if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
+                            delete ctn.dataset.view;
+                            formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
+                            ctn.previousElementSibling.dataset.view = '';
+                            break
+                        };
+                    };
+                    break
+                case 'Next':
+                    for (ctn of content) {
+                        if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
+                            delete ctn.dataset.view;
+                            formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
+                            ctn.nextElementSibling.dataset.view = '';
+                            break
+                        };
+                    };
+                    break
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver( (entries) => {
+        entries.forEach((entry) => {
+            if (entry.intersectionRatio >= 0.5) {
+                ctn.dataset.view = '';
+                Array.from(formSliderRadio).find((radio) => {if (radio.value == entry.target.textContent) radio.checked = true})
+            } else if (entry.intersectionRatio <= 0.5) {
+                delete ctn.dataset.view;
+            }
+        })
+        }, {
+            root: formSliderCont,
+            threshold: 0.5,
         }
-        j = 0;
-    } else if (e.target.closest('a').getAttribute('data-position') == 'right') {
-        resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue
-        resBord_grad[1].attributes[1].nodeValue = 'white';
-        for (let i=0; i<2; i++) {
-            resBord_g[1].attributes[0].nodeValue = 1;
-            resBord_g[1].children[i].attributes[0].nodeValue = resBord_g[1].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[0][i]);
+    );
+
+    for (ctn of formSliderCont.children) observer.observe(ctn);
+
+    for (radio of formSliderRadio) {
+        radio.addEventListener('click', (event) => {
+            for (ctn of formSliderCont.children) {
+                if (ctn.textContent == event.target.value) {
+                    ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                    ctn.dataset.view = '';
+                } else {delete ctn.dataset.view};
+            }
+        });
+    };
+});
+
+
+
+
+
+
+let sliderAbout = document.querySelector(".section-about__slider-wrapper"),
+sliderBrdTtl = document.querySelector(".section-about__slider-border .section-about__slider-title"),
+sliderBrd = document.querySelector(".section-about__slider-border");
+
+const observerSliderSVG = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        const matchedSkill = new Map([
+            [/\b\s{2}\S+/g, `  ${entry.contentRect.height - 14}`],
+            [/\b\s{3}\S+/g, `   ${entry.contentRect.height - 46}`],
+        ]);
+        let currentWidth = entry.target.parentElement.offsetWidth,
+        currentHeight = entry.target.parentElement.offsetHeight;
+        if (entry.contentBoxSize) {
+            if (entry.target.classList.contains('section-about__slider-wrapper-frame-border')) {
+                entry.target.attributes[1].nodeValue = `0 0 ${Math.round(currentWidth)} ${Math.round(currentHeight)}`;
+                entry.target.children[1].attributes[0].nodeValue = Math.round(currentWidth);
+                entry.target.children[1].attributes[1].nodeValue = Math.round(currentHeight);
+
+                entry.target.children[0].attributes[0].nodeValue = Math.round((currentWidth - entry.target.children[0].getBBox().width) / 2);
+                entry.target.children[0].attributes[1].nodeValue = Math.round((currentHeight - entry.target.children[0].getBBox().height) / 2);
+            } else if (entry.target.classList.contains('section-about__slider-border')) {
+                let target = entry.target;
+                entry.target.attributes[1].nodeValue = `0 0 ${Math.round(target.clientWidth)} ${Math.round(target.clientHeight)}`;
+
+                // entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\B\M\S+/, `M${Math.round(target.clientWidth / 5.2)}`);
+                // entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\B\L\S+/, `L${Math.round(target.clientWidth - (target.clientWidth / 5.2) - 29)}`);
+                entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(target.clientWidth - 73)}`);
+                entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(target.clientWidth - 73)}`);
+
+                entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(target.clientHeight - 29)}`);
+            }
         }
-        j = 1;
     }
+});
 
-    e.target.closest('a').addEventListener('mouseout', () => {
-        resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue = '#d1ffff80';
-        for (let i=0; i<2; i++) {
-            resBord_g[i].attributes[0].nodeValue = 0
-            resBord_g[j].children[i].attributes[0].nodeValue = resBord_g[j].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[1][i]);
-        };
-    });
+// observerSliderSVG.observe(sliderBrd);
+
+for (svg of sliderAbout.querySelectorAll('svg')) observerSliderSVG.observe(svg);
+
+// const observerSlider = new IntersectionObserver( (entries) => {
+//     entries.forEach((entry) => {
+//         if (entry.target.classList.contains('section-about__slider-wrapper-frame')) {
+//             if (entry.intersectionRatio == 1) {
+//                 entry.target.classList.add('current');
+//                 sliderAbout.scrollHeight;
+//             } else if (entry.intersectionRatio <= 0.5) {
+//                 entry.target.classList.remove('current');
+//                 sliderAbout.scrollHeight;
+//             } else if (entry.intersectionRatio >= 0.5) {
+//                 entry.target.classList.add('current');
+//                 sliderAbout.scrollHeight;
+//             };
+
+
+//             if (entry.isIntersecting) {
+//                 // for (ttl of sliderBrdTtl.children) {
+//                 //     if (entry.target.children[0].dataset.name == ttl.textContent) {
+//                 //         ttl.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+//                 //     }
+//                 // };
+
+
+//                 // if (entry.target == sliderAbout.lastElementChild) {
+//                 //     console.log('last');
+//                 //     sliderAbout.appendChild(sliderAbout.removeChild(sliderAbout.firstElementChild));
+//                 // } else if (entry.target.previousElementSibling == sliderAbout.firstElementChild) {
+//                 //     console.log('first');
+//                 // };
+
+
+//             };
+
+
+//             // if (entry.target == sliderAbout.lastElementChild) {
+//             //     console.log('last');
+//             //     // sliderAbout.replaceChild(sp1, sp2);
+//             //     sliderAbout.appendChild(sliderAbout.removeChild(sliderAbout.firstElementChild));
+//             //     // sliderAbout.style.scrollBehavior = "auto";
+//             //     // sliderAbout.firstElementChild.scrollIntoView({behavior: "auto", block: 'nearest', inline: 'nearest' });
+//             //     // sliderAbout.style.scrollBehavior = "";
+//             // } else if (entry.target.previousElementSibling == sliderAbout.firstElementChild) {
+//             //     console.log('first');
+//             //     // sliderAbout.style.scrollBehavior = "auto";
+//             //     // sliderAbout.lastElementChild.scrollIntoView({behavior: "auto", block: 'nearest', inline: 'nearest' });
+//             //     // sliderAbout.style.scrollBehavior = "";
+//             // };
+
+
+//         } else if (entry.target.classList.contains('section-about__slider-wrapper')) {
+//             if (entry.intersectionRatio == 1) {
+//                 // sliderBrd.classList.add('nonslct');
+//                 // sliderBrd.classList.remove('nonslct');
+//             }
+//         }
+//     })
+//     }, {
+//         root: sliderAbout,
+//         threshold: 0.5,
+//     }
+// );
+
+
+
+
+
+
+
+
+// var lastPos = document.body.scrollTop || document.documentElement.scrollTop,
+//     perspective = 300,
+//     zSpacing = -1000;
+//     zVals = [],
+//     $frames = $(".frame"),
+//     frames = $frames.toArray(),
+//     scrollMsg = document.getElementById("instructions-overlay");
+//     numFrames = $frames.length;
+
+// for(var i=0; i<numFrames;i++) { zVals.push((numFrames-i)*zSpacing);}
+
+// $(window).scroll(function(d,e) {
+//   var top = document.body.scrollTop || document.documentElement.scrollTop,
+//       delta = lastPos - top;
+//   lastPos = top;
+//   for(var i=0;i<numFrames;i++){
+//     var newZVal = (zVals[i]+=(delta*-1.5)),
+//         frame = frames[i],
+//         transform = "translateZ("+newZVal+"px)",
+//         opacity = newZVal < 200 ? 1 : 1 - parseInt((newZVal-200)/(perspective-200)*10)/10,
+//         display = newZVal > perspective ? "none" : "block";
+//     frame.setAttribute("style",
+    //   "-webkit-transform:"+transform+";-moz-transform:"+transform+";display:"+display+";opacity:"+opacity);
+//     if(scrollMsg && zVals[numFrames-1] > 200) {
+//       scrollMsg.parentNode.removeChild(scrollMsg);
+//       scrollMsg = null;
+//     }
+//   }
+// });
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+let viewSection = document.querySelector('.section-about__slider-viewport');
+let viewSectionFrame = document.querySelectorAll('.section-about__slider-wrapper-frame');
+
+let lastPos = viewSection.scrollTop,
+zSpacing = -300,
+// zSpacing = -1000,
+perspective = 600,
+zVals = [];
+
+
+viewSection.onscroll = (event) => {
+    var top = viewSection.scrollTop,
+    delta = lastPos - top;
+    lastPos = top;
+    for (let i = 0; i < viewSectionFrame.length; i++) {
+        zVals.push((viewSectionFrame.length - i) * zSpacing);
+        var newZVal = zVals[i] += delta * -1.5,
+        opacity = newZVal < 0 ? 1 : 1 - parseInt( (newZVal + 100) / (perspective + 100) * 10 ) / 10;
+        // opacity = newZVal < 200 ? 1 : 1 - parseInt( (newZVal - 200) / (perspective - 200) * 10 ) / 10;
+        viewSectionFrame[i].style.transform = `translateZ(${newZVal}px) rotateX(14deg)`;
+        viewSectionFrame[i].style.opacity = +opacity;
+    }
+    // for (frame of viewSectionFrame) {
+        // frame.style.transform = frame.style.transform.replace(/-\d+|\d+/, (match) => {return `${Math.round(viewSection.scrollTop - +match)}`});
+        // frame.style.transform = `translateZ(${viewSection.scrollTop}rem)`;
+    // }
+    // for (let i = 1; i <= viewSectionFrame.length; i++) {
+        // viewSectionFrame[i].style.transform = viewSectionFrame[i].style.transform.replace(/\(.*?\)/, (match) => match - viewSection.scrollTop);
+        // viewSectionFrame[i].style.transform = `translateZ(${-viewSection.scrollTop + (i * 10)}rem)`;
+    // }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var doc = window.document,
+//   context = sliderAbout,
+//   clones = context.querySelectorAll('.is-clone'),
+//   disableScroll = false,
+//   scrollHeight = 0,
+//   scrollPos = 0,
+//   clonesHeight = 0,
+//   i = 0;
+
+// function getScrollPos () {
+//   return (context.pageYOffset || context.scrollTop) - (context.clientTop || 0);
+// }
+
+// function setScrollPos (pos) {
+//   context.scrollTop = pos;
+// }
+
+// function getClonesHeight () {
+//   clonesHeight = 0;
+
+//   for (i = 0; i < clones.length; i += 1) {
+//     clonesHeight = clonesHeight + clones[i].offsetHeight;
+//   }
+
+//   return clonesHeight;
+// }
+
+// function reCalc () {
+//   scrollPos = getScrollPos();
+//   scrollHeight = context.scrollHeight;
+//   clonesHeight = getClonesHeight();
+
+//   if (scrollPos <= 0) {
+//     setScrollPos(1); // Scroll 1 pixel to allow upwards scrolling
+//   }
+// }
+
+// function scrollUpdate () {
+//   if (!disableScroll) {
+//     scrollPos = getScrollPos();
+
+//     if (clonesHeight + scrollPos >= scrollHeight) {
+//       // Scroll to the top when you’ve reached the bottom
+//       setScrollPos(1); // Scroll down 1 pixel to allow upwards scrolling
+//       disableScroll = true;
+//     } else if (scrollPos <= 0) {
+//       // Scroll to the bottom when you reach the top
+//       setScrollPos(scrollHeight - clonesHeight);
+//       disableScroll = true;
+//     }
+//   }
+
+//   if (disableScroll) {
+//     // Disable scroll-jumping for a short time to avoid flickering
+//     window.setTimeout(function () {
+//       disableScroll = false;
+//     }, 40);
+//   }
+// }
+
+// function init () {
+//   reCalc();
+  
+//   context.addEventListener('scroll', function () {
+//     window.requestAnimationFrame(scrollUpdate);
+//   }, false);
+
+//   window.addEventListener('resize', function () {
+//     window.requestAnimationFrame(reCalc);
+//   }, false);
+// }
+
+// if (document.readyState !== 'loading') {
+//   init()
+// } else {
+//   doc.addEventListener('DOMContentLoaded', init, false)
+// };
+
+
+
+
+
+
+
+
+
+
+
+// sliderAbout.onscroll = () => {
+//     sliderBrd.classList.add('nonslct');
+// };
+// sliderAbout.onscrollend = () => {
+//     sliderBrd.classList.remove('nonslct');
+// };
+
+// observerSlider.observe(sliderAbout);
+// for (frame of sliderAbout.children) observerSlider.observe(frame);
+
+
+
+// sliderAbout.addEventListener("scrollsnapchange", (event) => {
+//     const currentlySnapped = document.querySelector(".current");
+//     if (currentlySnapped) {
+//         currentlySnapped.classList.remove('current');
+//         // currentlySnapped.classList.remove("select-section");
+//     }
+    
+//     event.snapTargetBlock.classList.add('current');
+//     // event.snapTargetBlock.classList.add("select-section");
+// });
+
+
+
+
+
+// function resBttn_hover(e) {
+//     let resBord_grad = document.querySelectorAll('#section-about__article-resume-border_grad stop');
+//     let resBord_g = document.querySelectorAll('.section-about__article-resume-border g');
+//     let pointY = [[' 19', ' 42'], [' 13', ' 46']];
+//     let j = 0;
+
+//     if (e.target.closest('a').getAttribute('data-position') == 'left') {
+//         resBord_grad[1].attributes[1].nodeValue = resBord_grad[0].attributes[1].nodeValue
+//         resBord_grad[0].attributes[1].nodeValue = 'white';
+//         for (let i=0; i<2; i++) {
+//             resBord_g[0].attributes[0].nodeValue = 1;
+//             resBord_g[0].children[i].attributes[0].nodeValue = resBord_g[0].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[0][i]);
+//         }
+//         j = 0;
+//     } else if (e.target.closest('a').getAttribute('data-position') == 'right') {
+//         resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue
+//         resBord_grad[1].attributes[1].nodeValue = 'white';
+//         for (let i=0; i<2; i++) {
+//             resBord_g[1].attributes[0].nodeValue = 1;
+//             resBord_g[1].children[i].attributes[0].nodeValue = resBord_g[1].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[0][i]);
+//         }
+//         j = 1;
+//     }
+
+//     e.target.closest('a').addEventListener('mouseout', () => {
+//         resBord_grad[0].attributes[1].nodeValue = resBord_grad[1].attributes[1].nodeValue = '#d1ffff80';
+//         for (let i=0; i<2; i++) {
+//             resBord_g[i].attributes[0].nodeValue = 0
+//             resBord_g[j].children[i].attributes[0].nodeValue = resBord_g[j].children[i].attributes[0].nodeValue.replace(/\s(.*?)\d\d{0,}/, pointY[1][i]);
+//         };
+//     });
+// };
 
 //Скролл контента в секции Skills
 let sectionAbilTitle = document.querySelector('.section-abilities__content-title-wrapper');
@@ -700,11 +1066,14 @@ let sectionAbilSVG = document.querySelector('.section-abilities__content-border'
 
 const resizerSVG = new ResizeObserver((entries) => {
     for (const entry of entries) {
-        if (entry.target.className == 'section-abilities__content') {
+        if (entry.target.classList.contains('section-abilities__content')) {
             sectionAbilSVG.attributes[1].nodeValue = `0 0 ${Math.round(sectionAbil.clientWidth)} ${Math.round(sectionAbil.clientHeight)}`;
 
             sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAbil.clientHeight - 29)}`);
             sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(sectionAbil.clientHeight - 73)}`);
+
+            sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\B\M\S+/, `M${Math.round(sectionAbil.clientWidth / 5.2)}`);
+            sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\B\L\S+/, `L${Math.round(sectionAbil.clientWidth - (sectionAbil.clientWidth / 5.2) - 29)}`);
 
             sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 73)}`);
             sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 73)}`);
@@ -713,6 +1082,7 @@ const resizerSVG = new ResizeObserver((entries) => {
         }
     }
 });
+
 
 resizerSVG.observe(sectionAbil);
 

@@ -3,6 +3,7 @@
         grid-template: 100% / 40% 60%
         justify-content: center
         align-items: center
+        justify-items: center
         perspective: 100rem
         &__article-border
                 stroke: none
@@ -25,8 +26,10 @@
                 row-gap: 1%
                 transform-style: preserve-3d
                 backface-visibility: hidden
-                justify-content: center
-                justify-self: center
+                place-content: center
+                place-items: center
+                // justify-content: center
+                // justify-self: center
                 height: 94%
                 width: 100%
         &__article-title
@@ -88,147 +91,392 @@
                 position: relative
                 grid-area: 4 / 1 / 5 / 2
                 display: grid
-                grid-template: 100% / repeat(2, auto)
+                grid-template: 100% / 49% 49%
                 place-items: center
+                column-gap: 2%
                 height: 100%
-                width: 100%
+                width: 80%
                 left: 0
                 perspective: 100rem
+                // background: var(--color-moderate-blue)
+                // background: #223039
                 a
                         position: relative
-                        display: inline-block
-                        height: 78%
-                        width: 60%
-                        transition: transform .2s ease, filter .2s ease
-                        transform: translateZ(0)
-                        text-align: center
-                        // span
-                        //         display: inline-block
-                        //         text-align: center
-                        // &:hover circle
-                        //         fill: var(--color-white) !important
-                        // & > *
-                        //         vertical-align: middle
-                        // .inline_icon
-                        //         height: 100%
-                        //         margin-inline: .3rem
-                        //         circle
-                        //                 transition: fill .3s ease
-                        //                 fill: var(--color-light-cyan)
-                        //                 stroke: none
-                        //         text
-                        //                 stroke: black
-                        //                 stroke-width: 1px
-                &-icon-link
-                        circle
-                                transition: fill .3s ease
-                                fill: var(--color-light-cyan)
-                                stroke: none
-                        mask text
-                                stroke: black
-                                stroke-width: 2px
-                        text
-                                // stroke: black
-                                // stroke-width: 2px
-        // &__article-resume-border
-        //         vector-effect: non-scaling-stroke
-        //         stroke-width: 3px
-        //         height: 116%
-        //         width: 100%
-        //         filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-        //         stop
-        //                 transition: stop-color .3s ease
-        //         path:first-of-type
-        //                 stroke: url(#section-about__article-resume-border_grad)
-        //         g
-        //                 transition: opacity .2s ease
-        //                 path
-        //                         stroke: white !important
-        //                         transition: d .2s ease
-        //         path:last-of-type
-        //                 stroke: none
-        //                 fill: var(--color-ocean-blue)
+                        height: 100%
+                        width: 100%
+                        display: flex
+                        place-content: center
+                        place-items: center
+                .form-slider
+                        position: relative
+                        height: 100%
+                        width: 100%
+                        display: flex
+                        justify-content: center
+                        flex-direction: column
+                        justify-items: center
+                        row-gap: 4%
+                        &-border
+                                fill: #223039
+                        &__button,
+                        &__radio
+                                position: relative
+                                display: flex
+                                place-content: space-evenly
+                                place-items: center
+                                border: none
+                                legend
+                                        display: none
+                        &__button
+                                justify-content: center
+                                // height: 50%
+                                height: max-content
+                                width: 100%
+                                align-self: flex-end
+                                &-border
+                                        fill: #223039
+                                .form-slider__button-content,
+                                button
+                                        display: inline-block
+                                        // height: 100%
+                                        white-space: nowrap
+                                button
+                                        width: 10%
+                                        text-decoration: none
+                                        text-shadow: unset
+                                        background: none
+                                        cursor: pointer
+                                        border: none
+                                        font: unset
+                                        vertical-align: middle
+                                .form-slider__button-content
+                                        position: relative
+                                        overflow-x: scroll
+                                        overflow-y: hidden
+                                        scroll-snap-type: x mandatory
+                                        scroll-behavior: smooth
+                                        width: 60%
+                                        mask-image: url(#mask-hor-scroll-type01)
+                                        &::-webkit-scrollbar
+                                                display: none
+                                        p
+                                                position: relative
+                                                display: inline-block
+                                                scroll-snap-align: start
+                                                vertical-align: middle
+                                                text-align: center
+                                                height: 100%
+                                                width: 100%
+                        &__radio
+                                // height: 50%
+                                // align-items: flex-start
+                                height: max-content
+                                width: 100%
+                                align-self: flex-start
+                                input[type="radio"]
+                                        appearance: none
+                                        border: 2px solid black
+                                        border-radius: 1px
+                                        cursor: pointer
+                                        height: .8rem
+                                        width: 1.8rem
+                                        outline: none
+                                        padding: 1px
+                                        // background: rgba(var(--color-light-gray-blue-rgb), .5)
+                                        background: #6b999b
+                                        background-clip: border-box
+                                        transition: background .3s ease
+                                        &:checked
+                                                // background: var(--color-light-gray-blue)
+                                                background: white
+                                                background-clip: border-box
         &__slider
                 position: relative
+                height: 100%
+                width: 100%
                 perspective: 100rem
-                animation: inclusion 1s ease .3s both
-                &-border-img
-                        rect
-                                fill: url(#line-grad-anim-02)
-                                mask: url(#mask-bg-desc-type02)
-                                mix-blend-mode: screen
-                        image
-                                height: 90%
-                                width: 90%
-                                y: 7.5%
-                                x: 5%
-                                filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                &-border-bg
-                        fill: var(--color-light-gray-blue)
-                        transform: translateZ(4rem)
-                        z-index: 2
-                        path
-                                stroke: none
-                                filter: url(#led-screen) blur(.6px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                & > div
+                overflow: hidden
+                // overflow-y: scroll
+                // overflow-x: hidden
+                &-viewport
                         position: absolute
-                        visibility: hidden
-                        will-change: transform, scale, display
-                        transform-style: preserve-3d
-                        aspect-ratio: 16 / 9
+                        height: 100%
                         width: 100%
-                        right: 0
-                        top: 50%
-                        cursor: grab
-                        transition: scale .2s ease, transform .2s ease
-                        transform-origin: right top
-                        transform: rotateY(-10deg) translateY(-50%)
-                        animation: scrollFrame 27s infinite ease
-                        animation-play-state: inherit
-                        & > *
-                                opacity: 0
-                                animation: opacityFrame 27s infinite ease
-                                animation-play-state: inherit
-                        p
+                        overflow: auto
+                        text-align: center
+                        &::before
+                                content: ""
+                                position: relative
+                                display: block
+                                height: 400%
+                                width: 100%
+                        &::-webkit-scrollbar
+                                width: 7px
+                        &::-webkit-scrollbar-track
+                                border-radius: 20px 4px
+                                background: var(--color-ebony-clay)
+                                background-clip: content-box
+                        &::-webkit-scrollbar-thumb
+                                background: var(--color-grideperleft)
+                                // background: #44797e
+                                border-radius: 20px 4px
+                                cursor: pointer
+                        &::-webkit-scrollbar-button:start:increment
+                                height: 14%
+                                display: block
+                                background: transparent
+                        &::-webkit-scrollbar-button:end:increment
+                                height: 14%
+                                display: block
+                                background: transparent
+                // display: flex
+                // justify-content: center
+                // &-border
+                //         height: 80%
+                //         width: 82%
+                //         // top: 47%
+                //         stroke: var(--color-light-cyan)
+                //         stroke-width: 2px
+                //         opacity: .7
+                //         fill: none
+                //         transform: rotateY(-10deg)
+                //         filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                //         // filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                //         *
+                //                 transition: translate .2s ease
+                //         // path:first-of-type
+                //         //         translate: 0 4%
+                //         // path:last-of-type
+                //         //         translate: 0 -4%
+                //         text
+                //                 filter: none
+                //                 stroke: none
+                //                 fill: white
+                //         foreignObject
+                //                 // translate: -60% 0
+                //                 // translate: 0 4%
+                //                 p
+                //                         filter: none
+                // &-title
+                //         position: relative
+                //         display: flex
+                //         flex-direction: column
+                //         flex-wrap: nowrap
+                //         gap: 25%
+                //         align-items: center
+                //         height: 100%
+                //         width: 100%
+                //         overflow-x: hidden
+                //         overflow-y: scroll
+                //         scroll-snap-type: y mandatory
+                //         scroll-behavior: smooth
+                //         mask-image: url(#mask-ver-scroll-type01)
+                //         transition: translate .2s ease
+                //         &::before,
+                //         &::after
+                //                 content: ""
+                //                 flex: 0 0 50%
+                //         &::-webkit-scrollbar
+                //                 display: none
+                //         p
+                //                 position: relative
+                //                 flex: 0 0 auto
+                //                 scroll-snap-align: center
+                //                 scroll-snap-stop: always
+                //         p:first-of-type
+                //                 margin-top: auto
+                //         p:last-of-type
+                //                 margin-bottom: auto
+                &-wrapper
+                        position: absolute
+                        width: 100%
+                        height: 100%
+                        perspective: 600px
+                        // perspective: 100rem
+                        perspective-origin: right center
+                        // transform: rotateY(-20deg)
+                        // transform: rotateY(-24deg) rotateX(-36deg)
+                        transform: rotateY(-24deg) rotateX(-36deg) translateY(20%)
+                        transform-style: preserve-3d
+                        // width: 100%
+                        // display: flex
+                        // flex-direction: column
+                        // flex-wrap: nowrap
+                        // gap: 12.5%
+                        // align-items: center
+                        // // overflow-x: hidden
+                        // // overflow-y: scroll
+                        // overflow: auto
+                        // scroll-snap-type: y mandatory
+                        // scroll-behavior: smooth
+                        // transform: rotateY(-10deg)
+                        // transform-style: preserve-3d
+                        // mask-image: url(#mask-ver-scroll-type01)
+                        // filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+                        // &::before,
+                        // &::after
+                        //         content: ""
+                        //         // flex: 0 0 50%
+                        //         flex: 0 0 12.5%
+                        // &::-webkit-scrollbar
+                        //         width: 7px
+                        // &::-webkit-scrollbar-track
+                        //         border-radius: 20px 4px
+                        //         background: var(--color-ebony-clay)
+                        //         background-clip: content-box
+                        // &::-webkit-scrollbar-thumb
+                        //         background: var(--color-grideperleft)
+                        //         // background: #44797e
+                        //         border-radius: 20px 4px
+                        //         cursor: pointer
+                        // &::-webkit-scrollbar-button:start:increment
+                        //         height: 14%
+                        //         display: block
+                        //         background: transparent
+                        // &::-webkit-scrollbar-button:end:increment
+                        //         height: 14%
+                        //         display: block
+                        //         background: transparent
+                        // // &::-webkit-scrollbar-track
+                        // //         background: var(--color-light-slate-gray)
+                        // //         border-left: 4px solid transparent
+                        // //         border-right: 4px solid transparent
+                        // //         background-clip: padding-box
+                        // // &::-webkit-scrollbar-thumb
+                        // //         background: var(--color-grideperleft)
+                        // //         border-left: 2px solid transparent
+                        // //         border-right: 2px solid transparent
+                        // //         background-clip: padding-box
+                        // //         border-radius: 10px
+                        &-frame
                                 position: absolute
-                                left: 50%
-                                top: 10%
-                                filter: drop-shadow(0 0 1rem black)
-                                transform: translate(-50%, -50%) translateZ(4rem)
-                                text-shadow: none
-                div:nth-of-type(9)
-                        animation-delay: -6s
-                        & > *
-                                animation-delay: -6s
-                div:nth-of-type(8)
-                        animation-delay: -3s
-                        & > *
-                                animation-delay: -3s
-                div:nth-of-type(7)
-                div:nth-of-type(6)
-                        animation-delay: 3s
-                        & > *
-                                animation-delay: 3s
-                div:nth-of-type(5)
-                        animation-delay: 6s
-                        & > *
-                                animation-delay: 6s
-                div:nth-of-type(4)
-                        animation-delay: 9s
-                        & > *
-                                animation-delay: 9s
-                div:nth-of-type(3)
-                        animation-delay: 12s
-                        & > *
-                                animation-delay: 12s
-                div:nth-of-type(2)
-                        animation-delay: 15s
-                        & > *
-                                animation-delay: 15s
-                div:nth-of-type(1)
-                        animation-delay: 18s
-                        & > *
-                                animation-delay: 18s
+                                height: 56%
+                                width: 70%
+                                // position: relative
+                                // width: 80%
+                                // flex: 0 0 60%
+                                // scroll-snap-align: center
+                                // scroll-snap-stop: always
+                                perspective: 100rem
+                                // perspective-origin: right center
+                                & > *
+                                        // opacity: .3
+                                        transition: all .3s ease
+                                p
+                                        position: absolute
+                                        left: 50%
+                                        top: 10%
+                                        translate: -50% -50%
+                                        filter: drop-shadow(0 0 1rem black)
+                                &-border
+                                        position: relative
+                                        rect
+                                                // fill: url(#line-grad-anim-02)
+                                                mask: url(#mask-bg-desc-type02)
+                                                mix-blend-mode: screen
+                                        image
+                                                width: 100%
+                                                // width: 80%
+                                &:nth-of-type(1)
+                                        z-index: -8
+                                &:nth-of-type(2)
+                                        z-index: -7
+                                &:nth-of-type(3)
+                                        z-index: -6
+                                &:nth-of-type(4)
+                                        z-index: -5
+                                &:nth-of-type(5)
+                                        z-index: -4
+                                &:nth-of-type(6)
+                                        z-index: -3
+                                &:nth-of-type(7)
+                                        z-index: -2
+                                &:nth-of-type(8)
+                                        z-index: -1
+                                &:nth-of-type(9)
+                                        z-index: 0
+                        // &-border-bg
+                        //         height: 100%
+                        //         width: 100%
+                        //         stroke-width: 1px
+                        //         stroke: var(--color-onahau)
+                        //         fill: var(--color-onahau)
+                        //         filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1.5' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1.5' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+
+
+.current
+        *
+                opacity: 1
+        *:not(.section-about__slider-border-img)
+                transform: translateZ(6rem)
+        .section-about__slider-border-img
+                transform: translateZ(3rem)
+
+.nonslct
+        & ~ .section-about__slider-title,
+        foreignObject,
+        path
+                translate: 0 0 !important
+
+                //         position: absolute
+                //         visibility: hidden
+                //         will-change: transform, scale, display
+                //         transform-style: preserve-3d
+                //         aspect-ratio: 16 / 9
+                //         width: 100%
+                //         right: 0
+                //         top: 50%
+                //         cursor: grab
+                //         transition: scale .2s ease, transform .2s ease
+                //         transform-origin: right top
+                //         transform: rotateY(-10deg) translateY(-50%)
+                //         animation: scrollFrame 27s infinite ease
+                //         animation-play-state: inherit
+                //         & > *
+                //                 opacity: 0
+                //                 animation: opacityFrame 27s infinite ease
+                //                 animation-play-state: inherit
+                //         p
+                //                 position: absolute
+                //                 left: 50%
+                //                 top: 10%
+                //                 filter: drop-shadow(0 0 1rem black)
+                //                 transform: translate(-50%, -50%) translateZ(4rem)
+                //                 text-shadow: none
+                // div:nth-of-type(9)
+                //         animation-delay: -6s
+                //         & > *
+                //                 animation-delay: -6s
+                // div:nth-of-type(8)
+                //         animation-delay: -3s
+                //         & > *
+                //                 animation-delay: -3s
+                // div:nth-of-type(7)
+                // div:nth-of-type(6)
+                //         animation-delay: 3s
+                //         & > *
+                //                 animation-delay: 3s
+                // div:nth-of-type(5)
+                //         animation-delay: 6s
+                //         & > *
+                //                 animation-delay: 6s
+                // div:nth-of-type(4)
+                //         animation-delay: 9s
+                //         & > *
+                //                 animation-delay: 9s
+                // div:nth-of-type(3)
+                //         animation-delay: 12s
+                //         & > *
+                //                 animation-delay: 12s
+                // div:nth-of-type(2)
+                //         animation-delay: 15s
+                //         & > *
+                //                 animation-delay: 15s
+                // div:nth-of-type(1)
+                //         animation-delay: 18s
+                //         & > *
+                //                 animation-delay: 18s
+
 
 
 .attn-message
@@ -260,3 +508,100 @@
                 filter: url(#inner-shadow-descr-type01) brightness(5%)
         text
                 fill: white
+
+
+
+
+
+
+// &__slider
+//                 position: relative
+//                 perspective: 100rem
+//                 animation: inclusion 1s ease .3s both
+//                 &-border-img
+//                         rect
+//                                 fill: url(#line-grad-anim-02)
+//                                 mask: url(#mask-bg-desc-type02)
+//                                 mix-blend-mode: screen
+//                         image
+//                                 height: 90%
+//                                 width: 90%
+//                                 y: 7.5%
+//                                 x: 5%
+//                                 filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                 &-border-bg
+//                         // fill: var(--color-light-gray-blue)
+//                         // fill: var(--color-white)
+//                         transform: translateZ(4rem)
+//                         z-index: 2
+//                         // fill: var(--color-onahau)
+//                         fill: none
+//                         // stroke: var(--color-onahau)
+//                         stroke: var(--color-white)
+//                         stroke-width: 2px
+//                         filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1.5' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1.5' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                         // filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                         // filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                         path
+//                                 // stroke: none
+//                                 // filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                                 // filter: url(#led-screen) blur(.6px) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                 & > div
+//                         position: absolute
+//                         visibility: hidden
+//                         will-change: transform, scale, display
+//                         transform-style: preserve-3d
+//                         aspect-ratio: 16 / 9
+//                         width: 100%
+//                         right: 0
+//                         top: 50%
+//                         cursor: grab
+//                         transition: scale .2s ease, transform .2s ease
+//                         transform-origin: right top
+//                         transform: rotateY(-10deg) translateY(-50%)
+//                         animation: scrollFrame 27s infinite ease
+//                         animation-play-state: inherit
+//                         & > *
+//                                 opacity: 0
+//                                 animation: opacityFrame 27s infinite ease
+//                                 animation-play-state: inherit
+//                         p
+//                                 position: absolute
+//                                 left: 50%
+//                                 top: 10%
+//                                 filter: drop-shadow(0 0 1rem black)
+//                                 transform: translate(-50%, -50%) translateZ(4rem)
+//                                 text-shadow: none
+//                 div:nth-of-type(9)
+//                         animation-delay: -6s
+//                         & > *
+//                                 animation-delay: -6s
+//                 div:nth-of-type(8)
+//                         animation-delay: -3s
+//                         & > *
+//                                 animation-delay: -3s
+//                 div:nth-of-type(7)
+//                 div:nth-of-type(6)
+//                         animation-delay: 3s
+//                         & > *
+//                                 animation-delay: 3s
+//                 div:nth-of-type(5)
+//                         animation-delay: 6s
+//                         & > *
+//                                 animation-delay: 6s
+//                 div:nth-of-type(4)
+//                         animation-delay: 9s
+//                         & > *
+//                                 animation-delay: 9s
+//                 div:nth-of-type(3)
+//                         animation-delay: 12s
+//                         & > *
+//                                 animation-delay: 12s
+//                 div:nth-of-type(2)
+//                         animation-delay: 15s
+//                         & > *
+//                                 animation-delay: 15s
+//                 div:nth-of-type(1)
+//                         animation-delay: 18s
+//                         & > *
+//                                 animation-delay: 18s
