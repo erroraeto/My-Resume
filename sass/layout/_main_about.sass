@@ -68,15 +68,19 @@
                 height: 100%
                 width: 100%
                 filter: drop-shadow(0 0 6px black)
+                perspective: 500rem
                 p
-                        padding: .5rem 2.5rem
+                        // padding: .5rem 2.5rem
+                        margin: 1rem 2.5rem
                         text-indent: 2rem
                 p:last-of-type
                         text-decoration-line: overline
                         padding-top: 1rem
                         text-align: right
                 ul
-                        padding: .5rem 6rem
+                        anchor-name: --anchor-section-about-ul
+                        margin: 1rem 6rem
+                        // padding: .5rem 6rem
                         & > *:not(:last-child)
                                 margin-bottom: .3rem
                         li
@@ -194,41 +198,39 @@
                 position: relative
                 height: 100%
                 width: 100%
+                overflow-y: scroll
+                overflow-x: hidden
+                scroll-snap-type: y mandatory
+                scroll-behavior: smooth
+                backface-visibility: hidden
                 perspective: 100rem
-                overflow: hidden
-                // overflow-y: scroll
-                // overflow-x: hidden
-                &-viewport
-                        position: absolute
-                        height: 100%
+                &::after
+                        content: ""
+                        position: relative
+                        display: block
+                        height: 182.8%
                         width: 100%
-                        overflow: auto
-                        text-align: center
-                        &::before
-                                content: ""
-                                position: relative
-                                display: block
-                                height: 400%
-                                width: 100%
-                        &::-webkit-scrollbar
-                                width: 7px
-                        &::-webkit-scrollbar-track
-                                border-radius: 20px 4px
-                                background: var(--color-ebony-clay)
-                                background-clip: content-box
-                        &::-webkit-scrollbar-thumb
-                                background: var(--color-grideperleft)
-                                // background: #44797e
-                                border-radius: 20px 4px
-                                cursor: pointer
-                        &::-webkit-scrollbar-button:start:increment
-                                height: 14%
-                                display: block
-                                background: transparent
-                        &::-webkit-scrollbar-button:end:increment
-                                height: 14%
-                                display: block
-                                background: transparent
+                &::-webkit-scrollbar
+                        width: 7px
+                &::-webkit-scrollbar-track
+                        border-radius: 20px 4px
+                        background: var(--color-ebony-clay)
+                        background-clip: content-box
+                &::-webkit-scrollbar-thumb
+                        background: var(--color-grideperleft)
+                        // background: #44797e
+                        border-radius: 20px 4px
+                        cursor: pointer
+                &::-webkit-scrollbar-button:start:increment
+                        height: 14%
+                        display: block
+                        background: transparent
+                &::-webkit-scrollbar-button:end:increment
+                        height: 14%
+                        display: block
+                        background: transparent
+
+
                 // display: flex
                 // justify-content: center
                 // &-border
@@ -288,16 +290,20 @@
                 //         p:last-of-type
                 //                 margin-bottom: auto
                 &-wrapper
-                        position: absolute
+                        position: sticky
+                        top: 0
+                        left: 0
                         width: 100%
                         height: 100%
                         perspective: 600px
-                        // perspective: 100rem
-                        perspective-origin: right center
-                        // transform: rotateY(-20deg)
-                        // transform: rotateY(-24deg) rotateX(-36deg)
-                        transform: rotateY(-24deg) rotateX(-36deg) translateY(20%)
+                        perspective-origin: left
+                        transform: rotateY(20deg)
                         transform-style: preserve-3d
+                        will-change: transform
+                        overflow: hidden
+                        z-index: 2
+                        mask-image: url(#mask-hor-scroll-type01)
+                        // position: absolute
                         // width: 100%
                         // display: flex
                         // flex-direction: column
@@ -352,6 +358,11 @@
                                 position: absolute
                                 height: 56%
                                 width: 70%
+                                left: 50%
+                                top: 50%
+                                cursor: pointer
+                                translate: -50% -50%
+                                transform-style: preserve-3d
                                 // position: relative
                                 // width: 80%
                                 // flex: 0 0 60%
@@ -359,9 +370,12 @@
                                 // scroll-snap-stop: always
                                 perspective: 100rem
                                 // perspective-origin: right center
+                                transform: translateZ( calc(var(--translateZ) * 1px) ) rotateY(-14deg)
+                                // backdrop-filter: blur(2px)
                                 & > *
                                         // opacity: .3
-                                        transition: all .3s ease
+                                        transition: opacity .3s ease, translate .8s ease, filter .3s ease
+                                        transform-style: preserve-3d
                                 p
                                         position: absolute
                                         left: 50%
@@ -371,30 +385,33 @@
                                 &-border
                                         position: relative
                                         rect
+                                                fill: #ffffff
+                                                filter: url(#inner-shadow-descr-type01)
                                                 // fill: url(#line-grad-anim-02)
-                                                mask: url(#mask-bg-desc-type02)
-                                                mix-blend-mode: screen
+                                                // fill: var(--color-ebony-clay)
+                                                // mask: url(#mask-bg-desc-type02)
+                                                // mix-blend-mode: screen
                                         image
                                                 width: 100%
                                                 // width: 80%
-                                &:nth-of-type(1)
-                                        z-index: -8
-                                &:nth-of-type(2)
-                                        z-index: -7
-                                &:nth-of-type(3)
-                                        z-index: -6
-                                &:nth-of-type(4)
-                                        z-index: -5
-                                &:nth-of-type(5)
-                                        z-index: -4
-                                &:nth-of-type(6)
-                                        z-index: -3
-                                &:nth-of-type(7)
-                                        z-index: -2
-                                &:nth-of-type(8)
-                                        z-index: -1
-                                &:nth-of-type(9)
-                                        z-index: 0
+                                // &:nth-of-type(1)
+                                //         z-index: 0
+                                // &:nth-of-type(2)
+                                //         z-index: -1
+                                // &:nth-of-type(3)
+                                //         z-index: -2
+                                // &:nth-of-type(4)
+                                //         z-index: -3
+                                // &:nth-of-type(5)
+                                //         z-index: -4
+                                // &:nth-of-type(6)
+                                //         z-index: -5
+                                // &:nth-of-type(7)
+                                //         z-index: -6
+                                // &:nth-of-type(8)
+                                //         z-index: -7
+                                // &:nth-of-type(9)
+                                //         z-index: -8
                         // &-border-bg
                         //         height: 100%
                         //         width: 100%
@@ -479,35 +496,76 @@
 
 
 
-.attn-message
+
+
+#popover-img__section-about
         position: absolute
-        height: 7vw
-        width: 10vw
-        z-index: 10
-        stroke: none
-        fill: rgba(var(--color-moderate-blue-rgb), .5)
-        filter: drop-shadow(0 0 10px black)
-        image
+        height: 8vw
+        width: 12vw
+        background: none
+        border: none
+        color: unset
+        overflow: visible
+        // overflow: hidden
+        // border-radius: 2rem
+        // background: #ffffff
+        // filter: url(#inner-shadow-descr-type01)
+        // backdrop-filter: blur(2px)
+        position-anchor: --anchor-section-about-ul
+        top: anchor(--anchor-section-about-ul center)
+        left: anchor(--anchor-section-about-ul right)
+        translate: -100% -50%
+        transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY))
+        svg
+                position: relative
+                height: 100%
+                width: 100%
+                stroke: none
+                fill: none
                 filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                height: 80%
-                width: 80%
-                x: 10%
-                y: 18%
-        path
-                vector-effect: non-scaling-stroke
-        path:first-of-type
-                d: path("M8 24l-7 6 0-24 9 0 6-5 200 0 6 5 9 0 0 19-7-5-70 0-6 4z")
-        use:first-of-type
-                fill: var(--color-grideperleft)
-                filter: url(#inner-shadow-title-type03)
-        path:last-of-type
-                d: path("M3 35l7-6 140 0 6-4 66 0 7 5 0 115-7 6-212 0-7-6z")
-                filter: brightness(30%)
-        use:last-of-type
-                fill: var(--color-grideperleft)
-                filter: url(#inner-shadow-descr-type01) brightness(5%)
-        text
-                fill: white
+                image
+                        height: 90%
+                        width: 90%
+                        x: 5%
+                        y: 5%
+                path
+                        // d: path("M1 31l15-15 190 0 15-15 105 0 15 15 0 149-15 15-325 0z")
+                        fill: #ffffff
+                        filter: url(#inner-shadow-descr-type01)
+                        backdrop-filter: blur(2px)
+
+
+
+
+// .attn-message
+//         position: absolute
+//         height: 7vw
+//         width: 10vw
+//         z-index: 10
+//         stroke: none
+//         fill: rgba(var(--color-moderate-blue-rgb), .5)
+//         filter: drop-shadow(0 0 10px black)
+//         image
+//                 filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//                 height: 80%
+//                 width: 80%
+//                 x: 10%
+//                 y: 18%
+//         path
+//                 vector-effect: non-scaling-stroke
+//         path:first-of-type
+//                 d: path("M8 24l-7 6 0-24 9 0 6-5 200 0 6 5 9 0 0 19-7-5-70 0-6 4z")
+//         use:first-of-type
+//                 fill: var(--color-grideperleft)
+//                 filter: url(#inner-shadow-title-type03)
+//         path:last-of-type
+//                 d: path("M3 35l7-6 140 0 6-4 66 0 7 5 0 115-7 6-212 0-7-6z")
+//                 filter: brightness(30%)
+//         use:last-of-type
+//                 fill: var(--color-grideperleft)
+//                 filter: url(#inner-shadow-descr-type01) brightness(5%)
+//         text
+//                 fill: white
 
 
 

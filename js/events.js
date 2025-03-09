@@ -174,59 +174,144 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 
 //Всплывающие изображения/подсказки
+
+let popoverSctAbt = document.querySelector("#popover-img__section-about");
+let popoverSctAbtSVG = document.querySelector("#popover-img__section-about svg");
+let popoverSctAbtImg = document.querySelector("#popover-img__section-about image");
+
 document.addEventListener("mouseover", (e) => {
     if (e.target.closest(".attn > *")) {
-        Array.from(e.target.parentElement.children).some((el) => {
-            if (e.target == el) {
+        popoverSctAbt.showPopover();
 
-                let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                svg.setAttribute('class', 'attn-message');
-                svg.setAttribute('viewBox', '0 0 232 152');
-                svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-                
-                let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
-                image.setAttribute('href', el.getAttribute('data-img-href'));
-                
-                let text = document.createElementNS('http://www.w3.org/2000/svg', "text");
-                text.setAttribute('x', '20');
-                text.setAttribute('y', '18');
-                text.textContent = 'OVERVIEW';
+        // e.target.onmousemove = (e) => popoverSctAbt.style.transform = `translate(${e.pageX + 10}px, ${e.pageY + 10}px)`;
+        popoverSctAbtImg.setAttribute('href', e.target.getAttribute('data-img-href'));
 
-                let pathTitle = document.createElementNS('http://www.w3.org/2000/svg', "path");
-                pathTitle.setAttribute('id', 'pathTitle');
-                let pathCont = document.createElementNS('http://www.w3.org/2000/svg', "path");
-                pathCont.setAttribute('id', 'pathCont');
+        e.target.onmouseout = () => popoverSctAbt.hidePopover();
+    }
 
-                let useTitle = document.createElementNS('http://www.w3.org/2000/svg', "use");
-                useTitle.setAttribute('href', '#pathTitle');
-                let useCont = document.createElementNS('http://www.w3.org/2000/svg', "use");
-                useCont.setAttribute('href', '#pathCont');
 
-                svg.appendChild(pathTitle);
-                svg.appendChild(pathCont);
-                svg.appendChild(image);
-                svg.appendChild(useTitle);
-                svg.appendChild(useCont);
-                svg.appendChild(text);
+});
 
-                document.body.append(svg);
+// document.addEventListener('mousemove', function(event) {
+//     if (event.target.closest('.attn')) {
+//         let i = popoverSctAbt.getBoundingClientRect(),
+//           x = Math.round(i.left + (i.width / 2)),
+//           y = Math.round(i.top + (i.height / 2));
+      
+//         x = (x - event.screenX);
+//         y = (y - event.screenY);
+    
+//         popoverSctAbt.style.transform = 'rotatex(' + y/30 + 'deg)';   
+//         popoverSctAbt.style.transform += 'rotateY(' + -x/30 + 'deg)';
+        
+//         if ( y < 0 && x > 0 || y > 0 && x < 0 ) {
+//             popoverSctAbt.style.transform += 'rotateZ(' + -Math.abs(x-y)/10000 + 'deg)';
+//         } else if ( y > 0 && x > 0 || y < 0 && x < 0 ) {
+//             popoverSctAbt.style.transform += 'rotateZ(' + Math.abs(x-y)/10000 + 'deg)';
+//         }
+//     };
+// });
 
-                function onMouseMove(e) {
-                    svg.style.top = e.y + 10 + "px";
-                    svg.style.left = e.x + 10 + "px";
-                };
-                function onMouseOut() {
-                    svg.remove()
-                    el.removeEventListener("mousemove", onMouseMove);
-                    el.removeEventListener("mouseout", onMouseOut);
-                };
 
-                el.addEventListener("mousemove", onMouseMove);
-                el.addEventListener("mouseout", onMouseOut);
-            }
-        });
+document.addEventListener("mousemove", (e) => {
+  rotateElement(e, popoverSctAbt);
+});
+
+function rotateElement(event, element) {
+  // get mouse position
+  const x = event.clientX;
+  const y = event.clientY;
+  // console.log(x, y)
+
+  // find the middle
+  const middleX = window.innerWidth / 2;
+  const middleY = window.innerHeight / 2;
+  // console.log(middleX, middleY)
+
+  // get offset from middle as a percentage
+  // and tone it down a little
+  const offsetX = ((x - middleX) / middleX) * 45;
+  const offsetY = ((y - middleY) / middleY) * 45;
+  // console.log(offsetX, offsetY);
+
+  // set rotation
+  element.style.setProperty("--rotateX", offsetX + "deg");
+  element.style.setProperty("--rotateY", -1 * offsetY + "deg");
+}
+
+
+
+const observerSVGDoc01 = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        // if (entry.contentBoxSize) {
+        if (entry.target.parentElement.checkVisibility()) {
+            let parent = entry.target.parentElement;
+            entry.target.attributes[0].nodeValue = `0 0 ${Math.round(parent.offsetWidth)} ${Math.round(parent.offsetHeight)}`;
+
+            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(parent.offsetWidth / 3 * 2 - 22)}`);
+            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(parent.offsetWidth / 3 - 10)}`);
+            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(parent.offsetHeight - 22)}`);
+            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(parent.offsetWidth - 12)}`);
+        }
     }
 });
+
+observerSVGDoc01.observe(popoverSctAbtSVG);
+
+
+// document.addEventListener("mouseover", (e) => {
+//     if (e.target.closest(".attn > *")) {
+//         Array.from(e.target.parentElement.children).some((el) => {
+//             if (e.target == el) {
+
+//                 let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+//                 svg.setAttribute('class', 'attn-message');
+//                 svg.setAttribute('viewBox', '0 0 232 152');
+//                 svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                
+//                 let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
+//                 image.setAttribute('href', el.getAttribute('data-img-href'));
+                
+//                 let text = document.createElementNS('http://www.w3.org/2000/svg', "text");
+//                 text.setAttribute('x', '20');
+//                 text.setAttribute('y', '18');
+//                 text.textContent = 'OVERVIEW';
+
+//                 let pathTitle = document.createElementNS('http://www.w3.org/2000/svg', "path");
+//                 pathTitle.setAttribute('id', 'pathTitle');
+//                 let pathCont = document.createElementNS('http://www.w3.org/2000/svg', "path");
+//                 pathCont.setAttribute('id', 'pathCont');
+
+//                 let useTitle = document.createElementNS('http://www.w3.org/2000/svg', "use");
+//                 useTitle.setAttribute('href', '#pathTitle');
+//                 let useCont = document.createElementNS('http://www.w3.org/2000/svg', "use");
+//                 useCont.setAttribute('href', '#pathCont');
+
+//                 svg.appendChild(pathTitle);
+//                 svg.appendChild(pathCont);
+//                 svg.appendChild(image);
+//                 svg.appendChild(useTitle);
+//                 svg.appendChild(useCont);
+//                 svg.appendChild(text);
+
+//                 document.body.append(svg);
+
+//                 function onMouseMove(e) {
+//                     svg.style.top = e.y + 10 + "px";
+//                     svg.style.left = e.x + 10 + "px";
+//                 };
+//                 function onMouseOut() {
+//                     svg.remove()
+//                     el.removeEventListener("mousemove", onMouseMove);
+//                     el.removeEventListener("mouseout", onMouseOut);
+//                 };
+
+//                 el.addEventListener("mousemove", onMouseMove);
+//                 el.addEventListener("mouseout", onMouseOut);
+//             }
+//         });
+//     }
+// });
 
 //Выбор резюме
 let formSliderCont = document.querySelector('.form-slider__button-content');
@@ -441,37 +526,131 @@ for (svg of sliderAbout.querySelectorAll('svg')) observerSliderSVG.observe(svg);
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
-let viewSection = document.querySelector('.section-about__slider-viewport');
+let viewSection = document.querySelector('.section-about__slider');
+let viewSectionWrapp = document.querySelector('.section-about__slider-wrapper');
 let viewSectionFrame = document.querySelectorAll('.section-about__slider-wrapper-frame');
 
-let lastPos = viewSection.scrollTop,
-zSpacing = -300,
-// zSpacing = -1000,
+
+// let lastPos = Math.round(viewSection.scrollHeight - (viewSection.scrollTop + viewSection.clientHeight)),
+// let lastPos = viewSection.scrollTop - viewSection.scrollHeight,
+
+
+// let lastPos = Math.round(viewSection.scrollTop),
+// zSpacing = 200,
+// perspective = 600,
+// zVals = [],
+// snapVals = [];
+
+// for(let i = 0; i < viewSectionFrame.length; i++) {
+//     // zVals.push( ( viewSectionFrame.length - i ) * zSpacing );
+//     zVals.push( i * zSpacing );
+
+//     // snapVals.push( ( i + 1 ) * ( viewSection.clientHeight / 2 ) );
+//     // snapVals.push( i == 0 ? viewSection.clientHeight / 2 : snapVals[i - 1] + viewSection.clientHeight );
+//     // snapVals.push( ( i + 1 ) * ( viewSection.scrollHeight / 9 ) );
+//     // snapVals.push( i == 0 ? viewSection.scrollHeight / 9 : (i + 1) * (viewSection.scrollHeight / 9) );
+//     snapVals.push( i * ( ( viewSection.scrollHeight - viewSection.clientHeight ) / 8) );
+// };
+
+// function zAxisScroll(event) {
+//     // let top = Math.round(viewSection.scrollHeight - (viewSection.scrollTop + viewSection.clientHeight)),
+//     // let top = viewSection.scrollTop - viewSection.scrollHeight,
+//     var top = Math.round(viewSection.scrollTop),
+//     delta = lastPos - top;
+//     lastPos = top;
+//     // if (viewSection.scrollTop <= 130) return;
+//     for (let i = 0; i < viewSectionFrame.length; i++) {
+//         let newZVal = zVals[i] += delta * 1.5;
+//         viewSectionFrame[i].style.setProperty("--translateZ", newZVal);
+
+//         viewSectionFrame[i].children[0].style = newZVal > 8 ? `translate: 100% -50%` : '';
+
+//         let blur = newZVal < -190 ? 1 - parseInt( newZVal / perspective * 50 ) / 100 : 0;
+//         viewSectionFrame[i].style.filter = `blur(${blur}px)`;
+
+//         let opacity = newZVal < 7 ? 2 - -parseInt( newZVal / perspective * 50 ) / 50 : 1 - parseInt( newZVal / perspective * 50 ) / 10;
+//         viewSectionFrame[i].style.opacity = +opacity;
+//         // viewSectionFrame[i].style = `opacity: ${+opacity}; filter: blur(${blur}px)`;
+//     };
+
+//     if (event.eventPhase != 2) {
+//         zAxisScrollEnd([top])
+//     };
+// };
+
+
+let lastPos = Math.round(viewSectionWrapp.clientHeight),
+zSpacing = 200,
 perspective = 600,
-zVals = [];
+zVals = [],
+snapVals = [];
 
+for(let i = 0; i < viewSectionFrame.length; i++) {
+    zVals.push( i * zSpacing );
+    snapVals.push( i * (viewSectionWrapp.clientHeight / 8) );
+};
 
-viewSection.onscroll = (event) => {
-    var top = viewSection.scrollTop,
+function zAxisScroll(event) {
+
+    // let top = lastPos - -event.deltaY,
+    let top = event ? lastPos - -event.deltaY : zSpacing * 8.25,
     delta = lastPos - top;
     lastPos = top;
+
     for (let i = 0; i < viewSectionFrame.length; i++) {
-        zVals.push((viewSectionFrame.length - i) * zSpacing);
-        var newZVal = zVals[i] += delta * -1.5,
-        opacity = newZVal < 0 ? 1 : 1 - parseInt( (newZVal + 100) / (perspective + 100) * 10 ) / 10;
-        // opacity = newZVal < 200 ? 1 : 1 - parseInt( (newZVal - 200) / (perspective - 200) * 10 ) / 10;
-        viewSectionFrame[i].style.transform = `translateZ(${newZVal}px) rotateX(14deg)`;
+
+        let newZVal = zVals[i] += delta * 1.5;
+
+        viewSectionFrame[i].style.setProperty("--translateZ", newZVal);
+
+        viewSectionFrame[i].children[0].style = newZVal > 8 ? `translate: 100% -50%` : '';
+
+        let blur = -parseInt( newZVal / perspective * 200 ) / 50;
+        viewSectionFrame[i].style.filter = `blur(${blur}px)`;
+
+        let opacity = newZVal < 7 ? 2 - -parseInt( newZVal / perspective * 30 ) / 50 : 1 - parseInt( newZVal / perspective * 50 ) / 10;
         viewSectionFrame[i].style.opacity = +opacity;
-    }
-    // for (frame of viewSectionFrame) {
-        // frame.style.transform = frame.style.transform.replace(/-\d+|\d+/, (match) => {return `${Math.round(viewSection.scrollTop - +match)}`});
-        // frame.style.transform = `translateZ(${viewSection.scrollTop}rem)`;
-    // }
-    // for (let i = 1; i <= viewSectionFrame.length; i++) {
-        // viewSectionFrame[i].style.transform = viewSectionFrame[i].style.transform.replace(/\(.*?\)/, (match) => match - viewSection.scrollTop);
-        // viewSectionFrame[i].style.transform = `translateZ(${-viewSection.scrollTop + (i * 10)}rem)`;
-    // }
+    };
+
+    // if (event.eventPhase != 2) {
+    //     zAxisScrollEnd([top])
+    // };
 };
+
+zAxisScroll();
+
+
+let zAxisScrollEndTimer = null;
+
+function zAxisScrollEnd(param) {
+    if (zAxisScrollEndTimer !== null) {
+        clearTimeout(zAxisScrollEndTimer);
+    };
+
+    zAxisScrollEndTimer = setTimeout(function() {
+
+        for (let i = 0; i < viewSectionFrame.length; i++) {
+
+            if (param[0] <= snapVals[i] + snapVals[1] * .5 && param[0] >= snapVals[i] - snapVals[1] * .5) {
+                viewSection.scrollTop = snapVals[i];
+            }
+
+        }
+
+    }, 150);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    viewSection.scrollTo(0, viewSection.scrollHeight);
+});
+
+// viewSection.onscroll = () => {
+//     viewSectionWrapp.style.setProperty("--cameraZ", viewSection.scrollTop);
+//     // document.documentElement.style.setProperty("--cameraZ", window.pageYOffset);
+// };
+
+// viewSection.addEventListener('scroll', zAxisScroll);
+viewSectionWrapp.addEventListener('wheel', zAxisScroll);
 
 
 
@@ -1067,6 +1246,7 @@ let sectionAbilSVG = document.querySelector('.section-abilities__content-border'
 const resizerSVG = new ResizeObserver((entries) => {
     for (const entry of entries) {
         if (entry.target.classList.contains('section-abilities__content')) {
+
             sectionAbilSVG.attributes[1].nodeValue = `0 0 ${Math.round(sectionAbil.clientWidth)} ${Math.round(sectionAbil.clientHeight)}`;
 
             sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAbil.clientHeight - 29)}`);
@@ -1079,6 +1259,7 @@ const resizerSVG = new ResizeObserver((entries) => {
             sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 73)}`);
             sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 238)}`);
             sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\s\-\d+/, `  -${Math.round(sectionAbil.clientWidth - 106)}`);
+
         }
     }
 });
