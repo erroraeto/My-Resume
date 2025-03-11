@@ -196,22 +196,19 @@
                                                 background-clip: border-box
         &__slider
                 position: relative
+                display: grid
+                grid-template: 100% repeat(8, 23%) / 100%
                 height: 100%
                 width: 100%
                 overflow-y: scroll
                 overflow-x: hidden
-                scroll-snap-type: y mandatory
-                scroll-behavior: smooth
+                // scroll-behavior: smooth
                 backface-visibility: hidden
                 perspective: 100rem
-                &::after
-                        content: ""
-                        position: relative
-                        display: block
-                        height: 182.8%
-                        width: 100%
+                cursor: grab
                 &::-webkit-scrollbar
                         width: 7px
+                        // display: none
                 &::-webkit-scrollbar-track
                         border-radius: 20px 4px
                         background: var(--color-ebony-clay)
@@ -221,6 +218,8 @@
                         // background: #44797e
                         border-radius: 20px 4px
                         cursor: pointer
+                        anchor-name: --anchor-thumb
+
                 &::-webkit-scrollbar-button:start:increment
                         height: 14%
                         display: block
@@ -229,66 +228,11 @@
                         height: 14%
                         display: block
                         background: transparent
-
-
-                // display: flex
-                // justify-content: center
-                // &-border
-                //         height: 80%
-                //         width: 82%
-                //         // top: 47%
-                //         stroke: var(--color-light-cyan)
-                //         stroke-width: 2px
-                //         opacity: .7
-                //         fill: none
-                //         transform: rotateY(-10deg)
-                //         filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                //         // filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                //         *
-                //                 transition: translate .2s ease
-                //         // path:first-of-type
-                //         //         translate: 0 4%
-                //         // path:last-of-type
-                //         //         translate: 0 -4%
-                //         text
-                //                 filter: none
-                //                 stroke: none
-                //                 fill: white
-                //         foreignObject
-                //                 // translate: -60% 0
-                //                 // translate: 0 4%
-                //                 p
-                //                         filter: none
-                // &-title
-                //         position: relative
-                //         display: flex
-                //         flex-direction: column
-                //         flex-wrap: nowrap
-                //         gap: 25%
-                //         align-items: center
-                //         height: 100%
-                //         width: 100%
-                //         overflow-x: hidden
-                //         overflow-y: scroll
-                //         scroll-snap-type: y mandatory
-                //         scroll-behavior: smooth
-                //         mask-image: url(#mask-ver-scroll-type01)
-                //         transition: translate .2s ease
-                //         &::before,
-                //         &::after
-                //                 content: ""
-                //                 flex: 0 0 50%
-                //         &::-webkit-scrollbar
-                //                 display: none
-                //         p
-                //                 position: relative
-                //                 flex: 0 0 auto
-                //                 scroll-snap-align: center
-                //                 scroll-snap-stop: always
-                //         p:first-of-type
-                //                 margin-top: auto
-                //         p:last-of-type
-                //                 margin-bottom: auto
+                &-grabbing,
+                &-grabbing > *
+                        cursor: grabbing
+                        & > *
+                                cursor: grabbing !important
                 &-wrapper
                         position: sticky
                         top: 0
@@ -303,79 +247,19 @@
                         overflow: hidden
                         z-index: 2
                         mask-image: url(#mask-hor-scroll-type01)
-                        // position: absolute
-                        // width: 100%
-                        // display: flex
-                        // flex-direction: column
-                        // flex-wrap: nowrap
-                        // gap: 12.5%
-                        // align-items: center
-                        // // overflow-x: hidden
-                        // // overflow-y: scroll
-                        // overflow: auto
-                        // scroll-snap-type: y mandatory
-                        // scroll-behavior: smooth
-                        // transform: rotateY(-10deg)
-                        // transform-style: preserve-3d
-                        // mask-image: url(#mask-ver-scroll-type01)
-                        // filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-                        // &::before,
-                        // &::after
-                        //         content: ""
-                        //         // flex: 0 0 50%
-                        //         flex: 0 0 12.5%
-                        // &::-webkit-scrollbar
-                        //         width: 7px
-                        // &::-webkit-scrollbar-track
-                        //         border-radius: 20px 4px
-                        //         background: var(--color-ebony-clay)
-                        //         background-clip: content-box
-                        // &::-webkit-scrollbar-thumb
-                        //         background: var(--color-grideperleft)
-                        //         // background: #44797e
-                        //         border-radius: 20px 4px
-                        //         cursor: pointer
-                        // &::-webkit-scrollbar-button:start:increment
-                        //         height: 14%
-                        //         display: block
-                        //         background: transparent
-                        // &::-webkit-scrollbar-button:end:increment
-                        //         height: 14%
-                        //         display: block
-                        //         background: transparent
-                        // // &::-webkit-scrollbar-track
-                        // //         background: var(--color-light-slate-gray)
-                        // //         border-left: 4px solid transparent
-                        // //         border-right: 4px solid transparent
-                        // //         background-clip: padding-box
-                        // // &::-webkit-scrollbar-thumb
-                        // //         background: var(--color-grideperleft)
-                        // //         border-left: 2px solid transparent
-                        // //         border-right: 2px solid transparent
-                        // //         background-clip: padding-box
-                        // //         border-radius: 10px
                         &-frame
                                 position: absolute
                                 height: 56%
                                 width: 70%
                                 left: 50%
                                 top: 50%
-                                cursor: pointer
-                                translate: -50% -50%
                                 transform-style: preserve-3d
-                                // position: relative
-                                // width: 80%
-                                // flex: 0 0 60%
-                                // scroll-snap-align: center
-                                // scroll-snap-stop: always
                                 perspective: 100rem
                                 // perspective-origin: right center
                                 transform: translateZ( calc(var(--translateZ) * 1px) ) rotateY(-14deg)
-                                // backdrop-filter: blur(2px)
-                                & > *
-                                        // opacity: .3
-                                        transition: opacity .3s ease, translate .8s ease, filter .3s ease
-                                        transform-style: preserve-3d
+                                translate: calc(var(--translateX) * 1%) -50%
+                                transition: opacity .3s ease, translate .8s ease, filter .3s ease
+                                cursor: pointer
                                 p
                                         position: absolute
                                         left: 50%
@@ -384,7 +268,8 @@
                                         filter: drop-shadow(0 0 1rem black)
                                 &-border
                                         position: relative
-                                        rect
+                                        // rect,
+                                        path
                                                 fill: #ffffff
                                                 filter: url(#inner-shadow-descr-type01)
                                                 // fill: url(#line-grad-anim-02)
@@ -421,19 +306,33 @@
                         //         filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1.5' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1.5' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
 
 
-.current
-        *
-                opacity: 1
-        *:not(.section-about__slider-border-img)
-                transform: translateZ(6rem)
-        .section-about__slider-border-img
-                transform: translateZ(3rem)
+// .current
+//         *
+//                 opacity: 1
+//         *:not(.section-about__slider-border-img)
+//                 transform: translateZ(6rem)
+//         .section-about__slider-border-img
+//                 transform: translateZ(3rem)
 
-.nonslct
-        & ~ .section-about__slider-title,
-        foreignObject,
-        path
-                translate: 0 0 !important
+// .nonslct
+//         & ~ .section-about__slider-title,
+//         foreignObject,
+//         path
+//                 translate: 0 0 !important
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 //         position: absolute
                 //         visibility: hidden
