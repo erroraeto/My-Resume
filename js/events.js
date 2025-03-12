@@ -392,45 +392,28 @@ sliderBrd = document.querySelector(".section-about__slider-border");
 
 const observerSliderSVG = new ResizeObserver((entries) => {
     for (const entry of entries) {
-        // if (entry.contentBoxSize) {
         if (entry.target.parentElement.checkVisibility()) {
             let parent = entry.target.parentElement;
             entry.target.attributes[1].nodeValue = `0 0 ${Math.round(parent.offsetWidth)} ${Math.round(parent.offsetHeight)}`;
 
-            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(parent.offsetWidth / 3 * 2 - 22)}`);
-            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(parent.offsetWidth / 3 - 10)}`);
-            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(parent.offsetHeight - 22)}`);
+            let titleWidth = entry.target.children[2].scrollWidth,
+            numWidth = entry.target.children[4].scrollWidth;
+
+            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(parent.offsetWidth - titleWidth - 55)}`);
+
+            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(titleWidth + 23)}`);
+
+            entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(parent.offsetHeight - 32)}`);
             entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(parent.offsetWidth - 12)}`);
+
+            entry.target.children[2].attributes[0].nodeValue = Math.round(parent.offsetWidth - 22);
+
+            entry.target.children[3].attributes[1].nodeValue = entry.target.children[3].attributes[1].nodeValue.replace(/\d+/, Math.round(parent.offsetWidth - titleWidth - 46));
+            entry.target.children[3].attributes[1].nodeValue = entry.target.children[3].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(numWidth + 9)}`);
+            
+            entry.target.children[4].attributes[0].nodeValue = Math.round(parent.offsetWidth - titleWidth - 46 - numWidth / 2);
         }
     }
-    // for (const entry of entries) {
-    //     const matchedSkill = new Map([
-    //         [/\b\s{2}\S+/g, `  ${entry.contentRect.height - 14}`],
-    //         [/\b\s{3}\S+/g, `   ${entry.contentRect.height - 46}`],
-    //     ]);
-    //     let currentWidth = entry.target.parentElement.offsetWidth,
-    //     currentHeight = entry.target.parentElement.offsetHeight;
-    //     if (entry.contentBoxSize) {
-    //         if (entry.target.classList.contains('section-about__slider-wrapper-frame-border')) {
-    //             entry.target.attributes[1].nodeValue = `0 0 ${Math.round(currentWidth)} ${Math.round(currentHeight)}`;
-    //             entry.target.children[1].attributes[0].nodeValue = Math.round(currentWidth);
-    //             entry.target.children[1].attributes[1].nodeValue = Math.round(currentHeight);
-
-    //             entry.target.children[0].attributes[0].nodeValue = Math.round((currentWidth - entry.target.children[0].getBBox().width) / 2);
-    //             entry.target.children[0].attributes[1].nodeValue = Math.round((currentHeight - entry.target.children[0].getBBox().height) / 2);
-    //         } else if (entry.target.classList.contains('section-about__slider-border')) {
-    //             let target = entry.target;
-    //             entry.target.attributes[1].nodeValue = `0 0 ${Math.round(target.clientWidth)} ${Math.round(target.clientHeight)}`;
-
-    //             // entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\B\M\S+/, `M${Math.round(target.clientWidth / 5.2)}`);
-    //             // entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\B\L\S+/, `L${Math.round(target.clientWidth - (target.clientWidth / 5.2) - 29)}`);
-    //             entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(target.clientWidth - 73)}`);
-    //             entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(target.clientWidth - 73)}`);
-
-    //             entry.target.children[1].attributes[1].nodeValue = entry.target.children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(target.clientHeight - 29)}`);
-    //         }
-    //     }
-    // }
 });
 
 // observerSliderSVG.observe(sliderBrd);

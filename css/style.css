@@ -1406,28 +1406,7 @@ main section {
   cursor: grab;
 }
 .section-about__slider::-webkit-scrollbar {
-  width: 7px;
-}
-.section-about__slider::-webkit-scrollbar-track {
-  border-radius: 20px 4px;
-  background: var(--color-ebony-clay);
-  background-clip: content-box;
-}
-.section-about__slider::-webkit-scrollbar-thumb {
-  background: var(--color-grideperleft);
-  border-radius: 20px 4px;
-  cursor: pointer;
-  anchor-name: --anchor-thumb;
-}
-.section-about__slider::-webkit-scrollbar-button:start:increment {
-  height: 14%;
-  display: block;
-  background: transparent;
-}
-.section-about__slider::-webkit-scrollbar-button:end:increment {
-  height: 14%;
-  display: block;
-  background: transparent;
+  display: none;
 }
 .section-about__slider-grabbing, .section-about__slider-grabbing > * {
   cursor: -webkit-grabbing;
@@ -1454,8 +1433,6 @@ main section {
   will-change: transform;
   overflow: hidden;
   z-index: 2;
-  -webkit-mask-image: url(#mask-hor-scroll-type01);
-          mask-image: url(#mask-hor-scroll-type01);
 }
 .section-about__slider-wrapper-frame {
   position: absolute;
@@ -1492,8 +1469,35 @@ main section {
   -webkit-filter: url(#inner-shadow-descr-type01);
           filter: url(#inner-shadow-descr-type01);
 }
+.section-about__slider-wrapper-frame-border path:last-of-type {
+  fill: var(--color-light-greenish-blue);
+  -webkit-filter: url(#inner-shadow-title-type01);
+          filter: url(#inner-shadow-title-type01);
+}
 .section-about__slider-wrapper-frame-border image {
-  width: 100%;
+  width: 93%;
+  x: 3.5%;
+  y: 7%;
+}
+.section-about__slider-wrapper-frame-border text:last-of-type {
+  stroke-width: 0.5px;
+  stroke: var(--color-white);
+  -webkit-filter: drop-shadow(0 0 1px black);
+          filter: drop-shadow(0 0 1px black);
+}
+.section-about__slider-wrapper-frame-border text,
+.section-about__slider-wrapper-frame-border tspan {
+  stroke: none;
+  fill: var(--color-white);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.section-about__slider-wrapper-frame-border tspan {
+  stroke-width: 0.8px;
+  stroke: var(--color-fern-crayola);
+  fill: var(--color-fern-crayola);
 }
 
 #popover-img__section-about {

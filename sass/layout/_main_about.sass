@@ -207,27 +207,27 @@
                 perspective: 100rem
                 cursor: grab
                 &::-webkit-scrollbar
-                        width: 7px
-                        // display: none
-                &::-webkit-scrollbar-track
-                        border-radius: 20px 4px
-                        background: var(--color-ebony-clay)
-                        background-clip: content-box
-                &::-webkit-scrollbar-thumb
-                        background: var(--color-grideperleft)
-                        // background: #44797e
-                        border-radius: 20px 4px
-                        cursor: pointer
-                        anchor-name: --anchor-thumb
+                        display: none
+                        // width: 7px
+                // &::-webkit-scrollbar-track
+                //         border-radius: 20px 4px
+                //         background: var(--color-ebony-clay)
+                //         background-clip: content-box
+                // &::-webkit-scrollbar-thumb
+                //         background: var(--color-grideperleft)
+                //         // background: #44797e
+                //         border-radius: 20px 4px
+                //         cursor: pointer
+                //         anchor-name: --anchor-thumb
 
-                &::-webkit-scrollbar-button:start:increment
-                        height: 14%
-                        display: block
-                        background: transparent
-                &::-webkit-scrollbar-button:end:increment
-                        height: 14%
-                        display: block
-                        background: transparent
+                // &::-webkit-scrollbar-button:start:increment
+                //         height: 14%
+                //         display: block
+                //         background: transparent
+                // &::-webkit-scrollbar-button:end:increment
+                //         height: 14%
+                //         display: block
+                //         background: transparent
                 &-grabbing,
                 &-grabbing > *
                         cursor: grabbing
@@ -246,7 +246,7 @@
                         will-change: transform
                         overflow: hidden
                         z-index: 2
-                        mask-image: url(#mask-hor-scroll-type01)
+                        // mask-image: url(#mask-hor-scroll-type01)
                         &-frame
                                 position: absolute
                                 height: 56%
@@ -272,13 +272,26 @@
                                         path
                                                 fill: #ffffff
                                                 filter: url(#inner-shadow-descr-type01)
-                                                // fill: url(#line-grad-anim-02)
-                                                // fill: var(--color-ebony-clay)
-                                                // mask: url(#mask-bg-desc-type02)
-                                                // mix-blend-mode: screen
+                                        path:last-of-type
+                                                fill: var(--color-light-greenish-blue)
+                                                filter: url(#inner-shadow-title-type01)
                                         image
-                                                width: 100%
-                                                // width: 80%
+                                                width: 93%
+                                                x: 3.5%
+                                                y: 7%
+                                        text:last-of-type
+                                                stroke-width: .5px
+                                                stroke: var(--color-white)
+                                                filter: drop-shadow(0 0 1px black)
+                                        text,
+                                        tspan
+                                                stroke: none
+                                                fill: var(--color-white)
+                                                user-select: none
+                                        tspan
+                                                stroke-width: .8px
+                                                stroke: var(--color-fern-crayola)
+                                                fill: var(--color-fern-crayola)
                                 // &:nth-of-type(1)
                                 //         z-index: 0
                                 // &:nth-of-type(2)
