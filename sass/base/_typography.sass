@@ -77,7 +77,8 @@ p
 
 .section-about__article-description ul
     font-size: 2rem
-    & ::marker
+    & ::marker,
+    li::after
         font-size: 1.6rem
 
 .section-about__article-resume span
@@ -94,9 +95,13 @@ p
     tspan
         font-size: 3.4rem
 
-.section-about__slider p
-        font-size: 3.2rem
-        font-weight: 600
+.section-about__slider
+    text:nth-of-type(2)
+        font-size: 1.4rem
+    text:last-of-type
+        font-size: 2rem
+    tspan
+        font-size: 2.2rem
 
 .section-abilities__content-section-skills span
     font-weight: bold

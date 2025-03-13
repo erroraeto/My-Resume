@@ -173,145 +173,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-//Всплывающие изображения/подсказки
+//Подсказки списка
+let attnSctAbt = document.querySelector(".attn");
 
-let popoverSctAbt = document.querySelector("#popover-img__section-about");
-let popoverSctAbtSVG = document.querySelector("#popover-img__section-about svg");
-let popoverSctAbtImg = document.querySelector("#popover-img__section-about image");
-
-document.addEventListener("mouseover", (e) => {
+attnSctAbt.addEventListener("click", (e) => {
     if (e.target.closest(".attn > *")) {
-        popoverSctAbt.showPopover();
-
-        // e.target.onmousemove = (e) => popoverSctAbt.style.transform = `translate(${e.pageX + 10}px, ${e.pageY + 10}px)`;
-        popoverSctAbtImg.setAttribute('href', e.target.getAttribute('data-img-href'));
-
-        e.target.onmouseout = () => popoverSctAbt.hidePopover();
-    }
-
-
-});
-
-// document.addEventListener('mousemove', function(event) {
-//     if (event.target.closest('.attn')) {
-//         let i = popoverSctAbt.getBoundingClientRect(),
-//           x = Math.round(i.left + (i.width / 2)),
-//           y = Math.round(i.top + (i.height / 2));
-      
-//         x = (x - event.screenX);
-//         y = (y - event.screenY);
-    
-//         popoverSctAbt.style.transform = 'rotatex(' + y/30 + 'deg)';   
-//         popoverSctAbt.style.transform += 'rotateY(' + -x/30 + 'deg)';
-        
-//         if ( y < 0 && x > 0 || y > 0 && x < 0 ) {
-//             popoverSctAbt.style.transform += 'rotateZ(' + -Math.abs(x-y)/10000 + 'deg)';
-//         } else if ( y > 0 && x > 0 || y < 0 && x < 0 ) {
-//             popoverSctAbt.style.transform += 'rotateZ(' + Math.abs(x-y)/10000 + 'deg)';
-//         }
-//     };
-// });
-
-
-document.addEventListener("mousemove", (e) => {
-  rotateElement(e, popoverSctAbt);
-});
-
-function rotateElement(event, element) {
-  // get mouse position
-  const x = event.clientX;
-  const y = event.clientY;
-  // console.log(x, y)
-
-  // find the middle
-  const middleX = window.innerWidth / 2;
-  const middleY = window.innerHeight / 2;
-  // console.log(middleX, middleY)
-
-  // get offset from middle as a percentage
-  // and tone it down a little
-  const offsetX = ((x - middleX) / middleX) * 45;
-  const offsetY = ((y - middleY) / middleY) * 45;
-  // console.log(offsetX, offsetY);
-
-  // set rotation
-  element.style.setProperty("--rotateX", offsetX + "deg");
-  element.style.setProperty("--rotateY", -1 * offsetY + "deg");
-}
-
-
-
-const observerSVGDoc01 = new ResizeObserver((entries) => {
-    for (const entry of entries) {
-        // if (entry.contentBoxSize) {
-        if (entry.target.parentElement.checkVisibility()) {
-            let parent = entry.target.parentElement;
-            entry.target.attributes[0].nodeValue = `0 0 ${Math.round(parent.offsetWidth)} ${Math.round(parent.offsetHeight)}`;
-
-            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(parent.offsetWidth / 3 * 2 - 22)}`);
-            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(parent.offsetWidth / 3 - 10)}`);
-            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(parent.offsetHeight - 22)}`);
-            entry.target.children[0].attributes[1].nodeValue = entry.target.children[0].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(parent.offsetWidth - 12)}`);
-        }
+        viewSection.scrollTo({
+            top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
+            behavior: "smooth",
+        });
+        viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')].classList.add('frame-tickMark');
     }
 });
-
-observerSVGDoc01.observe(popoverSctAbtSVG);
-
-
-// document.addEventListener("mouseover", (e) => {
-//     if (e.target.closest(".attn > *")) {
-//         Array.from(e.target.parentElement.children).some((el) => {
-//             if (e.target == el) {
-
-//                 let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-//                 svg.setAttribute('class', 'attn-message');
-//                 svg.setAttribute('viewBox', '0 0 232 152');
-//                 svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-                
-//                 let image = document.createElementNS('http://www.w3.org/2000/svg', "image");
-//                 image.setAttribute('href', el.getAttribute('data-img-href'));
-                
-//                 let text = document.createElementNS('http://www.w3.org/2000/svg', "text");
-//                 text.setAttribute('x', '20');
-//                 text.setAttribute('y', '18');
-//                 text.textContent = 'OVERVIEW';
-
-//                 let pathTitle = document.createElementNS('http://www.w3.org/2000/svg', "path");
-//                 pathTitle.setAttribute('id', 'pathTitle');
-//                 let pathCont = document.createElementNS('http://www.w3.org/2000/svg', "path");
-//                 pathCont.setAttribute('id', 'pathCont');
-
-//                 let useTitle = document.createElementNS('http://www.w3.org/2000/svg', "use");
-//                 useTitle.setAttribute('href', '#pathTitle');
-//                 let useCont = document.createElementNS('http://www.w3.org/2000/svg', "use");
-//                 useCont.setAttribute('href', '#pathCont');
-
-//                 svg.appendChild(pathTitle);
-//                 svg.appendChild(pathCont);
-//                 svg.appendChild(image);
-//                 svg.appendChild(useTitle);
-//                 svg.appendChild(useCont);
-//                 svg.appendChild(text);
-
-//                 document.body.append(svg);
-
-//                 function onMouseMove(e) {
-//                     svg.style.top = e.y + 10 + "px";
-//                     svg.style.left = e.x + 10 + "px";
-//                 };
-//                 function onMouseOut() {
-//                     svg.remove()
-//                     el.removeEventListener("mousemove", onMouseMove);
-//                     el.removeEventListener("mouseout", onMouseOut);
-//                 };
-
-//                 el.addEventListener("mousemove", onMouseMove);
-//                 el.addEventListener("mouseout", onMouseOut);
-//             }
-//         });
-//     }
-// });
 
 //Выбор резюме
 let formSliderCont = document.querySelector('.form-slider__button-content');
@@ -412,6 +285,9 @@ const observerSliderSVG = new ResizeObserver((entries) => {
             entry.target.children[3].attributes[1].nodeValue = entry.target.children[3].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(numWidth + 9)}`);
             
             entry.target.children[4].attributes[0].nodeValue = Math.round(parent.offsetWidth - titleWidth - 46 - numWidth / 2);
+
+            entry.target.children[5].attributes[0].nodeValue = Math.round(parent.offsetWidth - titleWidth - 56 - numWidth);
+
         }
     }
 });
@@ -452,7 +328,7 @@ viewSection.addEventListener('scroll', (event) => {
 
         viewSectionFrame[i].style.setProperty("--translateX", newZVal > 8 ? '100' : '-50');
 
-        let blur = -parseInt( newZVal / perspective * 200 ) / 50;
+        let blur = Math.round(-parseInt( newZVal / perspective * 200 ) / 50);
         viewSectionFrame[i].style.filter = `blur(${blur}px)`;
 
         let opacity = newZVal < 7 ? 2 - -parseInt( newZVal / perspective * 30 ) / 50 : 1 - parseInt( newZVal / perspective * 50 ) / 10;
@@ -490,7 +366,7 @@ startX;
 
 viewSection.addEventListener('mousedown', (event) => {
 
-    viewSection.classList.add('section-about__slider-grabbing');
+    viewSection.style = 'cursor: grabbing';
     isDownViewSection = true;
     scrollTop = viewSection.scrollTop;
     startX = event.pageX - viewSection.offsetLeft;
@@ -504,7 +380,7 @@ viewSection.addEventListener('mousedown', (event) => {
     };
 
     event.target.onmouseup = () => {
-        viewSection.classList.remove('section-about__slider-grabbing');
+        viewSection.style = '';
         isDownViewSection = false;
     };
 });

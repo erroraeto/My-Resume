@@ -84,10 +84,30 @@
                         & > *:not(:last-child)
                                 margin-bottom: .3rem
                         li
+                                position: relative
                                 padding-inline: .5rem
                                 color: var(--color-orange)
                                 width: max-content
-                                cursor: help
+                                cursor: pointer
+                                &:hover::after
+                                        opacity: 1
+                                        translate: 0px calc(-50% + .3rem)
+                                &::after
+                                        // content: '🞀'
+                                        content: '🞀 ❔'
+                                        // content: '🞀 ❔︎'
+                                        // content: '🞀 ✅︎'
+                                        // content: '🞀 ⚠'
+                                        // content: '🞀 👆︎'
+                                        position: absolute
+                                        width: max-content
+                                        top: 50%
+                                        opacity: 0
+                                        padding-inline: .5rem
+                                        color: transparent
+                                        text-shadow: 0 0 0 var(--color-white)
+                                        translate: 10px calc(-50% + .3rem)
+                                        transition: opacity .3s ease, translate .3s ease
                         & ::marker
                                 content: '🞂'
                                 color: var(--color-white)
@@ -228,11 +248,6 @@
                 //         height: 14%
                 //         display: block
                 //         background: transparent
-                &-grabbing,
-                &-grabbing > *
-                        cursor: grabbing
-                        & > *
-                                cursor: grabbing !important
                 &-wrapper
                         position: sticky
                         top: 0
@@ -259,7 +274,6 @@
                                 transform: translateZ( calc(var(--translateZ) * 1px) ) rotateY(-14deg)
                                 translate: calc(var(--translateX) * 1%) -50%
                                 transition: opacity .3s ease, translate .8s ease, filter .3s ease
-                                cursor: pointer
                                 p
                                         position: absolute
                                         left: 50%
@@ -268,7 +282,6 @@
                                         filter: drop-shadow(0 0 1rem black)
                                 &-border
                                         position: relative
-                                        // rect,
                                         path
                                                 fill: #ffffff
                                                 filter: url(#inner-shadow-descr-type01)
@@ -279,10 +292,14 @@
                                                 width: 93%
                                                 x: 3.5%
                                                 y: 7%
-                                        text:last-of-type
+                                        text:nth-of-type(2)
                                                 stroke-width: .5px
                                                 stroke: var(--color-white)
                                                 filter: drop-shadow(0 0 1px black)
+                                        text:last-of-type
+                                                filter: hue-rotate(-145deg) brightness(160%)
+                                                opacity: 0
+                                                transition: opacity .3s ease
                                         text,
                                         tspan
                                                 stroke: none
@@ -292,51 +309,15 @@
                                                 stroke-width: .8px
                                                 stroke: var(--color-fern-crayola)
                                                 fill: var(--color-fern-crayola)
-                                // &:nth-of-type(1)
-                                //         z-index: 0
-                                // &:nth-of-type(2)
-                                //         z-index: -1
-                                // &:nth-of-type(3)
-                                //         z-index: -2
-                                // &:nth-of-type(4)
-                                //         z-index: -3
-                                // &:nth-of-type(5)
-                                //         z-index: -4
-                                // &:nth-of-type(6)
-                                //         z-index: -5
-                                // &:nth-of-type(7)
-                                //         z-index: -6
-                                // &:nth-of-type(8)
-                                //         z-index: -7
-                                // &:nth-of-type(9)
-                                //         z-index: -8
-                        // &-border-bg
-                        //         height: 100%
-                        //         width: 100%
-                        //         stroke-width: 1px
-                        //         stroke: var(--color-onahau)
-                        //         fill: var(--color-onahau)
-                        //         filter: url(#led-screen) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='1.5' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='1.5' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
 
 
-// .current
-//         *
-//                 opacity: 1
-//         *:not(.section-about__slider-border-img)
-//                 transform: translateZ(6rem)
-//         .section-about__slider-border-img
-//                 transform: translateZ(3rem)
-
-// .nonslct
-//         & ~ .section-about__slider-title,
-//         foreignObject,
-//         path
-//                 translate: 0 0 !important
+.frame-tickMark
+        svg
+                text:last-of-type
+                        opacity: 1
 
 
-
-
-
+        // ✅︎
 
 
 

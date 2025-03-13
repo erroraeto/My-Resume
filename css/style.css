@@ -126,7 +126,8 @@ p {
 .section-about__article-description ul {
   font-size: 2rem;
 }
-.section-about__article-description ul ::marker {
+.section-about__article-description ul ::marker,
+.section-about__article-description ul li::after {
   font-size: 1.6rem;
 }
 
@@ -148,9 +149,14 @@ p {
   font-size: 3.4rem;
 }
 
-.section-about__slider p {
-  font-size: 3.2rem;
-  font-weight: 600;
+.section-about__slider text:nth-of-type(2) {
+  font-size: 1.4rem;
+}
+.section-about__slider text:last-of-type {
+  font-size: 2rem;
+}
+.section-about__slider tspan {
+  font-size: 2.2rem;
 }
 
 .section-abilities__content-section-skills span {
@@ -1242,12 +1248,32 @@ main section {
   margin-bottom: 0.3rem;
 }
 .section-about__article-description ul li {
+  position: relative;
   padding-inline: 0.5rem;
   color: var(--color-orange);
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  cursor: help;
+  cursor: pointer;
+}
+.section-about__article-description ul li:hover::after {
+  opacity: 1;
+  translate: 0px calc(-50% + 0.3rem);
+}
+.section-about__article-description ul li::after {
+  content: "🞀 ❔";
+  position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  top: 50%;
+  opacity: 0;
+  padding-inline: 0.5rem;
+  color: transparent;
+  text-shadow: 0 0 0 var(--color-white);
+  translate: 10px calc(-50% + 0.3rem);
+  -webkit-transition: opacity 0.3s ease, translate 0.3s ease;
+  transition: opacity 0.3s ease, translate 0.3s ease;
 }
 .section-about__article-description ul ::marker {
   content: "🞂";
@@ -1408,14 +1434,6 @@ main section {
 .section-about__slider::-webkit-scrollbar {
   display: none;
 }
-.section-about__slider-grabbing, .section-about__slider-grabbing > * {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
-}
-.section-about__slider-grabbing > *, .section-about__slider-grabbing > * > * {
-  cursor: -webkit-grabbing !important;
-  cursor: grabbing !important;
-}
 .section-about__slider-wrapper {
   position: sticky;
   top: 0;
@@ -1451,7 +1469,6 @@ main section {
   transition: opacity 0.3s ease, translate 0.8s ease, -webkit-filter 0.3s ease;
   transition: opacity 0.3s ease, translate 0.8s ease, filter 0.3s ease;
   transition: opacity 0.3s ease, translate 0.8s ease, filter 0.3s ease, -webkit-filter 0.3s ease;
-  cursor: pointer;
 }
 .section-about__slider-wrapper-frame p {
   position: absolute;
@@ -1479,11 +1496,18 @@ main section {
   x: 3.5%;
   y: 7%;
 }
-.section-about__slider-wrapper-frame-border text:last-of-type {
+.section-about__slider-wrapper-frame-border text:nth-of-type(2) {
   stroke-width: 0.5px;
   stroke: var(--color-white);
   -webkit-filter: drop-shadow(0 0 1px black);
           filter: drop-shadow(0 0 1px black);
+}
+.section-about__slider-wrapper-frame-border text:last-of-type {
+  -webkit-filter: hue-rotate(-145deg) brightness(160%);
+          filter: hue-rotate(-145deg) brightness(160%);
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .section-about__slider-wrapper-frame-border text,
 .section-about__slider-wrapper-frame-border tspan {
@@ -1498,6 +1522,10 @@ main section {
   stroke-width: 0.8px;
   stroke: var(--color-fern-crayola);
   fill: var(--color-fern-crayola);
+}
+
+.frame-tickMark svg text:last-of-type {
+  opacity: 1;
 }
 
 #popover-img__section-about {
