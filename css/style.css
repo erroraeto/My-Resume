@@ -127,6 +127,7 @@ p {
   font-size: 2rem;
 }
 .section-about__article-description ul ::marker,
+.section-about__article-description ul li::before,
 .section-about__article-description ul li::after {
   font-size: 1.6rem;
 }
@@ -163,7 +164,7 @@ p {
   font-weight: bold;
 }
 
-summary {
+.description-wrapper__skill-details span {
   font-weight: 600;
   font-size: 2rem;
 }
@@ -611,6 +612,22 @@ summary {
     opacity: 1;
   }
 }
+@-webkit-keyframes frame-tickMark {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes frame-tickMark {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .margin-bottom-5vh {
   margin-bottom: 5vh;
 }
@@ -756,6 +773,8 @@ body::after {
 }
 .btn::before {
   background: rgba(var(--color-thrush-eggs-rgb), 0.5);
+  -webkit-filter: url(#inner-shadow-title-type01);
+          filter: url(#inner-shadow-title-type01);
   z-index: -1;
   opacity: 0;
   -webkit-transition: opacity 0.2s ease, -webkit-transform 0.2s ease;
@@ -1250,30 +1269,46 @@ main section {
 .section-about__article-description ul li {
   position: relative;
   padding-inline: 0.5rem;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   color: var(--color-orange);
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   cursor: pointer;
 }
-.section-about__article-description ul li:hover::after {
-  opacity: 1;
-  translate: 0px calc(-50% + 0.3rem);
-}
-.section-about__article-description ul li::after {
-  content: "🞀 ❔";
+.section-about__article-description ul li::before, .section-about__article-description ul li::after {
   position: absolute;
+  display: inline-block;
+  height: 100%;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   top: 50%;
+  right: 0;
   opacity: 0;
-  padding-inline: 0.5rem;
+  vertical-align: middle;
   color: transparent;
   text-shadow: 0 0 0 var(--color-white);
-  translate: 10px calc(-50% + 0.3rem);
-  -webkit-transition: opacity 0.3s ease, translate 0.3s ease;
-  transition: opacity 0.3s ease, translate 0.3s ease;
+  -webkit-transition: opacity 0.3s ease, translate 0.3s ease, text-shadow 0.3s ease;
+  transition: opacity 0.3s ease, translate 0.3s ease, text-shadow 0.3s ease;
+}
+.section-about__article-description ul li::after {
+  content: "❔";
+  translate: 150% calc(-50% + 0.3rem);
+}
+.section-about__article-description ul li::before {
+  content: "🞀";
+  translate: 100% calc(-50% + 0.5rem);
+}
+.section-about__article-description ul li:hover::after {
+  opacity: 1;
+  translate: 130% calc(-50% + 0.3rem);
+}
+.section-about__article-description ul li:hover::before {
+  opacity: 1;
+  translate: 80% calc(-50% + 0.5rem);
 }
 .section-about__article-description ul ::marker {
   content: "🞂";
@@ -1413,7 +1448,7 @@ main section {
   transition: background 0.3s ease;
 }
 .section-about__article-resume .form-slider__radio input[type=radio]:checked {
-  background: white;
+  background: var(--color-white);
   background-clip: border-box;
 }
 .section-about__slider {
@@ -1470,16 +1505,9 @@ main section {
   transition: opacity 0.3s ease, translate 0.8s ease, filter 0.3s ease;
   transition: opacity 0.3s ease, translate 0.8s ease, filter 0.3s ease, -webkit-filter 0.3s ease;
 }
-.section-about__slider-wrapper-frame p {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  translate: -50% -50%;
-  -webkit-filter: drop-shadow(0 0 1rem black);
-          filter: drop-shadow(0 0 1rem black);
-}
 .section-about__slider-wrapper-frame-border {
   position: relative;
+  cursor: pointer;
 }
 .section-about__slider-wrapper-frame-border path {
   fill: #ffffff;
@@ -1503,8 +1531,8 @@ main section {
           filter: drop-shadow(0 0 1px black);
 }
 .section-about__slider-wrapper-frame-border text:last-of-type {
-  -webkit-filter: hue-rotate(-145deg) brightness(160%);
-          filter: hue-rotate(-145deg) brightness(160%);
+  -webkit-filter: hue-rotate(-145deg) contrast(0.5) brightness(1.6);
+          filter: hue-rotate(-145deg) contrast(0.5) brightness(1.6);
   opacity: 0;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
@@ -1526,6 +1554,19 @@ main section {
 
 .frame-tickMark svg text:last-of-type {
   opacity: 1;
+}
+.frame-tickMark li::after {
+  content: "✔️" !important;
+  text-shadow: 0 0 0 var(--color-fern-crayola) !important;
+}
+
+.frame-grabbing {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.frame-grabbing svg {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 
 #popover-img__section-about {
@@ -1646,7 +1687,6 @@ main section {
 .section-abilities__content-border {
   top: 51%;
   stroke: var(--color-onahau);
-  filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber");
   stroke-width: 1px;
   fill: rgba(var(--color-light-gray-blue-rgb), 0.07);
 }
@@ -1895,6 +1935,10 @@ main section {
   margin-block: 0.5rem;
   -webkit-filter: drop-shadow(0 0 8px black);
           filter: drop-shadow(0 0 8px black);
+  -webkit-perspective: 100rem;
+          perspective: 100rem;
+  -webkit-perspective-origin: right;
+          perspective-origin: right;
 }
 @media (prefers-reduced-motion: no-preference) {
   .section-abilities__description .description-wrapper__skill-details details {
@@ -1918,8 +1962,28 @@ main section {
 }
 .section-abilities__description .description-wrapper__skill-details details summary {
   cursor: pointer;
-  -webkit-transition: color 0.2s ease;
-  transition: color 0.2s ease;
+  -webkit-transition: color 0.2s ease, -webkit-transform 0.2s ease;
+  transition: color 0.2s ease, -webkit-transform 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+.section-abilities__description .description-wrapper__skill-details details summary span {
+  -webkit-filter: drop-shadow(0 0 1px black);
+          filter: drop-shadow(0 0 1px black);
+}
+.section-abilities__description .description-wrapper__skill-details details summary svg {
+  height: 120%;
+  top: 0;
+  translate: -50%;
+}
+.section-abilities__description .description-wrapper__skill-details details summary svg path {
+  fill: #ffffff;
+  -webkit-filter: url(#inner-shadow-title-type01);
+          filter: url(#inner-shadow-title-type01);
+}
+.section-abilities__description .description-wrapper__skill-details details summary:hover {
+  -webkit-transform: translateZ(2rem);
+          transform: translateZ(2rem);
 }
 .section-abilities__description .description-wrapper__skill-details details summary::marker {
   content: "";
@@ -1930,8 +1994,11 @@ main section {
   position: relative;
   vertical-align: text-top;
   text-align: center;
+  margin-left: 8px;
   height: 1em;
   width: 1em;
+  -webkit-filter: drop-shadow(0 0 1px black);
+          filter: drop-shadow(0 0 1px black);
   -webkit-transform: rotate(0);
           transform: rotate(0);
   -webkit-transition: text-shadow 0.3s ease, font-size 0.3s ease, -webkit-transform 0.25s ease, -webkit-clip-path 0.3s ease;
@@ -1946,6 +2013,16 @@ main section {
   cursor: default;
   -webkit-transition: translate 1s ease, opacity 1s ease, color 0.2s ease;
   transition: translate 1s ease, opacity 1s ease, color 0.2s ease;
+}
+.section-abilities__description .description-wrapper__skill-details details p svg {
+  top: auto;
+  bottom: 0;
+  translate: -50%;
+}
+.section-abilities__description .description-wrapper__skill-details details p svg path {
+  fill: #ffffff;
+  -webkit-filter: url(#inner-shadow-descr-type01);
+          filter: url(#inner-shadow-descr-type01);
 }
 .section-abilities__description .description-wrapper__software {
   width: 95.6%;

@@ -86,28 +86,37 @@
                         li
                                 position: relative
                                 padding-inline: .5rem
+                                height: max-content
                                 color: var(--color-orange)
                                 width: max-content
                                 cursor: pointer
-                                &:hover::after
-                                        opacity: 1
-                                        translate: 0px calc(-50% + .3rem)
+                                &::before,
                                 &::after
-                                        // content: '🞀'
-                                        content: '🞀 ❔'
-                                        // content: '🞀 ❔︎'
-                                        // content: '🞀 ✅︎'
                                         // content: '🞀 ⚠'
                                         // content: '🞀 👆︎'
                                         position: absolute
+                                        display: inline-block
+                                        height: 100%
                                         width: max-content
                                         top: 50%
+                                        right: 0
                                         opacity: 0
-                                        padding-inline: .5rem
+                                        vertical-align: middle
                                         color: transparent
                                         text-shadow: 0 0 0 var(--color-white)
-                                        translate: 10px calc(-50% + .3rem)
-                                        transition: opacity .3s ease, translate .3s ease
+                                        transition: opacity .3s ease, translate .3s ease, text-shadow .3s ease
+                                &::after
+                                        content: '❔'
+                                        translate: 150% calc(-50% + .3rem)
+                                &::before
+                                        content: '🞀'
+                                        translate: 100% calc(-50% + .5rem)
+                                &:hover::after
+                                        opacity: 1
+                                        translate: 130% calc(-50% + .3rem)
+                                &:hover::before
+                                        opacity: 1
+                                        translate: 80% calc(-50% + .5rem)
                         & ::marker
                                 content: '🞂'
                                 color: var(--color-white)
@@ -211,8 +220,7 @@
                                         background-clip: border-box
                                         transition: background .3s ease
                                         &:checked
-                                                // background: var(--color-light-gray-blue)
-                                                background: white
+                                                background: var(--color-white)
                                                 background-clip: border-box
         &__slider
                 position: relative
@@ -222,32 +230,11 @@
                 width: 100%
                 overflow-y: scroll
                 overflow-x: hidden
-                // scroll-behavior: smooth
                 backface-visibility: hidden
                 perspective: 100rem
                 cursor: grab
                 &::-webkit-scrollbar
                         display: none
-                        // width: 7px
-                // &::-webkit-scrollbar-track
-                //         border-radius: 20px 4px
-                //         background: var(--color-ebony-clay)
-                //         background-clip: content-box
-                // &::-webkit-scrollbar-thumb
-                //         background: var(--color-grideperleft)
-                //         // background: #44797e
-                //         border-radius: 20px 4px
-                //         cursor: pointer
-                //         anchor-name: --anchor-thumb
-
-                // &::-webkit-scrollbar-button:start:increment
-                //         height: 14%
-                //         display: block
-                //         background: transparent
-                // &::-webkit-scrollbar-button:end:increment
-                //         height: 14%
-                //         display: block
-                //         background: transparent
                 &-wrapper
                         position: sticky
                         top: 0
@@ -274,14 +261,9 @@
                                 transform: translateZ( calc(var(--translateZ) * 1px) ) rotateY(-14deg)
                                 translate: calc(var(--translateX) * 1%) -50%
                                 transition: opacity .3s ease, translate .8s ease, filter .3s ease
-                                p
-                                        position: absolute
-                                        left: 50%
-                                        top: 10%
-                                        translate: -50% -50%
-                                        filter: drop-shadow(0 0 1rem black)
                                 &-border
                                         position: relative
+                                        cursor: pointer
                                         path
                                                 fill: #ffffff
                                                 filter: url(#inner-shadow-descr-type01)
@@ -297,7 +279,7 @@
                                                 stroke: var(--color-white)
                                                 filter: drop-shadow(0 0 1px black)
                                         text:last-of-type
-                                                filter: hue-rotate(-145deg) brightness(160%)
+                                                filter: hue-rotate(-145deg) contrast(.5) brightness(1.6)
                                                 opacity: 0
                                                 transition: opacity .3s ease
                                         text,
@@ -315,10 +297,38 @@
         svg
                 text:last-of-type
                         opacity: 1
+        li::after
+                content: '✔️' !important
+                text-shadow: 0 0 0 var(--color-fern-crayola) !important
+
+.frame-grabbing
+        cursor: grabbing
+        svg
+                cursor: grabbing
 
 
-        // ✅︎
+// &::-webkit-scrollbar
+//         display: none
+        // width: 7px
+// &::-webkit-scrollbar-track
+//         border-radius: 20px 4px
+//         background: var(--color-ebony-clay)
+//         background-clip: content-box
+// &::-webkit-scrollbar-thumb
+//         background: var(--color-grideperleft)
+//         // background: #44797e
+//         border-radius: 20px 4px
+//         cursor: pointer
+//         anchor-name: --anchor-thumb
 
+// &::-webkit-scrollbar-button:start:increment
+//         height: 14%
+//         display: block
+//         background: transparent
+// &::-webkit-scrollbar-button:end:increment
+//         height: 14%
+//         display: block
+//         background: transparent
 
 
 

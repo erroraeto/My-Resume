@@ -22,7 +22,7 @@
         &-border
             top: 51%
             stroke: var(--color-onahau)
-            filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+            // filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
             stroke-width: 1px
             // fill: rgba(88, 89, 135, 0.07)
             fill: rgba(var(--color-light-gray-blue-rgb), .07)
@@ -203,6 +203,8 @@
                         // overflow: hidden
                         margin-block: .5rem
                         filter: drop-shadow(0 0 8px black)
+                        perspective: 100rem
+                        perspective-origin: right
                         @media (prefers-reduced-motion: no-preference)
                             interpolate-size: allow-keywords
                         &::details-content
@@ -217,7 +219,20 @@
                             transform: rotate(90deg)
                         summary
                             cursor: pointer
-                            transition: color .2s ease
+                            transition: color .2s ease, transform .2s ease
+                            span
+                                filter: drop-shadow(0 0 1px black)
+                            svg
+                                // height: auto
+                                height: 120%
+                                top: 0
+                                translate: -50%
+                                path
+                                    fill: #ffffff
+                                    filter: url(#inner-shadow-title-type01)
+                                    // filter: url(#inner-shadow-descr-type01)
+                            &:hover
+                                transform: translateZ(2rem)
                             &::marker
                                 content: ''
                             &::before
@@ -226,8 +241,10 @@
                                 position: relative
                                 vertical-align: text-top
                                 text-align: center
+                                margin-left: 8px
                                 height: 1em
                                 width: 1em
+                                filter: drop-shadow(0 0 1px black)
                                 transform: rotate(0)
                                 transition: transform .25s ease, clip-path .3s ease, text-shadow .3s ease, font-size .3s ease
                         p
@@ -236,6 +253,13 @@
                             color: var(--color-white) !important
                             cursor: default
                             transition: translate 1s ease, opacity 1s ease, color .2s ease
+                            svg
+                                top: auto
+                                bottom: 0
+                                translate: -50%
+                                path
+                                    fill: #ffffff
+                                    filter: url(#inner-shadow-descr-type01)
             &__software
                 width: 95.6%
                 height: 100%

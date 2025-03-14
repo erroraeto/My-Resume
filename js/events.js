@@ -182,7 +182,11 @@ attnSctAbt.addEventListener("click", (e) => {
             top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
             behavior: "smooth",
         });
-        viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')].classList.add('frame-tickMark');
+        [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.add('frame-tickMark'));
+
+        e.target.onmouseout = () => {
+            [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.remove('frame-tickMark'));
+        }
     }
 });
 
@@ -336,26 +340,37 @@ viewSection.addEventListener('scroll', (event) => {
 
     };
 
-    if ('onscrollend' in window) {
-        event.target.onscrollend = (event) => {
-            let diff = event.timeStamp - lastTimeStamp;
-            lastTimeStamp = event.timeStamp;
-            if (diff > 1200) {
-                let equal = snapVals.reduce((nearest, num) => Math.abs(num - lastPos) >= Math.abs(nearest - lastPos) && nearest < num? nearest : num);
-                viewSection.scrollTo({
-                    top: equal,
-                    behavior: "smooth",
-                });
-            }
-        };
-    } else {
-        document.onscroll = () => {
-            clearTimeout(window.scrollEndTimer)
-            window.scrollEndTimer = setTimeout(() => {
+    event.target.onclick = (event) => {
+        let target = event.target.closest('.section-about__slider-wrapper-frame');
+        if (!target) return;
 
-            }, 100)
-        }
-    }
+        const index = target ? [...target.parentNode.children].indexOf(target) : -1;
+        viewSection.scrollTo({
+            top: snapVals[index],
+            behavior: "smooth",
+        });
+    };
+
+    // if ('onscrollend' in window) {
+    //     event.target.onscrollend = (event) => {
+    //         let diff = event.timeStamp - lastTimeStamp;
+    //         lastTimeStamp = event.timeStamp;
+    //         if (diff > 1200) {
+    //             let equal = snapVals.reduce((nearest, num) => Math.abs(num - lastPos) >= Math.abs(nearest - lastPos) && nearest < num? nearest : num);
+    //             viewSection.scrollTo({
+    //                 top: equal,
+    //                 behavior: "smooth",
+    //             });
+    //         }
+    //     };
+    // } else {
+    //     document.onscroll = () => {
+    //         clearTimeout(window.scrollEndTimer)
+    //         window.scrollEndTimer = setTimeout(() => {
+
+    //         }, 100)
+    //     }
+    // }
 
 });
 
@@ -366,7 +381,7 @@ startX;
 
 viewSection.addEventListener('mousedown', (event) => {
 
-    viewSection.style = 'cursor: grabbing';
+    viewSection.classList.add('frame-grabbing');
     isDownViewSection = true;
     scrollTop = viewSection.scrollTop;
     startX = event.pageX - viewSection.offsetLeft;
@@ -380,7 +395,7 @@ viewSection.addEventListener('mousedown', (event) => {
     };
 
     event.target.onmouseup = () => {
-        viewSection.style = '';
+        viewSection.classList.remove('frame-grabbing');
         isDownViewSection = false;
     };
 });
@@ -604,29 +619,43 @@ function parametrClipPath(e, event) {
 };
 
 
-let SVGdescSkill = document.querySelector(".description-wrapper__skill-border");
-let skillSection = document.querySelector(".description-wrapper__skill-details");
+let SVGdescSkill = document.querySelector(".description-wrapper__skill-border"),
+SVGdetailTitleSoft = detailSoft.querySelectorAll('summary svg'),
+SVGdetailDescSoft = detailSoft.querySelectorAll('p svg');
 
 const observerSkillSection = new ResizeObserver((entries) => {
     for (const entry of entries) {
-        const matchedSkill = new Map([
-            [/\b\s{2}\S+/g, `  ${entry.contentRect.height + 10}`],
-            [/\b\s{3}\S+/g, `   ${entry.contentRect.height - 22}`],
-        ]);
-        if (entry.contentBoxSize) {
-            // SVGdescSkill.attributes[1].nodeValue = `0 -${Math.round(entry.target.offsetTop - 14)} ${Math.round(entry.target.parentElement.offsetWidth)} 144`;
-            SVGdescSkill.attributes[1].nodeValue = `0 ${-Math.round(entry.target.offsetTop - 14)} ${Math.round(entry.target.parentElement.offsetWidth)} 144`;
-            SVGdescSkill.children[0].attributes[0].nodeValue = entry.contentRect.height + 100;
-            SVGdescSkill.children[0].attributes[1].nodeValue = entry.target.parentElement.offsetWidth;
-            SVGdescSkill.children[1].attributes[2].nodeValue = SVGdescSkill.children[1].attributes[2].nodeValue.replace(/\s\M\S+/, ` M${entry.target.parentElement.offsetWidth - 30}`);
-            for (const [key, value] of matchedSkill.entries()) {
-                SVGdescSkill.children[1].attributes[2].nodeValue = SVGdescSkill.children[1].attributes[2].nodeValue.replace(key, value);
-            };
+        let detail = entry.target.closest('details'),
+        summary = detail.children[0].children[1],
+        SVGTitle = detail.children[0].children[0],
+        desc = detail.children[1].children[0],
+        SVGdesc = detail.children[1].children[0];
+
+
+        if (entry.target.closest('summary svg')) {
+            SVGTitle.attributes[1].nodeValue = `0 0 ${Math.round(SVGTitle.clientWidth)} ${Math.round(SVGTitle.clientHeight)}`;
+            SVGTitle.children[0].attributes[1].nodeValue = SVGTitle.children[0].attributes[1].nodeValue.replace(/\d+/, `1`);
+    
+            SVGTitle.children[0].attributes[1].nodeValue = SVGTitle.children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(SVGTitle.clientWidth - 18)}`);
+            SVGTitle.children[0].attributes[1].nodeValue = SVGTitle.children[0].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(SVGTitle.clientWidth - (summary.offsetWidth + summary.offsetLeft) - 14)}`);
+            SVGTitle.children[0].attributes[1].nodeValue = SVGTitle.children[0].attributes[1].nodeValue.replace(/\s{2}\-\d+/, `  -${Math.round(summary.offsetWidth + summary.offsetLeft)}`);
+    
+            SVGTitle.children[0].attributes[1].nodeValue = SVGTitle.children[0].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(SVGTitle.clientHeight - 9)}`);
+        } else if (entry.target.closest('p svg')) {
+            SVGdesc.attributes[1].nodeValue = `0 0 ${Math.round(desc.clientWidth)} ${Math.round(desc.clientHeight)}`;
+
+            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(summary.offsetWidth + summary.offsetLeft)}`);
+            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(desc.clientWidth - (summary.offsetWidth + summary.offsetLeft) - 20)}`);
+            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(desc.clientWidth - 12)}`);
+
+            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(desc.clientHeight - 9)}`);
         }
     }
 });
 
-observerSkillSection.observe(skillSection);
+for (svg of SVGdetailTitleSoft) observerSkillSection.observe(svg);
+for (svg of SVGdetailDescSoft) observerSkillSection.observe(svg);
+
 
 let SVGContSkill = document.querySelectorAll(".button-state__border");
 let skillSectionCont = document.querySelectorAll(".button-state");
