@@ -80,14 +80,12 @@
             &::-webkit-scrollbar-button
                 width: 6rem
             &::-webkit-scrollbar-track
-                border: .2rem solid var(--color-light-slate-gray)
-                border-radius: 6px
-                cursor: pointer
-                background: none
+                border-radius: 20px 4px
+                background: var(--color-ebony-clay)
                 background-clip: content-box
             &::-webkit-scrollbar-thumb
                 background: var(--color-grideperleft)
-                border-radius: 6px
+                border-radius: 20px 4px
                 cursor: pointer
             &-skills
                 position: relative
@@ -223,14 +221,13 @@
                             span
                                 filter: drop-shadow(0 0 1px black)
                             svg
-                                // height: auto
                                 height: 120%
                                 top: 0
                                 translate: -50%
+                                transition: filter .3s ease
                                 path
                                     fill: #ffffff
                                     filter: url(#inner-shadow-title-type01)
-                                    // filter: url(#inner-shadow-descr-type01)
                             &:hover
                                 transform: translateZ(2rem)
                             &::marker
@@ -259,7 +256,7 @@
                                 translate: -50%
                                 path
                                     fill: #ffffff
-                                    filter: url(#inner-shadow-descr-type01)
+                                    filter: url(#inner-shadow-descr-type03)
             &__software
                 width: 95.6%
                 height: 100%

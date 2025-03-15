@@ -1770,15 +1770,13 @@ main section {
   width: 6rem;
 }
 .section-abilities__content-section::-webkit-scrollbar-track {
-  border: 0.2rem solid var(--color-light-slate-gray);
-  border-radius: 6px;
-  cursor: pointer;
-  background: none;
+  border-radius: 20px 4px;
+  background: var(--color-ebony-clay);
   background-clip: content-box;
 }
 .section-abilities__content-section::-webkit-scrollbar-thumb {
   background: var(--color-grideperleft);
-  border-radius: 6px;
+  border-radius: 20px 4px;
   cursor: pointer;
 }
 .section-abilities__content-section-skills {
@@ -1975,6 +1973,10 @@ main section {
   height: 120%;
   top: 0;
   translate: -50%;
+  -webkit-transition: -webkit-filter 0.3s ease;
+  transition: -webkit-filter 0.3s ease;
+  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, -webkit-filter 0.3s ease;
 }
 .section-abilities__description .description-wrapper__skill-details details summary svg path {
   fill: #ffffff;
@@ -2021,8 +2023,8 @@ main section {
 }
 .section-abilities__description .description-wrapper__skill-details details p svg path {
   fill: #ffffff;
-  -webkit-filter: url(#inner-shadow-descr-type01);
-          filter: url(#inner-shadow-descr-type01);
+  -webkit-filter: url(#inner-shadow-descr-type03);
+          filter: url(#inner-shadow-descr-type03);
 }
 .section-abilities__description .description-wrapper__software {
   width: 95.6%;

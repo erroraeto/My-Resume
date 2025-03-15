@@ -606,14 +606,15 @@ function parametrClipPath(e, event) {
                 parametr.attributes[1].nodeValue = parametr.attributes[1].nodeValue.replace(macthClP[i], function(matched){
                     return replaceClP[matched];
                 });
-                return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-fern-crayola);";
+                statesPenta[i].style = "color: var(--color-fern-crayola);";
+                return statesDescrTerm[i].children[0].children[0].style = "filter: hue-rotate(-74deg);";
             } else {
                 i++;
             }
         });
         e.target.addEventListener(event, () => {
             parametr.attributes[1].nodeValue = "M37.5 59 28.515 44.53 10.998 40.713 21.735 27.058 21.991 11.541 37.5 18 51.672 13.264 52.535 27.276 61.957 40.039 45.688 43.318ZM51.672 13.264 37.5 32M21.991 11.541 37.5 32M10.998 40.713 37.5 32M37.5 59 37.5 32M61.957 40.039 37.5 32M37.5 18 37.5 32M21.735 27.058 37.5 32M28.515 44.53 37.5 32M45.688 43.318 37.5 32M52.535 27.276 37.5 32";
-            statesDescrTerm[i].style = statesPenta[i].style = "";
+            statesDescrTerm[i].children[0].children[0].style = statesPenta[i].style = "";
         });
     };
 };
