@@ -6,15 +6,47 @@
 html
     color-scheme: dark
     font-size: 62.5%
-    scroll-behavior: smooth
+    // scroll-behavior: smooth
     overflow: hidden
+    // overflow-x: scroll
+    // overflow-y: hidden
+    // &::-webkit-scrollbar
+    //     height: .8rem
+    // &::-webkit-scrollbar-button
+    //     width: 6rem
+    // &::-webkit-scrollbar-track
+    //     border-radius: 20px 4px
+    //     background: var(--color-ebony-clay)
+    //     background-clip: content-box
+    // &::-webkit-scrollbar-thumb
+    //     background: var(--color-grideperleft)
+    //     border-radius: 20px 4px
+    //     cursor: pointer
     @include respond(big-screen)
         font-size: 67%
 
 body
     background: black
     perspective: 100rem
-    width: max-content
+    // width: max-content
+    width: 100vw
+    height: 100vh
+    // scroll-behavior: smooth
+    overflow-x: scroll
+    overflow-y: hidden
+    // scroll-snap-type: x mandatory
+    &::-webkit-scrollbar
+        height: .8rem
+    &::-webkit-scrollbar-button
+        // width: 6rem
+    &::-webkit-scrollbar-track
+        border-radius: 20px 4px
+        background: var(--color-ebony-clay)
+        background-clip: content-box
+    &::-webkit-scrollbar-thumb
+        background: var(--color-grideperleft)
+        border-radius: 20px 4px
+        cursor: pointer
     &::after
         content: ''
         position: absolute

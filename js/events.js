@@ -351,27 +351,6 @@ viewSection.addEventListener('scroll', (event) => {
         });
     };
 
-    // if ('onscrollend' in window) {
-    //     event.target.onscrollend = (event) => {
-    //         let diff = event.timeStamp - lastTimeStamp;
-    //         lastTimeStamp = event.timeStamp;
-    //         if (diff > 1200) {
-    //             let equal = snapVals.reduce((nearest, num) => Math.abs(num - lastPos) >= Math.abs(nearest - lastPos) && nearest < num? nearest : num);
-    //             viewSection.scrollTo({
-    //                 top: equal,
-    //                 behavior: "smooth",
-    //             });
-    //         }
-    //     };
-    // } else {
-    //     document.onscroll = () => {
-    //         clearTimeout(window.scrollEndTimer)
-    //         window.scrollEndTimer = setTimeout(() => {
-
-    //         }, 100)
-    //     }
-    // }
-
 });
 
 let isDownViewSection,
@@ -394,7 +373,7 @@ viewSection.addEventListener('mousedown', (event) => {
         }
     };
 
-    event.target.onmouseup = () => {
+    viewSection.onmouseleave = viewSection.onmouseup = () => {
         viewSection.classList.remove('frame-grabbing');
         isDownViewSection = false;
     };
@@ -466,42 +445,6 @@ document.addEventListener('DOMContentLoaded', async function(e) {
     }
 });
 
-// let parametr = document.querySelector(".section-abilities__content-section-skills > foreignObject > div");
-
-// const mapCoupleCP = new Map([
-//     [/63.95% 65%/g, '67.8% 70.62%'],
-//     [/67.8% 70.62%/g, '63.95% 65%'],
-//     [/66% 68%/g, '69.5% 73%'],
-//     [/69.5% 73%/g, '66% 68%'],
-//     [/75.94% 36.1%/g, '78% 35.4%'],
-//     [/78% 35.4%/g, '75.94% 36.1%'],
-//     [/73.8% 36.8%/g, '82% 34%'],
-//     [/82% 34%/g, '73.8% 36.8%'],
-//     [/49.9% 17.12%/g, '49.9% 12%'],
-//     [/49.9% 12%/g, '49.9% 17.12%'],
-//     [/49.8% 21.25%/g, '49.8% 10.75%'],
-//     [/49.8% 10.75%/g, '49.8% 21.25%'],
-//     [/22% 35.3%/g, '17% 33.6%'],
-//     [/17% 33.6%/g, '22% 35.3%'],
-//     [/24.69% 36.3%/g, '17.56% 34%'],
-//     [/17.56% 34%/g, '24.69% 36.3%'],
-//     [/34% 68%/g, '31.2% 72%'],
-//     [/31.2% 72%/g, '34% 68%'],
-//     [/35.2% 66.24%/g, '31.2% 72.23%'],
-//     [/31.2% 72.23%/g, '35.2% 66.24%'],
-// ]);
-// document.addEventListener('DOMContentLoaded', async function(e) {
-//     while(parametr) {
-//         for (const [key, value] of mapCoupleCP.entries()) {
-//             if (parametr.style.clipPath.search(key) > 0) {
-//                 parametr.style.clipPath = parametr.style.clipPath.replace(key, value);
-//                 await sleep(100);
-//             }
-//         }
-//         await sleep(3000);
-//     }
-// });
-
 //Выбор скилла
 let statesDescrTerm = document.querySelectorAll(".description-wrapper__skill-details .state");
 let statesPenta = document.querySelectorAll(".section-abilities__content-section-skills .state");
@@ -518,23 +461,6 @@ const pentagonVertex = [
     [74,44],
     [61,1],
 ];
-
-// const macthClP = [
-//     /21.735 27.058 21.991 11.541 37.5 18/g,
-//     /28.515 44.53 10.998 40.713 21.735 27.058/g,
-//     /37.5 59 28.515 44.53|45.688 43.318/gi,
-//     /52.535 27.276 61.957 40.039 45.688 43.318/g,
-//     /37.5 18 51.672 13.264 52.535 27.276/g,
-// ];
-
-// const replaceClP = {
-//     '37.5 59 28.515 44.53' : '37.5 71 27.66 45.722',
-//     '45.688 43.318' : '47.117 45.299',
-//     '28.515 44.53 10.998 40.713 21.735 27.058' : '27.66 45.722 1 44 19.459 26.344',
-//     '21.735 27.058 21.991 11.541 37.5 18' : '19.459 26.344 14 1 37.5 15.5',
-//     '37.5 18 51.672 13.264 52.535 27.276' : '37.5 15.5 61 1 55.079 26.527',
-//     '52.535 27.276 61.957 40.039 45.688 43.318' : '55.079 26.527 74 44 47.117 45.299',
-// };
 
 const macthClP = [
     /21.735 27.058|21.991 11.541|37.5 18/g,
@@ -570,17 +496,6 @@ detailSoft.onclick = (e) => {
             statesPenta[i].classList.remove('skill__select');
         }
     }
-    // for (st of statesPenta) statesPenta[i] == st ? st.classList.toggle('skill__select') : st.classList.remove('skill__select');
-    // for (st of detailSoft.children) {
-        //     if (e.target.closest(".state") == st) {
-    //         st.classList.toggle('skill-desc__select');
-    //     } else {
-    //         st.open = false;
-    //         st.classList.remove('skill-desc__select');
-    //     }
-    // }
-    // for (st of statesPenta) statesPenta[i] == st ? st.classList.toggle('skill__select') : st.classList.remove('skill__select');
-    // }
 };
 
 function parametrClipPath(e, event) {
@@ -676,70 +591,6 @@ let skillSectionCont = document.querySelectorAll(".button-state");
     }
 })();
 
-// const resizeObserver = new ResizeObserver((entries) => {
-//     let i = 0;
-//     for (const entry of entries) {
-//         if (entry.contentBoxSize) {
-//             SVGContSkill[i].attributes[1].nodeValue = `0 0 ${Math.round(entry.target.offsetWidth)} ${Math.round(entry.target.offsetHeight)}`;
-//             i++;
-//         }
-//     }
-// });
-
-// resizeObserver.observe(skillSectionCont);
-
-
-
-// let statesDescrTerm = document.querySelectorAll(".description-wrapper__skill .state");
-// let statesPenta = document.querySelectorAll(".section-abilities__content-section-skills .state");
-
-// document.onmouseover = (e) => parametrClipPath(e, 'mouseout');
-// document.ontouchstart = (e) => parametrClipPath(e, 'touchend');
-// let click = false;
-// // document.onclick = (e) => click = !click;
-
-// const macthClP = [
-//     /49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%/g,
-//     /24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%/g,
-//     /49.8% 75.51%, 63.95% 65%|35.2% 66.24%/gi,
-//     /63.95% 65%, 91.2% 59.1%, 73.8% 36.8%/g,
-//     /73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%/g
-// ];
-
-// const replaceClP = {
-//     '49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%' : '49.9% 17.12%, 22% 4.5%, 22% 35.3%',
-//     '24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%' : '22% 35.3%, 4.8% 60.4%, 34% 68%',
-//     '49.8% 75.51%, 63.95% 65%' : '49.9% 94.7%, 66% 68%',
-//     '35.2% 66.24%' : '34% 68%',
-//     '63.95% 65%, 91.2% 59.1%, 73.8% 36.8%' : '66% 68%, 95% 60.3%, 75.94% 36.1%',
-//     '73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%' : '75.94% 36.1%, 77.8% 4.5%, 49.9% 17.12%',
-// };
-
-// let detailSoft = document.querySelector(".description-wrapper__skill");
-// detailSoft.onclick = (e) => {for (st of detailSoft.children) if (e.target.closest(".state") != st) st.open = false};
-
-// function parametrClipPath(e, event) {
-//     if (e.target.className.baseVal == "state" || e.target.closest('.state')) {
-//         let i = 0;
-//         Array.from(e.target.closest('.state').parentElement.querySelectorAll('.state')).some((el) => {
-//             if (e.target.closest('.state') == el) {
-//                 statesPenta[i].onclick = () => {for (st of statesDescrTerm) statesDescrTerm[i] == st ? st.open = !st.open : st.open = false};
-//                 parametr.style.clipPath = parametr.style.clipPath.replace(macthClP[i], function(matched){
-//                     return replaceClP[matched];
-//                 });
-//                 return statesDescrTerm[i].style = statesPenta[i].style = "color: var(--color-orange); fill: var(--color-orange);";
-//             } else {
-//                 i++;
-//             }
-//         });
-//         e.target.addEventListener(event, () => {
-//             parametr.style.clipPath = "polygon(49.8% 75.51%, 63.95% 65%, 91.2% 59.1%, 73.8% 36.8%, 66.68% 20.58%, 49.8% 21.25%, 30.15% 16.45%, 24.69% 36.3%, 10.73% 58.3%, 35.2% 66.24%)";
-//             statesDescrTerm[i].style = statesPenta[i].style = "";
-//         });
-//     };
-// };
-
-
 //Выбор ПО
 let softwareSection = document.querySelector(".description-wrapper__software");
 let softwareIcon = document.querySelector(".section-abilities__content-section-software");
@@ -749,10 +600,6 @@ let descrTitleSoft = document.querySelector(".description-wrapper__software-arti
 let descrTxtSoft = document.querySelector(".description-wrapper__software-article-description");
 
 let SVGdescSoft = document.querySelector(".description-wrapper__software-border");
-
-// let SVGdescSoftTop = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-1");
-// let SVGdescSoftMidle = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-3");
-// let SVGdescSoftBottom = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-2");
 
 let SVGdescSoftTitle = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-1");
 let SVGdescSoftDesc = document.querySelector(".description-wrapper__software-border #description-wrapper__software-border-2");
@@ -875,157 +722,6 @@ const resizerSVG = new ResizeObserver((entries) => {
 
 resizerSVG.observe(sectionAbil);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// softwareIcon.addEventListener('click', async (e) => {
-//     let targButton = e.target.closest(".icon-button");
-//     if (!targButton) return;
-
-//     for (btn of targButton.offsetParent.children) {
-//         if (targButton != btn) {
-//             btn.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 0 6 0 2 0 6 0 2 2 0 27-28 0-2-2z';
-//             btn.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 0 5 0 2 0z';
-//             btn.children[0].children[2].style = '';
-//         }
-//     }
-//     targButton.children[0].children[1].attributes[1].nodeValue = 'M1 1l4 0 1 2 1-2 6 0 2 2 6 0 2-2 6 0 2 2 0 27-28 0-2-2z';
-//     targButton.children[0].children[2].attributes[1].nodeValue = 'M13.5.5l2 2 5 0 2-2z';
-//     targButton.children[0].children[2].style = 'opacity: 1;';
-
-
-//     abilDesc.children[1].classList.add("software__hidden");
-//     await sleep(200);
-
-//     SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 48`);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    7 `);
-
-//     await sleep(300);
-
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `160 `);
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   -8 `);
-//     SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `160 `);
-//     SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  6 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `155 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  8 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   4 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -18 `);
-
-//     await sleep(300);
-
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
-//     SVGdescSoft.children[0].attributes[2].nodeValue = SVGdescSoft.children[0].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   -107 `);
-//     SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\d.*?\s/, `8 `);
-//     SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  310 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\d.*?\s/, `3 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{2}.*?\s/, `  213 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{3}.*?\s/, `   103 `);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{5}.*?\s/, `     -322 `);
-
-//     await sleep(300);
-
-//     descrTitleSoft.children[0].children[2].innerHTML = '';
-//     descrTitleSoft.children[0].children[1].attributes[1].nodeValue = targButton.children[1].children[0].attributes[1].nodeValue;
-//     descrTitleSoft.children[1].innerHTML = targButton.value;
-//     descrTxtSoft.innerHTML = `<p>${colTitle_Desc[targButton.value]}</p>`;
-
-//     let descSize = descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight;
-//     let descrTxtSoftSize = descrTxtSoft.getBoundingClientRect();
-
-
-//     // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.round(+match + (descSize - 44))}`);
-//     SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, `    ${Math.round(descrTxtSoft.getBoundingClientRect().height)} `);
-
-//     // SVGdescSoft.children[1].attributes[2].nodeValue = SVGdescSoft.children[1].attributes[2].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize - 44))}`);
-//     // SVGdescSoft.children[2].attributes[2].nodeValue = SVGdescSoft.children[2].attributes[2].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 44))} `);
-
-//     await sleep(200);
-//     abilDesc.children[1].classList.remove("software__hidden");
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-// softwareIcon.addEventListener('click', async (e) => {
-//     if (!e.target.closest(".icon-button")) return;
-
-//     abilDesc.children[1].children[1].classList.add("hidden-wrapper_section_software");
-//     await sleep(100);
-
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 75`);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 115`);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, ` 88`);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{4}.*?\s/, `    20 `);
-
-//     await sleep(300);
-
-//     let wdt = SVG.children[0].attributes[1].nodeValue.match(/\s{2}.*?\s/gi);
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\d.*?\s/, (match) => `${Math.floor(+match + (wdt[0] / 2 - 11))} `);
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  22 `);
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   -10 `);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\d.*?\s/, (match) => `${Math.floor(+match + (wdt[0] / 2 - 11))} `);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  22 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\d.*?\s/, (match) => `${Math.floor(+match + (wdt[0] / 2 - 11))} `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  22 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   6 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{5}.*?\s/, `     -38 `);
-
-//     await sleep(300);
-
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\d.*?\s/, `11 `);
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  300 `);
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   -100 `);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\d.*?\s/, `11 `);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  300 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\d.*?\s/, `3 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{2}.*?\s/, `  210 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{3}.*?\s/, `   96 `);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{5}.*?\s/, `     -316 `);
-
-//     await sleep(300);
-
-//     // abilDesc.children[1].children[1].children[0].children[0].children[4].innerHTML = '';
-//     // abilDesc.children[1].children[1].children[0].children[0].children[3].attributes[1].nodeValue = e.target.closest(".icon_button").children[1].children[2].attributes[1].nodeValue;
-//     // abilDesc.children[1].children[1].children[0].children[1].innerHTML = e.target.closest(".icon_button").value;
-//     // descriptionSoft.innerHTML = `<p>${colTitle_Desc[e.target.closest(".icon_button").value]}</p>`;
-    
-//     descrTitleSoft.children[0].children[2].innerHTML = '';
-//     descrTitleSoft.children[0].children[1].attributes[1].nodeValue = e.target.closest(".icon-button").children[1].children[0].attributes[1].nodeValue;
-//     descrTitleSoft.children[1].innerHTML = e.target.closest(".icon-button").value;
-//     descrTxtSoft.innerHTML = `<p>${colTitle_Desc[e.target.closest(".icon-button").value]}</p>`;
-
-//     // let descSize = softwareSection.getBoundingClientRect();
-//     let descSize = descrTitleSoft.offsetHeight + descrTxtSoft.offsetHeight;
-
-//     SVG.children[0].attributes[1].nodeValue = SVG.children[0].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match - (descSize / 2 - 37))}`);
-//     SVG.children[1].attributes[1].nodeValue = SVG.children[1].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match + (descSize / 2 - 37))}`);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s(.*?)\d\d{0,}/, (match) => ` ${Math.floor(+match - (descSize / 2 - 37))}`);
-//     SVG.children[2].attributes[1].nodeValue = SVG.children[2].attributes[1].nodeValue.replace(/\s{4}.*?\s/, (match) => `    ${Math.floor(+match + (descSize - 74))} `);
-
-//     await sleep(100);
-//     abilDesc.children[1].children[1].classList.remove("hidden-wrapper_section_software");
-// });
-
 //Анимация глаза
 let x = +bounds.getAttribute('cx');
 let y = +bounds.getAttribute('cy');
@@ -1054,20 +750,69 @@ let footer = document.querySelector('footer');
 let contacts = document.querySelector('.footer__contacts');
 let opened = false;
 
-document.addEventListener('click', async function (e) {
-    if (!e.target.closest('.footer__contact-target')) return;
+// document.addEventListener('click', async function (e) {
+//     if (!e.target.closest('.footer__contact-target')) return;
 
-    if (opened) {
-        footer.style.transform = 'translate3d(0, 13rem, 0)';
-        await sleep(500);
-        contacts.style.display = 'none';
-        opened = false;
-    } else {
-        footer.style.transform = '';
-        contacts.style.display = 'grid';
-        opened = true;
-    }
+//     if (opened) {
+//         // footer.style.transform = 'translate3d(0, 13rem, 0)';
+//         footer.style.setProperty("--translateY", 13);
+//         await sleep(500);
+//         contacts.style.display = 'none';
+//         opened = false;
+//     } else {
+//         // footer.style.transform = '';
+//         footer.style.setProperty("--translateY", 0);
+//         contacts.style.display = 'grid';
+//         opened = true;
+//     }
+// });
+
+
+
+
+// footer.addEventListener('', e => {});
+document.body.addEventListener('scroll', (event) => {
+
+    let body = event.target,
+    scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
+    scrollThumbCenter = body.offsetWidth / (body.scrollWidth / body.offsetWidth) / 2,
+    footerCenter = footer.offsetWidth / 2;
+
+    footer.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
+
 });
+
+let footerIsDown,
+footerStartX,
+footerScrollLeft;
+
+footer.addEventListener('mousedown', (event) => {
+
+    let body = document.body;
+    footerIsDown = true;
+    footerStartX = event.clientX;
+    footerScrollLeft = body.scrollLeft;
+
+
+    document.onmousemove = (event) => {
+        if (footerIsDown) {
+            const x = event.clientX;
+            const walkX = (x - footerStartX) * body.scrollWidth / body.offsetWidth;
+            body.scrollLeft = footerScrollLeft + walkX;
+        }
+    };
+
+    document.onmouseup = () => {
+        footerIsDown = false;
+    };
+
+});
+
+
+
+
+
+
 
 //Анимация наведения на контакты
 // let icons = document.querySelectorAll('.hovering');

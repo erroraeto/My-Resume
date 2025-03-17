@@ -678,7 +678,6 @@ p {
 html {
   color-scheme: dark;
   font-size: 62.5%;
-  scroll-behavior: smooth;
   overflow: hidden;
 }
 @media (min-width: 1800px) {
@@ -691,9 +690,23 @@ body {
   background: black;
   -webkit-perspective: 100rem;
           perspective: 100rem;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+body::-webkit-scrollbar {
+  height: 0.8rem;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 20px 4px;
+  background: var(--color-ebony-clay);
+  background-clip: content-box;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--color-grideperleft);
+  border-radius: 20px 4px;
+  cursor: pointer;
 }
 body::after {
   content: "";
@@ -2150,16 +2163,18 @@ main section {
 
 footer {
   position: sticky;
-  height: 16rem;
   width: 36.8rem;
-  margin-left: auto;
+  height: 16rem;
   bottom: 0;
-  right: 0;
+  left: 0;
   z-index: 20;
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  --translateY: 13;
+  -webkit-transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1rem));
+          transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1rem));
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 footer .footer__border {
   fill: rgba(var(--color-dark-tangerine-rgb), 0.2);
