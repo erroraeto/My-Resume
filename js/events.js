@@ -50,18 +50,12 @@ function sleep(ms) {
 };
 //Прокрутка к основному фрейму
 window.onload = function() {
-    document.all[0].style.scrollBehavior = "auto";
+    main.style.scrollBehavior = "auto";
     // skill.scrollIntoView({behavior: "auto"});
-    home.scrollIntoView({behavior: "auto"});
-    document.all[0].style.scrollBehavior = "";
+    // home.scrollIntoView({behavior: "auto"});
+    home.scrollIntoView({inline: "center", behavior: "auto"});
+    main.style.scrollBehavior = "";
 }
-
-//Скролл по id
-document.addEventListener('click', async function (e) {
-    if (e.target.id != "btn") return;
-    let containerChoosed = document.getElementById(e.target.closest('#btn').hash.replace(/#/g, ''));
-    containerChoosed.scrollIntoView({ behavior: 'smooth' });
-});
 
 //Отмена контекстного меню элементам с анимацией
 let notContMenu = document.querySelectorAll("#nCM");
@@ -723,55 +717,53 @@ const resizerSVG = new ResizeObserver((entries) => {
 resizerSVG.observe(sectionAbil);
 
 //Анимация глаза
-let x = +bounds.getAttribute('cx');
-let y = +bounds.getAttribute('cy');
-let dr = +bounds.getAttribute('r') - drag.getAttribute('r');
+// let x = +bounds.getAttribute('cx');
+// let y = +bounds.getAttribute('cy');
+// let dr = +bounds.getAttribute('r') - drag.getAttribute('r');
 
-document.addEventListener('mousemove', function(e) {
-    X0 = bounds.getBoundingClientRect().left + +bounds.getAttribute('r');
-    Y0 = bounds.getBoundingClientRect().top + +bounds.getAttribute('r');
-    let dy = Y0 - e.y;
-    let dx = X0 - e.x;
-    if (dx*dx + dy*dy < dr*dr) {
-        dx = e.offsetX;
-        dy = e.offsetY;
-    } else {
-        let a = Math.atan2(dy, dx);
-        dx = x - Math.cos(a)*dr;
-        dy = y - Math.sin(a)*dr;
-    } 
-    drag.setAttribute('transform', `translate(${dx},${dy})`);  
-});
-document.onmousedown = () => drag.setAttribute('r', `2.5`);
-document.onmouseup = () => drag.setAttribute('r', `4`);
+// document.addEventListener('mousemove', function(e) {
+//     X0 = bounds.getBoundingClientRect().left + +bounds.getAttribute('r');
+//     Y0 = bounds.getBoundingClientRect().top + +bounds.getAttribute('r');
+//     let dy = Y0 - e.y;
+//     let dx = X0 - e.x;
+//     if (dx*dx + dy*dy < dr*dr) {
+//         dx = e.offsetX;
+//         dy = e.offsetY;
+//     } else {
+//         let a = Math.atan2(dy, dx);
+//         dx = x - Math.cos(a)*dr;
+//         dy = y - Math.sin(a)*dr;
+//     } 
+//     drag.setAttribute('transform', `translate(${dx},${dy})`);  
+// });
+// document.onmousedown = () => drag.setAttribute('r', `2.5`);
+// document.onmouseup = () => drag.setAttribute('r', `4`);
 
 //Открытие/закрытие контактов
-let footer = document.querySelector('footer');
+// let footer = document.querySelector('footer');
+let footer = document.querySelector('.thumb');
 let contacts = document.querySelector('.footer__contacts');
 let opened = false;
 
-// document.addEventListener('click', async function (e) {
-//     if (!e.target.closest('.footer__contact-target')) return;
+document.addEventListener('click', async function (e) {
+    if (!e.target.closest('.footer__contact-target')) return;
 
-//     if (opened) {
-//         // footer.style.transform = 'translate3d(0, 13rem, 0)';
-//         footer.style.setProperty("--translateY", 13);
-//         await sleep(500);
-//         contacts.style.display = 'none';
-//         opened = false;
-//     } else {
-//         // footer.style.transform = '';
-//         footer.style.setProperty("--translateY", 0);
-//         contacts.style.display = 'grid';
-//         opened = true;
-//     }
-// });
+    if (opened) {
+        // footer.style.transform = 'translate3d(0, 13rem, 0)';
+        footer.style.setProperty("--translateY", 13);
+        await sleep(500);
+        contacts.style.display = 'none';
+        opened = false;
+    } else {
+        // footer.style.transform = '';
+        footer.style.setProperty("--translateY", 0);
+        contacts.style.display = 'grid';
+        opened = true;
+    }
+});
 
-
-
-
-// footer.addEventListener('', e => {});
-document.body.addEventListener('scroll', (event) => {
+// document.body.addEventListener('scroll', (event) => {
+main.addEventListener('scroll', (event) => {
 
     let body = event.target,
     scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
@@ -784,11 +776,18 @@ document.body.addEventListener('scroll', (event) => {
 
 let footerIsDown,
 footerStartX,
+footerSnap = [],
 footerScrollLeft;
+
+document.addEventListener('DOMContentLoaded', function() {
+    for (let i = 0; i < (main.scrollWidth / main.offsetWidth); i++) { footerSnap.push( main.offsetWidth * i ) }
+});
 
 footer.addEventListener('mousedown', (event) => {
 
-    let body = document.body;
+    document.body.style = 'user-select: none';
+    // let body = document.body;
+    let body = main;
     footerIsDown = true;
     footerStartX = event.clientX;
     footerScrollLeft = body.scrollLeft;
@@ -798,17 +797,42 @@ footer.addEventListener('mousedown', (event) => {
         if (footerIsDown) {
             const x = event.clientX;
             const walkX = (x - footerStartX) * body.scrollWidth / body.offsetWidth;
+            body.classList.add('main-scrolling');
             body.scrollLeft = footerScrollLeft + walkX;
         }
     };
 
-    document.onmouseup = () => {
+    document.onmouseup = async () => {
         footerIsDown = false;
+        let equal = footerSnap.reduce((nearest, num) => Math.abs(num - body.scrollLeft) >= Math.abs(nearest - body.scrollLeft) && nearest < num? nearest : num);
+        body.scrollTo({
+            left: equal,
+            behavior: "smooth",
+        });
+        await sleep(500);
+        body.classList.remove('main-scrolling');
     };
 
 });
 
+let footerOp = document.querySelector('.open-footer'),
+footerTru = document.querySelector('footer'),
+footerContent = document.querySelectorAll('footer a span');
 
+footerOp.addEventListener('click', async () => {
+    footerTru.classList.add('opened');
+    await sleep(200);
+    for (a of footerContent) {
+        textTyping(a, 100, a.getAttribute('data-text'));
+    }
+});
+
+footerTru.addEventListener('click', () => {
+    footerTru.classList.remove('opened');
+    for (a of footerContent) {
+        textTyping(a, 30)
+    }
+});
 
 
 

@@ -12,11 +12,17 @@
         box-sizing: border-box
         height: 100%
         width: 12rem
+        border-radius: 1rem
         @include AbsoluteCenter
     &::after
         border: 2px solid var(--color-white)
-        clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
-        transition: clip-path .2s ease, transform .2s ease
+        // clip-path: inset( 0% 20%)
+        // clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
+        clip-path: polygon(1rem 0, 1rem 1rem, calc( 100% - 1rem ) 1rem, calc( 100% - 1rem ) 0, 100% 0, 100% 1rem, calc( 100% - 1rem ) 1rem, calc( 100% - 1rem ) calc( 100% - 1rem ), 100% calc( 100% - 1rem ), 100% 100%, calc( 100% - 1rem ) 100%, calc( 100% - 1rem ) calc( 100% - 1rem ), 1rem calc( 100% - 1rem ), 1rem 100%, 0 100%, 0 calc( 100% - 1rem ), 1rem calc( 100% - 1rem ), 1rem 1rem, 0 1rem, 0 0)
+        transition: clip-path .2s ease, transform .2s ease, border-radius .2s ease
+    &:hover::after,
+    &:hover::before
+        border-radius: 3rem
     &:hover::after
         transform: scale(0.85, 0.68)
         clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
@@ -26,7 +32,7 @@
         filter: url(#inner-shadow-title-type01)
         z-index: -1
         opacity: 0
-        transition: opacity .2s ease, transform .2s ease
+        transition: opacity .2s ease, transform .2s ease, border-radius .2s ease
     &:hover::before
         opacity: 1
         transform: scale(0.85, 0.68)
@@ -36,3 +42,30 @@
         border: 2px solid var(--color-orange)
     &:active
         color: var(--color-orange)
+
+
+
+
+    //         &::after
+    //     border: 2px solid var(--color-white)
+    //     clip-path: polygon(.7rem 0, .7rem .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) 0, 100% 0, 100% .7rem, calc( 100% - .7rem ) .7rem, calc( 100% - .7rem ) calc( 100% - .7rem ), 100% calc( 100% - .7rem ), 100% 100%, calc( 100% - .7rem ) 100%, calc( 100% - .7rem ) calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem 100%, 0 100%, 0 calc( 100% - .7rem ), .7rem calc( 100% - .7rem ), .7rem .7rem, 0 .7rem, 0 0)
+    //     transition: clip-path .2s ease, transform .2s ease
+    // &:hover::after
+    //     transform: scale(0.85, 0.68)
+    //     clip-path: polygon(50% 0, 50% 50%, 50% 50%, 50% 0, 100% 0, 100% 50%, 50% 50%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 100%, 0 100%, 0 50%, 50% 50%, 50% 50%, 0 50%, 0 0)
+    //     border: 2px solid var(--color-white)
+    // &::before
+    //     background: rgba(var(--color-thrush-eggs-rgb), .5)
+    //     filter: url(#inner-shadow-title-type01)
+    //     z-index: -1
+    //     opacity: 0
+    //     transition: opacity .2s ease, transform .2s ease
+    // &:hover::before
+    //     opacity: 1
+    //     transform: scale(0.85, 0.68)
+    // &:active::before
+    //     background: rgba(var(--color-orange-rgb), .6)
+    // &:active::after
+    //     border: 2px solid var(--color-orange)
+    // &:active
+    //     color: var(--color-orange)
