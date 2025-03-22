@@ -741,6 +741,8 @@ resizerSVG.observe(sectionAbil);
 
 //Открытие/закрытие контактов
 // let footer = document.querySelector('footer');
+
+
 let footer = document.querySelector('.thumb');
 let contacts = document.querySelector('.footer__contacts');
 let opened = false;
@@ -768,7 +770,9 @@ main.addEventListener('scroll', (event) => {
     let body = event.target,
     scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
     scrollThumbCenter = body.offsetWidth / (body.scrollWidth / body.offsetWidth) / 2,
-    footerCenter = footer.offsetWidth / 2;
+    footerCenter = footer.attributes[1].nodeValue / 2;
+    // footerCenter = footer.width.baseVal.value / 2;
+    // footerCenter = footer.offsetWidth / 2;
 
     footer.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
 
@@ -819,20 +823,90 @@ let footerOp = document.querySelector('.open-footer'),
 footerTru = document.querySelector('footer'),
 footerContent = document.querySelectorAll('footer a span');
 
-footerOp.addEventListener('click', async () => {
-    footerTru.classList.add('opened');
-    await sleep(200);
-    for (a of footerContent) {
-        textTyping(a, 100, a.getAttribute('data-text'));
+// footerOp.addEventListener('click', async () => {
+//     footerTru.classList.add('opened');
+//     await sleep(200);
+//     for (a of footerContent) {
+//         textTyping(a, 100, a.getAttribute('data-text'));
+//     }
+// });
+
+// footerTru.addEventListener('click', () => {
+//     footerTru.classList.remove('opened');
+//     for (a of footerContent) {
+//         textTyping(a, 30)
+//     }
+// });
+
+
+
+
+
+let navBar = document.querySelector('nav svg'),
+navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.thumb)'),
+navBarThumb = navBar.querySelector('.bgrnd > .thumb'),
+navBarCntnt = navBar.querySelectorAll('.cntnt text');
+
+const observerNavBar = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        navBar.attributes[0].nodeValue = `0 0 ${navBar.clientWidth} ${navBar.clientHeight}`;
+
+        // for (const bg of navBarBg) {
+        for (let i=0; i<navBarBg.length; i++) {
+
+            if (i == 0) {
+                navBarThumb.attributes[2].nodeValue = navBar.clientHeight;
+            }
+
+            navBarBg[i].attributes[0].nodeValue = navBarCntnt[i].textLength.baseVal.value * 1.2;
+            navBarBg[i].attributes[1].nodeValue = navBarCntnt[i].clientHeight * 1.2;
+            // navBarBg[i].attributes[0].nodeValue = navBarCntnt[i].textLength.baseVal.value;
+            // navBarBg[i].attributes[1].nodeValue = navBarCntnt[i].clientHeight;
+
+            navBarBg[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5) - (navBarBg[i].attributes[0].nodeValue / 2);
+            navBarBg[i].attributes[3].nodeValue = navBar.clientHeight / 2 - (navBarBg[i].attributes[1].nodeValue / 2);
+            // navBarBg[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5);
+
+            navBarCntnt[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5);
+        }
+
     }
 });
 
-footerTru.addEventListener('click', () => {
-    footerTru.classList.remove('opened');
-    for (a of footerContent) {
-        textTyping(a, 30)
-    }
-});
+observerNavBar.observe(navBar);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

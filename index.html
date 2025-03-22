@@ -277,13 +277,72 @@
             </filter>
 
 
+            <filter id="goo">
+                <!-- <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur> -->
+                <!-- <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix> -->
+                <!-- <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"></feGaussianBlur> -->
+                <!-- <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite> -->
+                <feGaussianBlur in="BackgroundImage" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"></feColorMatrix>
+                <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
+            </filter>
+
 
 
         </defs>
     </svg>
     <!-- NAVIGATION -->
     <nav>
-        <a id="btn" class="btn" href="#about"><span>About Me</span></a>
+        <!-- <div class="wrapper">
+            <a id="btn" class="btn" href="#about"></a>
+            <a id="btn" class="nav__logo" href="#home"></a>
+            <a id="btn" class="btn" href="#skill"></a>
+    
+            <div class="thumb">
+                <div class="open-footer">
+                </div>
+            </div>
+
+        </div>
+
+        <span>About Me</span>
+        <svg class="nav__logo-emblem" viewbox="0 0 500 500">
+            <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
+                <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
+            </path>
+        </svg>
+        <span>Skill</span>
+
+        <p>🌐</p> -->
+
+
+        <svg viewbox="0 0 1536 46" preserveAspectRatio="xMidYMid meet">
+            <rect width="1536" height="46" />
+            
+            <g class="bgrnd">
+                <rect width="100" height="46" x="384" y="0"/>
+                <rect width="100" height="46" x="768" y="0"/>
+                <rect width="100" height="46" x="1152" y="0"/>
+                <!-- <rect class="thumb" width="100" height="46" y="0"/> -->
+                <g class="thumb"  width="100" height="46" y="0">
+                    <rect width="100" height="23" y="0"/>
+                    <rect width="40" height="23" x="-40" y="23"/>
+                </g>
+            </g>
+
+            <g class="cntnt">
+                <a id="btn" href="#about"><text dominant-baseline="middle" text-anchor="middle" x="384" y="23">About Me</text></a>
+                <a id="btn" href="#home"><text dominant-baseline="middle" text-anchor="middle" x="768" y="23">電</text></a>
+                <a id="btn" href="#skill"><text dominant-baseline="middle" text-anchor="middle" x="1152" y="23">Skill</text></a>
+            </g>
+
+        </svg>
+
+
+
+
+
+        <!-- <a id="btn" class="btn" href="#about"><span>About Me</span></a>
         <a id="btn" class="nav__logo" href="#home">
             <svg class="nav__logo-emblem" viewbox="0 0 500 500">
                 <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
@@ -292,11 +351,12 @@
             </svg>
         </a>
         <a id="btn" class="btn" href="#skill"><span>Skill</span></a>
+
         <div class="thumb">
             <div class="open-footer">
                 <p>🌐</p>
             </div>
-        </div>
+        </div> -->
     </nav>
     <!-- <nav>
         <a id="btn" class="btn" href="#about"><span>About Me</span></a>
