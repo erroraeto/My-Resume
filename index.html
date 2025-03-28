@@ -153,11 +153,20 @@
                 <rect width="1" height="1" fill="url(#mask-hor-scroll-type01__grad)" transform-origin=".5 .5" transform="rotate(90, 0, 0)"/>
             </mask>
 
+
+
+
+
+
+
+
+
             <filter id="inner-shadow-title-type01">
                 <feOffset dx="0" dy="0"/>
-                <feGaussianBlur stdDeviation="6"/>
-                <feComposite in="SourceAlpha" operator="out"/>
-                <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1.5 0"/>
+                <feGaussianBlur stdDeviation="2"/>
+                <feComposite in="SourceGraphic" operator="out"/>
+                <!-- <feComposite in="SourceAlpha" operator="out"/> -->
+                <!-- <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1.5 0"/> -->
             </filter>
             <filter id="inner-shadow-title-type02">
                 <feOffset dx="0" dy="0"/>
@@ -173,13 +182,20 @@
             </filter>
 
 
-
-            <filter id="inner-shadow-descr-type01">
+            <!-- <filter id="inner-shadow-descr-type01">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="13"/>
                 <feComposite in="SourceAlpha" operator="out"/>
-                <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/>
+                <feComposite in="SourceGraphic" operator="out"/>
+            </filter> -->
+
+            <filter id="inner-shadow-descr-type01">
+                <feOffset dx="0" dy="0"/>
+                <feGaussianBlur stdDeviation="3"/>
+                <!-- <feComposite in="SourceAlpha" operator="out"/> -->
+                <feComposite in="SourceGraphic" operator="out"/>
             </filter>
+
             <filter id="inner-shadow-descr-type02">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="4"/>
@@ -259,11 +275,21 @@
 
 
 
-            <filter id='chrom_aber' color-interpoation-filters='sRGB'>
+            <filter id='chrom-aber' color-interpoation-filters='sRGB'>
                 <feColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
-                <feOffset dx='.5' result='cr'></feOffset>
+                <feOffset dx='.24' result='cr'></feOffset>
                 <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
-                <feOffset dy='.5' result='cg'></feOffset>
+                <feOffset dy='.2' result='cg'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'></feColorMatrix>
+                <feBlend in='cr' mode='screen'></feBlend>
+                <feBlend in='cg' mode='screen'></feBlend>
+            </filter>
+
+            <filter id='chrom-aber__' color-interpoation-filters='sRGB'>
+                <feColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dx='.1' result='cr'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dy='.1' result='cg'></feOffset>
                 <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'></feColorMatrix>
                 <feBlend in='cr' mode='screen'></feBlend>
                 <feBlend in='cg' mode='screen'></feBlend>
@@ -287,34 +313,18 @@
                 <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
             </filter>
 
+            <filter id="goo-1">
+                <feGaussianBlur in="BackgroundImage" stdDeviation="2" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"></feColorMatrix>
+                <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
+            </filter>
+
 
 
         </defs>
     </svg>
     <!-- NAVIGATION -->
     <nav>
-        <!-- <div class="wrapper">
-            <a id="btn" class="btn" href="#about"></a>
-            <a id="btn" class="nav__logo" href="#home"></a>
-            <a id="btn" class="btn" href="#skill"></a>
-    
-            <div class="thumb">
-                <div class="open-footer">
-                </div>
-            </div>
-
-        </div>
-
-        <span>About Me</span>
-        <svg class="nav__logo-emblem" viewbox="0 0 500 500">
-            <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
-                <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
-            </path>
-        </svg>
-        <span>Skill</span>
-
-        <p>🌐</p> -->
-
 
         <svg viewbox="0 0 1536 46" preserveAspectRatio="xMidYMid meet">
             <rect width="1536" height="46" />
@@ -323,8 +333,7 @@
                 <rect width="100" height="46" x="384" y="0"/>
                 <rect width="100" height="46" x="768" y="0"/>
                 <rect width="100" height="46" x="1152" y="0"/>
-                <!-- <rect class="thumb" width="100" height="46" y="0"/> -->
-                <g class="thumb"  width="100" height="46" y="0">
+                <g class="bgrnd__thumb">
                     <rect width="100" height="23" y="0"/>
                     <rect width="40" height="23" x="-40" y="23"/>
                 </g>
@@ -332,47 +341,104 @@
 
             <g class="cntnt">
                 <a id="btn" href="#about"><text dominant-baseline="middle" text-anchor="middle" x="384" y="23">About Me</text></a>
-                <a id="btn" href="#home"><text dominant-baseline="middle" text-anchor="middle" x="768" y="23">電</text></a>
+                <a id="btn" href="#home">
+                    <foreignObject width="160" height="160" x="20" y="20">
+                        <svg viewbox="0 0 500 500">
+                            <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
+                                <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
+                            </path>
+                        </svg>
+                    </foreignObject>
+                </a>
                 <a id="btn" href="#skill"><text dominant-baseline="middle" text-anchor="middle" x="1152" y="23">Skill</text></a>
+                <g class="cntnt__thumb">
+                    <!-- <text dominant-baseline="middle" text-anchor="middle" x="-20" y="48.6">🌐</text> -->
+                    <text dominant-baseline="middle" text-anchor="middle" x="-20" y="48.6">🔗</text>
+                    <text dominant-baseline="middle" text-anchor="middle" x="-10" y="38.6"></text>
+                </g>
             </g>
 
         </svg>
 
-
-
-
-
-        <!-- <a id="btn" class="btn" href="#about"><span>About Me</span></a>
-        <a id="btn" class="nav__logo" href="#home">
-            <svg class="nav__logo-emblem" viewbox="0 0 500 500">
-                <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
-                    <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
-                </path>
-            </svg>
-        </a>
-        <a id="btn" class="btn" href="#skill"><span>Skill</span></a>
-
-        <div class="thumb">
-            <div class="open-footer">
-                <p>🌐</p>
-            </div>
-        </div> -->
     </nav>
-    <!-- <nav>
-        <a id="btn" class="btn" href="#about"><span>About Me</span></a>
-        <a id="btn" class="nav__logo" href="#home">
-            <svg class="nav__logo-emblem" viewbox="0 0 500 500">
-                <path stroke-dasharray="1000" stroke-dashoffset="0" d="M235, 32 235, 230 M235, 32 40, 32z M235, 32 430, 32z M235, 90 32, 90 32, 180 M235, 90 438, 90 438, 180 M195, 140 75, 140 M275, 140 395, 140 M195, 200 75, 200 M275, 200 395, 200 M235, 260 395, 260 395, 415 M235, 260 75, 260 75, 455 M235, 328.5 395, 328.5 M235, 328.5 75, 328.5 M235, 397 395, 397 M235, 397 75, 397 M235, 260 235 430 C 235 451, 245 461, 265 461 L 401 461 C 431 461, 451 441, 451 411">
-                    <animate attributeName="stroke-dashoffset" values="1000; 0" dur="3s" repeatCount="1" fill="freeze" calcMode="paced"/>
-                </path>
-            </svg>
-        </a>
-        <a id="btn" class="btn" href="#skill"><span>Skill</span></a>
-    </nav> -->
     <!-- CONTENT -->
     <main>
         <section id="about" class="section-about">
             <div class="section-about__article">
+
+                
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" overflow="visible" >
+
+                    <g class="description" >
+                        <polygon id="CA-BB" points="1,5 5,1 37,1 41,5 95,5 99,9 99,99 5,99 1,95" />
+
+                        <g class="description__mark" >
+                            <text class="kanji" font-size="7" dominant-baseline="middle" text-anchor="end" x="13" y="6.8">電</text>
+                            <text font-size="4" textLength="20" lengthAdjust="spacingAndGlyphs" x="14" y="4.9">D.D.S.</text>
+                            <text font-size="3" textLength="19.5" dominant-baseline="hanging" x="14.4" y="6.2">resume</text>
+                        </g>
+
+                    </g>
+
+                    <g class="title" >
+                        <polygon id="CA-BA" points="0,1 1.5,1 3,0 97,0 98.5,1 100,1 100,7 98.5,6 50,6 48.5,7 1.5,7 0,8" />
+                        <use href="#CA-BA" />
+                    </g>
+
+                </svg>
+
+                <h2 class="section-about__article-title"><span>🗈</span>Insertion</h2>
+
+                <!-- 🕮  🗏  🗒  🖺  🗎  🗈  👁-->
+
+                <div class="section-about__article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
+                    <p> I am a passionate frontend developer as well as a 2D and 3D graphics
+                        visualizer.
+                    </p>
+                    <p>My experience lies in creating website interfaces, realizing volumetric
+                        effects and website “life” effect.
+                    </p>
+                    <p>I was also engaged in modeling of low- and high- poly
+                        models, their:
+                    <ul class="attn">
+                        <li data-img-href="./src/image/frame/1frame.webp" data-frame="1" popovertarget="popover-img__section-about">Concepts & design</li>
+                        <li data-img-href="./src/image/frame/2frame.webp" data-frame="2" popovertarget="popover-img__section-about">Sculpting</li>
+                        <li data-img-href="./src/image/frame/3frame.webp" data-frame="3" popovertarget="popover-img__section-about">Retopology</li>
+                        <li data-img-href="./src/image/frame/5frame.webp" data-frame="5" popovertarget="popover-img__section-about">Unwrap</li>
+                        <li data-img-href="./src/image/frame/7frame.webp" data-frame="7" popovertarget="popover-img__section-about">Baking maps</li>
+                        <li data-img-href="./src/image/frame/8frame.webp" data-frame="8" popovertarget="popover-img__section-about">Texturing</li>
+                        <li data-img-href="./src/image/frame/9frame.webp" data-frame="9" popovertarget="popover-img__section-about">Rigging & skinning</li>
+                    </ul>
+                    </p>
+                    <p>In the last three months I focused on honing my skills in creating a native and pleasantly perceived interface.
+                    </p>
+                    <p>I am actively and rapidly exploring development frontend options to expand my ability to create extraordinary interfaces.</p>
+                    <p>Enjoy your visit.</p>
+                </div>
+
+
+
+
+                <!-- <svg class="section-about__article-title" viewBox="0 0 100 8" preserveAspectRatio="none" overflow="visible" >
+                    <polygon id="CA-BA" vector-effect="non-scaling-stroke" points="0,1 1.5,1 3,0 97,0 98.5,1 100,1 100,7 98.5,6 50,6 48.5,7 1.5,7 0,8" />
+                    <use href="#CA-BA" />
+                    <text vector-effect="non-scaling-stroke" lengthAdjust="spacing" textLength="6em" font-size="5" dominant-baseline="middle" x="4" y="4">Insertion</text>
+                    <text font-size="8" text-anchor="middle" dominant-baseline="middle" x="5" y="5">🔷</text>
+                    <text font-size="5" text-anchor="middle" dominant-baseline="middle" x="5.1" y="4.5">❕</text>
+                    <text font-size="5" dominant-baseline="middle" x="9" y="4">Insertion</text>
+                </svg> -->
+
+            </div>
+
+                <!-- <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
+                <use href="#CA-BA" stroke="none" />
+                <use href="#CA-BA" stroke="none" />
+                <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
+                <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging"  x="83" y="23">compendium</text>
+                <text dominant-baseline="middle" text-anchor="end" x="77" y="21">電</text> -->
+
+
+            <!-- <div class="section-about__article">
                 <svg class="section-about__article-border border" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
                     <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
                     <use href="#CA-BA" stroke="none" />
@@ -440,7 +506,18 @@
                         </fieldset>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+
+
+
+
+
+
+
+
+
+
             <div class="section-about__slider">
                 <div class="section-about__slider-wrapper">
                     <div class="section-about__slider-wrapper-frame">
@@ -835,9 +912,6 @@
 
         <hr />
 
-        <!-- <hr />
-        <hr /> -->
-
         <svg class="footer__emblem" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
             <circle vector-effect="non-scaling-stroke" cx="16" cy="16" r="10" />
             <text dominant-baseline="middle" text-anchor="middle" font-size="17" x="16" y="18">電</text>
@@ -873,112 +947,7 @@
         <hr />
 
     </footer>
-    <!-- <footer>
-        <svg class="footer__border border" height="160px" width="368px" viewbox="0 0 368 160" preserveAspectRatio="none">
-            <path vector-effect="non-scaling-stroke" d="M221,31 221,26 C 230,27 236,19 235,10 L 367,10  367,36  244,36  236,31z"/>
-            <path vector-effect="non-scaling-stroke" d="M1,49  10,34  235,34  242,39  367,39  367,159  1,159z"/>
-            <circle id="bounds" cx="222" cy="13" r="10"/>
-            <circle id="drag" r="4" transform="translate(222,13)"/>
-        </svg>
-        <h4 class="footer__contact-target">Contact me</h4>
-        <div class="footer__contacts">
-            <div class="icon hovering">
-                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                </svg>
-                <a class="icon_link" href="mailto:erroraeto@gmail.com">
-                    <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                        <use href="#iconMail" x="-.3" fill="red"/>
-                        <use href="#iconMail" x=".3" fill="blue"/>
-                        <path id="iconMail" d="M7.5 7c-1.8677 0-3.4 1.5323-3.4 3.4v12.75c0 1.3982 1.1518 2.55 2.55 2.55h4.25v-8.4735l5.1 3.8433 5.1-3.8433v8.4735h4.25c1.3982 0 2.55-1.1518 2.55-2.55v-12.75c0-1.8677-1.5323-3.4-3.4-3.4-.7624 0-1.4764.253-2.047.679l-.0017.0017-6.4513 4.8593-6.4497-4.8593v.0017c-.5728-.4325-1.2893-.6823-2.0503-.6823zm0 1.7c.3916 0 .7454.1268 1.026.3386l.6741.508v4.2699l-3.4-2.5616v-.855c0-.9492.7508-1.7 1.7-1.7zm17 0c.9492 0 1.7.7508 1.7 1.7v.8533l-3.4 2.5616v-4.2699l.6707-.5047c.2811-.2098.6475-.3403 1.0293-.3403zm-13.6 2.1267 5.1 3.8416 5.1-3.8416v4.2699l-5.1 3.8433-5.1-3.8433v-4.2699zm-5.1 2.555 3.4 2.5633v8.0551h-2.55c-.4802 0-.85-.3697-.85-.85v-9.7684zm20.4 0v9.7684c0 .4802-.3697.85-.85.85h-2.55v-8.0551l3.4-2.5633z"/>
-                    </svg>
-                    <span>Mail</span>
-                </a>
-            </div>
-            <div class="icon hovering" style="animation-delay: .3s, 1.1s">
-                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                </svg>
-                <a class="icon_link" href="https://github.com/erroraeto">
-                    <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                        <use href="#iconGit" x="-.5" fill="red"/>
-                        <use href="#iconGit" x=".5" fill="blue"/>
-                        <path id="iconGit" d="M16 16m4.0824 2.2963c-.917 0-1.5309.7734-1.5309 2.0412 0 1.2678.4545 2.5754 1.5309 2.5515 1.1323-.0259 1.5409-1.1342 1.5309-2.5515-.008-1.2678-.6159-2.0412-1.5309-2.0412zm5.7468-6.0897c.1395-.6857.1993-3.1136-.8073-5.6472 0 0-2.3123.2532-5.8086 2.6532-.7316-.2033-1.9734-.305-3.2133-.305-1.2399 0-2.4798.1017-3.2153.303-3.4944-2.398-5.8047-2.6512-5.8047-2.6512-1.0087 2.5335-.9588 4.9037-.8093 5.6472-1.184 1.2857-1.9077 2.8286-1.9077 4.9376 0 9.1674 7.6067 9.315 9.5263 9.315.4346 0 1.2977 0 2.2106.002.913-.002 1.7781-.002 2.2106-.002 1.9196 0 9.5263-.1475 9.5263-9.315 0-2.109-.7236-3.6519-1.9077-4.9376zm-9.7575 13.2339-.0717 0c-4.812 0-8.5954-.6837-8.5954-5.3601 0-1.1203.3967-2.1588 1.3356-3.0219 1.5668-1.4392 4.2159-.6777 7.2239-.6777.0119 0 .0618 0 .0717 0 3.008 0 5.6591-.7595 7.226.6777.9388.8631 1.3336 1.9017 1.3336 3.0219 0 4.6764-3.7116 5.3601-8.5236 5.3601zm-4.1541-7.1442c-.915 0-1.5309 1.0286-1.5309 2.2963 0 1.2678.6159 2.2963 1.5309 2.2963.917 0 1.5309-1.0286 1.5309-2.2963 0-1.2678-.6139-2.2963-1.5309-2.2963z"/>
-                    </svg>
-                    <span>Github</span>
-                </a>
-            </div>
-            <div class="icon hovering" style="animation-delay: .6s, 1.4s">
-                <svg class="icon_bg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                    <path vector-effect="non-scaling-stroke" d="M1,1  4,1  6,3  8,1  28,1  31,4  31,30  4,30  1,27z"/>
-                </svg>
-                <a class="icon_link" href="https://t.me/tw0deep">
-                    <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                        <use href="#iconTg" x="-.5" fill="red"/>
-                        <use href="#iconTg" x=".5" fill="blue"/>
-                        <path id="iconTg" d="M5.5 15c-1.8804.8274-2.34 1.6884-.4038 2.3532.5028.1728 1.7946.6258 3.117 1.0056 1.7502.5028 2.7252.1866 3.7404-.5028.672-.4566 5.952-3.9618 9.7602-6.4872.4272-.2838.8922.2976.522.6516-2.8254 2.6952-6.4518 6.1578-7.005 6.6996-1.5546 1.521-.315 2.2932.5838 2.9352.9846.7044 5.5212 3.7044 6.42 4.2978 1.869 1.233 3.0576.8952 3.5874-1.9548.8928-4.806 2.013-12.5274 2.4012-14.8596.5406-3.2448-.5436-3.5256-4.077-2.0604-1.347.5598-11.1054 4.6044-18.6462 7.9218z"/>
-                    </svg>
-                    <span>Teleg.</span>
-                </a>
-            </div>
-        </div>
-    </footer> -->
 
     <script src="./js/events.js"></script>
 </body>
 </html>
-
-
-
-
-
-<!-- <svg class="description-wrapper__software-border border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                            <use href="#description-wrapper__software-border-1"/>
-                            <use href="#description-wrapper__software-border-2"/>
-                            <use href="#description-wrapper__software-border-3"/>
-                            <path id="description-wrapper__software-border-1" vector-effect="non-scaling-stroke" d="M8 42l-7 6 0  -34 9 0 6-5   310 0 6 5 9 0 0    29 -7-5     -187 0-6 4z"/>
-                            <path id="description-wrapper__software-border-2" vector-effect="non-scaling-stroke" d="M8 164l-7-6 0 32 9 0 6 5  310 0 6-5 9 0 0-32-7 6z"/>
-                            <path id="description-wrapper__software-border-3" vector-effect="non-scaling-stroke" d="M3 52l7-6  213 0 6-4   103 0 7 5 0    115 -7 6     -322 0-7-6z"/>
-                        </svg> -->
-
-
-
-
-
-<!-- <svg xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="line_grad-anim" x1="3%" y1="2%" x2="3%" y2="3.3%" spreadMethod="reflect">
-            <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
-            <stop offset="20%" stop-color="#a0dbff3c" />
-            <stop offset="80%" stop-color="transparent" />
-        </linearGradient>
-        <radialGradient id="rad_grad">
-            <stop offset="0%" stop-color="white" stop-opacity="100%"/>
-            <stop offset="8%" stop-color="white" stop-opacity="70%"/>
-            <stop offset="32%" stop-color="white" stop-opacity="0%"/>
-        </radialGradient>
-        <linearGradient id="line_grad">
-            <stop offset="0%" stop-color="black" stop-opacity="0%"/>
-            <stop offset="20%" stop-color="black" stop-opacity="45%"/>
-            <stop offset="40%" stop-color="black" stop-opacity="0%"/>
-        </linearGradient>
-        <mask id="mask-bg-des-type" maskContentUnits="objectBoundingBox">
-            <circle cx=".5" cy=".5" r="1.45" fill="url(#rad_grad)"/>
-            <rect width="1" height="1" fill="url(#line_grad)">
-                <animate attributeName="x" values="0;1" begin="0s" dur="1s" repeatCount="indefinite"/>
-            </rect>
-        </mask>
-        <filter id="inner-shadow-type01">
-            <feOffset dx="0" dy="0"/>
-            <feGaussianBlur stdDeviation="8"/>
-            <feComposite in="SourceAlpha" operator="out"/>
-            <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 2 0"/>
-        </filter>
-        <filter id="inner-shadow-type02">
-            <feOffset dx="0" dy="0"/>
-            <feGaussianBlur stdDeviation="13"/>
-            <feComposite in="SourceAlpha" operator="out"/>
-            <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.5 0 0 1 0 0.7 0 0 0 1 0"/>
-        </filter>
-    </defs>
-</svg> -->

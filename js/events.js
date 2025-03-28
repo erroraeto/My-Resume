@@ -53,7 +53,8 @@ window.onload = function() {
     main.style.scrollBehavior = "auto";
     // skill.scrollIntoView({behavior: "auto"});
     // home.scrollIntoView({behavior: "auto"});
-    home.scrollIntoView({inline: "center", behavior: "auto"});
+    // home.scrollIntoView({inline: "center", behavior: "auto"});
+    about.scrollIntoView({behavior: "auto"});
     main.style.scrollBehavior = "";
 }
 
@@ -167,90 +168,150 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 });
 
-//Подсказки списка
-let attnSctAbt = document.querySelector(".attn");
 
-attnSctAbt.addEventListener("click", (e) => {
-    if (e.target.closest(".attn > *")) {
-        viewSection.scrollTo({
-            top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
-            behavior: "smooth",
-        });
-        [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.add('frame-tickMark'));
 
-        e.target.onmouseout = () => {
-            [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.remove('frame-tickMark'));
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+let sectionAbout = document.querySelector('.section-about__article'),
+sectionAboutTitle = sectionAbout.children[1],
+sectionAboutDescr = sectionAbout.children[0];
+
+const resizerAbout = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        if (entry.target.classList.contains('section-about__article-title')) {
+
+            // sectionAboutTitle.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutTitle.clientWidth)} ${Math.round(sectionAboutTitle.clientHeight)}`;
+
+            // let textTitle = sectionAboutTitle.children[1];
+            // textTitle.attributes[2].nodeValue = textTitle.attributes[2].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAboutTitle)}`);
+
+        }
+        if (entry.target.classList.contains('section-about__article')) {
+
+            // sectionAboutTitle.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutTitle.clientWidth)} ${Math.round(sectionAboutTitle.clientHeight)}`;
+            // sectionAboutDescr.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutDescr.clientWidth)} ${Math.round(sectionAboutDescr.clientHeight)}`;
+
+            // let borderTitle = sectionAboutTitle.children[0],
+            // textTitle = sectionAboutTitle.children[1],
+            // textTitleBbox = textTitle.getBBox();
+
+            // // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(textTitleBbox.x + 12)}`);
+            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(textTitleBbox.width - 26)}`);
+            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(textTitleBbox.width / 3 - 6)}`);
+            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s{2}\-\d+/, `  -${Math.round(textTitleBbox.width / 3 * 2 - 14)}`);
+            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(textTitleBbox.height - 25)}`);
+            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(textTitleBbox.x + 15)}`);
+            
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\d+/, `12`);
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrWrapSoft.offsetWidth / 3 - 15)}`);
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{3}\S+/g, `   15`);
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrWrapSoft.offsetWidth / 3 * 2 - 52)}`);
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\s\-\d+/, ` -${Math.round(descrWrapSoft.offsetWidth - 37)}`);
+            
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\s\d+/, ` ${Math.round(descrWrapSoft.offsetTop - 10)}`);
+            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     ${Math.round(descrWrapSoft.offsetHeight + 20)}`);
+
         }
     }
 });
 
-//Выбор резюме
-let formSliderCont = document.querySelector('.form-slider__button-content');
-let formSliderBtn = document.querySelectorAll('.form-slider__button button');
-let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
 
-document.addEventListener('DOMContentLoaded', () => {
+// resizerAbout.observe(sectionAbout);
+// resizerAbout.observe(sectionAboutTitle);
+//-----------------------------------------------------------------------------------------------------------------------------------
 
 
-    for (btn of formSliderBtn) {
-        btn.addEventListener('click', (event) => {
 
-            let content = event.target.parentElement.querySelectorAll('p');
-            let radioCheck = event.target.parentElement.parentElement.querySelector('input:checked');
 
-            switch (event.target.title) {
-                case 'Previous':
-                    for (ctn of content) {
-                        if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
-                            delete ctn.dataset.view;
-                            formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
-                            ctn.previousElementSibling.dataset.view = '';
-                            break
-                        };
-                    };
-                    break
-                case 'Next':
-                    for (ctn of content) {
-                        if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
-                            delete ctn.dataset.view;
-                            formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
-                            ctn.nextElementSibling.dataset.view = '';
-                            break
-                        };
-                    };
-                    break
-            }
-        });
-    };
 
-    const observer = new IntersectionObserver( (entries) => {
-        entries.forEach((entry) => {
-            if (entry.intersectionRatio >= 0.5) {
-                ctn.dataset.view = '';
-                Array.from(formSliderRadio).find((radio) => {if (radio.value == entry.target.textContent) radio.checked = true})
-            } else if (entry.intersectionRatio <= 0.5) {
-                delete ctn.dataset.view;
-            }
-        })
-        }, {
-            root: formSliderCont,
-            threshold: 0.5,
-        }
-    );
 
-    for (ctn of formSliderCont.children) observer.observe(ctn);
+// //Подсказки списка
+// let attnSctAbt = document.querySelector(".attn");
 
-    for (radio of formSliderRadio) {
-        radio.addEventListener('click', (event) => {
-            for (ctn of formSliderCont.children) {
-                if (ctn.textContent == event.target.value) {
-                    ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-                    ctn.dataset.view = '';
-                } else {delete ctn.dataset.view};
-            }
-        });
-    };
-});
+// attnSctAbt.addEventListener("click", (e) => {
+//     if (e.target.closest(".attn > *")) {
+//         viewSection.scrollTo({
+//             top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
+//             behavior: "smooth",
+//         });
+//         [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.add('frame-tickMark'));
+
+//         e.target.onmouseout = () => {
+//             [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.remove('frame-tickMark'));
+//         }
+//     }
+// });
+
+// //Выбор резюме
+// let formSliderCont = document.querySelector('.form-slider__button-content');
+// let formSliderBtn = document.querySelectorAll('.form-slider__button button');
+// let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
+
+// document.addEventListener('DOMContentLoaded', () => {
+
+
+//     for (btn of formSliderBtn) {
+//         btn.addEventListener('click', (event) => {
+
+//             let content = event.target.parentElement.querySelectorAll('p');
+//             let radioCheck = event.target.parentElement.parentElement.querySelector('input:checked');
+
+//             switch (event.target.title) {
+//                 case 'Previous':
+//                     for (ctn of content) {
+//                         if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
+//                             delete ctn.dataset.view;
+//                             formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
+//                             ctn.previousElementSibling.dataset.view = '';
+//                             break
+//                         };
+//                     };
+//                     break
+//                 case 'Next':
+//                     for (ctn of content) {
+//                         if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
+//                             delete ctn.dataset.view;
+//                             formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
+//                             ctn.nextElementSibling.dataset.view = '';
+//                             break
+//                         };
+//                     };
+//                     break
+//             }
+//         });
+//     };
+
+//     const observer = new IntersectionObserver( (entries) => {
+//         entries.forEach((entry) => {
+//             if (entry.intersectionRatio >= 0.5) {
+//                 ctn.dataset.view = '';
+//                 Array.from(formSliderRadio).find((radio) => {if (radio.value == entry.target.textContent) radio.checked = true})
+//             } else if (entry.intersectionRatio <= 0.5) {
+//                 delete ctn.dataset.view;
+//             }
+//         })
+//         }, {
+//             root: formSliderCont,
+//             threshold: 0.5,
+//         }
+//     );
+
+//     for (ctn of formSliderCont.children) observer.observe(ctn);
+
+//     for (radio of formSliderRadio) {
+//         radio.addEventListener('click', (event) => {
+//             for (ctn of formSliderCont.children) {
+//                 if (ctn.textContent == event.target.value) {
+//                     ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+//                     ctn.dataset.view = '';
+//                 } else {delete ctn.dataset.view};
+//             }
+//         });
+//     };
+// });
 
 
 
@@ -691,6 +752,7 @@ resizeSoftDescr();
 
 let sectionAbil = document.querySelector('.section-abilities__content');
 let sectionAbilSVG = document.querySelector('.section-abilities__content-border');
+// let sectionAboutSVG = document.querySelector('.section-about__article-border');
 
 const resizerSVG = new ResizeObserver((entries) => {
     for (const entry of entries) {
@@ -716,34 +778,8 @@ const resizerSVG = new ResizeObserver((entries) => {
 
 resizerSVG.observe(sectionAbil);
 
-//Анимация глаза
-// let x = +bounds.getAttribute('cx');
-// let y = +bounds.getAttribute('cy');
-// let dr = +bounds.getAttribute('r') - drag.getAttribute('r');
-
-// document.addEventListener('mousemove', function(e) {
-//     X0 = bounds.getBoundingClientRect().left + +bounds.getAttribute('r');
-//     Y0 = bounds.getBoundingClientRect().top + +bounds.getAttribute('r');
-//     let dy = Y0 - e.y;
-//     let dx = X0 - e.x;
-//     if (dx*dx + dy*dy < dr*dr) {
-//         dx = e.offsetX;
-//         dy = e.offsetY;
-//     } else {
-//         let a = Math.atan2(dy, dx);
-//         dx = x - Math.cos(a)*dr;
-//         dy = y - Math.sin(a)*dr;
-//     } 
-//     drag.setAttribute('transform', `translate(${dx},${dy})`);  
-// });
-// document.onmousedown = () => drag.setAttribute('r', `2.5`);
-// document.onmouseup = () => drag.setAttribute('r', `4`);
-
 //Открытие/закрытие контактов
-// let footer = document.querySelector('footer');
-
-
-let footer = document.querySelector('.thumb');
+let footer = document.querySelector('.bgrnd__thumb');
 let contacts = document.querySelector('.footer__contacts');
 let opened = false;
 
@@ -751,30 +787,26 @@ document.addEventListener('click', async function (e) {
     if (!e.target.closest('.footer__contact-target')) return;
 
     if (opened) {
-        // footer.style.transform = 'translate3d(0, 13rem, 0)';
         footer.style.setProperty("--translateY", 13);
         await sleep(500);
         contacts.style.display = 'none';
         opened = false;
     } else {
-        // footer.style.transform = '';
         footer.style.setProperty("--translateY", 0);
         contacts.style.display = 'grid';
         opened = true;
     }
 });
 
-// document.body.addEventListener('scroll', (event) => {
 main.addEventListener('scroll', (event) => {
 
     let body = event.target,
     scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
     scrollThumbCenter = body.offsetWidth / (body.scrollWidth / body.offsetWidth) / 2,
-    footerCenter = footer.attributes[1].nodeValue / 2;
-    // footerCenter = footer.width.baseVal.value / 2;
-    // footerCenter = footer.offsetWidth / 2;
+    footerBbox = footer.getBBox(),
+    footerCenter = (footerBbox.width + footerBbox.x) / 2;
 
-    footer.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
+    navBar.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
 
 });
 
@@ -790,7 +822,6 @@ document.addEventListener('DOMContentLoaded', function() {
 footer.addEventListener('mousedown', (event) => {
 
     document.body.style = 'user-select: none';
-    // let body = document.body;
     let body = main;
     footerIsDown = true;
     footerStartX = event.clientX;
@@ -819,183 +850,70 @@ footer.addEventListener('mousedown', (event) => {
 
 });
 
-let footerOp = document.querySelector('.open-footer'),
+let footerOp = document.querySelector('.cntnt__thumb'),
 footerTru = document.querySelector('footer'),
 footerContent = document.querySelectorAll('footer a span');
 
-// footerOp.addEventListener('click', async () => {
-//     footerTru.classList.add('opened');
-//     await sleep(200);
-//     for (a of footerContent) {
-//         textTyping(a, 100, a.getAttribute('data-text'));
-//     }
-// });
+footerOp.addEventListener('click', async () => {
+    footerTru.classList.add('opened');
+    await sleep(200);
+    for (a of footerContent) {
+        textTyping(a, 100, a.getAttribute('data-text'));
+    }
+});
 
-// footerTru.addEventListener('click', () => {
-//     footerTru.classList.remove('opened');
-//     for (a of footerContent) {
-//         textTyping(a, 30)
-//     }
-// });
+footerTru.addEventListener('click', () => {
+    footerTru.classList.remove('opened');
+    for (a of footerContent) {
+        textTyping(a, 30)
+    }
+});
 
 
 
 
 
 let navBar = document.querySelector('nav svg'),
-navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.thumb)'),
-navBarThumb = navBar.querySelector('.bgrnd > .thumb'),
-navBarCntnt = navBar.querySelectorAll('.cntnt text');
+navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.bgrnd__thumb)'),
+navBarBgThumb = navBar.querySelector('.bgrnd > .bgrnd__thumb'),
+navBarCntnt = navBar.querySelectorAll('.cntnt > a > *'),
+navBarCntntThumb = navBar.querySelector('.cntnt > .cntnt__thumb');
 
 const observerNavBar = new ResizeObserver((entries) => {
     for (const entry of entries) {
-        navBar.attributes[0].nodeValue = `0 0 ${navBar.clientWidth} ${navBar.clientHeight}`;
+        let height = navBar.clientHeight - (navBar.clientHeight / 100 * 5) * 2;
+        navBar.attributes[0].nodeValue = `0 0 ${navBar.clientWidth} ${height}`;
 
-        // for (const bg of navBarBg) {
         for (let i=0; i<navBarBg.length; i++) {
 
-            if (i == 0) {
-                navBarThumb.attributes[2].nodeValue = navBar.clientHeight;
-            }
+            navBarCntnt[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5);
+            navBarCntnt[i].attributes[3].nodeValue = height * 0.25;
 
-            navBarBg[i].attributes[0].nodeValue = navBarCntnt[i].textLength.baseVal.value * 1.2;
-            navBarBg[i].attributes[1].nodeValue = navBarCntnt[i].clientHeight * 1.2;
-            // navBarBg[i].attributes[0].nodeValue = navBarCntnt[i].textLength.baseVal.value;
-            // navBarBg[i].attributes[1].nodeValue = navBarCntnt[i].clientHeight;
+            navBarBg[i].attributes[0].nodeValue = navBarCntnt[i].getBBox().width + (height - (height * 0.5));
+            navBarBg[i].attributes[1].nodeValue = height * 0.5;
 
             navBarBg[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5) - (navBarBg[i].attributes[0].nodeValue / 2);
-            navBarBg[i].attributes[3].nodeValue = navBar.clientHeight / 2 - (navBarBg[i].attributes[1].nodeValue / 2);
-            // navBarBg[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5);
+            navBarBg[i].attributes[3].nodeValue = height * 0.25 - (navBarBg[i].attributes[1].nodeValue / 2);
 
-            navBarCntnt[i].attributes[2].nodeValue = navBar.clientWidth / 3 * (i + .5);
+            
+            if (i == 0) {
+
+                navBar.children[0].attributes[1].nodeValue = height;
+
+                navBar.style.setProperty("--translateY", navBarBg[i].attributes[3].nodeValue);
+
+                navBarCntnt[1].attributes[0].nodeValue = height * 0.5;
+                navBarCntnt[1].attributes[1].nodeValue = height * 0.5;
+                navBarCntnt[1].style.translate = `-${height * 0.25}px -${height * 0.25}px`;
+
+                navBarBgThumb.children[0].attributes[1].nodeValue = height * 0.5;
+
+                navBarBgThumb.children[1].attributes[1].nodeValue = height * 0.5;
+                navBarBgThumb.children[1].attributes[3].nodeValue = height * 0.5;
+            }
         }
 
     }
 });
 
 observerNavBar.observe(navBar);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Анимация наведения на контакты
-// let icons = document.querySelectorAll('.hovering');
-
-// document.addEventListener('mouseover', function(e) {
-//     let targEl = e.target.closest('.hovering');
-//     // if (!targEl || e.target.className == "hovering") return;
-//     if (!targEl) return;
-//     for (icon of targEl.offsetParent.children) {
-//         if (targEl == icon) {
-//             icon.style = "transform: translateZ(1rem) rotateY(6deg);";
-//         } else icon.style = "filter: blur(1px)";
-//     }
-//     targEl.addEventListener('mouseout', function() {
-//         for (icon of targEl.offsetParent.children) icon.style = "";
-//     })
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Построение фигуры по кординатам элементам animateMotion
-// let crc = document.querySelectorAll(".crc");
-// let pnta = document.querySelector("#pnta");
-// let losta = document.querySelector("#losta");
-// const map1 = new Map();
-// const crcCord = new Map();
-
-// document.addEventListener('DOMContentLoaded', async function() {
-//     while(true) {
-//         pnta.attributes.d.value = "M";
-//         crcCord.clear();
-//         for (let i=0;i<crc.length;i++) {
-//             let crcPos = losta.getScreenCTM().inverse().multiply( crc[i].getScreenCTM() );
-//             x = crcPos.e;
-//             y = crcPos.f;
-//             crcCord.set(x, y);
-//         };
-//         let key = crcCord.keys();
-//         let val = crcCord.values();
-//         for (let i=0;i<crcCord.size;i++) {
-//             pnta.attributes.d.value += `${key.next().value}, ${val.next().value} `;
-//         };
-//         pnta.attributes.d.value += "z";
-//         await sleep(20);
-//     };
-// });
