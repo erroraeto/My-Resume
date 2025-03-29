@@ -48,52 +48,9 @@ async function textTyping(doc, speed, txt) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
-//Прокрутка к основному фрейму
-window.onload = function() {
-    main.style.scrollBehavior = "auto";
-    // skill.scrollIntoView({behavior: "auto"});
-    // home.scrollIntoView({behavior: "auto"});
-    // home.scrollIntoView({inline: "center", behavior: "auto"});
-    about.scrollIntoView({behavior: "auto"});
-    main.style.scrollBehavior = "";
-}
-
-//Отмена контекстного меню элементам с анимацией
-let notContMenu = document.querySelectorAll("#nCM");
-for (el of notContMenu) el.oncontextmenu = () => {return false};
-
-//Отмена контекстного меню slider
-// let slider = document.querySelector(".section-about__slider");
-
-// slider.addEventListener("pointerdown", (e) => {
-//     slider.style = 'animation-play-state: paused';
-//     e.target.closest('div').style = 'transform: rotateY(0deg) translateY(-50%); cursor: grabbing';
-//     slider.addEventListener("pointerup", () => {
-//         slider.style = 'animation-play-state: running';
-//         e.target.closest('div').style = '';
-//     });
-// });
-// slider.oncontextmenu = function(event) {
-//     event.preventDefault();
-//     // event.stopPropagation();
-//     return false;
-// };
-// slider.addEventListener('touchmove', () => document.addEventListener('touchmove', handleTouchMove, false), false);
-// slider.addEventListener("touchend", (event) => event.preventDefault(), false);
-// slider.addEventListener("touchstart", tapHandler);
-
-// let tapedTwice = false;
-
-// function tapHandler(event) {
-//     if(!tapedTwice) {
-//         tapedTwice = true;
-//         setTimeout( function() { tapedTwice = false; }, 300 );
-//         return false;
-//     }
-//     event.preventDefault();
-// };
 
 
+//-----------------------------------------------------------------------------------------------------------------------------------
 //Свайпы секций
 let main = document.querySelector('main')
 
@@ -169,154 +126,103 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 
 
-
-
-
+//-----------------------------------------------------------------------------------------------------------------------------------
+//Прокрутка к основному фрейму
+window.onload = function() {
+    main.style.scrollBehavior = "auto";
+    // skill.scrollIntoView({behavior: "auto"});
+    // home.scrollIntoView({behavior: "auto"});
+    // home.scrollIntoView({inline: "center", behavior: "auto"});
+    about.scrollIntoView({behavior: "auto"});
+    main.style.scrollBehavior = "";
+};
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-let sectionAbout = document.querySelector('.section-about__article'),
-sectionAboutTitle = sectionAbout.children[1],
-sectionAboutDescr = sectionAbout.children[0];
+//Подсказки списка
+let attnSctAbt = document.querySelector(".attn");
 
-const resizerAbout = new ResizeObserver((entries) => {
-    for (const entry of entries) {
-        if (entry.target.classList.contains('section-about__article-title')) {
+attnSctAbt.addEventListener("click", (e) => {
+    if (e.target.closest(".attn > *")) {
+        viewSection.scrollTo({
+            top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
+            behavior: "smooth",
+        });
+        [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.add('frame-tickMark'));
 
-            // sectionAboutTitle.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutTitle.clientWidth)} ${Math.round(sectionAboutTitle.clientHeight)}`;
-
-            // let textTitle = sectionAboutTitle.children[1];
-            // textTitle.attributes[2].nodeValue = textTitle.attributes[2].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAboutTitle)}`);
-
-        }
-        if (entry.target.classList.contains('section-about__article')) {
-
-            // sectionAboutTitle.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutTitle.clientWidth)} ${Math.round(sectionAboutTitle.clientHeight)}`;
-            // sectionAboutDescr.attributes[1].nodeValue = `0 0 ${Math.round(sectionAboutDescr.clientWidth)} ${Math.round(sectionAboutDescr.clientHeight)}`;
-
-            // let borderTitle = sectionAboutTitle.children[0],
-            // textTitle = sectionAboutTitle.children[1],
-            // textTitleBbox = textTitle.getBBox();
-
-            // // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(textTitleBbox.x + 12)}`);
-            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(textTitleBbox.width - 26)}`);
-            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(textTitleBbox.width / 3 - 6)}`);
-            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s{2}\-\d+/, `  -${Math.round(textTitleBbox.width / 3 * 2 - 14)}`);
-            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(textTitleBbox.height - 25)}`);
-            // borderTitle.attributes[1].nodeValue = borderTitle.attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(textTitleBbox.x + 15)}`);
-            
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\d+/, `12`);
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(descrWrapSoft.offsetWidth / 3 - 15)}`);
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{3}\S+/g, `   15`);
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{4}\S+/, `    ${Math.round(descrWrapSoft.offsetWidth / 3 * 2 - 52)}`);
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\s\-\d+/, ` -${Math.round(descrWrapSoft.offsetWidth - 37)}`);
-            
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\s\d+/, ` ${Math.round(descrWrapSoft.offsetTop - 10)}`);
-            // sectionAboutDescr.attributes[2].nodeValue = sectionAboutDescr.attributes[2].nodeValue.replace(/\b\s{5}\S+/, `     ${Math.round(descrWrapSoft.offsetHeight + 20)}`);
-
+        e.target.onmouseout = () => {
+            [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.remove('frame-tickMark'));
         }
     }
 });
 
+//Выбор резюме
+let formSliderCont = document.querySelector('.form-slider__button-content');
+let formSliderBtn = document.querySelectorAll('.form-slider__button button');
+let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
 
-// resizerAbout.observe(sectionAbout);
-// resizerAbout.observe(sectionAboutTitle);
-//-----------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
+document.addEventListener('DOMContentLoaded', () => {
 
 
-// //Подсказки списка
-// let attnSctAbt = document.querySelector(".attn");
+    for (btn of formSliderBtn) {
+        btn.addEventListener('click', (event) => {
 
-// attnSctAbt.addEventListener("click", (e) => {
-//     if (e.target.closest(".attn > *")) {
-//         viewSection.scrollTo({
-//             top: snapVals[snapVals.length - e.target.getAttribute('data-frame')],
-//             behavior: "smooth",
-//         });
-//         [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.add('frame-tickMark'));
+            let content = event.target.parentElement.querySelectorAll('p');
+            let radioCheck = event.target.parentElement.parentElement.querySelector('input:checked');
 
-//         e.target.onmouseout = () => {
-//             [viewSectionFrame[snapVals.length - e.target.getAttribute('data-frame')], attnSctAbt].forEach( el => el.classList.remove('frame-tickMark'));
-//         }
-//     }
-// });
+            switch (event.target.title) {
+                case 'Previous':
+                    for (ctn of content) {
+                        if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
+                            delete ctn.dataset.view;
+                            formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
+                            ctn.previousElementSibling.dataset.view = '';
+                            break
+                        };
+                    };
+                    break
+                case 'Next':
+                    for (ctn of content) {
+                        if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
+                            delete ctn.dataset.view;
+                            formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
+                            ctn.nextElementSibling.dataset.view = '';
+                            break
+                        };
+                    };
+                    break
+            }
+        });
+    };
 
-// //Выбор резюме
-// let formSliderCont = document.querySelector('.form-slider__button-content');
-// let formSliderBtn = document.querySelectorAll('.form-slider__button button');
-// let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
+    const observer = new IntersectionObserver( (entries) => {
+        entries.forEach((entry) => {
+            if (entry.intersectionRatio >= 0.5) {
+                ctn.dataset.view = '';
+                Array.from(formSliderRadio).find((radio) => {if (radio.value == entry.target.textContent) radio.checked = true})
+            } else if (entry.intersectionRatio <= 0.5) {
+                delete ctn.dataset.view;
+            }
+        })
+        }, {
+            root: formSliderCont,
+            threshold: 0.5,
+        }
+    );
 
-// document.addEventListener('DOMContentLoaded', () => {
+    for (ctn of formSliderCont.children) observer.observe(ctn);
 
-
-//     for (btn of formSliderBtn) {
-//         btn.addEventListener('click', (event) => {
-
-//             let content = event.target.parentElement.querySelectorAll('p');
-//             let radioCheck = event.target.parentElement.parentElement.querySelector('input:checked');
-
-//             switch (event.target.title) {
-//                 case 'Previous':
-//                     for (ctn of content) {
-//                         if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
-//                             delete ctn.dataset.view;
-//                             formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
-//                             ctn.previousElementSibling.dataset.view = '';
-//                             break
-//                         };
-//                     };
-//                     break
-//                 case 'Next':
-//                     for (ctn of content) {
-//                         if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
-//                             delete ctn.dataset.view;
-//                             formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
-//                             ctn.nextElementSibling.dataset.view = '';
-//                             break
-//                         };
-//                     };
-//                     break
-//             }
-//         });
-//     };
-
-//     const observer = new IntersectionObserver( (entries) => {
-//         entries.forEach((entry) => {
-//             if (entry.intersectionRatio >= 0.5) {
-//                 ctn.dataset.view = '';
-//                 Array.from(formSliderRadio).find((radio) => {if (radio.value == entry.target.textContent) radio.checked = true})
-//             } else if (entry.intersectionRatio <= 0.5) {
-//                 delete ctn.dataset.view;
-//             }
-//         })
-//         }, {
-//             root: formSliderCont,
-//             threshold: 0.5,
-//         }
-//     );
-
-//     for (ctn of formSliderCont.children) observer.observe(ctn);
-
-//     for (radio of formSliderRadio) {
-//         radio.addEventListener('click', (event) => {
-//             for (ctn of formSliderCont.children) {
-//                 if (ctn.textContent == event.target.value) {
-//                     ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-//                     ctn.dataset.view = '';
-//                 } else {delete ctn.dataset.view};
-//             }
-//         });
-//     };
-// });
-
-
-
-
-
+    for (radio of formSliderRadio) {
+        radio.addEventListener('click', (event) => {
+            for (ctn of formSliderCont.children) {
+                if (ctn.textContent == event.target.value) {
+                    ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                    ctn.dataset.view = '';
+                } else {delete ctn.dataset.view};
+            }
+        });
+    };
+});
 
 let sliderAbout = document.querySelector(".section-about__slider-wrapper"),
 sliderBrdTtl = document.querySelector(".section-about__slider-border .section-about__slider-title"),
@@ -368,12 +274,15 @@ perspective = 600,
 zVals = [],
 snapVals = [];
 
-for(let i = 0; i < viewSectionFrame.length; i++) {
+for (let i = 0; i < viewSectionFrame.length; i++) {
+
     zVals.push( i * zSpacing );
 
-    // snapVals.push( i * ( ( viewSection.scrollHeight - viewSection.clientHeight ) / 8) );
+    let ert = zVals[zVals.length - 1];
+
+    if (i==0) viewSection.style.setProperty("--scrllHt", 120 * 9);
+
     snapVals.push( Math.round( i * ( ( viewSection.scrollHeight - viewSection.clientHeight ) / 8.09) ));
-    // snapVals.push( (i + 0.25) * zSpacing );
 };
 
 viewSection.addEventListener('scroll', (event) => {

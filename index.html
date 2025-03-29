@@ -165,14 +165,12 @@
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="2"/>
                 <feComposite in="SourceGraphic" operator="out"/>
-                <!-- <feComposite in="SourceAlpha" operator="out"/> -->
-                <!-- <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1.5 0"/> -->
             </filter>
+
             <filter id="inner-shadow-title-type02">
                 <feOffset dx="0" dy="0"/>
-                <feGaussianBlur stdDeviation="3"/>
-                <feComposite in="SourceAlpha" operator="out"/>
-                <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1 0"/>
+                <feGaussianBlur stdDeviation="6"/>
+                <feComposite in="SourceGraphic" operator="out"/>
             </filter>
             <filter id="inner-shadow-title-type03">
                 <feOffset dx="0" dy="0"/>
@@ -181,13 +179,6 @@
                 <feColorMatrix values="0.3 0 0 0 0.3 0 0.7 0 0 0.7 0 0 1 0 1 0 0 0 1 0"/>
             </filter>
 
-
-            <!-- <filter id="inner-shadow-descr-type01">
-                <feOffset dx="0" dy="0"/>
-                <feGaussianBlur stdDeviation="13"/>
-                <feComposite in="SourceAlpha" operator="out"/>
-                <feComposite in="SourceGraphic" operator="out"/>
-            </filter> -->
 
             <filter id="inner-shadow-descr-type01">
                 <feOffset dx="0" dy="0"/>
@@ -198,10 +189,10 @@
 
             <filter id="inner-shadow-descr-type02">
                 <feOffset dx="0" dy="0"/>
-                <feGaussianBlur stdDeviation="4"/>
-                <feComposite in="SourceAlpha" operator="out"/>
-                <feColorMatrix values="1 0 0 0 0.2 0 1 0 0 0.2 0 0 1 0 0.3 0 0 0 1 0"/>
+                <feGaussianBlur stdDeviation="26"/>
+                <feComposite in="SourceGraphic" operator="out"/>
             </filter>
+
             <filter id="inner-shadow-descr-type03">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="10"/>
@@ -314,7 +305,7 @@
             </filter>
 
             <filter id="goo-1">
-                <feGaussianBlur in="BackgroundImage" stdDeviation="2" result="blur"></feGaussianBlur>
+                <feGaussianBlur in="BackgroundImage" stdDeviation="1" result="blur"></feGaussianBlur>
                 <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"></feColorMatrix>
                 <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
             </filter>
@@ -390,6 +381,7 @@
                 <h2 class="section-about__article-title"><span>🗈</span>Insertion</h2>
 
                 <!-- 🕮  🗏  🗒  🖺  🗎  🗈  👁-->
+                <!-- 🖱️  🖱↕↔  �  ✌︎︎  ᯤ  ⌞⌝  ✔  ⛶-->
 
                 <div class="section-about__article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
                     <p> I am a passionate frontend developer as well as a 2D and 3D graphics
@@ -416,6 +408,24 @@
                     <p>Enjoy your visit.</p>
                 </div>
 
+                <div class="section-about__article-resume">
+                    <a href="/files/resume.pdf"><span>📁</span><span>Resume</span></a>
+                    <div class="form-slider">
+                        <fieldset class="form-slider__button">
+                            <legend>Choose language</legend>
+                            <button type="button" title="Previous">🞀</button>
+                            <div class="form-slider__button-content">
+                                <p data-view="">English</p><p>Russia</p>
+                            </div>
+                            <button type="button" title="Next">🞂</button>
+                        </fieldset>
+                        <fieldset class="form-slider__radio">
+                            <legend>Selected language</legend>
+                            <input type="radio" name="language" value="English" checked>
+                            <input type="radio" name="language" value="Russia">
+                        </fieldset>
+                    </div>
+                </div>
 
 
 
@@ -609,6 +619,15 @@
                             <text x="0" y="12" text-anchor="middle"><tspan dominant-baseline="middle">1</tspan>\9</text>
                             <text x="0" y="14" text-anchor="end">✔️</text>
                         </svg>
+                        <!-- <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 100 100" data-name="Concepts & Design" preserveAspectRatio="xMidYMid meet">
+                            <image x="0" y="0" href="./src/image/frame/1frame.webp"/>
+                            <polygon id="CA-BB" points="1,5 5,1 37,1 41,5 95,5 99,9 99,99 5,99 1,95" />
+                            <path vector-effect="non-scaling-stroke" d="M1 31l10-10  190 0 10-20   105 0 10 20 0    149-10 10 -307 0z"/>
+                            <text x="0" y="19" text-anchor="end">Concepts & Design</text>
+                            <path vector-effect="non-scaling-stroke" d="M378.5 19l9-18 -31 0-9 18z"/>
+                            <text x="0" y="12" text-anchor="middle"><tspan dominant-baseline="middle">1</tspan>\9</text>
+                            <text x="0" y="14" text-anchor="end">✔️</text>
+                        </svg> -->
                     </div>
                 </div>
             </div>
