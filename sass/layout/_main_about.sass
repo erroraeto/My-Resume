@@ -290,11 +290,12 @@
                                 display: block
                                 height: max-content
                                 width: max-content
-                                left: 50%
+                                translate: 100% 100%
+                                left: 0%
                                 top: 0
                                 p
                                         width: max-content
-                                        
+                                        border: 1px solid white
                                         &:not(:last-of-type)
                                                 margin-bottom: .5rem
                                         &::after,
@@ -306,13 +307,10 @@
                                                 left: 100%
                                                 top: 0
                                         &:nth-of-type(1)
-                                                &::after
-                                                        content: '↕'
                                                 &::before
                                                         content: '☝'
-                                                        translate: 50% 0
-                                                        transform-origin: 50% 60%
-                                                        animation: clueScroll 2s ease infinite alternate
+                                                        translate: 10% 0
+                                                        animation: clueScroll 2s ease infinite
                                         &:nth-of-type(2)
                                                 &::before
                                                         content: '🖐️'
@@ -322,15 +320,15 @@
                                                         content: '☝'
                                                         translate: 10% 10%
                                                         text-shadow: 0 0 0 white, 0 0 2px black
-                                                        animation: clueAlign-1 1s ease infinite alternate
+                                                        animation: clueAlign-1 2s ease infinite
                                                 &::before
                                                         content: ''
-                                                        height: 2rem
-                                                        width: 2rem
-                                                        translate: 6% -16%
-                                                        outline: 2px solid white
+                                                        height: 2.2rem
+                                                        width: 2.2rem
+                                                        translate: 0% -21%
+                                                        outline: solid white
                                                         clip-path: polygon(0% 45%, 44.5% 45%, 44.5% 0%, 56.5% 0%, 56.5% 45%, 100% 45%, 100% 55%, 0% 55%)
-                                                        animation: clueAlign-2 2s ease infinite .4s
+                                                        animation: clueAlign-2 2s ease infinite
                         &-frame
                                 position: absolute
                                 height: 56%

@@ -278,11 +278,10 @@ for (let i = 0; i < viewSectionFrame.length; i++) {
 
     zVals.push( i * zSpacing );
 
-    let ert = zVals[zVals.length - 1];
+    if (i==0) viewSection.style.setProperty("--scrllHt", 1080);
 
-    if (i==0) viewSection.style.setProperty("--scrllHt", 120 * 9);
+    snapVals.push( Math.round(i * (1080 / 8)));
 
-    snapVals.push( Math.round( i * ( ( viewSection.scrollHeight - viewSection.clientHeight ) / 8.09) ));
 };
 
 viewSection.addEventListener('scroll', (event) => {
@@ -294,7 +293,7 @@ viewSection.addEventListener('scroll', (event) => {
         let newZVal = zVals[i] += delta * 1.5;
         viewSectionFrame[i].style.setProperty("--translateZ", newZVal);
 
-        viewSectionFrame[i].style.setProperty("--translateX", newZVal > 8 ? '100' : '-50');
+        viewSectionFrame[i].style.setProperty("--translateX", newZVal > 8 ? '150' : '-50');
 
         let blur = Math.round(-parseInt( newZVal / perspective * 200 ) / 50);
         viewSectionFrame[i].style.filter = `blur(${blur}px)`;
@@ -310,7 +309,7 @@ viewSection.addEventListener('scroll', (event) => {
 
         const index = target ? [...target.parentNode.children].indexOf(target) : -1;
         viewSection.scrollTo({
-            top: snapVals[index],
+            top: snapVals[index - 1],
             behavior: "smooth",
         });
     };
