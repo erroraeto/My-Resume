@@ -11,6 +11,7 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap");
 :root {
   --color-white: white;
   --color-onahau: #ccebff;
@@ -106,31 +107,16 @@ p {
   line-height: 1.2em;
 }
 
-.section-about__article text {
+.section-about__article svg text {
   -webkit-filter: url("#chrom-aber");
           filter: url("#chrom-aber");
 }
-.section-about__article .description__mark {
+.section-about__article svg .description__mark {
   font-family: "Gruppo", sans-serif;
 }
-.section-about__article .description__mark .kanji {
+.section-about__article svg .description__mark .kanji {
   font-weight: 300;
 }
-
-.section-about__article-border text,
-.description-wrapper__software-border text {
-  font-family: "Michroma", serif;
-  font-style: normal;
-  font-weight: lighter;
-}
-
-.section-about__article-border text:nth-of-type(2) {
-  font-size: 1rem;
-}
-.section-about__article-border text:nth-of-type(3) {
-  font-size: 2.5rem;
-}
-
 .section-about__article-description p {
   font-size: 1.9rem;
   text-align: justify;
@@ -138,12 +124,6 @@ p {
       -ms-hyphens: auto;
           hyphens: auto;
 }
-
-.attn-message {
-  font-size: 2rem;
-  font-weight: lighter;
-}
-
 .section-about__article-description ul {
   font-size: 2rem;
 }
@@ -152,33 +132,29 @@ p {
 .section-about__article-description ul li::after {
   font-size: 1.6rem;
 }
-
 .section-about__article-resume span {
   color: var(--color-white);
   font-size: 2rem;
 }
 
-.section-about__article-resume-icon-link mask text {
-  fill: black;
-  font-size: 2.6rem;
+.section-home .planet__cont text {
+  font-family: "Gruppo", sans-serif;
+  font-weight: 100;
+  -webkit-filter: none;
+          filter: none;
 }
 
-.section-about__article-resume-icon-link text {
-  fill: var(--color-white);
-  font-size: 2.4rem;
-}
-.section-about__article-resume-icon-link text tspan {
-  font-size: 3.4rem;
-}
-
-.section-about__slider text:nth-of-type(2) {
+.section-about__slider-wrapper text:nth-of-type(2) {
   font-size: 1.4rem;
 }
-.section-about__slider text:last-of-type {
+.section-about__slider-wrapper text:last-of-type {
   font-size: 2rem;
 }
-.section-about__slider tspan {
+.section-about__slider-wrapper tspan {
   font-size: 2.2rem;
+}
+.section-about__slider-wrapper-clue p {
+  font-size: 1.6rem;
 }
 
 .section-abilities__content-section-skills span {
@@ -246,6 +222,18 @@ p {
 }
 .description-wrapper__software-border text:nth-of-type(3) {
   font-size: 2.5rem;
+}
+
+.footer__emblem text {
+  line-height: 100%;
+  font-family: "Zen Antique Soft", serif;
+}
+.footer__emblem textpath {
+  font-family: "Cutive Mono", monospace;
+  font-weight: bold;
+}
+.footer__emblem textpath:nth-of-type(2) {
+  font-family: "Yusei Magic", sans-serif;
 }
 
 @-webkit-keyframes scrollFrame {
@@ -1601,22 +1589,9 @@ main section {
           mask-image: url(#mask-hor-scroll-type01);
   -webkit-perspective: 100rem;
           perspective: 100rem;
-  cursor: -webkit-grab;
-  cursor: grab;
 }
 .section-about__slider::-webkit-scrollbar {
   display: none;
-}
-.section-about__slider-instr {
-  position: absolute;
-  display: block;
-  grid-area: 1/1/2/2;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  height: 1rem;
-  width: 1rem;
 }
 .section-about__slider-wrapper {
   position: sticky;
@@ -1637,7 +1612,16 @@ main section {
 }
 .section-about__slider-wrapper-clue {
   position: absolute;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -1645,14 +1629,17 @@ main section {
   width: -moz-max-content;
   width: max-content;
   translate: 100% 100%;
-  left: 0%;
-  top: 0;
+  left: 6%;
+  top: 0%;
+  -webkit-transform: rotateY(-9deg);
+          transform: rotateY(-9deg);
+  padding-right: 1rem;
+  border-right: 1px solid white;
 }
 .section-about__slider-wrapper-clue p {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  border: 1px solid white;
 }
 .section-about__slider-wrapper-clue p:not(:last-of-type) {
   margin-bottom: 0.5rem;
@@ -1662,37 +1649,38 @@ main section {
   display: block;
   color: transparent;
   text-shadow: 0 0 0 white;
-  left: 100%;
-  top: 0;
+  left: 0%;
+  top: 0%;
 }
 .section-about__slider-wrapper-clue p:nth-of-type(1)::before {
   content: "☝";
-  translate: 10% 0;
+  translate: -120% 0%;
   -webkit-animation: clueScroll 2s ease infinite;
           animation: clueScroll 2s ease infinite;
 }
-.section-about__slider-wrapper-clue p:nth-of-type(2)::before {
-  content: "🖐️";
-  -webkit-animation: clueGrab 2s ease-in-out infinite alternate -0.4s;
-          animation: clueGrab 2s ease-in-out infinite alternate -0.4s;
-}
-.section-about__slider-wrapper-clue p:nth-of-type(3)::after {
+.section-about__slider-wrapper-clue p:nth-of-type(2)::after {
   content: "☝";
-  translate: 10% 10%;
+  translate: -120% 10%;
   text-shadow: 0 0 0 white, 0 0 2px black;
   -webkit-animation: clueAlign-1 2s ease infinite;
           animation: clueAlign-1 2s ease infinite;
 }
-.section-about__slider-wrapper-clue p:nth-of-type(3)::before {
+.section-about__slider-wrapper-clue p:nth-of-type(2)::before {
   content: "";
   height: 2.2rem;
   width: 2.2rem;
-  translate: 0% -21%;
+  translate: -140% -21%;
   outline: solid white;
   -webkit-clip-path: polygon(0% 45%, 44.5% 45%, 44.5% 0%, 56.5% 0%, 56.5% 45%, 100% 45%, 100% 55%, 0% 55%);
           clip-path: polygon(0% 45%, 44.5% 45%, 44.5% 0%, 56.5% 0%, 56.5% 45%, 100% 45%, 100% 55%, 0% 55%);
   -webkit-animation: clueAlign-2 2s ease infinite;
           animation: clueAlign-2 2s ease infinite;
+}
+.section-about__slider-wrapper-clue p:nth-of-type(3)::before {
+  content: "🖐️";
+  translate: -170% 0%;
+  -webkit-animation: clueGrab 2s ease-in-out infinite alternate -0.4s;
+          animation: clueGrab 2s ease-in-out infinite alternate -0.4s;
 }
 .section-about__slider-wrapper-frame {
   position: absolute;
@@ -1783,48 +1771,17 @@ main section {
   height: 100%;
   width: 100%;
   fill: #223039;
-  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber");
-}
-.section-home .planet path,
-.section-home .planet circle {
-  -webkit-transform-origin: center;
-          transform-origin: center;
-}
-.section-home .planet g {
-  fill: var(--color-light-slate-gray);
-}
-.section-home .planet path {
   stroke: none;
 }
-.section-home .planet circle {
-  fill: none;
-  stroke: var(--color-light-slate-gray);
-  stroke-width: 5px;
+.section-home .planet * {
+  vector-effect: non-scaling-stroke;
 }
-.section-home .planet text {
-  -webkit-filter: none;
-          filter: none;
-  font-weight: bolder;
+.section-home .planet__back {
+  -webkit-filter: url("#chrom-aber__relative") blur(1px);
+          filter: url("#chrom-aber__relative") blur(1px);
+}
+.section-home .planet__cont {
   fill: var(--color-white);
-}
-.section-home .planet text:nth-of-type(2) {
-  font-size: 4rem;
-}
-.section-home .planet textPath {
-  font-family: "Oxanium", serif;
-  font-weight: 300;
-  font-size: 0.6rem;
-}
-.section-home .planet rect {
-  -webkit-mask: url(#mask-bg-desc-type05);
-          mask: url(#mask-bg-desc-type05);
-}
-.section-home .planet rect:first-of-type {
-  opacity: 0.3;
-}
-.section-home .planet rect:last-of-type {
-  fill: url(#line-grad-anim-07);
-  mix-blend-mode: screen;
 }
 
 .section-abilities {
@@ -2461,19 +2418,10 @@ footer .footer__emblem text {
           filter: none;
   stroke: none;
   fill: currentColor;
-  line-height: 100%;
-  font-family: "Zen Antique Soft", serif;
 }
 footer .footer__emblem path {
   stroke: none;
   fill: none;
-}
-footer .footer__emblem textpath {
-  font-family: "Cutive Mono", monospace;
-  font-weight: bold;
-}
-footer .footer__emblem textpath:nth-of-type(2) {
-  font-family: "Yusei Magic", sans-serif;
 }
 footer .footer__emblem textpath:nth-of-type(n+3):nth-of-type(-n+4) {
   stroke: currentColor;

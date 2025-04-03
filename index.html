@@ -276,6 +276,16 @@
                 <feBlend in='cg' mode='screen'></feBlend>
             </filter>
 
+            <filter id='chrom-aber__relative' color-interpoation-filters='sRGB'>
+                <feColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dx='1.5' result='cr'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
+                <feOffset dy='1.5' result='cg'></feOffset>
+                <feColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'></feColorMatrix>
+                <feBlend in='cr' mode='screen'></feBlend>
+                <feBlend in='cg' mode='screen'></feBlend>
+            </filter>
+
             <filter id='chrom-aber__' color-interpoation-filters='sRGB'>
                 <feColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'></feColorMatrix>
                 <feOffset dx='.1' result='cr'></feOffset>
@@ -309,19 +319,6 @@
                 <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"></feColorMatrix>
                 <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
             </filter>
-
-
-
-
-
-            <clipPath id="myClip">
-                <polygon points="400,50 400,320, 140,300"/>
-                <polygon points="450,10 500,200 600,100" />
-                <polygon points="150,10 100,200 300,100" />
-              </clipPath>
-
-
-
 
 
         </defs>
@@ -369,7 +366,6 @@
         <section id="about" class="section-about">
             <div class="section-about__article">
 
-                
                 <svg viewBox="0 0 100 100" preserveAspectRatio="none" overflow="visible" >
 
                     <g class="description" >
@@ -544,9 +540,7 @@
             <div class="section-about__slider">
                 <div class="section-about__slider-wrapper">
                     <div class="section-about__slider-wrapper-clue">
-                        <p>scrolling</p>
-                        <p>moving</p>
-                        <p>align</p>
+                        <p>scroll</p><p>align</p><p>move</p>
                     </div>
                     <div class="section-about__slider-wrapper-frame">
                         <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Rigging & Skinning" preserveAspectRatio="xMidYMid meet">
@@ -654,6 +648,32 @@
         <section id="home" class="section-home">
             <svg class="planet" viewbox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
 
+                <g class="planet__back">
+                    <defs>
+                        <radialGradient id="planet__back-rad-grad">
+                            <stop offset="50%" stop-color="black" stop-opacity="100%"/>
+                            <stop offset="60%" stop-color="black" stop-opacity="0%"/>
+                        </radialGradient>
+                        <mask id="planet__back-mask" maskContentUnits="objectBoundingBox">
+                            <rect x="0" y="0" width="1" height="1" fill="white" />
+                            <circle fill="url(#planet__back-rad-grad)" cx=".6" cy=".5" r="1">
+                                <animate attributeName="cx" values=".5;.6" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                            </circle>
+                        </mask>
+                    </defs>
+                    <circle mask="url(#planet__back-mask)" cx="30" cy="60" r="40" />
+                </g>
+
+                <g class="planet__cont">
+                    <!-- <text class="kanji" font-size="7" dominant-baseline="middle" text-anchor="end" x="13" y="6.8">電</text> -->
+                    <!-- <text font-size="4" textLength="20" lengthAdjust="spacingAndGlyphs" x="14" y="4.9">D.D.S.</text> -->
+                    <text font-size="20" dominant-baseline="" x="14.4" y="60">RESUME</text>
+                </g>
+
+            </svg>
+
+            <!-- <svg class="planet" viewbox="0 0 120 120" preserveAspectRatio="xMidYMid meet">
+
                 <rect height="120" width="120" />
 
                 <defs>
@@ -684,29 +704,6 @@
 
                 <rect height="120" width="120" />
 
-
-
-<!-- 
-                <path vector-effect="non-scaling-stroke" d="M60 65m-127.816 0a2.184.4 0 00257.712 0 2.184.4 0 00-257.712 0z" />
-                <path vector-effect="non-scaling-stroke" d="M75 65m-94.9698 25.4471a1.68.4-15 00191.4852-51.3083 1.68.4-15 00-191.4852 51.3083z" />
-
-                <circle class="sada" r="3">
-                    <animateMotion dur="120s" repeatCount="indefinite" path="M60 65m-127.816 0a2.184.4 0 00257.712 0 2.184.4 0 00-257.712 0z" />
-                </circle>
-                <circle class="sada" r="3">
-                    <animateMotion begin="-50s" dur="100s" repeatCount="indefinite" path="M75 65m-94.9698 25.4471a1.68.4-15 00191.4852-51.3083 1.68.4-15 00-191.4852 51.3083z" />
-                </circle>
-                <text x="0" y="-5" text-anchor="middle">area01
-                    <animateMotion begin="-50s" dur="100s" repeatCount="indefinite" path="M75 65m-94.9698 25.4471a1.68.4-15 00191.4852-51.3083 1.68.4-15 00-191.4852 51.3083z" />
-                </text>
-                <text x="0" y="5" dominant-baseline="Hanging" text-anchor="middle">area02
-                    <animateMotion dur="120s" repeatCount="indefinite" path="M60 65m-127.816 0a2.184.4 0 00257.712 0 2.184.4 0 00-257.712 0z" />
-                </text>
-
-
-                <circle vector-effect="non-scaling-stroke" stroke-width="2px" stroke="var(--color-orange)" fill="var(--color-cinnamon)" cx="60" cy="60" r="25"/> -->
-
-
                 <defs>
                     <linearGradient id="line0233" gradientTransform="rotate(70)">
                         <stop offset="0%" stop-color="white" stop-opacity="100%"/>
@@ -721,7 +718,7 @@
                         <stop offset="70%" stop-color="black" stop-opacity="0%"/>
                     </radialGradient>
                     <mask id="maskasdasda" maskContentUnits="objectBoundingBox">
-                        <!-- <circle fill="white" cx=".5" cy=".5" r=".5" /> -->
+                        <circle fill="white" cx=".5" cy=".5" r=".5" />
                         <rect x="0" y="0" width="1" height="1" fill="url(#line0233)" />
                         <circle fill="url(#rad013)" cx=".58" cy=".62" r=".9">
                             <animate attributeName="cx" values=".5;.58" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
@@ -741,7 +738,8 @@
                         <circle fill="white" cx="60" cy="60" r="40"/>
                     </mask>
                 </defs>
-            </svg>
+            </svg> -->
+
         </section>
 
         <section id="skill" class="section-abilities">

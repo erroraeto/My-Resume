@@ -236,39 +236,8 @@
                 backface-visibility: hidden
                 mask-image: url(#mask-hor-scroll-type01)
                 perspective: 100rem
-                cursor: grab
                 &::-webkit-scrollbar
                         display: none
-                // &::before
-                //         content: '🖐️'
-                //         position: absolute
-                //         display: block
-                //         grid-area: 1 / 1 / 2 / 2
-                //         bottom:0
-                //         left: 0
-                //         top: 0
-                //         height: 1rem
-                //         width: 1rem
-                &-instr
-                        position: absolute
-                        // display: none
-                        display: block
-                        grid-area: 1 / 1 / 2 / 2
-                        height: 100%
-                        width: 100%
-                        // bottom:0
-                        left: 0
-                        top: 0
-                        height: 1rem
-                        width: 1rem
-                        // &::before
-                        //         content: '🖐️'
-                        //         position: sticky
-                        //         display: block
-                        //         left: 0
-                        //         top: 0
-                        //         height: 1rem
-                        //         width: 1rem
                 &-wrapper
                         position: sticky
                         top: 0
@@ -287,15 +256,20 @@
                         // ⮻
                         &-clue
                                 position: absolute
-                                display: block
+                                display: flex
+                                flex-direction: column
+                                align-items: flex-end
                                 height: max-content
                                 width: max-content
                                 translate: 100% 100%
-                                left: 0%
-                                top: 0
+                                left: 6%
+                                top: 0%
+                                transform: rotateY(-9deg)
+                                padding-right: 1rem
+                                border-right: 1px solid white
                                 p
+                                        // 「」
                                         width: max-content
-                                        border: 1px solid white
                                         &:not(:last-of-type)
                                                 margin-bottom: .5rem
                                         &::after,
@@ -304,31 +278,32 @@
                                                 display: block
                                                 color: transparent
                                                 text-shadow: 0 0 0 white
-                                                left: 100%
-                                                top: 0
+                                                left: 0%
+                                                top: 0%
                                         &:nth-of-type(1)
                                                 &::before
                                                         content: '☝'
-                                                        translate: 10% 0
+                                                        translate: -120% 0%
                                                         animation: clueScroll 2s ease infinite
                                         &:nth-of-type(2)
-                                                &::before
-                                                        content: '🖐️'
-                                                        animation: clueGrab 2s ease-in-out infinite alternate -.4s
-                                        &:nth-of-type(3)
                                                 &::after
                                                         content: '☝'
-                                                        translate: 10% 10%
+                                                        translate: -120% 10%
                                                         text-shadow: 0 0 0 white, 0 0 2px black
                                                         animation: clueAlign-1 2s ease infinite
                                                 &::before
                                                         content: ''
                                                         height: 2.2rem
                                                         width: 2.2rem
-                                                        translate: 0% -21%
+                                                        translate: -140% -21%
                                                         outline: solid white
                                                         clip-path: polygon(0% 45%, 44.5% 45%, 44.5% 0%, 56.5% 0%, 56.5% 45%, 100% 45%, 100% 55%, 0% 55%)
                                                         animation: clueAlign-2 2s ease infinite
+                                        &:nth-of-type(3)
+                                                &::before
+                                                        content: '🖐️'
+                                                        translate: -170% 0%
+                                                        animation: clueGrab 2s ease-in-out infinite alternate -.4s
                         &-frame
                                 position: absolute
                                 height: 56%

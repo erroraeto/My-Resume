@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 window.onload = function() {
     main.style.scrollBehavior = "auto";
     // skill.scrollIntoView({behavior: "auto"});
-    // home.scrollIntoView({behavior: "auto"});
+    home.scrollIntoView({behavior: "auto"});
     // home.scrollIntoView({inline: "center", behavior: "auto"});
-    about.scrollIntoView({behavior: "auto"});
+    // about.scrollIntoView({behavior: "auto"});
     main.style.scrollBehavior = "";
 };
 
@@ -706,9 +706,11 @@ document.addEventListener('click', async function (e) {
     }
 });
 
-main.addEventListener('scroll', (event) => {
+main.addEventListener('scroll', thumbPosition);
 
-    let body = event.target,
+function thumbPosition() {
+
+    let body = main,
     scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
     scrollThumbCenter = body.offsetWidth / (body.scrollWidth / body.offsetWidth) / 2,
     footerBbox = footer.getBBox(),
@@ -716,7 +718,7 @@ main.addEventListener('scroll', (event) => {
 
     navBar.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
 
-});
+};
 
 let footerIsDown,
 footerStartX,
@@ -724,7 +726,9 @@ footerSnap = [],
 footerScrollLeft;
 
 document.addEventListener('DOMContentLoaded', function() {
-    for (let i = 0; i < (main.scrollWidth / main.offsetWidth); i++) { footerSnap.push( main.offsetWidth * i ) }
+    for (let i = 0; i < (main.scrollWidth / main.offsetWidth); i++) { footerSnap.push( main.offsetWidth * i ) };
+
+    thumbPosition();
 });
 
 footer.addEventListener('mousedown', (event) => {

@@ -54,66 +54,77 @@ p
     line-height: 1.2em
 
 .section-about__article
-    text
-        filter: url("#chrom-aber")
-    .description
-        &__mark
-            font-family: "Gruppo", sans-serif
-            .kanji
-                font-weight: 300
+    svg
+        text
+            filter: url("#chrom-aber")
+        .description
+            &__mark
+                font-family: "Gruppo", sans-serif
+                .kanji
+                    font-weight: 300
+    &-description
+        p
+            font-size: 1.9rem
+            text-align: justify
+            hyphens: auto
+        ul
+            font-size: 2rem
+            & ::marker,
+            li::before,
+            li::after
+                font-size: 1.6rem
+
+    &-resume span
+        color: var(--color-white)
+        font-size: 2rem
+
+.section-home
+    .planet__cont text
+        // font-family: "Prosto One", sans-serif
+        font-family: "Gruppo", sans-serif
+        font-weight: 100
+        filter: none
 
 
-.section-about__article-border text,
-.description-wrapper__software-border text
-    font-family: "Michroma", serif
-    font-style: normal
-    font-weight: lighter
 
-.section-about__article-border
-    text:nth-of-type(1)
-    text:nth-of-type(2)
-        font-size: 1rem
-    text:nth-of-type(3)
-        font-size: 2.5rem
 
-.section-about__article-description p
-    font-size: 1.9rem
-    // padding: 1rem 2rem
-    text-align: justify
-    hyphens: auto
+// .section-about__article-border text,
+// .description-wrapper__software-border text
+//     font-family: "Michroma", serif
+//     font-style: normal
+//     font-weight: lighter
 
-.attn-message
-    font-size: 2rem
-    font-weight: lighter
+// .section-about__article-border
+//     text:nth-of-type(1)
+//     text:nth-of-type(2)
+//         font-size: 1rem
+//     text:nth-of-type(3)
+//         font-size: 2.5rem
 
-.section-about__article-description ul
-    font-size: 2rem
-    & ::marker,
-    li::before,
-    li::after
-        font-size: 1.6rem
 
-.section-about__article-resume span
-    color: var(--color-white)
-    font-size: 2rem
-
-.section-about__article-resume-icon-link mask text
-    fill: black
-    font-size: 2.6rem
-
-.section-about__article-resume-icon-link text
-    fill: var(--color-white)
-    font-size: 2.4rem
-    tspan
-        font-size: 3.4rem
+// .attn-message
+//     font-size: 2rem
+//     font-weight: lighter
 
 .section-about__slider
-    text:nth-of-type(2)
-        font-size: 1.4rem
-    text:last-of-type
-        font-size: 2rem
-    tspan
-        font-size: 2.2rem
+    &-wrapper
+        text:nth-of-type(2)
+            font-size: 1.4rem
+        text:last-of-type
+            font-size: 2rem
+        tspan
+            font-size: 2.2rem
+        &-clue
+            p
+                font-size: 1.6rem
+
+
+
+
+
+
+
+
 
 .section-abilities__content-section-skills span
     font-weight: bold
@@ -165,3 +176,14 @@ p
         font-size: 1rem
     text:nth-of-type(3)
         font-size: 2.5rem
+
+
+.footer__emblem
+    text
+        line-height: 100%
+        font-family: "Zen Antique Soft", serif
+    textpath
+        font-family: "Cutive Mono", monospace
+        font-weight: bold
+        &:nth-of-type(2)
+            font-family: "Yusei Magic", sans-serif

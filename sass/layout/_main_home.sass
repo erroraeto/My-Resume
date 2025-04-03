@@ -4,43 +4,58 @@
         height: 100%
         width: 100%
         fill: #223039
-        // fill: #1e3d50
-        // filter: url(#led-screen3)
-        filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
-        path,
-        circle
-            transform-origin: center
-            // filter: drop-shadow(0 0 .5px black)
-        g
-            fill: var(--color-light-slate-gray)
-        path
-            stroke: none
-            // fill: rgba(var(--color-light-blue-rgb), .4)
-        circle
-            fill: none
-            // stroke: #223039
-            stroke: var(--color-light-slate-gray)
-            stroke-width: 5px
-        text
-            filter: none
-            // filter: drop-shadow(0 0 .5px black)
-            font-weight: bolder
+        stroke: none
+        *
+            vector-effect: non-scaling-stroke
+        &__back
+            filter: url("#chrom-aber__relative") blur(1px)
+        &__cont
             fill: var(--color-white)
-            // fill: var(--color-thrush-eggs)
-            // opacity: .3
-            &:nth-of-type(2)
-                font-size: 4rem
-        textPath
-            font-family: "Oxanium", serif
-            font-weight: 300
-            font-size: .6rem
-        rect
-            mask: url(#mask-bg-desc-type05)
-        rect:first-of-type
-            opacity: .3
-        rect:last-of-type
-            fill: url(#line-grad-anim-07)
-            mix-blend-mode: screen
+
+
+
+
+
+
+
+
+
+
+
+        // path,
+        // circle
+        //     transform-origin: center
+        //     // filter: drop-shadow(0 0 .5px black)
+        // g
+        //     fill: var(--color-light-slate-gray)
+        // path
+        //     stroke: none
+        //     // fill: rgba(var(--color-light-blue-rgb), .4)
+        // circle
+        //     fill: none
+        //     // stroke: #223039
+        //     stroke: var(--color-light-slate-gray)
+        //     stroke-width: 5px
+        // text
+        //     filter: none
+        //     // filter: drop-shadow(0 0 .5px black)
+        //     font-weight: bolder
+        //     fill: var(--color-white)
+        //     // fill: var(--color-thrush-eggs)
+        //     // opacity: .3
+        //     &:nth-of-type(2)
+        //         font-size: 4rem
+        // textPath
+        //     font-family: "Oxanium", serif
+        //     font-weight: 300
+        //     font-size: .6rem
+        // rect
+        //     mask: url(#mask-bg-desc-type05)
+        // rect:first-of-type
+        //     opacity: .3
+        // rect:last-of-type
+        //     fill: url(#line-grad-anim-07)
+        //     mix-blend-mode: screen
 
 
 
