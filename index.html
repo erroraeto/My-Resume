@@ -187,6 +187,13 @@
                 <feComposite in="SourceGraphic" operator="out"/>
             </filter>
 
+            <filter id="inner-shadow-descr-type012">
+                <feOffset dx="0" dy="0"/>
+                <feGaussianBlur stdDeviation="8"/>
+                <!-- <feComposite in="SourceAlpha" operator="out"/> -->
+                <feComposite in="SourceGraphic" operator="out"/>
+            </filter>
+
             <filter id="inner-shadow-descr-type02">
                 <feOffset dx="0" dy="0"/>
                 <feGaussianBlur stdDeviation="26"/>
@@ -321,6 +328,15 @@
             </filter>
 
 
+            <filter id="erode">
+                <feMorphology operator="erode" radius=".2" />
+            </filter>
+
+            <filter id="white">
+                <feFlood flood-color="white" result="wht" />
+                <feComposite in="wht" in2="SourceGraphic" operator="in" />
+            </filter>
+
         </defs>
     </svg>
     <!-- NAVIGATION -->
@@ -335,7 +351,8 @@
                 <rect width="100" height="46" x="1152" y="0"/>
                 <g class="bgrnd__thumb">
                     <rect width="100" height="23" y="0"/>
-                    <rect width="40" height="23" x="-40" y="23"/>
+                    <!-- <rect width="40" height="23" x="-40" y="0"/> -->
+                    <rect width="23" height="23" x="-23" y="0"/>
                 </g>
             </g>
 
@@ -352,9 +369,15 @@
                 </a>
                 <a id="btn" href="#skill"><text dominant-baseline="middle" text-anchor="middle" x="1152" y="23">Skill</text></a>
                 <g class="cntnt__thumb">
+                    <!-- <path transform="scale(.15)" transform-origin="center" d="M53.13 127.23c-11.9 11.7-31.3 11.7-43.2 0-11.9-11.9-11.9-31.3 0-43.2l30.5-30.5c11.9-11.9 31.3-11.9 43.2 0l.8.8c.3.3.5.3.5.5l1.3 1.6c0 0 0 0 0 .3 1.9 3.2 1.3 6.1-1.3 8.7-2.4 2.4-5.3 2.9-8.5 1.1-.3 0-1.3-1.3-3.2-2.6-6.4-6.4-15.9-6.1-22.5-.3l-30.5 30.8c-6.4 6.1-6.4 16.2 0 22.5 6.4 6.1 16.2 6.1 22.5 0l18.3-18.5c6.9 3.4 13.8 3.4 20.4.3l-28.3 28.5zm74.2-74.5-30.5 30.8c-11.9 11.7-31.3 11.7-43.2 0l-.5-.5-.5-.5c-.3-.3-.3-.3-.3-.5l-1.3-1.6c-1.9-3.2-1.3-6.1 1.1-8.5 2.6-2.6 5.6-3.2 8.7-1.6.3 0 .5.3 1.1.8l2.1 2.1c6.4 6.1 16.2 6.1 22.5 0l30.5-30.7c6.4-6.1 6.4-16.2 0-22.3-6.4-6.4-16.2-6.4-22.5 0l-18.3 18.3c-6.9-3.4-13.8-3.4-20.4-.3l28.3-28.3c11.9-11.9 31.3-11.9 43.2 0 6.1 5.8 9 13 9 21.5 0 8.3-2.9 15.5-9 21.3z"/> -->
                     <!-- <text dominant-baseline="middle" text-anchor="middle" x="-20" y="48.6">🌐</text> -->
-                    <text dominant-baseline="middle" text-anchor="middle" x="-20" y="48.6">🔗</text>
-                    <text dominant-baseline="middle" text-anchor="middle" x="-10" y="38.6"></text>
+                    <!-- <text dominant-baseline="middle" text-anchor="middle" x="-20" y="0">🔗</text> -->
+                    <!-- <text dominant-baseline="middle" text-anchor="middle" x="-10" y="38.6"></text> -->
+                    <symbol id="myDot" viewBox="0 0 137 137">
+                        <path d="M53.13 127.23c-11.9 11.7-31.3 11.7-43.2 0-11.9-11.9-11.9-31.3 0-43.2l30.5-30.5c11.9-11.9 31.3-11.9 43.2 0l.8.8c.3.3.5.3.5.5l1.3 1.6c0 0 0 0 0 .3 1.9 3.2 1.3 6.1-1.3 8.7-2.4 2.4-5.3 2.9-8.5 1.1-.3 0-1.3-1.3-3.2-2.6-6.4-6.4-15.9-6.1-22.5-.3l-30.5 30.8c-6.4 6.1-6.4 16.2 0 22.5 6.4 6.1 16.2 6.1 22.5 0l18.3-18.5c6.9 3.4 13.8 3.4 20.4.3l-28.3 28.5zm74.2-74.5-30.5 30.8c-11.9 11.7-31.3 11.7-43.2 0l-.5-.5-.5-.5c-.3-.3-.3-.3-.3-.5l-1.3-1.6c-1.9-3.2-1.3-6.1 1.1-8.5 2.6-2.6 5.6-3.2 8.7-1.6.3 0 .5.3 1.1.8l2.1 2.1c6.4 6.1 16.2 6.1 22.5 0l30.5-30.7c6.4-6.1 6.4-16.2 0-22.3-6.4-6.4-16.2-6.4-22.5 0l-18.3 18.3c-6.9-3.4-13.8-3.4-20.4-.3l28.3-28.3c11.9-11.9 31.3-11.9 43.2 0 6.1 5.8 9 13 9 21.5 0 8.3-2.9 15.5-9 21.3z"/>
+                    </symbol>
+                    <use href="#myDot" width="10" height="10" x="0" y="0" />
+                    <rect width="23" height="23" x="0" y="0" rx="0"/>
                 </g>
             </g>
 
@@ -661,13 +684,25 @@
                             </circle>
                         </mask>
                     </defs>
-                    <circle mask="url(#planet__back-mask)" cx="30" cy="60" r="40" />
+                    <circle mask="url(#planet__back-mask)" cx="30" cy="60" r="60" />
                 </g>
 
                 <g class="planet__cont">
+                    <defs>
+                        <linearGradient id="planet__cnt-grad">
+                            <stop offset="50%" stop-color="white" stop-opacity="100%"/>
+                            <stop offset="60%" stop-color="white" stop-opacity="0%"/>
+                        </linearGradient>
+                        <mask id="ghbnji">
+                            <text font-size="20" textLength="140" fill="white" stroke="black" stroke-width="3" text-anchor="middle" x="60" y="60">RESUME</text>
+                        </mask>
+                    </defs>
                     <!-- <text class="kanji" font-size="7" dominant-baseline="middle" text-anchor="end" x="13" y="6.8">電</text> -->
-                    <!-- <text font-size="4" textLength="20" lengthAdjust="spacingAndGlyphs" x="14" y="4.9">D.D.S.</text> -->
-                    <text font-size="20" dominant-baseline="" x="14.4" y="60">RESUME</text>
+                    <!-- <text mask="url(#ghbnji)" font-size="20" textLength="140" text-anchor="middle" x="60" y="60">RESUME</text> -->
+                    <text font-size="20" textLength="140" fill="white" stroke="none" stroke-width="9" text-anchor="middle" x="60" y="60">RESUME</text>
+                    <!-- <rect mask="url(#ghbnji)" height="120" width="120" /> -->
+                    <!-- <text font-size="20" fill="url(#planet__cnt-grad)"  textLength="20" lengthAdjust="spacingAndGlyphs" x="14.4" y="60">RESUME</text> -->
+                    <text font-size="5" text-anchor="middle" x="95" y="75">DANILA DIPPEL'</text>
                 </g>
 
             </svg>

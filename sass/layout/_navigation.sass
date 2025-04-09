@@ -15,12 +15,21 @@ nav
         rect
             stroke: none
         .bgrnd
-            fill: #ffffff
+            // fill: #ffffff
+            fill: #4a697c
             // fill: gray
-            filter: url("#goo") url(#inner-shadow-descr-type01)
+            // filter: url("#goo") url(#inner-shadow-descr-type01)
+            filter: url("#goo") url(#inner-shadow-descr-type012) url("#chrom-aber__relative") blur(1px)
+            // filter: url("#goo") url("#chrom-aber__relative") blur(1px)
             & *:not(&__thumb > *)
             &__thumb
                 transform: translateX( calc(var(--translateX) * 1px) ) translateY( calc(var(--translateY) * 1px) )
+                // transform: translateY( calc(var(--translateY) * 1px) )
+                rect
+                    transition: width .3s ease, height .3s ease
+                    &:first-of-type
+                    &:last-of-type
+                        // transform: translateX( calc(var(--translateX) * 1px) )
         .cntnt
             a
                 position: relative
@@ -38,5 +47,7 @@ nav
             &__thumb
                 cursor: pointer
                 fill: var(--color-white)
-                stroke: none
+                filter: url("#chrom-aber")
                 transform: translateX( calc(var(--translateX) * 1px) ) translateY( calc(var(--translateY) * 1px) )
+                rect
+                    fill: rgba(0, 0, 0, 0.001)

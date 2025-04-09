@@ -139,7 +139,6 @@ p {
 
 .section-home .planet__cont text {
   font-family: "Gruppo", sans-serif;
-  font-weight: 100;
   -webkit-filter: none;
           filter: none;
 }
@@ -1182,13 +1181,17 @@ nav svg rect {
   stroke: none;
 }
 nav svg .bgrnd {
-  fill: #ffffff;
-  -webkit-filter: url("#goo") url(#inner-shadow-descr-type01);
-          filter: url("#goo") url(#inner-shadow-descr-type01);
+  fill: #4a697c;
+  -webkit-filter: url("#goo") url(#inner-shadow-descr-type012) url("#chrom-aber__relative") blur(1px);
+          filter: url("#goo") url(#inner-shadow-descr-type012) url("#chrom-aber__relative") blur(1px);
 }
 nav svg .bgrnd__thumb {
   -webkit-transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1px));
           transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1px));
+}
+nav svg .bgrnd__thumb rect {
+  -webkit-transition: width 0.3s ease, height 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease;
 }
 nav svg .cntnt a {
   position: relative;
@@ -1211,9 +1214,13 @@ nav svg .cntnt foreignObject svg {
 nav svg .cntnt__thumb {
   cursor: pointer;
   fill: var(--color-white);
-  stroke: none;
+  -webkit-filter: url("#chrom-aber");
+          filter: url("#chrom-aber");
   -webkit-transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1px));
           transform: translateX(calc(var(--translateX) * 1px)) translateY(calc(var(--translateY) * 1px));
+}
+nav svg .cntnt__thumb rect {
+  fill: rgba(0, 0, 0, 0.001);
 }
 
 main {
@@ -1783,7 +1790,6 @@ main section {
 .section-home .planet__cont {
   fill: var(--color-white);
 }
-
 .section-abilities {
   position: relative;
   display: grid;

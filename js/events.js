@@ -708,7 +708,7 @@ document.addEventListener('click', async function (e) {
 
 main.addEventListener('scroll', thumbPosition);
 
-function thumbPosition() {
+function thumbPosition(event) {
 
     let body = main,
     scrollThumbPos = (body.offsetWidth * body.scrollLeft) / body.scrollWidth,
@@ -718,7 +718,67 @@ function thumbPosition() {
 
     navBar.style.setProperty("--translateX", scrollThumbPos + scrollThumbCenter - footerCenter);
 
+    // if (event);
+    // navBarBgThumb.children[1].attributes[0] = navBarBg[i].attributes[0];
+    // navBarBgThumb.children[1].attributes[1] = navBarBg[i].attributes[0];
+
 };
+
+let thumbSelect = true;
+
+const thumbSize = new IntersectionObserver( (entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+        // if (entry.isIntersecting && entry.intersectionRatio == 1) {
+        // if (entry.intersectionRatio == 1) {
+        // if (entry.intersectionRatio == .5) {
+        // if (entry.isVisible) {
+            // console.log(`ratio: ${entry.intersectionRatio}, target: ${entry.target.className}`);
+            console.log(`ratio: ${entry.intersectionRatio * 100}, target: ${entry.target.className}`);
+
+            let count;
+
+            for (let i = 0; i < main.children.length; i++) {
+                if (main.children[i] == entry.target) {
+                    count = i;
+                }
+            }
+
+            navBarBgThumb.children[0].attributes[0].nodeValue = navBarBg[count].attributes[0].nodeValue;
+            navBarBgThumb.children[0].attributes[1].nodeValue = navBarBg[count].attributes[1].nodeValue;
+
+            thumbSelect = false;
+
+        // } else if (thumbSelect) {
+        } else if (thumbSelect || !entry.isIntersecting) {
+
+            navBarBgThumb.children[0].attributes[0].nodeValue = navBarBgThumb.children[1].attributes[0].nodeValue;
+            navBarBgThumb.children[0].attributes[1].nodeValue = navBarBgThumb.children[1].attributes[1].nodeValue;
+
+            thumbSelect = true;
+        }
+
+    })
+
+}, {
+    // rootMargin: '-15%',
+    rootMargin: '-15%',
+    threshold: 0.5,
+    // root: null,
+    // rootMargin: '-40%',
+    // rootMargin: '-50%',
+    // rootMargin: '0px 0px -50% 0px',
+    // rootMargin: '0%',
+    // threshold: 0,
+    // threshold: 1,
+});
+
+Array.from(main.children).forEach((section) => thumbSize.observe(section));
+
+
+
 
 let footerIsDown,
 footerStartX,
@@ -820,8 +880,18 @@ const observerNavBar = new ResizeObserver((entries) => {
 
                 navBarBgThumb.children[0].attributes[1].nodeValue = height * 0.5;
 
+                navBarBgThumb.children[1].attributes[0].nodeValue = height * 0.5;
                 navBarBgThumb.children[1].attributes[1].nodeValue = height * 0.5;
-                navBarBgThumb.children[1].attributes[3].nodeValue = height * 0.5;
+                navBarBgThumb.children[1].attributes[2].nodeValue = height * -0.5;
+                // navBarBgThumb.children[1].attributes[3].nodeValue = height * 0.5;
+
+
+                navBarCntntThumb.children[1].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[0].nodeValue = height * 0.3;
+                navBarCntntThumb.children[1].attributes[2].nodeValue = navBarCntntThumb.children[2].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[4].nodeValue = height * 0.3;
+
+                navBarCntntThumb.children[1].attributes[3].nodeValue = navBarCntntThumb.children[2].attributes[2].nodeValue = height * -0.4;
+                navBarCntntThumb.children[1].attributes[4].nodeValue = navBarCntntThumb.children[2].attributes[3].nodeValue = height * 0.075;
+
             }
         }
 
