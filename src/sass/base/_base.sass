@@ -1,0 +1,69 @@
+*, ::after, ::before
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    color-scheme: dark
+    font-size: 62.5%
+    // scroll-behavior: smooth
+    overflow: hidden
+    // overflow-x: scroll
+    // overflow-y: hidden
+    // &::-webkit-scrollbar
+    //     height: .8rem
+    // &::-webkit-scrollbar-button
+    //     width: 6rem
+    // &::-webkit-scrollbar-track
+    //     border-radius: 20px 4px
+    //     background: var(--color-ebony-clay)
+    //     background-clip: content-box
+    // &::-webkit-scrollbar-thumb
+    //     background: var(--color-grideperleft)
+    //     border-radius: 20px 4px
+    //     cursor: pointer
+    @include respond(big-screen)
+        font-size: 67%
+
+body
+    background: black
+    perspective: 100rem
+    // width: max-content
+    width: 100vw
+    height: 100vh
+    // scroll-behavior: smooth
+    // overflow-x: scroll
+    // overflow-y: hidden
+    // // scroll-snap-type: x mandatory
+    // &::-webkit-scrollbar
+    //     height: .8rem
+    // &::-webkit-scrollbar-button
+    //     // width: 6rem
+    // &::-webkit-scrollbar-track
+    //     border-radius: 20px 4px
+    //     background: var(--color-ebony-clay)
+    //     background-clip: content-box
+    // &::-webkit-scrollbar-thumb
+    //     background: var(--color-grideperleft)
+    //     border-radius: 20px 4px
+    //     cursor: pointer
+    &::after
+        content: ''
+        position: absolute
+        height: 100%
+        width: 100%
+        left: 0
+        top: 0
+        z-index: -10
+        mask-image: radial-gradient(rgb(0 0 0), rgb(0 0 0), rgb(0 0 0 / .2), transparent)
+        // background: radial-gradient(#c5e9f739 .1rem, transparent 0) -1.9rem -1.9rem / 1rem 1rem
+        // background: black
+
+
+// @media (max-width: 800px)
+//     html
+//         font-size: 55%
+
+// @media (max-width: 320px)
+//     html
+//         font-size: 51%

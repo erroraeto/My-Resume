@@ -1,0 +1,72 @@
+// .slider
+//     position: relative
+//     perspective: 100rem
+//     animation: inclusion 1s ease .3s both
+//     & > *
+//         position: absolute
+//         visibility: hidden
+//         will-change: transform, scale, display
+//         transform-style: preserve-3d
+//         aspect-ratio: 16 / 9
+//         // width: 83rem
+//         width: 100%
+//         right: 0
+//         top: 50%
+//         cursor: grab
+//         transition: scale .2s ease, transform .2s ease
+//         transform-origin: right top
+//         transform: rotateY(-10deg) translateY(-50%)
+//         animation: scrollFrame 27s infinite ease
+//         animation-play-state: inherit
+//         .border_bg
+//             // height: 130%
+//             // width: 120%
+//             z-index: 2
+//         p
+//             position: absolute
+//             left: 50%
+//             top: 10%
+//             filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+//             transform: translate(-50%, -50%) translateZ(2rem)
+//             text-shadow: none
+//         & > *
+//             // filter: drop-shadow(0 0 1rem black)
+//             opacity: 0
+//             animation: opacityFrame 27s infinite ease
+//             animation-play-state: inherit
+//     &_filter
+//         visibility: visible
+//         animation: none
+//     .frame_1
+//         animation-delay: -6s
+//         & > *
+//             animation-delay: -6s
+//     .frame_2
+//         animation-delay: -3s
+//         & > *
+//             animation-delay: -3s
+//     .frame_3
+//     .frame_4
+//         animation-delay: 3s
+//         & > *
+//             animation-delay: 3s
+//     .frame_5
+//         animation-delay: 6s
+//         & > *
+//             animation-delay: 6s
+//     .frame_6
+//         animation-delay: 9s
+//         & > *
+//             animation-delay: 9s
+//     .frame_7
+//         animation-delay: 12s
+//         & > *
+//             animation-delay: 12s
+//     .frame_8
+//         animation-delay: 15s
+//         & > *
+//             animation-delay: 15s
+//     .frame_9
+//         animation-delay: 18s
+//         & > *
+//             animation-delay: 18s

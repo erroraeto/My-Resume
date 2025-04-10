@@ -1,0 +1,46 @@
+main
+    // position: relative
+    position: absolute
+    // box-sizing: content-box
+    // width: max-content
+    width: 100vw
+    height: 100vh
+    top: 0
+    // height: 80vh
+    padding: 5vh 5vw
+    display: grid
+    grid-template: 100% / repeat(3, auto)
+    grid-column-gap: 10vw
+    transform-origin: center
+    overflow-x: scroll
+    overflow-y: hidden
+    scroll-snap-type: x mandatory
+    // scroll-snap-type: both mandatory
+    scroll-behavior: smooth
+    transition: transform .7s ease ,translate .7s ease
+    &::-webkit-scrollbar
+        display: none
+        height: .8rem
+    &::-webkit-scrollbar-button
+        // width: 6rem
+    &::-webkit-scrollbar-track
+        border-radius: 20px 4px
+        background: var(--color-ebony-clay)
+        background-clip: content-box
+    &::-webkit-scrollbar-thumb
+        background: var(--color-grideperleft)
+        border-radius: 20px 4px
+        cursor: pointer
+    section
+        position: relative
+        width: 90vw
+        perspective: 100rem
+        scroll-snap-align: center
+        transition: transform .7s ease
+
+.main-scrolling
+    scroll-snap-type: none
+    scroll-behavior: auto
+
+.section__hidd > *
+    display: none
