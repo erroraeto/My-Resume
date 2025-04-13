@@ -52,7 +52,7 @@ function sleep(ms) {
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 //Свайпы секций
-// let main = document.querySelector('main')
+let main = document.querySelector('main');
 
 // document.addEventListener('touchstart', handleTouchStart, false);
 // document.addEventListener('touchmove', handleTouchMove, false);
@@ -826,27 +826,27 @@ let footerOp = document.querySelector('.cntnt__thumb'),
 footerTru = document.querySelector('footer'),
 footerContent = document.querySelectorAll('footer a span');
 
-footerOp.addEventListener('click', async () => {
-    footerTru.classList.add('opened');
-    await sleep(200);
-    for (a of footerContent) {
-        textTyping(a, 100, a.getAttribute('data-text'));
-    }
-});
+// footerOp.addEventListener('click', async () => {
+//     footerTru.classList.add('opened');
+//     await sleep(200);
+//     for (a of footerContent) {
+//         textTyping(a, 100, a.getAttribute('data-text'));
+//     }
+// });
 
-footerTru.addEventListener('click', () => {
-    footerTru.classList.remove('opened');
-    for (a of footerContent) {
-        textTyping(a, 30)
-    }
-});
+// footerTru.addEventListener('click', () => {
+//     footerTru.classList.remove('opened');
+//     for (a of footerContent) {
+//         textTyping(a, 30)
+//     }
+// });
 
 
 
 
 
 let navBar = document.querySelector('nav svg'),
-navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.bgrnd__thumb)'),
+navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.bgrnd__thumb):not(mask)'),
 navBarBgThumb = navBar.querySelector('.bgrnd > .bgrnd__thumb'),
 navBarCntnt = navBar.querySelectorAll('.cntnt > a > *'),
 navBarCntntThumb = navBar.querySelector('.cntnt > .cntnt__thumb');

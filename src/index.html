@@ -343,14 +343,23 @@
     <nav>
 
         <svg viewbox="0 0 1536 46" preserveAspectRatio="xMidYMid meet">
-            <rect width="1536" height="46" />
-            
+            <rect width="1536" height="46" id="nav-bg"/>
+
+            <mask id="emptyStar">
+                <!-- <use href="#nav-bg" fill="white" /> -->
+                <rect width="1536" height="46" x="0" fill="white"/>
+                <rect width="20" height="20" x="0" y="0" fill="black"/>
+                <!-- <use href="#rect-one" fill="black" />
+                <use href="#rect-two" fill="black" />
+                <use href="#rect-three" fill="black" /> -->
+            </mask>
+
             <g class="bgrnd">
-                <rect width="100" height="46" x="384" y="0"/>
-                <rect width="100" height="46" x="768" y="0"/>
-                <rect width="100" height="46" x="1152" y="0"/>
+                <rect width="100" height="46" x="384" y="0" id="rect-one"/>
+                <rect width="100" height="46" x="768" y="0" id="rect-two"/>
+                <rect width="100" height="46" x="1152" y="0" id="rect-three"/>
                 <g class="bgrnd__thumb">
-                    <rect width="100" height="23" y="0"/>
+                    <rect width="100" height="23" y="0" mask="url(#emptyStar)"/>
                     <!-- <rect width="40" height="23" x="-40" y="0"/> -->
                     <rect width="23" height="23" x="-23" y="0"/>
                 </g>
@@ -459,108 +468,7 @@
                         </fieldset>
                     </div>
                 </div>
-
-
-
-                <!-- <svg class="section-about__article-title" viewBox="0 0 100 8" preserveAspectRatio="none" overflow="visible" >
-                    <polygon id="CA-BA" vector-effect="non-scaling-stroke" points="0,1 1.5,1 3,0 97,0 98.5,1 100,1 100,7 98.5,6 50,6 48.5,7 1.5,7 0,8" />
-                    <use href="#CA-BA" />
-                    <text vector-effect="non-scaling-stroke" lengthAdjust="spacing" textLength="6em" font-size="5" dominant-baseline="middle" x="4" y="4">Insertion</text>
-                    <text font-size="8" text-anchor="middle" dominant-baseline="middle" x="5" y="5">🔷</text>
-                    <text font-size="5" text-anchor="middle" dominant-baseline="middle" x="5.1" y="4.5">❕</text>
-                    <text font-size="5" dominant-baseline="middle" x="9" y="4">Insertion</text>
-                </svg> -->
-
             </div>
-
-                <!-- <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
-                <use href="#CA-BA" stroke="none" />
-                <use href="#CA-BA" stroke="none" />
-                <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
-                <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging"  x="83" y="23">compendium</text>
-                <text dominant-baseline="middle" text-anchor="end" x="77" y="21">電</text> -->
-
-
-            <!-- <div class="section-about__article">
-                <svg class="section-about__article-border border" viewBox="0 0 540 555" preserveAspectRatio="xMidYMid meet">
-                    <path id="CA-BA" vector-effect="non-scaling-stroke" d="M1 20l19-19 240 0 20 19 239 0 20 20 0 514-519 0-19-20z"/>
-                    <use href="#CA-BA" stroke="none" />
-                    <use href="#CA-BA" stroke="none" />
-                    <text textLength="110" lengthAdjust="spacingAndGlyphs" x="80" y="21">D.D.S.</text>
-                    <text textLength="100" lengthAdjust="spacingAndGlyphs" dominant-baseline="hanging"  x="83" y="23">compendium</text>
-                    <text dominant-baseline="middle" text-anchor="end" x="77" y="21">電</text>
-                </svg>
-                <div class="section-about__article-title">
-                    <svg class="section-about__article-title-border border" viewBox="0 0 540 45" preserveAspectRatio="xMidYMid meet">
-                        <use href="#section-about__article-title-border" stroke="none" />
-                        <path id="section-about__article-title-border" vector-effect="non-scaling-stroke" d="M1 6l6 0 6-5 514 0 6 5 6 0 0 31-6-5-248 0-6 6-272 0-6 6z"/>
-                    </svg>
-                    <svg class="inline_icon" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
-                        <path vector-effect="non-scaling-stroke" d="M16 16m-14.6718 1.4731q-1.4742-1.4742 0-2.9485l13.1647-13.1648q1.5288-1.5288 3.0031-.0546l13.1701 13.1701q1.5234 1.5234 0 3.0467l-13.1209 13.121q-1.5235 1.5234-2.9486.0982z"/>
-                        <text x='16' y='17.3' text-anchor="middle" dominant-baseline="middle">!</text>
-                    </svg><h2>Insertion</h2>
-                </div>
-                <div class="section-about__article-description scrollable" data-mask-value-top="0%" data-mask-value-bot="70%">
-                    <p> I am a passionate frontend developer as well as a 2D and 3D graphics
-                        visualizer.
-                    </p>
-                    <p>My experience lies in creating website interfaces, realizing volumetric
-                        effects and website “life” effect.
-                    </p>
-                    <p>I was also engaged in modeling of low- and high- poly
-                        models, their:
-                    <ul class="attn">
-                        <li data-img-href="./img/frame/1frame.webp" data-frame="1" popovertarget="popover-img__section-about">Concepts & design</li>
-                        <li data-img-href="./img/frame/2frame.webp" data-frame="2" popovertarget="popover-img__section-about">Sculpting</li>
-                        <li data-img-href="./img/frame/3frame.webp" data-frame="3" popovertarget="popover-img__section-about">Retopology</li>
-                        <li data-img-href="./img/frame/5frame.webp" data-frame="5" popovertarget="popover-img__section-about">Unwrap</li>
-                        <li data-img-href="./img/frame/7frame.webp" data-frame="7" popovertarget="popover-img__section-about">Baking maps</li>
-                        <li data-img-href="./img/frame/8frame.webp" data-frame="8" popovertarget="popover-img__section-about">Texturing</li>
-                        <li data-img-href="./img/frame/9frame.webp" data-frame="9" popovertarget="popover-img__section-about">Rigging & skinning</li>
-                    </ul>
-                    </p>
-                    <p>In the last three months I focused on honing my skills in creating a native and pleasantly perceived interface.
-                    </p>
-                    <p>I am actively and rapidly exploring development frontend options to expand my ability to create extraordinary interfaces.</p>
-                    <p>Enjoy your visit.</p>
-                </div>
-                <div class="section-about__article-resume">
-                    <a href="/files/resume.pdf">
-                        <svg class="form-slider-border border" viewBox="0 0 260 50" preserveAspectRatio="xMidYMid meet">
-                            <path vector-effect="non-scaling-stroke" d="M1 1 259 1 259 49 1 49Z"/>
-                        </svg><span>Resume</span>
-                    </a>
-                    <div class="form-slider">
-                        <svg class="form-slider-border border" viewBox="0 0 170 50" preserveAspectRatio="xMidYMid meet">
-                            <path vector-effect="non-scaling-stroke" d="M1 1 169 1 169 49 1 49Z"/>
-                        </svg>
-                        <fieldset class="form-slider__button">
-                            <legend>Choose language</legend>
-                            <button type="button" title="Previous">🞀</button>
-                            <div class="form-slider__button-content">
-                                <p data-view="">English</p><p>Russia</p>
-                            </div>
-                            <button type="button" title="Next">🞂</button>
-                        </fieldset>
-                        <fieldset class="form-slider__radio">
-                            <legend>Selected language</legend>
-                            <input type="radio" name="language" value="English" checked>
-                            <input type="radio" name="language" value="Russia">
-                        </fieldset>
-                    </div>
-                </div>
-            </div> -->
-
-
-
-
-
-
-
-
-
-
-
             <div class="section-about__slider">
                 <div class="section-about__slider-wrapper">
                     <div class="section-about__slider-wrapper-clue">
@@ -687,6 +595,12 @@
                     </defs>
                     <circle mask="url(#planet__back-mask)" cx="30" cy="60" r="60" />
                 </g>
+
+                <mask id="emptySt">
+                    <rect fill="white" width="120" height="60" x="0" y="60"/>
+                    <rect fill="black" width="15" height="10" x="60" y="60"/>
+                </mask>
+                <rect width="60" height="60" x="40" y="60" mask="url(#emptySt)"/>
 
                 <g class="planet__cont">
                     <defs>
@@ -984,8 +898,41 @@
     </main>
 
     <footer>
+        <input type="checkbox" id="navin-toggle">
+        <label for="navin-toggle">?</label>
+        <div>
+            
+            <ul>
+                <li>о нас</li>
+                <li>скидки</li>
+                <li>лучшие туры</li>
+                <li>калькулятор цены</li>
+                <li>связаться с нами</li>
+            </ul>
+        </div>
 
-        <hr />
+        <!-- <a class="footer__contact" href="https://t.me/tw0deep">
+            <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                <path vector-effect="non-scaling-stroke" transform-origin="center" d="M2.33 20.054c-.206-1.735.882-2.337 1.896-1.646.309.235.9648.571 2.2872.9508 1.7502.5028 2.7252.1866 3.7404-.5028.672-.4566 5.952-3.9618 9.7602-6.4872.4272-.2838.8922.2976.522.6516-2.8254 2.6952-6.4518 6.1578-7.005 6.6996-1.5546 1.521-.315 2.2932.5838 2.9352.9846.7044 5.5212 3.7044 6.42 4.2978.9304.452 1.3844 1.654.5564 2.429-5.217 2.465-16.009.411-18.752-9.292m24.129 5.647c-1.253.524-2.331-.387-2.083-1.69.6298-3.8548 1.75-11.5762 2.1382-13.9084.2118-1.3766 1.3358-1.9136 1.9468-1.1806 2.034 3.83 3.517 10.716-1.998 16.782zm-.98-20.465c.584.888-.311 1.573-3.0418 2.8062-1.347.5598-11.1054 4.6044-17.6592 7.4368-1.248.329-3.11-.044-2.787-2.515 2.618-11.501 16.258-14.519 23.488-7.728z"/>
+            </svg>
+            <span data-text="Telegram。"></span>
+        </a>
+        <a class="footer__contact" href="https://github.com/erroraeto">
+            <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                <path vector-effect="non-scaling-stroke" transform="scale(1.3, 1.3)" d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z"/>
+            </svg>
+            <span data-text="Github。"></span>
+        </a>
+        <a class="footer__contact" href="mailto:erroraeto@gmail.com">
+            <svg class="icon_figure" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
+                <path vector-effect="non-scaling-stroke" transform-origin="center" transform="scale(.9, .9)" d="M6.802 29.063c-1.649-1.26-1.261-3.152-.428-3.205l3.626 0 0-10.208 6 4.806 6-4.806 0 10.208 3.666 0c.678-.092 1.26 1.896-.341 3.157-4.493 3.931-13.441 4.483-18.523.048zm23.826-6.526c-.819 1.585-2.628.463-2.628-.537l0-12c0-2 1.836-2.026 2.574-.66 2.186 4.727 1.639 9.809.054 13.197zm-4.803-19.183c1.579 1.204.899 3.594-.827 3.276-1.188-.141-1.998.37-2.998 1.37l-6 5-6-5c-1-1-1.876-1.621-3.027-1.4-1.973.4-2.45-1.928-.899-3.14 6.062-4.946 14.226-4.394 19.716-.142zm-24.309 5.925c.631-1.406 2.484-1.279 2.484.721l0 13c-.059.729-1.708 1.117-2.581-.289-1.599-3.273-2.664-8.494.049-13.335z"/>
+            </svg>
+            <span data-text="Mail。"></span>
+        </a> -->
+
+
+
+        <!-- <hr />
 
         <svg class="footer__emblem" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
             <circle vector-effect="non-scaling-stroke" cx="16" cy="16" r="10" />
@@ -1019,7 +966,7 @@
             <span data-text="Mail。"></span>
         </a>
 
-        <hr />
+        <hr /> -->
 
     </footer>
 

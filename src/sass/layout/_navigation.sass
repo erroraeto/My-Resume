@@ -16,21 +16,22 @@ nav
             stroke: none
         .bgrnd
             // fill: #ffffff
-            fill: #4a697c
-            fill-rule: evenodd
+            // fill: #4a697c
+            fill: unset
+            filter: url("#goo") url(#inner-shadow-descr-type012) url("#chrom-aber__relative") blur(1px)
             // fill: gray
             // filter: url("#goo") url(#inner-shadow-descr-type01)
-            filter: url("#goo") url(#inner-shadow-descr-type012) url("#chrom-aber__relative") blur(1px)
             // filter: url("#goo") url("#chrom-aber__relative") blur(1px)
             // & *:not(&__thumb > *)
             &__thumb
+                fill: #4a697c
                 transform: translateX( calc(var(--translateX) * 1px) ) translateY( calc(var(--translateY) * 1px) )
                 // transform: translateY( calc(var(--translateY) * 1px) )
                 // path
                 rect
                     transition: width .3s ease, height .3s ease
-                    &:first-of-type
-                        fill: none
+                    // &:first-of-type
+                    //     fill: none
                     // &:last-of-type
                         // transform: translateX( calc(var(--translateX) * 1px) )
         .cntnt
