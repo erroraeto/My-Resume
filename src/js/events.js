@@ -130,10 +130,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
 //Прокрутка к основному фрейму
 window.onload = function() {
     main.style.scrollBehavior = "auto";
-    // skill.scrollIntoView({behavior: "auto"});
-    home.scrollIntoView({behavior: "auto"});
     // home.scrollIntoView({inline: "center", behavior: "auto"});
-    // about.scrollIntoView({behavior: "auto"});
+    about.scrollIntoView({behavior: "auto"});
+    // home.scrollIntoView({behavior: "auto"});
+    // skill.scrollIntoView({behavior: "auto"});
     main.style.scrollBehavior = "";
 };
 
@@ -157,9 +157,10 @@ attnSctAbt.addEventListener("click", (e) => {
 });
 
 //Выбор резюме
-let formSliderCont = document.querySelector('.form-slider__button-content');
-let formSliderBtn = document.querySelectorAll('.form-slider__button button');
-let formSliderRadio = document.querySelectorAll('.form-slider__radio input');
+let formSliderCont = document.querySelector('.form-slider__content');
+let formSliderBtn = document.querySelectorAll('.form-slider input[type="button"]');
+let formSliderRadio = document.querySelectorAll('.form-slider input[type="radio"]');
+let resumeLink = document.querySelector('.section-about__article-resume a');
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -175,8 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     for (ctn of content) {
                         if (ctn.dataset.view !== undefined && ctn.previousElementSibling !== null) {
                             delete ctn.dataset.view;
+                            // ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
                             formSliderCont.scrollLeft = -(formSliderCont.scrollWidth / content.length);
                             ctn.previousElementSibling.dataset.view = '';
+                            resumeLink.href = ctn.previousElementSibling.dataset.resumelink;
                             break
                         };
                     };
@@ -185,8 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     for (ctn of content) {
                         if (ctn.dataset.view !== undefined && ctn.nextElementSibling !== null) {
                             delete ctn.dataset.view;
+                            // ctn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
                             formSliderCont.scrollLeft = (formSliderCont.scrollWidth / content.length);
                             ctn.nextElementSibling.dataset.view = '';
+                            resumeLink.href = ctn.nextElementSibling.dataset.resumelink;
                             break
                         };
                     };
@@ -259,7 +264,7 @@ const observerSliderSVG = new ResizeObserver((entries) => {
 
 // observerSliderSVG.observe(sliderBrd);
 
-for (svg of sliderAbout.querySelectorAll('svg')) observerSliderSVG.observe(svg);
+for (svg of sliderAbout.querySelectorAll('.section-about__slider-wrapper-frame svg')) observerSliderSVG.observe(svg);
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -754,8 +759,8 @@ const thumbSize = new IntersectionObserver( (entries) => {
         // } else if (thumbSelect) {
         } else if (thumbSelect || !entry.isIntersecting) {
 
-            navBarBgThumb.children[0].attributes[0].nodeValue = navBarBgThumb.children[1].attributes[0].nodeValue;
-            navBarBgThumb.children[0].attributes[1].nodeValue = navBarBgThumb.children[1].attributes[1].nodeValue;
+            // navBarBgThumb.children[0].attributes[0].nodeValue = navBarBgThumb.children[1].attributes[0].nodeValue;
+            // navBarBgThumb.children[0].attributes[1].nodeValue = navBarBgThumb.children[1].attributes[1].nodeValue;
 
             thumbSelect = true;
         }
@@ -844,7 +849,6 @@ footerContent = document.querySelectorAll('footer a span');
 
 
 
-
 let navBar = document.querySelector('nav svg'),
 navBarBg = navBar.querySelectorAll('.bgrnd > *:not(.bgrnd__thumb):not(mask)'),
 navBarBgThumb = navBar.querySelector('.bgrnd > .bgrnd__thumb'),
@@ -880,17 +884,17 @@ const observerNavBar = new ResizeObserver((entries) => {
 
                 navBarBgThumb.children[0].attributes[1].nodeValue = height * 0.5;
 
-                navBarBgThumb.children[1].attributes[0].nodeValue = height * 0.5;
-                navBarBgThumb.children[1].attributes[1].nodeValue = height * 0.5;
-                navBarBgThumb.children[1].attributes[2].nodeValue = height * -0.5;
+                // navBarBgThumb.children[1].attributes[0].nodeValue = height * 0.5;
+                // navBarBgThumb.children[1].attributes[1].nodeValue = height * 0.5;
+                // navBarBgThumb.children[1].attributes[2].nodeValue = height * -0.5;
                 // navBarBgThumb.children[1].attributes[3].nodeValue = height * 0.5;
 
 
-                navBarCntntThumb.children[1].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[0].nodeValue = height * 0.3;
-                navBarCntntThumb.children[1].attributes[2].nodeValue = navBarCntntThumb.children[2].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[4].nodeValue = height * 0.3;
+                // navBarCntntThumb.children[1].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[0].nodeValue = height * 0.3;
+                // navBarCntntThumb.children[1].attributes[2].nodeValue = navBarCntntThumb.children[2].attributes[1].nodeValue = navBarCntntThumb.children[2].attributes[4].nodeValue = height * 0.3;
 
-                navBarCntntThumb.children[1].attributes[3].nodeValue = navBarCntntThumb.children[2].attributes[2].nodeValue = height * -0.4;
-                navBarCntntThumb.children[1].attributes[4].nodeValue = navBarCntntThumb.children[2].attributes[3].nodeValue = height * 0.1;
+                // navBarCntntThumb.children[1].attributes[3].nodeValue = navBarCntntThumb.children[2].attributes[2].nodeValue = height * -0.4;
+                // navBarCntntThumb.children[1].attributes[4].nodeValue = navBarCntntThumb.children[2].attributes[3].nodeValue = height * 0.1;
 
             }
         }
@@ -899,3 +903,8 @@ const observerNavBar = new ResizeObserver((entries) => {
 });
 
 observerNavBar.observe(navBar);
+
+
+
+
+

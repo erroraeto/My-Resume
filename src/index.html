@@ -14,11 +14,14 @@
     <!-- Это должен быть спрайт, но я ХЗ как это правильно делать -->
     <svg width="0" height="0" style="position: absolute;">
         <defs>
-            <linearGradient id="line-grad-anim-01" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="7" spreadMethod="reflect">
-                <animateTransform attributeName="gradientTransform" type="translate" from="0 -7" to="0 7" dur="2s" repeatCount="indefinite" />
-                <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/>
+            <!-------------------------------------------------------------------------------------------------------------------------->
+            <linearGradient id="line-grad-anim-01" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1.2" spreadMethod="reflect">
+                <animateTransform attributeName="gradientTransform" type="translate" from="0 -10" to="0 10" dur="8s" repeatCount="indefinite" />
+                <stop offset="20%" stop-color="var(--color-light-blue-gray)" stop-opacity="50%"/>
+                <!-- <stop offset="20%" stop-color="var(--color-ocean-blue)" stop-opacity="100%"/> -->
                 <stop offset="80%" stop-color="transparent" />
             </linearGradient>
+            <!-------------------------------------------------------------------------------------------------------------------------->
             <linearGradient id="line-grad-anim-02" x1="3%" y1="2%" x2="3%" y2="2.6%" spreadMethod="reflect">
                 <animateTransform attributeName="gradientTransform" type="translate" from="0 -1" to="0 1" begin="0s" dur="60s" repeatCount="indefinite"/>
                 <stop offset="20%" stop-color="var(--color-light-cyan)" stop-opacity="100%"/>
@@ -51,11 +54,10 @@
             </linearGradient>
 
 
-
+            <!-------------------------------------------------------------------------------------------------------------------------->
             <radialGradient id="mask-bg-desc-type01__rad-grad">
                 <stop offset="0%" stop-color="white" stop-opacity="100%"/>
-                <stop offset="8%" stop-color="white" stop-opacity="70%"/>
-                <stop offset="32%" stop-color="white" stop-opacity="0%"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0%"/>
             </radialGradient>
             <linearGradient id="mask-bg-desc-type01__line-grad">
                 <stop offset="0%" stop-color="black" stop-opacity="0%"/>
@@ -63,11 +65,13 @@
                 <stop offset="40%" stop-color="black" stop-opacity="0%"/>
             </linearGradient>
             <mask id="mask-bg-desc-type01" maskContentUnits="objectBoundingBox">
-                <circle cx=".5" cy=".5" r="1.45" fill="url(#mask-bg-desc-type01__rad-grad)"/>
+                <circle cx=".5" cy=".5" r=".5" fill="url(#mask-bg-desc-type01__rad-grad)"/>
                 <rect width="1" height="1" fill="url(#mask-bg-desc-type01__line-grad)">
                     <animate attributeName="x" values="-.2;1.2" begin="0s" dur="1s" repeatCount="indefinite"/>
                 </rect>
             </mask>
+            <!-------------------------------------------------------------------------------------------------------------------------->
+
 
             <linearGradient id="mask-bg-desc-type02__line-grad-01">
                 <stop offset="0%" stop-color="white" stop-opacity="0%"/>
@@ -322,9 +326,13 @@
             </filter>
 
             <filter id="goo-1">
-                <feGaussianBlur in="BackgroundImage" stdDeviation="1" result="blur"></feGaussianBlur>
+                <feGaussianBlur in="BackgroundImage" stdDeviation="10" result="blur"></feGaussianBlur>
                 <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"></feColorMatrix>
                 <feComposite in="BackgroundImage" in2="goo" operator="atop"></feComposite>
+            </filter>
+
+            <filter id="blur">
+                <feGaussianBlur stdDeviation=".2, .2" edgeMode="none"/>
             </filter>
 
 
@@ -359,9 +367,8 @@
                 <rect width="100" height="46" x="768" y="0" id="rect-two"/>
                 <rect width="100" height="46" x="1152" y="0" id="rect-three"/>
                 <g class="bgrnd__thumb">
-                    <rect width="100" height="23" y="0" mask="url(#emptyStar)"/>
+                    <rect width="100" height="23" y="0" />
                     <!-- <rect width="40" height="23" x="-40" y="0"/> -->
-                    <rect width="23" height="23" x="-23" y="0"/>
                 </g>
                 <!-- <rect width="1536" height="46" x="0" y="-46"/> -->
             </g>
@@ -383,11 +390,6 @@
                     <!-- <text dominant-baseline="middle" text-anchor="middle" x="-20" y="48.6">🌐</text> -->
                     <!-- <text dominant-baseline="middle" text-anchor="middle" x="-20" y="0">🔗</text> -->
                     <!-- <text dominant-baseline="middle" text-anchor="middle" x="-10" y="38.6"></text> -->
-                    <symbol id="myDot" viewBox="0 0 137 137">
-                        <path d="M53.13 127.23c-11.9 11.7-31.3 11.7-43.2 0-11.9-11.9-11.9-31.3 0-43.2l30.5-30.5c11.9-11.9 31.3-11.9 43.2 0l.8.8c.3.3.5.3.5.5l1.3 1.6c0 0 0 0 0 .3 1.9 3.2 1.3 6.1-1.3 8.7-2.4 2.4-5.3 2.9-8.5 1.1-.3 0-1.3-1.3-3.2-2.6-6.4-6.4-15.9-6.1-22.5-.3l-30.5 30.8c-6.4 6.1-6.4 16.2 0 22.5 6.4 6.1 16.2 6.1 22.5 0l18.3-18.5c6.9 3.4 13.8 3.4 20.4.3l-28.3 28.5zm74.2-74.5-30.5 30.8c-11.9 11.7-31.3 11.7-43.2 0l-.5-.5-.5-.5c-.3-.3-.3-.3-.3-.5l-1.3-1.6c-1.9-3.2-1.3-6.1 1.1-8.5 2.6-2.6 5.6-3.2 8.7-1.6.3 0 .5.3 1.1.8l2.1 2.1c6.4 6.1 16.2 6.1 22.5 0l30.5-30.7c6.4-6.1 6.4-16.2 0-22.3-6.4-6.4-16.2-6.4-22.5 0l-18.3 18.3c-6.9-3.4-13.8-3.4-20.4-.3l28.3-28.3c11.9-11.9 31.3-11.9 43.2 0 6.1 5.8 9 13 9 21.5 0 8.3-2.9 15.5-9 21.3z"/>
-                    </symbol>
-                    <use href="#myDot" width="10" height="10" x="0" y="0" />
-                    <rect width="23" height="23" x="0" y="0" rx="0"/>
                 </g>
             </g>
 
@@ -404,11 +406,16 @@
                     <g class="description" >
                         <polygon id="CA-BB" points="1,5 5,1 37,1 41,5 95,5 99,9 99,99 5,99 1,95" />
 
+                        <rect width="100" height="100" x="0" y="0"/>
+
                         <g class="description__mark" >
                             <text class="kanji" font-size="7" dominant-baseline="middle" text-anchor="end" x="13" y="6.8">電</text>
                             <text font-size="4" textLength="20" lengthAdjust="spacingAndGlyphs" x="14" y="4.9">D.D.S.</text>
                             <text font-size="3" textLength="19.5" dominant-baseline="hanging" x="14.4" y="6.2">resume</text>
                         </g>
+
+                        <polygon id="CA-BB" points="10,88 89,88 89,93 85,96 10,96" />
+
 
                     </g>
 
@@ -452,27 +459,45 @@
 
                 <div class="section-about__article-resume">
                     <a href="/files/resume.pdf"><span>📁</span><span>Resume</span></a>
-                    <div class="form-slider">
-                        <fieldset class="form-slider__button">
-                            <legend>Choose language</legend>
-                            <button type="button" title="Previous">🞀</button>
-                            <div class="form-slider__button-content">
-                                <!-- <p data-view="">English</p><p>Russia</p> -->
-                            </div>
-                            <button type="button" title="Next">🞂</button>
-                        </fieldset>
-                        <fieldset class="form-slider__radio">
-                            <legend>Selected language</legend>
-                            <input type="radio" name="language" value="English" checked>
-                            <input type="radio" name="language" value="Russia">
-                        </fieldset>
-                    </div>
+                    <fieldset class="form-slider">
+                        <legend>Choose language</legend>
+                        <input type="button" title="Previous" value="🞀">
+                        <div class="form-slider__content">
+                            <p data-view="" data-resumelink="/files/ENresume.pdf">English</p><p data-resumelink="/files/RUresume.pdf">Russia</p>
+                        </div>
+                        <input type="button" title="Next" value="🞂">
+                        <input type="radio" name="language" value="English" checked>
+                        <input type="radio" name="language" value="Russia">
+                    </fieldset>
                 </div>
             </div>
             <div class="section-about__slider">
                 <div class="section-about__slider-wrapper">
                     <div class="section-about__slider-wrapper-clue">
-                        <p>scroll</p><p>align</p><p>move</p>
+                        <p>
+                            <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
+                                <path d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
+                                <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
+                                <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
+                                <path stroke="black" fill="black" d="M116.5 310l50-50 50 50zM116.5 410l50 50 50-50z"/>
+                                <path stroke="none" fill="black" d="M146.5 360a1 1 0 0040 0 1 1 0 00-40 0"/>
+                            </svg>
+                            <span>scroll</span></p>
+                        <p>
+                            <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
+                                <path stroke="white" fill="none" d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
+                                <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
+                                <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
+                            </svg>
+                            <span>align</span></p>
+                        <p>
+                            <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
+                                <path stroke="white" fill="none" d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
+                                <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
+                                <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
+                                <path stroke="white" fill="white" d="M360 200l50 50-50 50zM-40 200l-50 50 50 50z"/>
+                            </svg>
+                            <span>move</span></p>
                     </div>
                     <div class="section-about__slider-wrapper-frame">
                         <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Rigging & Skinning" preserveAspectRatio="xMidYMid meet">
@@ -600,7 +625,7 @@
                     <rect fill="white" width="120" height="60" x="0" y="60"/>
                     <rect fill="black" width="15" height="10" x="60" y="60"/>
                 </mask>
-                <rect width="60" height="60" x="40" y="60" mask="url(#emptySt)"/>
+                <!-- <rect width="60" height="60" x="40" y="60" mask="url(#emptySt)"/> -->
 
                 <g class="planet__cont">
                     <defs>
@@ -899,8 +924,13 @@
 
     <footer>
         <input type="checkbox" id="navin-toggle">
-        <label for="navin-toggle">?</label>
+        <label for="navin-toggle">
+            <svg viewbox="0 0 137 137">
+                <path d="M53.13 127.23c-11.9 11.7-31.3 11.7-43.2 0-11.9-11.9-11.9-31.3 0-43.2l30.5-30.5c11.9-11.9 31.3-11.9 43.2 0l.8.8c.3.3.5.3.5.5l1.3 1.6c0 0 0 0 0 .3 1.9 3.2 1.3 6.1-1.3 8.7-2.4 2.4-5.3 2.9-8.5 1.1-.3 0-1.3-1.3-3.2-2.6-6.4-6.4-15.9-6.1-22.5-.3l-30.5 30.8c-6.4 6.1-6.4 16.2 0 22.5 6.4 6.1 16.2 6.1 22.5 0l18.3-18.5c6.9 3.4 13.8 3.4 20.4.3l-28.3 28.5zm74.2-74.5-30.5 30.8c-11.9 11.7-31.3 11.7-43.2 0l-.5-.5-.5-.5c-.3-.3-.3-.3-.3-.5l-1.3-1.6c-1.9-3.2-1.3-6.1 1.1-8.5 2.6-2.6 5.6-3.2 8.7-1.6.3 0 .5.3 1.1.8l2.1 2.1c6.4 6.1 16.2 6.1 22.5 0l30.5-30.7c6.4-6.1 6.4-16.2 0-22.3-6.4-6.4-16.2-6.4-22.5 0l-18.3 18.3c-6.9-3.4-13.8-3.4-20.4-.3l28.3-28.3c11.9-11.9 31.3-11.9 43.2 0 6.1 5.8 9 13 9 21.5 0 8.3-2.9 15.5-9 21.3z"/>
+            </svg>
+        </label>
         <div>
+            <span></span>
             
             <ul>
                 <li>о нас</li>

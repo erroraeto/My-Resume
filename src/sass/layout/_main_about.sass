@@ -11,7 +11,8 @@
                 aspect-ratio: 1/1
                 width: 100%
                 display: grid
-                grid-template: 10% 8% 70% 12% / 100%
+                // grid-template: 10% 8% 70% 12% / 100%
+                grid-template: 10% 8% 70% 8% 4% / 100%
                 svg
                         @include AbsoluteCenter
                         height: auto
@@ -23,13 +24,22 @@
                                 stroke: var(--color-white)
                                 stroke-width: .6px
                                 fill: rgba(var(--color-light-blue-rgb), .4)
+                                polygon
+                                        filter: blur(.15px)
+                                        // filter: url(#blur)
                                 use
-                                        fill: var(--color-malibu)
-                                        filter: url(#inner-shadow-title-type01)
+                                        fill: rgba(var(--color-malibu-rgb), .4)
                         .description
                                 fill: var(--color-light-blue-gray)
+                                rect
+                                        fill: url(#line-grad-anim-01)
+                                        mask: url(#mask-bg-desc-type01)
                                 polygon
-                                        filter: url(#inner-shadow-descr-type01)
+                                        &:first-of-type
+                                                filter: url(#inner-shadow-descr-type01)
+                                        &:last-of-type
+                                                fill: rgba(var(--color-moderate-blue-rgb), .6)
+                                                // fill: rgba(var(--color-malibu-rgb), .4)
                                 &__mark
                                         text
                                                 fill: var(--color-light-gray-blue)
@@ -103,32 +113,14 @@
                                                 color: var(--color-white)
                                                 transition: color .3s ease, text-shadow .3s ease
                 &-resume
+                        grid-area: 4 / 1 / 5 / 2
                         position: relative
                         display: flex
                         justify-content: space-evenly
                         align-items: center
-                        grid-area: 4 / 1 / 5 / 2
-                        // display: grid
-                        // // grid-template: 100% / 49% 49%
-                        // grid-template: 100% / repeat(2, auto)
-                        // place-items: center
-                        // // align-items: center
-                        column-gap: 2%
                         height: 100%
-                        // width: 60%
-                        // height: max-content
-                        width: max-content
-                        // padding-block: .2rem
+                        width: 100%
                         perspective: 100rem
-                        border: 2px solid var(--color-white)
-                        border-radius: 100rem
-                        // background: var(--color-moderate-blue)
-                        // background: #223039
-                        & > *
-                                // flex-shrink: 1
-                                // flex: 1 0 0
-                                // flex-shrink: 2
-                                // flex-basis: auto
                         a
                                 position: relative
                                 white-space: nowrap
@@ -150,80 +142,61 @@
                                         translate: -50% -40%
                         .form-slider
                                 position: relative
-                                display: flex
-                                flex-direction: column
-                                &-border
-                                        fill: #223039
-                                &__button,
-                                &__radio
-                                        display: flex
-                                        justify-content: space-evenly
-                                        height: max-content
+                                height: 80%
+                                width: 25%
+                                border: none
+                                legend
+                                        display: none
+                                & > *
+                                        display: inline-block
+                                &-content,
+                                input[type="button"]
+                                        white-space: nowrap
+                                input[type="button"]
+                                        text-decoration: none
+                                        text-shadow: unset
+                                        background: none
+                                        cursor: pointer
                                         border: none
-                                        legend
+                                        font: unset
+                                        width: 10%
+                                        vertical-align: middle
+                                &__content
+                                        position: relative
+                                        display: inline-grid
+                                        grid-template-columns: repeat(2, 100%)
+                                        width: 80%
+                                        overflow-x: scroll
+                                        overflow-y: hidden
+                                        scroll-snap-type: x mandatory
+                                        scroll-behavior: smooth
+                                        mask-image: url(#mask-hor-scroll-type01)
+                                        &::-webkit-scrollbar
                                                 display: none
-                                &__button
-                                        &-border
-                                                fill: #223039
-                                        .form-slider__button-content,
-                                        button
-                                                white-space: nowrap
-                                        button
-                                                text-decoration: none
-                                                text-shadow: unset
-                                                background: none
-                                                cursor: pointer
-                                                border: none
-                                                font: unset
-                                                height: 100%
-                                                // width: 10%
-                                                aspect-ratio: 1
-                                                vertical-align: middle
-                                        .form-slider__button-content
+                                        p
                                                 position: relative
-                                                width: 80%
-                                                display: flex
-                                                column-gap: 20%
-                                                overflow-x: scroll
-                                                overflow-y: hidden
-                                                scroll-snap-type: x mandatory
-                                                scroll-behavior: smooth
-                                                mask-image: url(#mask-hor-scroll-type01)
-                                                &::-webkit-scrollbar
-                                                        display: none
-                                                &::before,
-                                                &::after
-                                                        content: ''
-                                                        flex: 0 0 10%
-                                                p
-                                                        position: relative
-                                                        flex: 1 0 80%
-                                                        // flex: 1 0 max-content
-                                                        scroll-snap-align: center
-                                                        vertical-align: middle
-                                                        text-align: center
-                                                        height: 100%
-                                &__radio
-                                        position: absolute
-                                        width: 100%
-                                        bottom: 0
-                                        translate: 0 calc( 100% + .3rem )
-                                        input[type="radio"]
-                                                appearance: none
-                                                border: 2px solid black
-                                                border-radius: 1px
-                                                cursor: pointer
-                                                height: .8rem
-                                                width: 1.8rem
-                                                outline: none
-                                                padding: 1px
-                                                // background: rgba(var(--color-light-gray-blue-rgb), .5)
-                                                background: #6b999b
-                                                background-clip: border-box
-                                                transition: background .3s ease
-                                                &:checked
-                                                        background: var(--color-white)
-                                                        background-clip: border-box
+                                                scroll-snap-align: center
+                                                vertical-align: middle
+                                                text-align: center
+                                                height: 100%
+                                                overflow: hidden
+                                                text-overflow: ellipsis
+                                input[type="radio"]
+                                        position: relative
+                                        top: -.4rem
+                                        appearance: none
+                                        border: 2px solid black
+                                        border-radius: 1px
+                                        cursor: pointer
+                                        height: .8rem
+                                        width: calc(50% - 5px)
+                                        outline: none
+                                        padding: 1px
+                                        background: #6b999b
+                                        background-clip: border-box
+                                        transition: background .3s ease
+                                        &:checked
+                                                background: var(--color-white)
         &__slider
                 position: relative
                 grid-area: 1 / 2 / 2 / 3
@@ -258,52 +231,32 @@
                                 position: absolute
                                 display: flex
                                 flex-direction: column
-                                align-items: flex-end
+                                align-items: flex-start
                                 height: max-content
                                 width: max-content
                                 translate: 100% 100%
                                 left: 6%
                                 top: 0%
                                 transform: rotateY(-9deg)
-                                padding-right: 1rem
-                                border-right: 1px solid white
                                 p
-                                        // 「」
+                                        display: flex
+                                        align-items: center
+                                        gap: 1rem
                                         width: max-content
+                                        filter: none
+                                        svg
+                                                display: inline-block
+                                                height: 2.4rem
+                                                fill: white
+                                                stroke: white
+                                                overflow: visible
+                                                path
+                                                        transform-box: fill-box
+                                                        transform-origin: center
+                                                & > *
+                                                        vector-effect: non-scaling-stroke
                                         &:not(:last-of-type)
-                                                margin-bottom: .5rem
-                                        &::after,
-                                        &::before
-                                                position: absolute
-                                                display: block
-                                                color: transparent
-                                                text-shadow: 0 0 0 white
-                                                left: 0%
-                                                top: 0%
-                                        &:nth-of-type(1)
-                                                &::before
-                                                        content: '☝'
-                                                        translate: -120% 0%
-                                                        animation: clueScroll 2s ease infinite
-                                        &:nth-of-type(2)
-                                                &::after
-                                                        content: '☝'
-                                                        translate: -120% 10%
-                                                        text-shadow: 0 0 0 white, 0 0 2px black
-                                                        animation: clueAlign-1 2s ease infinite
-                                                &::before
-                                                        content: ''
-                                                        height: 2.2rem
-                                                        width: 2.2rem
-                                                        translate: -140% -21%
-                                                        outline: solid white
-                                                        clip-path: polygon(0% 45%, 44.5% 45%, 44.5% 0%, 56.5% 0%, 56.5% 45%, 100% 45%, 100% 55%, 0% 55%)
-                                                        animation: clueAlign-2 2s ease infinite
-                                        &:nth-of-type(3)
-                                                &::before
-                                                        content: '🖐️'
-                                                        translate: -170% 0%
-                                                        animation: clueGrab 2s ease-in-out infinite alternate -.4s
+                                                margin-bottom: .8rem
                         &-frame
                                 position: absolute
                                 height: 56%

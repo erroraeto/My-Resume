@@ -1,5 +1,6 @@
 footer
     position: absolute
+    bottom: 0
     z-index: 20
     input
         display: none
@@ -12,38 +13,72 @@ footer
         z-index: 200
         text-align: center
         cursor: pointer
-        transition: width .3s ease, height .3s ease
+        transition: all .3s ease
+        &::before
+            content: ''
+            @include AbsoluteCenter
+            height: 100%
+            width: 100%
+            // border-radius: 50%
+            background: white
+            filter: url("#goo-1") url(#inner-shadow-descr-type012)
+        svg
+            @include AbsoluteCenter
+            fill: var(--color-white)
+            stroke: none
     div
         position: fixed
         height: 4rem
         width: 4rem
         bottom: 2.5rem
         right: 2.5rem
-        border-radius: 1rem
-        border: 1px solid white
         z-index: 150
         overflow: hidden
-        transition: all 0.3s ease
+        // transition: all .3s ease
+        transition: width .3s ease, height .3s ease .3s
         backdrop-filter: blur(4px)
-        & > *
+        & > ul
             opacity: 0
+            transition: opacity .3s ease
+        span
+            position: absolute
+            height: 100%
+            width: 100%
+            filter: url("#goo-1") url(#inner-shadow-descr-type012)
+            &::before
+                content: ''
+                position: absolute
+                height: 100%
+                width: 100%
+                background: white
+                // border-radius: 2rem
+                clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 4.5rem), calc(100% - 4.5rem) calc(100% - 4.5rem), calc(100% - 4.5rem) 100%, 0% 100%)
+        ul
+            position: relative
+            list-style: none
+            height: 100%
+            width: 100%
 
-ul
-    position: relative
-    list-style: none
-    height: 100%
-    width: 100%
+        li
+            text-align: center
+            &:not(:last-child)
+                // margin-bottom: 1rem
 
-li
-    text-align: center
-    &:not(:last-child)
-        // margin-bottom: 1rem
+    input:checked ~ div
+        height: 20%
+        width: calc( 100% - 4rem )
+        // bottom: 2rem
+        // right: 2rem
+        // border-radius: 1.5rem
+        & > ul
+            opacity: 1
 
-input:checked ~ div
-    height: 20%
-    width: calc( 100% - 4.5rem )
-    & > *
-        opacity: 1
+    input:checked ~ label
+        outline-color: #ffffff00
+
+    input:active ~ label
+        scale: 1.2
+
 
 
 
