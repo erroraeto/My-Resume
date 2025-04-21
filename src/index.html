@@ -345,6 +345,15 @@
                 <feComposite in="wht" in2="SourceGraphic" operator="in" />
             </filter>
 
+
+
+            <filter id="round0">
+                <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+                <feComponentTransfer>
+                    <feFuncA type="table" tableValues="-8 9"></feFuncA>
+                </feComponentTransfer>
+              </filter>
+
         </defs>
     </svg>
     <!-- NAVIGATION -->
@@ -474,30 +483,31 @@
             <div class="section-about__slider">
                 <div class="section-about__slider-wrapper">
                     <div class="section-about__slider-wrapper-clue">
+                        <h4>CONTROL</h4>
                         <p>
                             <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
                                 <path d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
                                 <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
                                 <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
-                                <path stroke="black" fill="black" d="M116.5 310l50-50 50 50zM116.5 410l50 50 50-50z"/>
-                                <path stroke="none" fill="black" d="M146.5 360a1 1 0 0040 0 1 1 0 00-40 0"/>
+                                <path stroke="black" fill="black" d="M116.5 320l50-50 50 50z"/>
+                                <path stroke="black" fill="black" d="M116.5 400l50 50 50-50z"/>
                             </svg>
-                            <span>scroll</span></p>
-                        <p>
+                            <span>Scroll</span>
+                            <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
+                                <path fill="black" d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
+                                <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
+                                <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
+                            </svg>
+                            <span>Align</span>
                             <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
                                 <path stroke="white" fill="none" d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
                                 <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
                                 <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
+                                <path d="M360 200l50 50-50 50z"/>
+                                <path d="M-40 200l-50 50 50 50z"/>
                             </svg>
-                            <span>align</span></p>
-                        <p>
-                            <svg viewBox="0 0 323 500" preserveAspectRatio="xMidYMid meet">
-                                <path stroke="white" fill="none" d="M140 194.28v-37.95c-11.16-4.1-19.24-14.87-19.24-27.43v-42.27c0-12.56 8.05-23.34 19.24-27.44v-55.2h-9.85c-34.84 0-66.54 14.26-89.51 37.23-22.97 22.98-37.23 54.67-37.23 89.51v63.55h136.59z"/>
-                                <path d="M320 194.28v-63.55c0-34.84-14.26-66.53-37.23-89.51-22.98-22.97-54.67-37.23-89.51-37.23h-9.85v55.21c11.19 4.11 19.24 14.92 19.24 27.43v42.27c0 12.51-8.07 23.31-19.24 27.43v37.95h136.59z"/>
-                                <path d="M130.2 498.5h63c34.84 0 66.53-14.27 89.51-37.24 22.97-22.97 37.23-54.66 37.23-89.51v-135.53h-316.48v135.53c0 34.85 14.26 66.54 37.23 89.51s54.67 37.24 89.51 37.24z"/>
-                                <path stroke="white" fill="white" d="M360 200l50 50-50 50zM-40 200l-50 50 50 50z"/>
-                            </svg>
-                            <span>move</span></p>
+                            <span>Move</span>
+                        </p>
                     </div>
                     <div class="section-about__slider-wrapper-frame">
                         <svg class="section-about__slider-wrapper-frame-border border" viewBox="0 0 830 466" data-name="Rigging & Skinning" preserveAspectRatio="xMidYMid meet">

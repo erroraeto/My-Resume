@@ -219,14 +219,10 @@
                         height: 100%
                         perspective: 600px
                         perspective-origin: left
-                        // transform: rotateY(20deg)
                         transform: rotateY(22deg)
                         transform-style: preserve-3d
                         will-change: transform
-                        // overflow: hidden
                         z-index: 2
-                        // mask-image: url(#mask-hor-scroll-type01)
-                        // ⮻
                         &-clue
                                 position: absolute
                                 display: flex
@@ -234,29 +230,57 @@
                                 align-items: flex-start
                                 height: max-content
                                 width: max-content
-                                translate: 100% 100%
-                                left: 6%
-                                top: 0%
+                                translate: 40% 200%
                                 transform: rotateY(-9deg)
+                                user-select: none
+                                h4
+                                        position: relative
+                                        width: calc(100% - 2.4rem)
+                                        color: var(--color-moderate-blue)
+                                        border-bottom: 2px solid var(--color-moderate-blue)
+                                        margin: 0 2.4rem .5rem 0
+                                        &::after
+                                                content: '︹'
+                                                position: absolute
+                                                color: var(--color-moderate-blue)
+                                                display: block
+                                                left: 99%
+                                                top: .5rem
+                                                border-bottom: none
                                 p
                                         display: flex
                                         align-items: center
+                                        justify-content: space-evenly
                                         gap: 1rem
-                                        width: max-content
+                                        width: 100%
                                         filter: none
                                         svg
                                                 display: inline-block
-                                                height: 2.4rem
-                                                fill: white
-                                                stroke: white
+                                                height: 2rem
+                                                fill: var(--color-white)
+                                                stroke: var(--color-white)
                                                 overflow: visible
                                                 path
                                                         transform-box: fill-box
                                                         transform-origin: center
                                                 & > *
                                                         vector-effect: non-scaling-stroke
-                                        &:not(:last-of-type)
-                                                margin-bottom: .8rem
+                                                &:nth-of-type(1) > path
+                                                        &:nth-of-type(4)
+                                                                animation: slider-hide-arrow 1s infinite alternate
+                                                        &:nth-of-type(5)
+                                                                animation: slider-hide-arrow 1s infinite alternate -1s
+                                                &:nth-of-type(2) > path:nth-of-type(1)
+                                                                animation: slider-click 1s infinite alternate
+                                                &:nth-of-type(3) > path
+                                                        &:nth-of-type(4)
+                                                                animation: slider-hide-arrow 1s infinite alternate
+                                                        &:nth-of-type(5)
+                                                                animation: slider-hide-arrow 1s infinite alternate -1s
+                                        span
+                                                &:not(:last-of-type)
+                                                        padding-right: .5rem
+                                                        border-right: 2px solid var(--color-moderate-blue)
                         &-frame
                                 position: absolute
                                 height: 56%
