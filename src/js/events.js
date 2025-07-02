@@ -139,6 +139,33 @@ window.onload = function() {
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+
+let outlineRollingElem = document.querySelectorAll(".outline_rolling");
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const observer = new IntersectionObserver( (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting ) {
+                entry.target.classList.remove('outline_rolling');
+            } else {
+                entry.target.classList.add('outline_rolling');
+                // delete ctn.dataset.view;
+            }
+        })
+        }, {
+            rootMargin: '0px 0px 75px 0px',
+            threshold: 0,
+            // root: formSliderCont,
+            // threshold: 0.5,
+        }
+    );
+
+    for (elem of outlineRollingElem) observer.observe(elem);
+
+});
+
+
 //Подсказки списка
 let attnSctAbt = document.querySelector(".attn");
 
@@ -528,11 +555,11 @@ const observerSkillSection = new ResizeObserver((entries) => {
         } else if (entry.target.closest('p svg')) {
             SVGdesc.attributes[1].nodeValue = `0 0 ${Math.round(desc.clientWidth)} ${Math.round(desc.clientHeight)}`;
 
-            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(summary.offsetWidth + summary.offsetLeft)}`);
-            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(desc.clientWidth - (summary.offsetWidth + summary.offsetLeft) - 20)}`);
-            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\s\-\d+/, ` -${Math.round(desc.clientWidth - 12)}`);
+            SVGdesc.children[0].attributes[0].nodeValue = SVGdesc.children[0].attributes[0].nodeValue.replace(/\b\s{2}\d+/, `  ${Math.round(summary.offsetWidth + summary.offsetLeft)}`);
+            SVGdesc.children[0].attributes[0].nodeValue = SVGdesc.children[0].attributes[0].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(desc.clientWidth - (summary.offsetWidth + summary.offsetLeft) - 20)}`);
+            SVGdesc.children[0].attributes[0].nodeValue = SVGdesc.children[0].attributes[0].nodeValue.replace(/\s\-\d+/, ` -${Math.round(desc.clientWidth - 12)}`);
 
-            SVGdesc.children[0].attributes[1].nodeValue = SVGdesc.children[0].attributes[1].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(desc.clientHeight - 9)}`);
+            SVGdesc.children[0].attributes[0].nodeValue = SVGdesc.children[0].attributes[0].nodeValue.replace(/\b\s{4}\d+/, `    ${Math.round(desc.clientHeight - 9)}`);
         }
     }
 });
@@ -664,25 +691,25 @@ async function resizeSoftDescr() {
 resizeSoftDescr();
 
 let sectionAbil = document.querySelector('.section-abilities__content');
-let sectionAbilSVG = document.querySelector('.section-abilities__content-border');
+// let sectionAbilSVG = document.querySelector('.section-abilities__content-border');
+let sectionAbilSVG = document.querySelectorAll('.section-abilities__content-border');
 // let sectionAboutSVG = document.querySelector('.section-about__article-border');
 
 const resizerSVG = new ResizeObserver((entries) => {
     for (const entry of entries) {
         if (entry.target.classList.contains('section-abilities__content')) {
 
-            sectionAbilSVG.attributes[1].nodeValue = `0 0 ${Math.round(sectionAbil.clientWidth)} ${Math.round(sectionAbil.clientHeight)}`;
+            sectionAbilSVG[0].attributes[1].nodeValue = sectionAbilSVG[1].attributes[1].nodeValue = `0 0 ${Math.round(sectionAbil.clientWidth)} ${Math.round(sectionAbil.clientHeight)}`;
 
-            sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAbil.clientHeight - 29)}`);
-            sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(sectionAbil.clientHeight - 73)}`);
+            sectionAbilSVG[1].children[1].attributes[1].nodeValue = sectionAbilSVG[1].children[1].attributes[1].nodeValue.replace(/\s\d+/, ` ${Math.round(sectionAbil.clientHeight - 22)}`);
+            sectionAbilSVG[0].children[3].attributes[2].nodeValue = sectionAbilSVG[0].children[3].attributes[2].nodeValue.replace(/\b\s{3}\d+/, `   ${Math.round(sectionAbil.clientHeight - 68)}`);
 
-            sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\B\M\S+/, `M${Math.round(sectionAbil.clientWidth / 5.2)}`);
-            sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\B\L\S+/, `L${Math.round(sectionAbil.clientWidth - (sectionAbil.clientWidth / 5.2) - 29)}`);
+            sectionAbilSVG[0].children[0].attributes[1].nodeValue = sectionAbilSVG[0].children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 93)}`);
+            sectionAbilSVG[0].children[0].attributes[1].nodeValue = sectionAbilSVG[0].children[0].attributes[1].nodeValue.replace(/\s\-\d+/, `  -${Math.round(sectionAbil.clientWidth - 238)}`);
 
-            sectionAbilSVG.children[0].attributes[1].nodeValue = sectionAbilSVG.children[0].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 73)}`);
-            sectionAbilSVG.children[1].attributes[1].nodeValue = sectionAbilSVG.children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 73)}`);
-            sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 238)}`);
-            sectionAbilSVG.children[3].attributes[2].nodeValue = sectionAbilSVG.children[3].attributes[2].nodeValue.replace(/\s\-\d+/, `  -${Math.round(sectionAbil.clientWidth - 106)}`);
+            sectionAbilSVG[1].children[1].attributes[1].nodeValue = sectionAbilSVG[1].children[1].attributes[1].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 104)}`);
+            sectionAbilSVG[0].children[3].attributes[2].nodeValue = sectionAbilSVG[0].children[3].attributes[2].nodeValue.replace(/\b\s{2}\S+/, `  ${Math.round(sectionAbil.clientWidth - 238)}`);
+            sectionAbilSVG[0].children[3].attributes[2].nodeValue = sectionAbilSVG[0].children[3].attributes[2].nodeValue.replace(/\s\-\d+/, `  -${Math.round(sectionAbil.clientWidth - 106)}`);
 
         }
     }

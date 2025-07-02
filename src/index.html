@@ -428,14 +428,17 @@
 
                     </g>
 
-                    <g class="title" >
-                        <polygon id="CA-BA" points="0,1 1.5,1 3,0 97,0 98.5,1 100,1 100,7 98.5,6 50,6 48.5,7 1.5,7 0,8" />
-                        <use href="#CA-BA" />
+                    <g id="CA-BA" class="title" >
+                        <polygon points="0,1 1.5,1 3,0 97,0 98.5,1 100,1 100,7 98.5,6 50,6 48.5,7 1.5,7 0,8" />
                     </g>
+                    <use href="#CA-BA" />
 
                 </svg>
+                <svg viewBox="0 0 100 100" class="border-outline outline_rolling" preserveAspectRatio="none" overflow="visible" >
+                    <use href="#CA-BA" />
+                </svg>
 
-                <h2 class="section-about__article-title"><span>🗈</span>Insertion</h2>
+                <h2 class="section-about__article-title outline_rolling"><span>🗈</span>Insertion</h2>
 
                 <!-- 🕮  🗏  🗒  🖺  🗎  🗈  👁-->
                 <!-- 🖱️  🖱↕↔  �  ✌︎︎  ᯤ  ⌞⌝  ✔  ⛶-->
@@ -623,18 +626,19 @@
                         </radialGradient>
                         <mask id="planet__back-mask" maskContentUnits="objectBoundingBox">
                             <rect x="0" y="0" width="1" height="1" fill="white" />
-                            <circle fill="url(#planet__back-rad-grad)" cx=".6" cy=".5" r="1">
+                            <circle fill="url(#planet__back-rad-grad)" cx=".6" cy=".48" r="1">
                                 <animate attributeName="cx" values=".5;.6" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
+                                <animate attributeName="cy" values=".5;.48" begin="0s" dur="4s" keySplines="0 0 0.2 1" calcMode="spline"/>
                             </circle>
                         </mask>
                     </defs>
                     <circle mask="url(#planet__back-mask)" cx="30" cy="60" r="60" />
                 </g>
 
-                <mask id="emptySt">
+                <!-- <mask id="emptySt">
                     <rect fill="white" width="120" height="60" x="0" y="60"/>
                     <rect fill="black" width="15" height="10" x="60" y="60"/>
-                </mask>
+                </mask> -->
                 <!-- <rect width="60" height="60" x="40" y="60" mask="url(#emptySt)"/> -->
 
                 <g class="planet__cont">
@@ -733,14 +737,23 @@
 
         <section id="skill" class="section-abilities">
             <div class="section-abilities__content">
+                <!-- <svg class="section-abilities__content-border border" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet"> -->
                 <svg class="section-abilities__content-border border" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet">
-                    <path vector-effect="non-scaling-stroke" d="M1 61l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136 33l0-23 18 0 10-9L538 1l10 9 18 0 0 23"/>
-                    <path vector-effect="non-scaling-stroke" d="M1 526l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/>
+                    <!-- <path vector-effect="non-scaling-stroke" d="M1 61l0-14 21 0 14-14  633 0 14 14 21 0 0 14M136 33l0-23 18 0 10-9L538 1l10 9 18 0 0 23"/> -->
+                    <path id="section-abilities__content-border-2" d="M32 8l6 0 8-7  613 0 8 7 6 0 0 32-12-12-135 0-14 14 -468 0-12 12z"/>
+                    <use href="#section-abilities__content-border-2"/>
+                    <!-- <path vector-effect="non-scaling-stroke" d="M31 638l6 0 8 7 626 0 8-7 6 0 0-32-5 5-11 0-5 5-612 0-5-5-11 0-5-5z"/> -->
+                    <!-- <path vector-effect="non-scaling-stroke" d="M1 526l0 14 21 0 14 14  633 0 14-14 21 0 0-14"/> -->
+                    <!-- <path vector-effect="non-scaling-stroke" d="M25 592l0 8 11 9 11 0 5 5  612 0 5-5 9 0 11-11 0-8"/> -->
                     <use href="#section-abilities__content-border-1"/>
                     <path id="section-abilities__content-border-1" vector-effect="non-scaling-stroke" d="M32 65l14-14  468 0 14-14 131 0 14 14 0   482-7 7-7 0-7-7 -599 0-7 7-7 0-7-7z"/>
                     <use href="#section-abilities__content-border-1"/>
                 </svg>
-                <div class="section-abilities__content-title">
+                <svg class="section-abilities__content-border border border-outline outline_rolling" viewBox="0 0 100 78" preserveAspectRatio="xMidYMin meet">
+                    <use href="#section-abilities__content-border-2"/>
+                    <path vector-effect="non-scaling-stroke" d="M25 592l0 8 11 9 11 0 5 5  612 0 5-5 9 0 11-11 0-8"/>
+                </svg>
+                <div class="section-abilities__content-title outline_rolling">
                     <div class="section-abilities__content-title-wrapper">
                         <h2 data-translateY="0%">SKILLS</h2>
                         <h2 data-translateY="-50%">SOFTWARE</h2>
@@ -864,42 +877,47 @@
                         <div class="description-wrapper__skill-details">
                             <details class="state">
                                 <summary><svg class="border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <path id="skill-detail-01" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <!-- <use href="#skill-detail-01" /> -->
                                 </svg><span>Problem Solving</span></summary>
                                 <p onclick="event.stopPropagation()"><svg class="border" viewBox="0 0 830 466" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -307 0z"/>
+                                    <path d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -303 0z"/>
                                 </svg>- structuring the problem and examining its solution through the least cost and speed of execution.</p>
                             </details>
                             <details class="state">
                                 <summary><svg class="border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <path id="skill-detail-02" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <!-- <use href="#skill-detail-02" /> -->
                                 </svg><span>Research</span></summary>
                                 <p onclick="event.stopPropagation()"><svg class="border" viewBox="0 0 830 466" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -307 0z"/>
+                                    <path d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -303 0z"/>
                                 </svg>- setting up a correct query or "rolling back" to consider similar queries more closely.</p>
                             </details>
                             <details class="state">
                                 <summary><svg class="border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <path id="skill-detail-03" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <!-- <use href="#skill-detail-03" /> -->
                                 </svg><span>Fast Learner</span></summary>
                                 <p onclick="event.stopPropagation()"><svg class="border" viewBox="0 0 830 466" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -307 0z"/>
+                                    <path d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -303 0z"/>
                                 </svg>- clarification of terminology, visualization of the process and interest in understanding the ongoing process help to quickly and accurately integrate into the process.</p>
                             </details>
                             <details class="state">
                                 <summary><svg class="border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <path id="skill-detail-04" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <!-- <use href="#skill-detail-04" /> -->
                                 </svg><span>Team Work</span></summary>
                                 <p onclick="event.stopPropagation()"><svg class="border" viewBox="0 0 830 466" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -307 0z"/>
+                                    <path d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -303 0z"/>
                                 </svg>- agreement with colleagues and smooth work with common processes.</p>
                             </details>
                             <details class="state">
                                 <summary><svg class="border" viewBox="0 0 342 181" preserveAspectRatio="xMidYMin meet">
-                                    <path vector-effect="non-scaling-stroke" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <path id="skill-detail-05" d="M1 5l4 0 4-4  318 0 4 4 4 0 0   20-4-4 -116 0-4 4  -206 0-4 4z"/>
+                                    <!-- <use href="#skill-detail-05" /> -->
                                 </svg><span>Communication</span></summary>
                                 <p onclick="event.stopPropagation()"><svg class="border" viewBox="0 0 830 466" preserveAspectRatio="xMidYMid meet">
-                                    <path vector-effect="non-scaling-stroke" d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -307 0z"/>
+                                    <path d="M4 9l4-4  190 0 4-4   105 0 4 4 0    149-4 4 -303 0z"/>
                                 </svg>- free, easy, unobtrusive communication with people.</p>
                             </details>
                         </div>

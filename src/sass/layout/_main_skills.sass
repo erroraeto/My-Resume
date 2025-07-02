@@ -19,32 +19,74 @@
         place-content: center
         place-items: center
         transform: rotateY(6deg)
+        perspective: 100rem
+        perspective-origin: left
+        // &:hover .border-outline
+        //         transform: translateZ(0rem)
         &-border
             top: 51%
-            stroke: var(--color-onahau)
-            // filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+            // stroke: rgba(var(--color-light-gray-blue-rgb), .5)
+            // stroke: rgba(var(--color-light-gray-blue-rgb), 1)
+            stroke: none
             stroke-width: 1px
-            // fill: rgba(88, 89, 135, 0.07)
             fill: rgba(var(--color-light-gray-blue-rgb), .07)
-            path:not(:nth-of-type(3))
-                fill: none
-                filter: drop-shadow(0 0 .1px white) drop-shadow(0 0 .1px white)
+            // fill: rgba(88, 89, 135, 0.07)
+            // fill: rgba(var(--color-light-gray-blue-rgb), 1)
+            // filter: url(#led-screen2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chrom_aber' color-interpoation-filters='sRGB'%3E%3CfeColorMatrix in='SourceGraphic' values='1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dx='2.3' result='cr'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeOffset dy='2.3' result='cg'%3E%3C/feOffset%3E%3CfeColorMatrix in='SourceGraphic' values='0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0'%3E%3C/feColorMatrix%3E%3CfeBlend in='cr' mode='screen'%3E%3C/feBlend%3E%3CfeBlend in='cg' mode='screen'%3E%3C/feBlend%3E%3C/filter%3E%3C/svg%3E#chrom_aber")
+            // path:not(:nth-of-type(3))
+            //     fill: none
+            //     filter: drop-shadow(0 0 .1px white) drop-shadow(0 0 .1px white)
+            path:nth-of-type(1)
+                // stroke-width: .1px
+                // stroke: unset
+                // stroke: var(--color-white)
+                // fill: unset
+                // filter: url(#inner-shadow-title-type02)
             use:nth-of-type(1)
-                fill: #ffffff
-                filter: url(#inner-shadow-descr-type02)
+                // stroke: none
+                // stroke-width: 2px
+                // fill: rgba(var(--color-light-gray-blue-rgb), 1)
+                fill: rgba(var(--color-malibu-rgb), 1)
+                filter: url(#inner-shadow-descr-type03)
+                // filter: url(#inner-shadow-title-type02)
+            // path:nth-of-type(2)
+            //     stroke: rgba(var(--color-light-gray-blue-rgb), 1)
+            path:nth-of-type(2)
+                stroke: none
             use:nth-of-type(2)
+                fill: rgba(var(--color-light-gray-blue-rgb), 1)
+                filter: url(#inner-shadow-descr-type01)
+            use:nth-of-type(3)
                 stroke: none
-                mask: url(#mask-bg-desc-type06)
-                fill: url(#line-grad-anim-06)
-                opacity: .2
-            path:nth-of-type(3)
-                stroke: none
+                mask: url(#mask-bg-desc-type01)
+                fill: rgba(var(--color-light-gray-blue-rgb), 1)
+                opacity: .3
+                // fill: url(#line-grad-anim-06)
+        .border-outline
+            transform: translateZ(1.5rem)
+            transition: transform .2s ease .85s
+            filter: blur(.5px)
+            use
+                fill: none
+                filter: none
+                stroke: var(--color-white)
+                opacity: .7
+                stroke-width: 1px
+                // stroke: rgba(var(--color-light-gray-blue-rgb), 1)
+                // opacity: .8
+                // filter: none
+                // fill: red
+                // filter: url(#inner-shadow-title-type02)
+            path
+                stroke: rgba(var(--color-light-gray-blue-rgb), 1)
         &-title
             position: relative
             height: 100%
             width: 100%
             mask-image: linear-gradient(to bottom, transparent 10%, white 23%, white 77%, transparent 90%)
             overflow: hidden
+            transform: translateZ(1.8rem)
+            transition: transform .2s ease .8s
             &-wrapper
                 display: grid
                 grid-template: repeat(2, calc( 100% / 2 )) / 100%
@@ -200,7 +242,7 @@
                         display: block
                         // overflow: hidden
                         margin-block: .5rem
-                        filter: drop-shadow(0 0 8px black)
+                        // filter: drop-shadow(0 0 8px black)
                         perspective: 100rem
                         perspective-origin: right
                         @media (prefers-reduced-motion: no-preference)
@@ -224,10 +266,23 @@
                                 height: 120%
                                 top: 0
                                 translate: -50%
+                                stroke: var(--color-white)
+                                stroke-width: .6px
+                                fill: rgba(var(--color-light-blue-rgb), .4)
+                                // fill: red
+                                overflow: visible
                                 transition: filter .3s ease
+                                *
+                                    vector-effect: non-scaling-stroke
                                 path
-                                    fill: #ffffff
-                                    filter: url(#inner-shadow-title-type01)
+                                    // filter: blur(.15px)
+                                    fill: rgba(var(--color-light-gray-blue-rgb), 1)
+                                    filter: url(#inner-shadow-title-type02)
+                                    // filter: blur(.15px) url(#led-screen)
+                                use
+                                    fill: rgba(var(--color-malibu-rgb), .4)
+                                    // fill: #ffffff
+                                    // filter: url(#inner-shadow-title-type01)
                             &:hover
                                 transform: translateZ(2rem)
                             &::marker
@@ -254,6 +309,9 @@
                                 top: auto
                                 bottom: 0
                                 translate: -50%
+                                overflow: visible
+                                *
+                                    vector-effect: non-scaling-stroke
                                 path
                                     fill: #ffffff
                                     filter: url(#inner-shadow-descr-type03)

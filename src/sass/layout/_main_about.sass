@@ -13,22 +13,29 @@
                 display: grid
                 // grid-template: 10% 8% 70% 12% / 100%
                 grid-template: 10% 8% 70% 8% 4% / 100%
+                perspective: 100rem
                 svg
                         @include AbsoluteCenter
                         height: auto
                         width: 100%
+                        // fill: rgba(var(--color-malibu-rgb), .4)
                         *
                                 vector-effect: non-scaling-stroke
                         .title
                                 translate: 0% 10%
-                                stroke: var(--color-white)
-                                stroke-width: .6px
-                                fill: rgba(var(--color-light-blue-rgb), .4)
+                                // stroke: var(--color-white)
+                                // stroke-width: .6px
+                                // fill: rgba(var(--color-light-blue-rgb), 1)
+                                // fill: rgba(var(--color-light-blue-rgb), .4)
+                                // filter: url(#inner-shadow-title-type011)
+                                // fill: rgba(var(--color-light-gray-blue-rgb), 1)
                                 polygon
-                                        filter: blur(.15px)
+                                        // filter: blur(.15px)
                                         // filter: url(#blur)
-                                use
-                                        fill: rgba(var(--color-malibu-rgb), .4)
+                        use
+                                fill: rgba(var(--color-malibu-rgb), 1)
+                                // fill: rgba(var(--color-light-gray-blue-rgb), 1)
+                                filter: url(#inner-shadow-descr-type01)
                         .description
                                 fill: var(--color-light-blue-gray)
                                 rect
@@ -48,12 +55,28 @@
                                         .kanji
                                                 scale: 1 .9
                                                 stroke-width: .2px
+                // &:hover .border-outline,
+                // &:hover &-title
+                //         transform: translateZ(0rem)
+                .border-outline
+                        transition: transform .2s ease .85s
+                        transform: translateZ(1.8rem)
+                        use
+                                fill: none
+                                // filter: none
+                                filter: blur(.12px)
+                                stroke: var(--color-white)
+                                opacity: .7
+                                // stroke: rgba(var(--color-light-gray-blue-rgb), 1)
+                                stroke-width: 1px
                 &-title
                         grid-row: 2 / 3
                         line-height: 110%
                         // filter: none
                         z-index: 0
                         margin-inline: 1rem
+                        transform: translateZ(2.6rem)
+                        transition: transform .2s ease .8s
                         span
                                 position: relative
                                 filter: none
@@ -231,7 +254,7 @@
                                 height: max-content
                                 width: max-content
                                 translate: 40% 200%
-                                transform: rotateY(-9deg)
+                                transform: rotateY(-9deg) translateZ(2rem)
                                 user-select: none
                                 h4
                                         position: relative

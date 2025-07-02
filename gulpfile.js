@@ -1,5 +1,5 @@
 const gulp        = require('gulp');
-const browserSync = require('browser-sync');
+const browserSync = require('browser-sync').create();
 const sass        = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
@@ -10,10 +10,10 @@ const uglify = require('gulp-uglify');
 
 gulp.task('server', function() {
 
-    browserSync({
+    browserSync.init({
         server: {
             baseDir: "dist"
-        }
+        },
     });
 
     gulp.watch("src/*.html").on('change', browserSync.reload);
